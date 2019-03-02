@@ -1,18 +1,177 @@
-<div class="header">
-  <h1>NSIA Header</h1>
-</div>
-<div id="navbar">
-  <a href="" routerLink="">Home</a>
-  <a href="" routerLink="about-us">About Us</a>
-  <a href="" routerLink="services">Services</a>
-  <a href="" routerLink="library">Library</a>
-  <a href="" routerLink="access-info">Access to info</a>
-  <a href="" routerLink="media-room">Media Room</a>
-  <a href="" routerLink="opportunities">Opportunities</a>
+<div class="navbar-wrapper ">
 
-  <div>
-    <button (click)="useLanguage('en')">en</button>
-    <button (click)="useLanguage('fa')">fa</button>
-    <button (click)="useLanguage('ps')">ps</button>
+  <div class="header">
+    <div class="custom-container">
+
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="nsia-logo">
+            <img src="../../../assets/logo/nsia-logo.svg" alt="">
+          </div>
+        </div>
+        <div class="col-md-9 col-sm-6">
+          <div class="header-details">
+
+            <div class="contact-details">
+              <div class="c-item">
+                <p>Contact Us <i class="fas fa-phone"></i> </p>
+              </div>
+              <div class="c-item">
+                <p>8:00 A.M. - 5:00 P.M. <i class="fas fa-clock"></i></p>
+              </div>
+              <div class="c-item">
+                <p>NSIA HEAD OFFICE <i class="fas fa-map-marker-alt"></i></p>
+              </div>
+            </div>
+
+            <div class="website-tools">
+              <div class="tools-wrapper">
+                <div class="search-input c-item">
+                  <input type="text" placeholder="search website" class="form-control">
+                </div>
+                <div class="change-language c-item">
+                  <select name="lang-change" id="lang-change" #languageChange class="form-control" (change)='useLanguage(languageChange.value)'>
+                    <option value="en">English</option>
+                    <option value="fa">Dari</option>
+                    <option value="ps">Pashto</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+    <div class="custom-container">
+
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsable-nav"
+        aria-controls="collapsable-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsable-nav">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item" id="home">
+            <a href="" routerLink="">
+              <i class="fas fa-home"></i>
+            </a>
+          </li>
+          <div class="seperator">
+            <div></div>
+          </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              routerLink="about-us">
+              {{ 'menu.about-us' | translate }}
+            </a>
+            <i class="fas fa-chevron-down"></i>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a href="" class="dropdown-item" routerLink="about-us/about-nsia">About NSIA</a>
+              <a href="" class="dropdown-item" routerLink="about-us/biographies">Biographies</a>
+              <a href="" class="dropdown-item" routerLink="about-us/finance">Finance</a>
+              <a href="" class="dropdown-item" routerLink="about-us/gender">Gender</a>
+              <a href="" class="dropdown-item" routerLink="about-us/structure">Structure</a>
+              <a href="" class="dropdown-item" routerLink="about-us/vision-mission">Vision And Mission</a>
+            </div>
+          </li>
+          <div class="seperator">
+            <div></div>
+          </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              routerLink="services">
+              {{ 'menu.services' | translate }}
+            </a>
+            <i class="fas fa-chevron-down"></i>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a href="" class="dropdown-item" routerLink="services/statistics">Statistics</a>
+              <a href="" class="dropdown-item" routerLink="services/accra">ACCRA</a>
+              <a href="" class="dropdown-item" routerLink="services/gis">GIS</a>
+              <a href="" class="dropdown-item" routerLink="services/info-sys">Information Systems</a>
+              <a href="" class="dropdown-item" routerLink="services/province-service">Provincial Services</a>
+            </div>
+          </li>
+          <div class="seperator">
+            <div></div>
+          </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              routerLink="library">
+              {{ 'menu.library' | translate }}
+            </a>
+            <i class="fas fa-chevron-down"></i>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a href="" class="dropdown-item" routerLink="library/reports">Reports</a>
+              <a href="" class="dropdown-item" routerLink="library/articles">Articles</a>
+            </div>
+          </li>
+          <div class="seperator">
+            <div></div>
+          </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              routerLink="access-info">
+              {{ 'menu.access-info' | translate }}
+            </a>
+            <i class="fas fa-chevron-down"></i>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a href="" class="dropdown-item" routerLink="access-info/guidelines">Guidelines</a>
+              <a href="" class="dropdown-item" routerLink="access-info/statistics">Statistics</a>
+              <a href="" class="dropdown-item" routerLink="access-info/nid">National Identity</a>
+              <a href="" class="dropdown-item" routerLink="access-info/regualtions">Regulations</a>
+              <a href="" class="dropdown-item" routerLink="access-info/policies">Policies</a>
+            </div>
+          </li>
+          <div class="seperator">
+            <div></div>
+          </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              routerLink="media-room">
+              {{ 'menu.media-room' | translate }}
+            </a>
+            <i class="fas fa-chevron-down"></i>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a href="" class="dropdown-item" routerLink="media-room/event">Events</a>
+              <a href="" class="dropdown-item" routerLink="media-room/news-updates">News and updates</a>
+              <a href="" class="dropdown-item" routerLink="media-room/press-release">Press release</a>
+              <a href="" class="dropdown-item" routerLink="media-room/magazine">Magazine</a>
+              <a href="" class="dropdown-item" routerLink="media-room/newsletters">Newsletters</a>
+              <a href="" class="dropdown-item" routerLink="media-room/poster">Poster</a>
+              <a href="" class="dropdown-item" routerLink="media-room/booklet">Booklet</a>
+              <a href="" class="dropdown-item" routerLink="media-room/brochures">Brochures</a>
+            </div>
+          </li>
+          <div class="seperator">
+            <div></div>
+          </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              routerLink="opportunities">
+              {{ 'menu.opportunities' | translate }}
+            </a>
+            <i class="fas fa-chevron-down"></i>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a href="" class="dropdown-item" routerLink="opportunities/administration">Administration</a>
+              <a href="" class="dropdown-item" routerLink="opportunities/procurements">Procurements</a>
+              <a href="" class="dropdown-item" routerLink="opportunities/tenders">Tenders</a>
+            </div>
+          </li>
+          <div class="seperator">
+            <div></div>
+          </div>
+        </ul>
+        <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+      </div>
+    </div>
+  </nav>
+
+
 </div>

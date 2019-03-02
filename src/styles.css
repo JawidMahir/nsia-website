@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "https://use.fontawesome.com/releases/v5.7.2/css/all.css";
+
+@font-face {
+  font-family: 'Bahij Halvetica';
+  src: url('./assets/fonts/bahij_helvetica_neue_bold_by_bahijvirtualacademy-dammcmt_0.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Bahij Halvetica';
+  src: url('./assets/fonts/Bahij_Helvetica_Neue-Light_1.ttf');
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: 'Bahij Halvetica';
+  src: url('./assets/fonts/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.ttf');
+  font-weight: normal;
+}
+
+/* First Primary: #01a79b green */
+/* Second Primary: #282560 blue */
+
+body {
+  font-family: 'Raleway', 'Bahij Halvetica', sans-serif;
+  color: #282560 !important;
+}
+
+
+@media only screen and (min-width: 800px) {
+  .custom-container {
+    width: 1380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.p-16 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(226, 226, 226);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(138, 137, 137);
+}

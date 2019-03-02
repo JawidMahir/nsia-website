@@ -1,4 +1,11 @@
 {
     "demo.title": "Persian demo {{name}}",
-    "demo.text": "This is a simple dari app for ngx-translate"
+    "demo.text": "This is a simple dari app for ngx-translate",
+    "menu.home": "صفحه اصلی",
+    "menu.about-us": "درباره ما",
+    "menu.services": "خدمات",
+    "menu.library": "کتابخانه",
+    "menu.access-info": "دسترسي به معلومات",
+    "menu.media-room": "مطبوعات",
+    "menu.opportunities": "فرستها"
 }

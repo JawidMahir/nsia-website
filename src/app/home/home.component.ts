@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import 'bootstrap';
+import * as $ from 'jquery';
 
 
 @Component({
@@ -15,7 +17,11 @@ export class HomeComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.x = location.pathname;
-    this.getPosts();
+    $('.carousel').carousel({
+      interval: 4000,
+      ride: 'carousel'
+    });
+    // this.getPosts();
   }
 
   getPosts() {

@@ -1,4 +1,11 @@
 {
     "demo.title": "Pashto demo {{name}}",
-    "demo.text": "This is a simple pashto app for ngx-translate"
+    "demo.text": "This is a simple pashto app for ngx-translate",
+    "menu.home": "اصلی صفحه",
+    "menu.about-us": "زموږپه اړه",
+    "menu.services": "خدمات",
+    "menu.library": "کتابتون",
+    "menu.access-info": "معلواتو ته لاسرسی",
+    "menu.media-room": "مطبوعات",
+    "menu.opportunities": "فرستونه"
 }
