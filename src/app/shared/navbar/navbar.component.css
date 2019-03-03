@@ -85,6 +85,7 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 14px;
+  font-weight: 200;
   text-transform: uppercase;
 
 }
@@ -175,11 +176,9 @@
   color: #282560 !important;
 }
 
-#navbar.active-bar li.active i {
-  color: #01a79b !important;
+#navbar.active-bar li:hover.active i {
+  color: #282560 !important;
 }
-
-
 
 #navbar.active-bar .nav-item .dropdown-item:hover {
   color: #282560 !important;

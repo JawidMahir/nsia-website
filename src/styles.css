@@ -27,10 +27,19 @@
 body {
   font-family: 'Raleway', 'Bahij Halvetica', sans-serif;
   color: #282560 !important;
+  background: #f0f0f0;
+
 }
 
+.text-green {
+  color: #01a79b;
+}
 
-@media only screen and (min-width: 800px) {
+.text-blue {
+  color: #282560;
+}
+
+@media only screen and (min-width: 1500px) {
   .custom-container {
     width: 1380px;
     margin-left: auto;
@@ -38,10 +47,39 @@ body {
   }
 }
 
+@media only screen and (max-width: 1500px) {
+  .custom-container {
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.form-control, .btn {
+  border-radius: 0px !important;
+}
+
 .p-16 {
   padding-left: 16px;
   padding-right: 16px;
 }
+
+/* CARD CSS */
+.card {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.16), 0 1px 1px rgba(0,0,0,0.23);  
+  background-color: #fff;
+  border-radius: 0px;
+}
+
+.card .card-title {
+  padding: 6px;
+}
+
+.card .card-body {
+  padding: 6px;
+}
+
+
 
 
 
