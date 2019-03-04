@@ -1,4 +1,12 @@
 {
+    
+    "lang.english": "انگلیسي",
+    "lang.dari": "دري",
+    "lang.pashto": "پښتو",
+    "stats.population": "نفوس",
+    "stats.gdp": "GDP",
+    "stats.cpi": "CPI",
+    "stats.gender": "جندر",
     "demo.title": "Pashto demo {{name}}",
     "demo.text": "This is a simple pashto app for ngx-translate",
     "menu.home": "اصلی صفحه",

@@ -9,43 +9,44 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="../../assets/carasoule-images/slide1.jpg" alt="First slide">
+        <img class="d-block w-100" *ngIf="carousel.nsia" src="{{ carousel.nsia.better_featured_image.source_url }}" alt="{{ carousel.nsia.better_featured_image.alt_text }}">
         <div class="caption w-100 d-block">
           <div class="custom-container">
-            <h1>National Statistics and Information Authority</h1>
-          </div>
-        </div>
-
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="../../assets/carasoule-images/slide2.jpg" alt="Second slide">
-        <div class="caption w-100 d-block">
-          <div class="custom-container">
-            <h1>Information Systems Development</h1>
+            <h1>{{ carousel.nsia.title?.rendered }}</h1>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="../../assets/carasoule-images/slide3.png" alt="Third slide">
+        <img class="d-block w-100" *ngIf="carousel.isd" src="{{ carousel.isd.better_featured_image.source_url }}" alt="{{ carousel.isd.better_featured_image.alt_text }}">
         <div class="caption w-100 d-block">
           <div class="custom-container">
-            <h1>Geographical I.S</h1>
+            <h1>{{ carousel.isd.title?.rendered }}</h1>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="../../assets/carasoule-images/slide3.png" alt="Fourth slide">
+        <img class="d-block w-100" *ngIf="carousel.gis" src="{{ carousel.gis.better_featured_image.source_url }}" alt="{{ carousel.gis.better_featured_image.alt_text }}">
         <div class="caption w-100 d-block">
           <div class="custom-container">
-            <h1>Statistics</h1>
+            <h1>{{ carousel.gis.title?.rendered }}</h1>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="../../assets/carasoule-images/slide3.png" alt="Fifth slide">
+        <img class="d-block w-100" *ngIf="carousel.stats" src="{{ carousel.stats.better_featured_image.source_url }}"
+          alt="{{ carousel.stats.better_featured_image.alt_text }}">
         <div class="caption w-100 d-block">
           <div class="custom-container">
-            <h1>ACCRA</h1>
+            <h1>{{ carousel.stats.title?.rendered }}</h1>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" *ngIf="carousel.accra" src="{{ carousel.accra.better_featured_image.source_url }}"
+          alt="{{ carousel.accra.better_featured_image.alt_text }}">
+        <div class="caption w-100 d-block">
+          <div class="custom-container">
+            <h1>{{ carousel.accra.title?.rendered }}</h1>
           </div>
         </div>
       </div>
@@ -63,40 +64,40 @@
 <div class="custom-container">
   <div class="section-wrapper">
     <div class="row">
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3 col-sm-3">
         <div class="stat-card card">
           <img src="../../assets/images/population.png" alt="Population">
           <div class="stats">
-            <h6>Population</h6>
-            <h3>34000000</h3>
+            <h6>{{ 'stats.population' | translate }}</h6>
+            <h3 *ngIf="population">{{ population.acf.statistics }} </h3>
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3 col-sm-3">
         <div class="stat-card card">
           <img src="../../assets/images/gdp.png" alt="gdp">
           <div class="stats">
-            <h6>GDP</h6>
-            <h3>54.67</h3>
+            <h6>{{ 'stats.gdp' | translate }}</h6>
+            <h3 *ngIf="gdp">{{ gdp.acf.statistics }} </h3>
           </div>
         </div>
 
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3 col-sm-3">
         <div class="stat-card card">
           <img src="../../assets/images/cpi.png" alt="cpi">
           <div class="stats">
-            <h6>CPI</h6>
-            <h3>670</h3>
+            <h6>{{ 'stats.cpi' | translate }}</h6>
+            <h3 *ngIf="cpi">{{ cpi.acf.statistics }} </h3>
           </div>
         </div>
 
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3 col-sm-3">
         <div class="stat-card card">
           <img src="../../assets/images/gender.png" alt="Population">
           <div class="stats">
-            <h6>Gender</h6>
+            <h6>{{ 'stats.gender' | translate }}</h6>
             <h3>45% Male</h3>
             <h3>55% Female</h3>
           </div>
@@ -111,8 +112,7 @@
     <div class="card service-card">
       <div class="card-body">
         <div class="row">
-          <div class="col-md-4 col-sm-6">
-
+          <div class="col-md-4 col-sm-12">
             <div class="service-title">
               <h1 class="text-green">NSIA</h1>
               <h1>SERVICES</h1>
@@ -122,14 +122,22 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur delectus, aliquid officiis ipsum
                 repellat
                 sunt fugit incidunt, ab rem cum omnis culpa illum perspiciatis nesciunt doloremque quisquam quis ea
+                adipisci. Corrupti exercitationem inventore recusandae. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Tenetur delectus, aliquid officiis ipsum
+                repellat
+                sunt fugit incidunt, ab rem cum omnis culpa illum perspiciatis nesciunt doloremque quisquam quis ea
+                adipisci. Corrupti exercitationem inventore recusandae. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Tenetur delectus, aliquid officiis ipsum
+                repellat
+                sunt fugit incidunt, ab rem cum omnis culpa illum perspiciatis nesciunt doloremque quisquam quis ea
                 adipisci. Corrupti exercitationem inventore recusandae.
               </p>
             </div>
           </div>
-          <div class="col-md-8 col-sm-6">
+          <div class="col-md-8 col-sm-12">
             <div class="nsia-services row">
-              <div class="col-md-6 col-sm-12">
-                <div class="sr-item sn-b">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="sr-item ">
                   <!-- <img src="../../assets/logo/Div.svg" alt=""> -->
                   <div class="service-icon">
                     <img src="../../assets/logo/sys-dev.png" alt="">
@@ -143,9 +151,8 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6 col-sm-12">
-
-                <div class="sr-item sn-b">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="sr-item ">
                   <div class="service-icon">
                     <img src="../../assets/logo/gis.png" alt="">
                   </div>
@@ -158,8 +165,8 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6 col-sm-12">
-                <div class="sr-item sn-b">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="sr-item ">
                   <div class="service-icon">
                     <img src="../../assets/logo/stats.png" alt="">
                   </div>
@@ -173,8 +180,8 @@
 
                 </div>
               </div>
-              <div class="col-md-6 col-sm-12">
-                <div class="sr-item sn-b">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="sr-item ">
                   <div class="service-icon">
                     <img src="../../assets/logo/nid.png" alt="">
                   </div>
@@ -197,63 +204,168 @@
 
 
   <div class="section-wrapper latest-section">
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-3 col-sm-6">
-            <div class="news-item sn-b">
-              <h5>Latest News</h5>
-              <hr>
-            </div>
+    <div class=" latest-section-card">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="news-category active-news">
+            <h4>Latest News</h4>
           </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="news-item sn-b">
-              <h5>Latest Publications</h5>
-              <hr>
-            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="news-category">
+            <h4>Latest Publications</h4>
           </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="news-item sn-b">
-              <h5>Press Release</h5>
-              <hr>
-            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="news-category">
+            <h4>Press Release</h4>
+
           </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="news-item sn-b">
-              <h5>Important Announcements</h5>
-              <hr>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="news-category">
+            <h4>Important Announcements</h4>
+          </div>
+        </div>
+      </div>
+      <div class="navigator-line"></div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="news-item ">
+            <img src="../../assets/images/news1.png" alt="featured-image">
+            <div class="contents">
+              <h4>MCU did something</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
+            </div>
+            <div class="news-date">
+              <h4>23</h4>
+              <p>Jan</p>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 col-sm-12 text-center">
-            <button class="btn btn-lg btn-outline-info">Read More</button>
+        <div class="col-md-3 col-sm-6">
+          <div class="news-item ">
+            <img src="../../assets/images/news2.png" alt="featured-image">
+            <div class="contents">
+              <h4>MCU did something</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
+            </div>
+            <div class="news-date">
+              <h4>23</h4>
+              <p>Jan</p>
+            </div>
           </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="news-item ">
+            <img src="../../assets/images/news3.png" alt="featured-image">
+            <div class="contents">
+              <h4>MCU did something</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
+            </div>
+            <div class="news-date">
+              <h4>23</h4>
+              <p>Jan</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="news-item ">
+            <img src="../../assets/images/news1.png" alt="featured-image">
+            <div class="contents">
+              <h4>MCU did something</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
+            </div>
+            <div class="news-date">
+              <h4>23</h4>
+              <p>Jan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 text-center">
+          <button class="btn btn-lg btn-outline-info">Read More</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="section-wrapper bussiness">
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-4 col-sm-6">
-            <div class="stakeholders sn-b">
-              <h3>stakeholders</h3>
-              <hr>
+    <div class=" bussiness-card">
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <div class="title">
+            <h4>stakeholders</h4>
+            <div class="t-icon">
+              <div>
+                <i class="fas fa-chevron-left"></i>
+                <i class="fas fa-chevron-right"></i>
+              </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="donors sn-b">
-              <h3>donors</h3>
-              <hr>
+          <div class="stakeholders b-category">
+            <div class="bs-item">
+              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
+              <h6>Government</h6>
+            </div>
+            <div class="bs-item">
+              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
+              <h6>Government</h6>
+            </div>
+            <div class="bs-item">
+              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
+              <h6>Government</h6>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="customers sn-b">
-              <h3>customers</h3>
-              <hr>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="title donor-title">
+            <h4>donors</h4>
+            <div class="t-icon">
+              <div>
+                <i class="fas fa-chevron-left"></i>
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+          <div class="donors b-category">
+            <div class="bs-item">
+              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
+              <h6>Government</h6>
+            </div>
+            <div class="bs-item">
+              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
+              <h6>Government</h6>
+            </div>
+            <div class="bs-item">
+              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
+              <h6>Government</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="title">
+            <h4>customers</h4>
+            <div class="t-icon">
+              <div>
+                <i class="fas fa-chevron-left"></i>
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+          <div class="customers b-category">
+            <div class="bs-item">
+              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
+              <h6>Government</h6>
+            </div>
+            <div class="bs-item">
+              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
+              <h6>Government</h6>
+            </div>
+            <div class="bs-item">
+              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
+              <h6>Government</h6>
             </div>
           </div>
         </div>
@@ -288,36 +400,66 @@
 
 
   <div class="section-wrapper latest-section">
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-4 col-sm-6">
-            <div class="news-item sn-b">
-              <h5>Upcoming events</h5>
-              <hr>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="news-item sn-b">
-              <h5>Upcoming publications</h5>
-              <hr>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="news-item sn-b">
-              <h5>Surveys</h5>
-              <hr>
-            </div>
+    <div class=" latest-section-card">
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <div class="news-category active-news">
+            <h4>Upcoming eventss</h4>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 col-sm-12 text-center">
-            <button class="btn btn-lg btn-outline-info">Read More</button>
+        <div class="col-md-4 col-sm-6">
+          <div class="news-category">
+            <h4>Upcoming publications</h4>
           </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="news-category">
+            <h4>Surveys</h4>
+
+          </div>
+        </div>
+      </div>
+      <div class="navigator-line"></div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <div class="news-item ">
+            <img src="../../assets/images/news2.png" alt="featured-image">
+            <div class="contents">
+              <h4>MCU did something</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="news-item ">
+            <img src="../../assets/images/news3.png" alt="featured-image">
+            <div class="contents">
+              <h4>MCU did something</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="news-item ">
+            <img src="../../assets/images/news1.png" alt="featured-image">
+            <div class="contents">
+              <h4>MCU did something</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 text-center">
+          <button class="btn btn-lg btn-outline-info">Read More</button>
         </div>
       </div>
     </div>
   </div>
+
 
 
 

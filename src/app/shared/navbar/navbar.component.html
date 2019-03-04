@@ -27,13 +27,13 @@
             <div class="website-tools">
               <div class="tools-wrapper">
                 <div class="search-input c-item">
-                  <input type="text" placeholder="search website" class="form-control">
+                  <input type="text" placeholder="search website" class="form-control ">
                 </div>
                 <div class="change-language c-item">
-                  <select name="lang-change" id="lang-change" #languageChange class="form-control" (change)='useLanguage(languageChange.value)'>
-                    <option value="en">English</option>
-                    <option value="fa">Dari</option>
-                    <option value="ps">Pashto</option>
+                  <select name="lang-change" id="lang-change" class="form-control custom-form-control" #languageChange (change)='useLanguage(languageChange.value)'>
+                    <option value="en">{{ 'lang.english' | translate }}</option>
+                    <option value="fa">{{ 'lang.dari' | translate }}</option>
+                    <option value="ps">{{ 'lang.pashto' | translate }}</option>
                   </select>
                 </div>
               </div>

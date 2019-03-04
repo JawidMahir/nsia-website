@@ -1,11 +1,59 @@
+.quick-links {
+  margin-top: 2rem;
+  background-color: #f2f2f2;
+  padding: 4% 0%;
+
+}
+
+.quick-links .link-title {
+  border-bottom: 1px solid #282560;
+}
+
+.quick-links .links {
+  padding: 4px;
+}
+
+.quick-links ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.quick-links a {
+  text-decoration: none;
+  color: rgb(63, 63, 63);
+}
+
+.quick-links i {
+  font-size: 8px;
+  position: relative;
+  top: -2px;
+  margin-right: 2%;
+}
+
+.quick-links #email {
+  border: none;
+  border-bottom: 1px solid #282560;
+  display: block;
+  background: transparent;
+  width: 100%;
+  padding: 4px;
+  margin-bottom: 8%;
+}
+
+.quick-links button {
+  padding: 6px 16px;
+  background-color: #282560;
+  color: #fff;
+  border: none;
+}
+
 .footer {
   background-color: #282560;
   color: #fff;
   text-align: center;
-  margin-top: 2rem;
   left: 0;
   bottom: 0;
-  height: 100px;
+  min-height: 100px;
   width: 100%;
   overflow: hidden;
 }
@@ -38,8 +86,9 @@
 }
 
 .footer .social-media i {
-  margin: 2px;
+  margin: 8px;
   cursor: pointer;
+  font-size: 160%;
 }
 
 .footer .copy-right,

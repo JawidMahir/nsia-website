@@ -27,7 +27,7 @@
 body {
   font-family: 'Raleway', 'Bahij Halvetica', sans-serif;
   color: #282560 !important;
-  background: #f0f0f0;
+  background: #f9f9f9;
 
 }
 
@@ -39,24 +39,25 @@ body {
   color: #282560;
 }
 
-@media only screen and (min-width: 1500px) {
-  .custom-container {
-    width: 1380px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.custom-form-control {
+  background-color: #282560;
+  color: #fff;
 }
 
-@media only screen and (max-width: 1500px) {
-  .custom-container {
-    width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.custom-container {
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 
 .form-control, .btn {
   border-radius: 0px !important;
+}
+
+.form-control:focus {
+  outline: none !important;
+
 }
 
 .p-16 {
@@ -66,7 +67,7 @@ body {
 
 /* CARD CSS */
 .card {
-  box-shadow: 0 1px 1px rgba(0,0,0,0.16), 0 1px 1px rgba(0,0,0,0.23);  
+  /* box-shadow: 0 1px 1px rgba(0,0,0,0.16), 0 1px 1px rgba(0,0,0,0.23);   */
   background-color: #fff;
   border-radius: 0px;
 }

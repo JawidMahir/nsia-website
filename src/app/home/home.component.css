@@ -1,7 +1,5 @@
 /* General CSS */
-.sn-b {
-  padding: 8px;
-}
+
 
 .carousel .carousel-item img {
   height: 80vh;
@@ -64,6 +62,7 @@
 
 .service-card {
   padding: 3vw;
+  padding-bottom: 0px;
   background-color: #282560;
   color: #fff;
   text-align: justify;
@@ -85,12 +84,14 @@
   padding-top: 2rem;
 }
 
-.nsia-services .col-md-6 {
-  margin-bottom: 16px;
+.nsia-services [class^='col'] {
+  margin-bottom: 8%;
+
 }
 
 .nsia-services .sr-item {
-  margin: 14px;
+  margin-top: 5%;
+  margin-bottom: 19%;
   padding: 24px;
   border: 4px solid #fff;
   background-repeat: no-repeat;
@@ -98,9 +99,9 @@
 }
 
 .nsia-services .sr-item .service-icon {
-  padding: 12px;
+  padding: 0px 5%;
   width: fit-content;
-  margin-top: -66px;
+  margin-top: -20%;
   background-color: #282560;
 
 }
@@ -110,18 +111,143 @@
   height: 60px;
 }
 
+.nsia-services .sr-brief {
+  margin-top: 5%;
+}
+
 .nsia-services .sr-brief h5 {
   font-weight: 600;
   margin-bottom: 26px;
 }
 
-.latest-section .news-item {
-  min-height: 120px;
+.latest-section .navigator-line {
+  border-bottom: 2px solid #282560;
+  margin-bottom: 10px;
+  margin-top: -3px;
+}
 
+.latest-section .news-category {
+  height: 100%;
+  color: #9797a7;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+
+.latest-section .news-category.active-news {
+  border-bottom: 5px solid #01a79b;
+  color: #282560;
+}
+
+.latest-section .news-category.active-news h4 {
+  font-weight: 600;
+}
+
+.latest-section .news-item {
+  width: 100%;
+  /* max-height: 250px; */
+}
+
+.latest-section .news-item img {
+  width: 100%;
+}
+
+.latest-section .news-item .contents {
+  position: absolute;
+  height: 50%;
+  color: #fff;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0px 15px;
+  padding: 16px;
+  background: linear-gradient(to right, rgb(39, 35, 97), rgba(39, 35, 97, 0.4) 100%);
+}
+
+.latest-section .news-date {
+  top: 0;
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+  background-color: #01a79b;
+  color: #fff;
+  padding: 1% 4%;
+  text-align: center;
+}
+
+.latest-section .news-date h4 {
+  margin: 0px;
+  font-weight: 600;
+}
+
+.latest-section .news-date p {
+  margin: 0px;
+  margin-top: -5px;
 }
 
 .latest-section button {
   margin-top: 8px;
+}
+
+.bussiness-card,
+.latest-section-card {
+  box-shadow: none !important;
+  background-color: transparent;
+}
+
+.bussiness .title {
+  display: flex;
+}
+
+.bussiness .title h4 {
+  text-transform: capitalize;
+  font-weight: 600;
+  flex: auto;
+}
+
+.bussiness .title .t-icon {
+  flex: auto;
+}
+
+.bussiness .title .t-icon i {
+  margin-left: 2px;
+}
+
+.bussiness .title .t-icon>div {
+  width: fit-content;
+  float: right;
+
+}
+
+.bussiness .title:nth-child(odd) {
+  border-bottom: 1px solid #01a79b;
+}
+
+.bussiness .title.donor-title {
+  border-bottom: 1px solid #282560;
+}
+
+.bussiness .b-category {
+  display: flex;
+  margin-top: 4%;
+}
+
+.bussiness .bs-item {
+  flex: auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.bussiness .bs-item img {
+  height: 75px;
+  width: 75px;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-bottom: 12px;
+}
+
+.bussiness .bs-item h6 {
+  cursor: pointer;
 }
 
 
@@ -130,8 +256,8 @@
 }
 
 .billboard .billboard-contents {
-    padding: 7rem;
-    display: flex;
+  padding: 7rem;
+  display: flex;
 }
 
 .billboard-contents .event-date {
@@ -143,35 +269,33 @@
 }
 
 .billboard-contents .event-date .b-date {
-  background-color: #4b45bd;
+  background-color: #3932b9;
   color: #fff;
   padding: 12px 40px;
 
 }
 
 .billboard-contents .event-date .b-date h1 {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .billboard-contents .event-date .b-date p {
-    margin-top: -10px;
+  margin-top: -10px;
 }
 
 .billboard-contents .event-date .b-register {
-    background-color: #fff;
-    color: #282560;
-    padding: 8px;
-    cursor: pointer;
-  }
+  background-color: #fff;
+  color: #282560;
+  padding: 8px;
+  cursor: pointer;
+}
 
 .billboard-contents .event-desc {
-    margin-left: 25px;
-    padding: 15px;
-    text-align: justify;
+  margin-left: 25px;
+  padding: 15px;
+  text-align: justify;
 }
 
 .billboard-contents .event-desc p {
-    max-width: 400px;
+  max-width: 400px;
 }
-
-

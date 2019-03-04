@@ -1,4 +1,11 @@
 {
+    "lang.english": "انگلیسي",
+    "lang.dari": "دري",
+    "lang.pashto": "پشتو",
+    "stats.population": "جنسيت",
+    "stats.gdp": "GDP",
+    "stats.cpi": "CPI",
+    "stats.gender": "جمعیت",
     "demo.title": "Persian demo {{name}}",
     "demo.text": "This is a simple dari app for ngx-translate",
     "menu.home": "صفحه اصلی",
