@@ -20,30 +20,34 @@ export class DataService {
     });
   }
 
-  getInitialStats(customP: Array<string>) {
+  getInitialStats(customP: Array<string>, catName) {
     return this.http.get(this.api + 'posts', {
       params: {
-        categories: '26',
+        'filter[category_name]': catName,
         lang: this.language,
         fields: customP.join(',')
       }
     });
   }
 
-  getCarouselSlides(customP: Array<string>) {
-    return this.http.get(this.api + 'posts', {
+  getCarouselSlides(customP: Array<string>, catName) {
+    return this.http.get<Array<object>>(this.api + 'posts', {
       params: {
-        categories: '27',
+        'filter[category_name]': catName,
         lang: this.language,
-        fields: customP.join(',')
+        fields: customP.join(','),
       }
     });
   }
 
-  getFeaturedMedia(imgCode, customP: Array<string>) {
-    return this.http.get(this.api + 'media/' + imgCode, {
+  getCardsData(customP, catName) {
+    return this.http.get(this.api + 'posts', {
       params: {
-        fields: customP.join(',')
+        'filter[category_name]': catName,
+        lang: this.language,
+        per_page: '4',
+        fields: customP.join(','),
+        orederby: 'date'
       }
     });
   }

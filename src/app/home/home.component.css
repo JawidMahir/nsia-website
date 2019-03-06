@@ -1,4 +1,10 @@
 /* General CSS */
+.no-data {
+  width: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 0px;
+}
 
 
 .carousel .carousel-item img {

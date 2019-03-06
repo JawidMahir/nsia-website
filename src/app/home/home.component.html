@@ -202,94 +202,98 @@
     </div>
   </div>
 
-
-  <div class="section-wrapper latest-section">
-    <div class=" latest-section-card">
-      <div class="row">
-        <div class="col-md-3 col-sm-6">
-          <div class="news-category active-news">
-            <h4>Latest News</h4>
-          </div>
+  <!-- Following are the sample cards that are used for dynamic contents -->
+  <div class="samples" style="display:none">
+    <div class="col-md-3 col-sm-6" id="news-card">
+      <div class="news-item">
+        <img src="../../assets/images/news1.png" alt="featured-image">
+        <div class="contents">
+          <h4>MCU did something</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
         </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="news-category">
-            <h4>Latest Publications</h4>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="news-category">
-            <h4>Press Release</h4>
-
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="news-category">
-            <h4>Important Announcements</h4>
-          </div>
-        </div>
-      </div>
-      <div class="navigator-line"></div>
-      <div class="row">
-        <div class="col-md-3 col-sm-6">
-          <div class="news-item ">
-            <img src="../../assets/images/news1.png" alt="featured-image">
-            <div class="contents">
-              <h4>MCU did something</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-            </div>
-            <div class="news-date">
-              <h4>23</h4>
-              <p>Jan</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="news-item ">
-            <img src="../../assets/images/news2.png" alt="featured-image">
-            <div class="contents">
-              <h4>MCU did something</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-            </div>
-            <div class="news-date">
-              <h4>23</h4>
-              <p>Jan</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="news-item ">
-            <img src="../../assets/images/news3.png" alt="featured-image">
-            <div class="contents">
-              <h4>MCU did something</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-            </div>
-            <div class="news-date">
-              <h4>23</h4>
-              <p>Jan</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="news-item ">
-            <img src="../../assets/images/news1.png" alt="featured-image">
-            <div class="contents">
-              <h4>MCU did something</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-            </div>
-            <div class="news-date">
-              <h4>23</h4>
-              <p>Jan</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 col-sm-12 text-center">
-          <button class="btn btn-lg btn-outline-info">Read More</button>
+        <div class="news-date">
+          <h4>23</h4>
+          <p>Jan</p>
         </div>
       </div>
     </div>
+    <div class="col-md-4 col-sm-6" id="events-card">
+      <div class="news-item">
+        <img src="../../assets/images/news1.png" alt="featured-image">
+        <div class="contents">
+          <h4>MCU did something</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
+        </div>
+        <div class="news-date">
+          <h4>23</h4>
+          <p>Jan</p>
+        </div>
+      </div>
+    </div>
+    <div class="jumbotron text-center no-data">
+      <h4>NO DATA</h4>
+    </div>
+
   </div>
+
+
+
+  <div class="section-wrapper latest-section">
+    <div class="nav row" id="nav-tab" role="tablist">
+      <div class="col-md-3 col-sm-6 active ls-btn" id="nav-news-tab" data-toggle="tab" data-target="#nav-news" role="tab"
+        aria-controls="nav-news" aria-selected="true">
+        <div class="news-category active-news news-cat">
+          <h4>Latest News</h4>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 ls-btn" id="nav-publications-tab" data-toggle="tab" data-target="#nav-publications"
+        role="tab" aria-controls="nav-publications" aria-selected="false">
+        <div class="news-category news-cat">
+          <h4>Latest Publications</h4>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 ls-btn" id="nav-press-tab" data-toggle="tab" data-target="#nav-press" role="tab"
+        aria-controls="nav-press" aria-selected="false">
+        <div class="news-category news-cat">
+          <h4>Press Release</h4>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 ls-btn" id="nav-announcements-tab" data-toggle="tab" data-target="#nav-announcements"
+        role="tab" aria-controls="nav-announcements" aria-selected="false">
+        <div class="news-category news-cat">
+          <h4>Important Announcements</h4>
+        </div>
+      </div>
+    </div>
+    <div class="navigator-line"></div>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
+        <div class="row">
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-publications" role="tabpanel" aria-labelledby="nav-publications-tab">
+        <div class="row">
+
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-press" role="tabpanel" aria-labelledby="nav-press-tab">
+        <div class="row">
+
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-announcements" role="tabpanel" aria-labelledby="nav-announcements-tab">
+        <div class="row">
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 text-center">
+        <button class="btn btn-lg btn-outline-info">Read More</button>
+      </div>
+    </div>
+  </div>
+
 
   <div class="section-wrapper bussiness">
     <div class=" bussiness-card">
@@ -400,65 +404,50 @@
 
 
   <div class="section-wrapper latest-section">
-    <div class=" latest-section-card">
-      <div class="row">
-        <div class="col-md-4 col-sm-6">
-          <div class="news-category active-news">
-            <h4>Upcoming eventss</h4>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="news-category">
-            <h4>Upcoming publications</h4>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="news-category">
-            <h4>Surveys</h4>
-
-          </div>
+    <div class="nav row" id="nav-tab" role="tablist">
+      <div class="col-md-4 col-sm-6 ls ls-btn" id="nav-events-tab" data-toggle="tab" data-target="#nav-events" role="tab"
+        aria-controls="nav-events" aria-selected="true">
+        <div class="news-category active-news events-cat">
+          <h4>Upcoming Events</h4>
         </div>
       </div>
-      <div class="navigator-line"></div>
-      <div class="row">
-        <div class="col-md-4 col-sm-6">
-          <div class="news-item ">
-            <img src="../../assets/images/news2.png" alt="featured-image">
-            <div class="contents">
-              <h4>MCU did something</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-            </div>
-
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="news-item ">
-            <img src="../../assets/images/news3.png" alt="featured-image">
-            <div class="contents">
-              <h4>MCU did something</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-            </div>
-
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="news-item ">
-            <img src="../../assets/images/news1.png" alt="featured-image">
-            <div class="contents">
-              <h4>MCU did something</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-            </div>
-
-          </div>
+      <div class="col-md-4 col-sm-6 ls-btn" id="nav-pubs-tab" data-toggle="tab" data-target="#nav-pubs" role="tab"
+        aria-controls="nav-pubs" aria-selected="false">
+        <div class="news-category events-cat">
+          <h4>Upcoming Publications</h4>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12 col-sm-12 text-center">
-          <button class="btn btn-lg btn-outline-info">Read More</button>
+      <div class="col-md-4 col-sm-6 ls-btn" id="nav-surveys-tab" data-toggle="tab" data-target="#nav-surveys" role="tab"
+        aria-controls="nav-surveys" aria-selected="false">
+        <div class="news-category events-cat">
+          <h4>Surveys</h4>
         </div>
       </div>
     </div>
+    <div class="navigator-line"></div>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
+        <div class="row">
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-pubs" role="tabpanel" aria-labelledby="nav-pubs-tab">
+        <div class="row">
+
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-surveys" role="tabpanel" aria-labelledby="nav-surveys-tab">
+        <div class="row">
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 text-center">
+        <button class="btn btn-lg btn-outline-info">Read More</button>
+      </div>
+    </div>
   </div>
+
 
 
 
