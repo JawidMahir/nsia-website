@@ -241,25 +241,25 @@
   <div class="section-wrapper latest-section">
     <div class="nav row" id="nav-tab" role="tablist">
       <div class="col-md-3 col-sm-6 active ls-btn" id="nav-news-tab" data-toggle="tab" data-target="#nav-news" role="tab"
-        aria-controls="nav-news" aria-selected="true">
+        aria-controls="nav-news" aria-selected="true" redirect-url="/media-room/news-updates">
         <div class="news-category active-news news-cat">
           <h4>Latest News</h4>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-publications-tab" data-toggle="tab" data-target="#nav-publications"
-        role="tab" aria-controls="nav-publications" aria-selected="false">
+        role="tab" aria-controls="nav-publications" aria-selected="false" redirect-url="/library/articles">
         <div class="news-category news-cat">
           <h4>Latest Publications</h4>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-press-tab" data-toggle="tab" data-target="#nav-press" role="tab"
-        aria-controls="nav-press" aria-selected="false">
+        aria-controls="nav-press" aria-selected="false" redirect-url="/media-room/press-release">
         <div class="news-category news-cat">
           <h4>Press Release</h4>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-announcements-tab" data-toggle="tab" data-target="#nav-announcements"
-        role="tab" aria-controls="nav-announcements" aria-selected="false">
+        role="tab" aria-controls="nav-announcements" aria-selected="false" redirect-url="/media-room/news-updates">
         <div class="news-category news-cat">
           <h4>Important Announcements</h4>
         </div>
@@ -268,28 +268,102 @@
     <div class="navigator-line"></div>
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
-        <div class="row">
+        <div class="row" *ngIf="newsBriefs.news != ''; else nonews">
+          <div class="col-md-3 col-sm-6" *ngFor="let nw of newsBriefs.news">
+            <div class="news-item">
+              <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
+                (error)="imageError($event.target);">
+              <div class="contents">
+                <h4>{{ nw.title.rendered }}</h4>
+                <p>{{ nw.acf.brief }}</p>
+              </div>
+              <div class="news-date">
+                <h4>{{ nw.day }}</h4>
+                <p>{{ nw.month }}</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <ng-template #nonews>
+          <div class="jumbotron text-center no-data">
+            <h4>NO DATA</h4>
+          </div>
+        </ng-template>
       </div>
       <div class="tab-pane fade" id="nav-publications" role="tabpanel" aria-labelledby="nav-publications-tab">
-        <div class="row">
-
+        <div class="row" *ngIf="newsBriefs.publications != ''; else nopublications">
+          <div class="col-md-3 col-sm-6" *ngFor="let pb of newsBriefs.publications">
+            <div class="news-item">
+              <img src="{{ pb.better_featured_image.source_url }}" alt="{{ pb.better_featured_image.alt_text }}"
+                (error)="imageError($event.target);">
+              <div class="contents">
+                <h4>{{ pb.title.rendered }}</h4>
+                <p>{{ pb.acf.brief }}</p>
+              </div>
+              <div class="news-date">
+                <h4>{{ pb.day }}</h4>
+                <p>{{ pb.month }}</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <ng-template #nopublications>
+          <div class="jumbotron text-center no-data">
+            <h4>NO DATA</h4>
+          </div>
+        </ng-template>
       </div>
       <div class="tab-pane fade" id="nav-press" role="tabpanel" aria-labelledby="nav-press-tab">
-        <div class="row">
-
+        <div class="row" *ngIf="newsBriefs.press != ''; else nopress">
+          <div class="col-md-3 col-sm-6" *ngFor="let pr of newsBriefs.press">
+            <div class="news-item">
+              <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
+                (error)="imageError($event.target);">
+              <div class="contents">
+                <h4>{{ pr.title.rendered }}</h4>
+                <p>{{ pr.acf.brief }}</p>
+              </div>
+              <div class="news-date">
+                <h4>{{ pr.day }}</h4>
+                <p>{{ pr.month }}</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <ng-template #nopress>
+          <div class="jumbotron text-center no-data">
+            <h4>NO DATA</h4>
+          </div>
+        </ng-template>
       </div>
       <div class="tab-pane fade" id="nav-announcements" role="tabpanel" aria-labelledby="nav-announcements-tab">
-        <div class="row">
-
+        <div class="row" *ngIf="newsBriefs.announcements != ''; else noannouncements">
+          <div class="col-md-3 col-sm-6" *ngFor="let an of newsBriefs.announcements">
+            <div class="news-item">
+              <img src="{{ an.better_featured_image.source_url }}" alt="{{ an.better_featured_image.alt_text }}"
+                (error)="imageError($event.target);">
+              <div class="contents">
+                <h4>{{ an.title.rendered }}</h4>
+                <p>{{ an.acf.brief }}</p>
+              </div>
+              <div class="news-date">
+                <h4>{{ an.day }}</h4>
+                <p>{{ an.month }}</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <ng-template #noannouncements>
+          <div class="jumbotron text-center no-data">
+            <h4>NO DATA</h4>
+          </div>
+        </ng-template>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 text-center">
-        <button class="btn btn-lg btn-outline-info">Read More</button>
+        <button class="btn btn-lg btn-outline-info" (click)="readMoreRedirect($event.target)" id="news-read-more">Read
+          More</button>
       </div>
     </div>
   </div>
@@ -406,19 +480,19 @@
   <div class="section-wrapper latest-section">
     <div class="nav row" id="nav-tab" role="tablist">
       <div class="col-md-4 col-sm-6 ls ls-btn" id="nav-events-tab" data-toggle="tab" data-target="#nav-events" role="tab"
-        aria-controls="nav-events" aria-selected="true">
+        aria-controls="nav-events" aria-selected="true" redirect-url="/media-room/event">
         <div class="news-category active-news events-cat">
           <h4>Upcoming Events</h4>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 ls-btn" id="nav-pubs-tab" data-toggle="tab" data-target="#nav-pubs" role="tab"
-        aria-controls="nav-pubs" aria-selected="false">
+      <div class="col-md-4 col-sm-6 ls-btn" id="nav-upcoming_publications-tab" data-toggle="tab" data-target="#nav-upcoming_publications" role="tab"
+        aria-controls="nav-upcoming_publications" aria-selected="false" redirect-url="/library/articles">
         <div class="news-category events-cat">
           <h4>Upcoming Publications</h4>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 ls-btn" id="nav-surveys-tab" data-toggle="tab" data-target="#nav-surveys" role="tab"
-        aria-controls="nav-surveys" aria-selected="false">
+        aria-controls="nav-surveys" aria-selected="false" redirect-url="/library/reports">
         <div class="news-category events-cat">
           <h4>Surveys</h4>
         </div>
@@ -427,23 +501,79 @@
     <div class="navigator-line"></div>
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
-        <div class="row">
+        <div class="row" *ngIf="newsBriefs.events != ''; else noevents">
+          <div class="col-md-4 col-sm-6" *ngFor="let ev of newsBriefs.events">
+            <div class="news-item">
+              <img src="{{ ev.better_featured_image?.source_url }}" alt="{{ ev.better_featured_image.alt_text }}"
+                (error)="imageError($event.target);">
+              <div class="contents">
+                <h4>{{ ev.title.rendered }}</h4>
+                <p>{{ ev.acf.brief }}</p>
+              </div>
+              <div class="news-date">
+                <h4>{{ ev.day }}</h4>
+                <p>{{ ev.month }}</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <ng-template #noevents>
+          <div class="jumbotron text-center no-data">
+            <h4>NO DATA</h4>
+          </div>
+        </ng-template>
       </div>
-      <div class="tab-pane fade" id="nav-pubs" role="tabpanel" aria-labelledby="nav-pubs-tab">
-        <div class="row">
-
+      <div class="tab-pane fade" id="nav-upcoming_publications" role="tabpanel" aria-labelledby="nav-upcoming_publications-tab">
+        <div class="row" *ngIf="newsBriefs.upcoming_publications != ''; else nouPubs">
+          <div class="col-md-4 col-sm-6" *ngFor="let upb of newsBriefs.upcoming_publications">
+            <div class="news-item">
+              <img src="{{ upb.better_featured_image?.source_url }}" alt="{{ upb.better_featured_image.alt_text }}"
+                (error)="imageError($event.target);">
+              <div class="contents">
+                <h4>{{ upb.title.rendered }}</h4>
+                <p>{{ upb.acf.brief }}</p>
+              </div>
+              <div class="news-date">
+                <h4>{{ upb.day }}</h4>
+                <p>{{ upb.month }}</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <ng-template #nouPubs>
+          <div class="jumbotron text-center no-data">
+            <h4>NO DATA</h4>
+          </div>
+        </ng-template>
       </div>
       <div class="tab-pane fade" id="nav-surveys" role="tabpanel" aria-labelledby="nav-surveys-tab">
-        <div class="row">
-
+        <div class="row" *ngIf="newsBriefs.surveys != ''; else nousurveys">
+          <div class="col-md-4 col-sm-6" *ngFor="let srv of newsBriefs.surveys">
+            <div class="news-item">
+              <img src="{{ srv.better_featured_image?.source_url }}" alt="{{ srv.better_featured_image.alt_text }}"
+                (error)="imageError($event.target);">
+              <div class="contents">
+                <h4>{{ srv.title.rendered }}</h4>
+                <p>{{ srv.acf.brief }}</p>
+              </div>
+              <div class="news-date">
+                <h4>{{ srv.day }}</h4>
+                <p>{{ srv.month }}</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <ng-template #nousurveys>
+          <div class="jumbotron text-center no-data">
+            <h4>NO DATA</h4>
+          </div>
+        </ng-template>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 text-center">
-        <button class="btn btn-lg btn-outline-info">Read More</button>
+        <button class="btn btn-lg btn-outline-info" (click)="readMoreRedirect($event.target)" id="events-read-more">Read
+          More</button>
       </div>
     </div>
   </div>

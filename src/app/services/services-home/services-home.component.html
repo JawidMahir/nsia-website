@@ -1,1 +1,144 @@
-<router-outlet></router-outlet>
+<div class="custom-container">
+
+  <div class="services">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="m-service active-service" id="isd" (click)="toggleServices($event.target)">
+          <div class="m-contents">
+            <div class="sr-icon">
+              <img src="../../../assets/logo/stats.png" alt="">
+            </div>
+            <div class="sr-name">
+              <p>statistics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="m-service" id="stats" (click)="toggleServices($event.target)">
+          <div class="m-contents">
+            <div class="sr-icon">
+              <img src="../../../assets/logo/sys-dev.png" alt="">
+            </div>
+            <div class="sr-name">
+              <p>system development unit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="m-service " id="gis" (click)="toggleServices($event.target)">
+          <div class="m-contents">
+            <div class="sr-icon">
+              <img src="../../../assets/logo/gis.png" alt="">
+            </div>
+            <div class="sr-name">
+              <p>geographic information system</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="m-service " id="accra" (click)="toggleServices($event.target)">
+          <div class="m-contents">
+            <div class="sr-icon">
+              <img src="../../../assets/logo/nid.png" alt="">
+            </div>
+            <div class="sr-name">
+              <p>national identity</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-wrapper">
+
+    <nav class="sidebar-nav">
+      <div class="sidebar-title menu-item ">
+        <span> <i class="fas fa-chevron-right"></i> about statistics</span>
+      </div>
+      <div class="sidebar">
+        <div class="sidebar-menu">
+          <div class="accordion menu-item active-item" id="item1">
+            <div class="m-item-c" data-toggle="collapse" data-target="#c1" aria-expanded="true" aria-controls="collapseOne">
+              <i class="fas fa-chevron-right"></i>
+              <span>item one</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <div id="c1" class="collapse sub-menu" data-parent="#item1">
+              <!-- sub menus go here -->
+              <p>sub menu</p>
+              <p>sub menu</p>
+              <p>sub menu</p>
+              <p>sub menu</p>
+            </div>
+          </div>
+
+          <div class="accordion menu-item" id="item2">
+                <div class="m-item-c" data-toggle="collapse" data-target="#c2" aria-expanded="true" aria-controls="collapseOne">
+                  <i class="fas fa-chevron-right"></i>
+                  <span>item one</span>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+    
+                <div id="c2" class="collapse" data-parent="#item2">
+                  <!-- sub menus go here -->
+                  <p>sub menu</p>
+                  <p>sub menu</p>
+                  <p>sub menu</p>
+                  <p>sub menu</p>
+                </div>
+              </div>
+          
+          <!-- <div class="accordion" id="accordionExample3">
+            <div id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree"
+                  aria-expanded="true" aria-controls="collapseThree">
+                  Item 2
+                </button>
+              </h2>
+            </div>
+
+            <div id="collapseThree" class="collapse" aria-labelledby="collapseThree" data-parent="#accordionExample3">
+              <div class="">
+               
+              </div>
+            </div>
+          </div> -->
+
+
+          <!-- <a href="" routerLink="./statistics">Statistics</a>
+
+          <a href="" routerLink="./accra">ACCRA</a>
+
+          <a href="" routerLink="./gis">GIS</a>
+
+          <a href="" routerLink="./info-sys">Information Systems</a>
+
+          <a href="" routerLink="./province-service">Provincial Services</a> -->
+
+        </div>
+      </div>
+    </nav>
+    <div class="sidebar-toggler">
+      <div class="t-btn" (click)="toggleNavbar()">0</div>
+    </div>
+    <div class="contents">
+
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- <div>
+  <a href="" routerLink="./statistics">Statistics</a>
+  <a href="" routerLink="./accra">ACCRA</a>
+  <a href="" routerLink="./gis">GIS</a>
+  <a href="" routerLink="./info-sys">Information Systems</a>
+  <a href="" routerLink="./province-service">Provincial Services</a>
+</div> -->

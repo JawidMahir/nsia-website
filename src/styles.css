@@ -80,8 +80,32 @@ body {
   padding: 6px;
 }
 
+/* Breadcrumb Navigation CSS */
 
 
+.navigation .full-path {
+  display: inline;
+  margin: 6px 0px;
+
+}
+
+.navigation .fullpath {
+  text-transform: uppercase;
+  color: grey;
+}
+
+.navigation i {
+  font-size: 10px;
+  margin: 0px 8px;
+  color: grey;
+}
+
+.navigation .currentpath {
+  color: #01a79b;
+  font-weight: 600;
+  text-transform: uppercase;
+
+}
 
 
 /* width */

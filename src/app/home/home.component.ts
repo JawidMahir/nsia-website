@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import 'bootstrap';
 import * as $ from 'jquery';
@@ -33,6 +34,21 @@ export class HomeComponent implements OnInit {
     accra: ''
   };
 
+
+  newsReadMore = '/media-room/news-updates';
+  eventsReadMore = '/media-room/event';
+
+  // News and events Briefs
+
+  newsBriefs = {
+    news: '',
+    press: '',
+    publications: '',
+    announcements: '',
+    upcoming_publications: '',
+    events: '',
+    surveys: ''
+  };
 
 
   population;
@@ -72,7 +88,9 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private cdref: ChangeDetectorRef,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -92,8 +110,9 @@ export class HomeComponent implements OnInit {
 
 
     // instantiate the first news category on page load
-    // this.generateNewsCards('nav-news', 'news');
-    // this.generateNewsCards('nav-events', 'events');
+    this.getCardsData('news', 4);
+    this.getCardsData('events', 3);
+
 
 
     /** Listeners */
@@ -101,32 +120,35 @@ export class HomeComponent implements OnInit {
     // tslint:disable-next-line: space-before-function-paren
     $('.ls-btn').click(function () {
       const parent = $(this).attr('aria-controls');
-      const noDataMsg = $('.samples .no-data').clone();
-      let cardType = 'news';
-      const contentType = parent.split('-')[1];
+      const redirecUrl = $(this).attr('redirect-url');
+      let perPage = 4;
+      const categoryType = parent.split('-')[1];
 
-      console.log('contentType: ', contentType);
+      console.log('categoryType: ', categoryType);
 
 
-      $(`#${parent} .row`).empty();
-      $(`#${parent} .row`).html(noDataMsg);
 
       if ($(this).hasClass('col-md-3')) {
         $('.news-cat').removeClass('active-news');
         $(this).find('.news-cat').addClass('active-news');
+        $('#news-read-more').prop('disabled', true);
+        that.newsReadMore = redirecUrl;
+
       } else {
+
         $('.events-cat').removeClass('active-news');
         $(this).find('.events-cat').addClass('active-news');
-        cardType = 'events';
+        $('#events-read-more').prop('disabled', true);
+        that.eventsReadMore = redirecUrl;
+        perPage = 3;
       }
 
-      that.getCardsData(parent, contentType);
+      that.getCardsData(categoryType, perPage);
 
-      //  that.generateNewsCards(parent, cardType);
     });
   }
 
-  getCardsData(sectionId, type) {
+  getCardsData(type, perPage) {
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('date');
@@ -136,60 +158,136 @@ export class HomeComponent implements OnInit {
     customParams.push('better_featured_image.alt_text');
     customParams.push('better_featured_image.caption.rendered');
 
-    this.dataService.getCardsData(customParams, type).subscribe((cardsData) => {
-      console.log('cards data: ', cardsData);
-      this.generateNewsCards(sectionId, cardsData, type);
-    });
+    // this is to prevent another call for existing data
+    if (this.newsBriefs[type] === '') {
+
+      this.dataService.getCardsData(customParams, type, perPage).subscribe((cardsData) => {
+        console.log('data: ', cardsData);
+
+        this.generateCards(type, cardsData);
+      });
+
+    } else {
+
+      const newsCategories = ['news', 'publications', 'press', 'announcements'];
+
+      if (newsCategories.includes(type)) {
+        $('#news-read-more').prop('disabled', false);
+      } else {
+        $('#events-read-more').prop('disabled', false);
+
+      }
+    }
+
   }
 
-  htmlToPlaintext(text) {
+  generateCards(sectionId, data) {
+    const newsCategories = ['news', 'publications', 'press', 'announcements'];
+
+
+    if (data.length > 0) {
+      if (newsCategories.includes(sectionId)) {
+
+        $('#news-read-more').prop('disabled', false);
+      } else {
+        $('#events-read-more').prop('disabled', false);
+
+      }
+
+      this.newsBriefs[sectionId] = this.refineData(data);
+
+    }
+
+
+
+    // Broadcast the change so that all related directives update their data
+    this.cdref.detectChanges();
+
+  }
+
+
+  refineData(data) {
+
+    for (const el of data) {
+
+      if (!el.hasOwnProperty('date')) {
+        el.day = '00';
+        el.month = 'MNT';
+      } else {
+
+        const dateString = el.date;
+        el.day = this.extractDay(dateString);
+        el.month = this.extractMonth(dateString);
+      }
+
+      if (!el.hasOwnProperty('acf')) {
+        const acf = {
+          brief: 'No Briefing'
+        };
+
+        el.acf = acf;
+      } else {
+
+        // extract html tags from strings
+        el.acf.brief = this.htmlToPlaintext(el.acf.brief);
+      }
+
+      if (!el.hasOwnProperty('better_featured_image')) {
+        const bf = {
+          source_url: '../../assets/images/noimage.png',
+          alt_text: 'image'
+        };
+        el.better_featured_image = bf;
+      } else {
+        if (!el.better_featured_image.hasOwnProperty('source_url')) {
+          el.better_featured_image.source_url = '../../assets/images/noimage.png';
+        }
+
+        if (!el.better_featured_image.hasOwnProperty('alt_text')) {
+          el.better_featured_image.alt_text = 'image';
+        }
+
+      }
+    }
+
+    return data;
+  }
+
+
+  // Helper functions
+
+  private htmlToPlaintext(text) {
     return text ? String(text).replace(/<[^>]+>/gm, '') : '';
   }
 
-
-
-  generateNewsCards(sectionId, data, cardType) {
-
-    let newsCard;
-    const newsCat = ['news', 'publications', 'press', 'announcements'];
-    const eventsCat = ['events', 'upcoming-publications', 'surveys'];
-
-    // Empty the div before adding new items
-    $(`#${sectionId} .row`).empty();
-
-    // tslint:disable-next-line: prefer-for-of
-    for (let i = 0; i < data.length; i++) {
-
-      if (newsCat.includes(cardType)) {
-        if (i >= 4) {
-          break;
-        }
-        newsCard = $('.samples #news-card').clone();
-      } else {
-        if (i >= 3) {
-          break;
-        }
-        newsCard = $('.samples #events-card').clone();
-      }
-
-      newsCard.removeAttr('id');
-
-      const date = new Date(data[i].date);  // 2009-11-10
-      const month = date.toLocaleString('en-us', { month: 'long' }).substr(0, 3);
-      const day = data[i].date.split('-')[2].substr(0, 2);
-      console.log('Month:  ', month);
-      console.log('Day:  ', day);
-
-
-      newsCard.find('.news-item img').attr('src', data[i].img);
-      newsCard.find('.contents h4').html(data[i].title.rendered);
-      newsCard.find('.contents p').html(data[i].acf.brief);
-      newsCard.find('.news-date h4').html(day);
-      newsCard.find('.news-date p').html(month);
-
-      newsCard.appendTo(`#${sectionId} .row`);
-    }
+  private extractDay(dateString) {
+    return dateString.split('-')[2].substr(0, 2);
   }
+
+  private extractMonth(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleString('en-us', { month: 'long' }).substr(0, 3);
+  }
+
+  imageError(el) {
+    el.onerror = '';
+    el.src = '../../assets/images/noimage.png';
+    console.log(el);
+    return true;
+  }
+
+  readMoreRedirect(el) {
+    if (el.id === 'news-read-more') {
+      console.log('before redirectNews: ', this.newsReadMore);
+      this.router.navigate([this.newsReadMore]);
+    } else {
+      console.log('before redirectEvents: ', this.eventsReadMore);
+      this.router.navigate([this.eventsReadMore]);
+    }
+
+  }
+
+
 
   getCarouselSlides() {
 
@@ -236,7 +334,7 @@ export class HomeComponent implements OnInit {
     customParams.push('acf.statistics');
     customParams.push('featured_media');
 
-    this.dataService.getInitialStats(customParams, 'stats').subscribe((data: Array<object>) => {
+    this.dataService.getInitialStats(customParams, 'statistics').subscribe((data: Array<object>) => {
       this.gender = data[0];
       this.cpi = data[1];
       this.gdp = data[2];

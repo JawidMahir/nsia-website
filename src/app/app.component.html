@@ -1,5 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<ngx-loading-bar [color] = "282560"></ngx-loading-bar>
+<ngx-loading-bar [color]="282560"></ngx-loading-bar>
 <app-navbar></app-navbar>
+<div class="custom-container">
+
+  <nav class="navigation">
+    <div class="full-path" *ngFor="let pt of currentPath; let i = index">
+      <small class="fullpath" *ngIf="i !== 0 && i !== currentPath.length - 1">{{ pt }}</small>
+      <i class="fas fa-chevron-right" *ngIf="i !== 0 && i !== currentPath.length - 1"></i>
+      <small class="currentpath" *ngIf="i == currentPath.length - 1">{{ pt }}</small>
+    </div>
+  </nav>
+</div>
+
 <router-outlet></router-outlet>
 <app-footer></app-footer>

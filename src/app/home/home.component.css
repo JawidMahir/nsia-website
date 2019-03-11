@@ -156,6 +156,7 @@
 
 .latest-section .news-item img {
   width: 100%;
+  max-height: fit-content;
 }
 
 .latest-section .news-item .contents {

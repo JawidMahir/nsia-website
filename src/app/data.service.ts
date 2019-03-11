@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -40,16 +40,25 @@ export class DataService {
     });
   }
 
-  getCardsData(customP, catName) {
+  getCardsData(customP, catName, perPage) {
     return this.http.get(this.api + 'posts', {
       params: {
         'filter[category_name]': catName,
         lang: this.language,
-        per_page: '4',
+        per_page: perPage,
         fields: customP.join(','),
         orederby: 'date'
       }
     });
+  }
+
+  registerUserEmail(user) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(this.api + 'users/register', user, httpOptions);
   }
 
 }

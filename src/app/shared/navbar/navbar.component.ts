@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { DataService } from '../../data.service';
 
@@ -28,19 +28,28 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     const that = this;
+    let currentRoute = '';
 
     this.navbar = document.getElementById('navbar');
 
-    const url = location.pathname.split('/')[1];
-// tslint:disable-next-line: triple-equals
-    if (url == 'home') {
-      $('#home').addClass('active');
-    }
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
 
-    $('[routerLink=' + url + ']').closest('.nav-item').addClass('active');
+        $('.nav-item').removeClass('active');
+
+        currentRoute = this.router.url.toString();
+        console.log('current route: ', currentRoute);
+        if (currentRoute === '/home') {
+          $('#home').addClass('active');
+        } else {
+          const url = currentRoute.split('/')[1];
+          $('[routerLink=' + url + ']').closest('.nav-item').addClass('active');
+        }
+      }
+    });
+
 
     this.langeuageChangeListener();
-    this.activeLink();
 
     const sticky = this.navbar.offsetTop;
     window.onscroll = () => {
@@ -65,20 +74,6 @@ export class NavbarComponent implements OnInit {
     this.translate.use(language);
   }
 
-  activeLink() {
-
-    $('a').click(function() {
-      $('.nav-item').removeClass('active');
-      $(this).closest('.nav-item').addClass('active');
-      $(this).attr('aria-expanded', 'false');
-      setTimeout(() => {
-        $(this).closest('.nav-item').find('.dropdown-menu').removeClass('show');
-      });
-      console.log('done');
-    });
-
-    $('.navbar-toggler').trigger('click');
-  }
 
   makeNavbarSticky(sticky: any): void {
 
