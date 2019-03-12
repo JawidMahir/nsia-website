@@ -10,10 +10,13 @@ import * as $ from 'jquery';
 export class ServicesHomeComponent implements OnInit {
 
   // dummy data for menus
-  menus = [
+  menus = [];
+  serviceName = 'statistics';
+
+  commingMenus = [
     {
       mName: 'depOne',
-      subMenus : [
+      subMenus: [
         'sub menu one',
         'sub menu two',
         'sub menu three'
@@ -21,7 +24,7 @@ export class ServicesHomeComponent implements OnInit {
     },
     {
       mName: 'depTwo',
-      subMenus : [
+      subMenus: [
         'sub menu one',
         'sub menu two',
         'sub menu three'
@@ -29,13 +32,39 @@ export class ServicesHomeComponent implements OnInit {
     },
     {
       mName: 'depThree',
-      subMenus : [
+      subMenus: [
         'sub menu one',
         'sub menu two',
         'sub menu three'
       ]
+    },
+    {
+      mName: 'depFour',
+      subMenus: []
     }
   ];
+
+  contents = {
+    name: 'statistics',
+    deputy: 'ahmad ilyas',
+    image: '../../../assets/images/happy-dace.jpg',
+    details: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus aperiam eius unde rerum, optio quas commodi
+    esse, numquam consectetur nam obcaecati neque, ipsa quasi labore tenetur maxime odio tempore! A magnam
+    dolor reprehenderit error iure. Sed dolores vel, vitae ullam sint rerum tempora odit quidem ratione eius?
+    Nihil molestiae sint sapiente ea vitae delectus totam voluptas dolor veniam, neque iure doloribus
+    voluptatem laborum! Inventore cumque eius, voluptatem mollitia magni quis error perspiciatis quaerat rerum,
+    impedit nobis. Asperiores, obcaecati minus! Illo cupiditate enim quaerat perspiciatis aliquam deserunt
+    repellendus quibusdam molestias qui.
+    <br/>
+    <br/>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus aperiam eius unde rerum, optio quas commodi
+    esse, numquam consectetur nam obcaecati neque, ipsa quasi labore tenetur maxime odio tempore! A magnam
+    dolor reprehenderit error iure. Sed dolores vel, vitae ullam sint rerum tempora odit quidem ratione eius?
+    Nihil molestiae sint sapiente ea vitae delectus totam voluptas dolor veniam, neque iure doloribus
+    voluptatem laborum! Inventore cumque eius, voluptatem mollitia magni quis error perspiciatis quaerat rerum,
+    impedit nobis. Asperiores, obcaecati minus! Illo cupiditate enim quaerat perspiciatis aliquam deserunt
+    repellendus quibusdam molestias qui.`
+  };
 
 
   constructor(
@@ -45,16 +74,24 @@ export class ServicesHomeComponent implements OnInit {
 
   ngOnInit() {
     const that = this;
-
     window.onresize = this.windowResize;
 
-    // tslint:disable-next-line: space-before-function-paren
-    $('.menu-item').click(function () {
-      $('.menu-item').removeClass('active-item');
-      $(this).closest('.menu-item').addClass('active-item');
-      console.log('clicked');
-    });
+    this.menus = this.commingMenus;
 
+
+  }
+
+  activeMenu(menuItem) {
+    const that = this;
+    $('.menu-item').removeClass('active-item');
+    $(menuItem).closest('.menu-item').addClass('active-item');
+
+    if ($(menuItem).closest('.menu-item').hasClass('sidebar-title')) {
+      console.log('moinat');
+    } else {
+      const name = $(menuItem).closest('.menu-item').attr('id');
+      that.contents.name += '/ ' + name;
+    }
   }
 
 
@@ -62,7 +99,7 @@ export class ServicesHomeComponent implements OnInit {
     const wd = window.innerWidth;
 
     // run this code only for service component
-    if ( location.pathname.toString().split('/').includes('services')) {
+    if (location.pathname.toString().split('/').includes('services')) {
 
       if (wd < 700) {
         (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '0px';
@@ -105,15 +142,29 @@ export class ServicesHomeComponent implements OnInit {
     $('.m-service').removeClass('active-service');
     $(el).closest('.m-service').addClass('active-service');
 
+    // reset the menu highlights
+    this.activeMenu($('.sidebar-title'));
+
+
+    // collapse all menus
+
 
     switch (id) {
       case 'isd':
+        this.contents.name = 'information systems development';
+        this.serviceName = 'information systems development';
         break;
       case 'stats':
+        this.contents.name = 'statistics';
+        this.serviceName = 'statistics';
         break;
       case 'gis':
+        this.contents.name = 'Geographical Information Systems';
+        this.serviceName = 'Geographical Information Systems';
         break;
       case 'accra':
+        this.contents.name = 'National Identity';
+        this.serviceName = 'National Identity';
         break;
     }
   }

@@ -67,25 +67,25 @@
 }
 
 .sidebar-nav .sidebar-title {
-    padding-left: 4px;
-    cursor: pointer;
-    color: grey;
+  padding-left: 4px;
+  cursor: pointer;
+  color: grey;
 }
 
 /* ACTIVE MENU ITEM CSS */
 
 
-.active-item  {
-    color: #282560 !important;
-    font-weight: 600 !important;
+.active-item {
+  color: #282560 !important;
+  font-weight: 600 !important;
 }
 
 .active-item .fa-chevron-right {
-    visibility: visible !important;
+  visibility: visible !important;
 }
 
 .sidebar-nav .fa-chevron-right {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .sidebar .sidebar-menu ul {
@@ -102,12 +102,29 @@
   margin-left: 200px;
 }
 
+/* Contents CSS */
+
 .contents {
   margin-left: 300px;
-  padding: 6px;
+  padding: 0px 3rem;
   transition: margin .5s;
-
 }
+
+.contents .deputy-image {
+  margin-bottom: 1rem;
+}
+
+.contents .deputy-image img {
+  width: 100%;
+}
+
+.contents .details {
+  text-align: justify;
+}
+
+
+
+
 
 .sidebar-toggler {
   position: absolute;
@@ -128,32 +145,42 @@
 }
 
 .sidebar .menu-item .m-item-c {
-    height: 35px;
+  height: 35px;
 }
 
 .sidebar .menu-item .m-item-c .fa-chevron-down {
-    float: right;
-    position: relative;
-    top: calc(50% - 10px);
-    font-size: 10px;
+  float: right;
+  position: relative;
+  top: calc(50% - 10px);
+  font-size: 10px;
 }
 
 .sidebar .menu-item .m-item-c .fa-chevron-right {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 
 
 .sidebar .menu-item .m-item-c span {
-    margin-left: 24px;
-    font-size: 18px;
-    text-transform: capitalize;
+  margin-left: 24px;
+  font-size: 18px;
+  text-transform: capitalize;
 }
 
-.sidebar .menu-item .sub-menu {
-    padding-left: 2rem;
-
+.sidebar .menu-item .sub-menu .sub-menu-item {
+  padding: 6px;
+  margin-left: 2rem;
+  transition: background .5s;
 }
+
+.sidebar .menu-item .sub-menu .sub-menu-item:hover {
+  background-color: rgb(202, 199, 199);
+}
+
+.sidebar .menu-item .sub-menu .sub-menu-item p {
+  margin: 0px !important;
+}
+
 
 
 @media only screen and (max-width: 700px) {
