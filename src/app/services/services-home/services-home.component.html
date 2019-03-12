@@ -55,28 +55,25 @@
   <div class="main-wrapper">
 
     <nav class="sidebar-nav">
-      <div class="sidebar-title menu-item ">
+      <div class="sidebar-title menu-item active-item">
         <span> <i class="fas fa-chevron-right"></i> about statistics</span>
       </div>
       <div class="sidebar">
         <div class="sidebar-menu">
-          <div class="accordion menu-item active-item" id="item1">
-            <div class="m-item-c" data-toggle="collapse" data-target="#c1" aria-expanded="true" aria-controls="collapseOne">
+          <div class="accordion menu-item " id="{{ mn.mName }}" *ngFor = "let mn of menus">
+            <div class="m-item-c" data-toggle="collapse" [attr.data-target]="'#sub-' + mn.mName" aria-expanded="true" aria-controls="collapseOne">
               <i class="fas fa-chevron-right"></i>
-              <span>item one</span>
+              <span>{{ mn.mName }}</span>
               <i class="fas fa-chevron-down"></i>
             </div>
 
-            <div id="c1" class="collapse sub-menu" data-parent="#item1">
+            <div id="{{ 'sub-' + mn.mName }}" class="collapse sub-menu" [attr.data-parent]="'#' + mn.mName" >
               <!-- sub menus go here -->
-              <p>sub menu</p>
-              <p>sub menu</p>
-              <p>sub menu</p>
-              <p>sub menu</p>
+              <p *ngFor = "let subMn of mn.subMenus">{{ subMn }}</p>
             </div>
           </div>
 
-          <div class="accordion menu-item" id="item2">
+          <!-- <div class="accordion menu-item" id="item2">
                 <div class="m-item-c" data-toggle="collapse" data-target="#c2" aria-expanded="true" aria-controls="collapseOne">
                   <i class="fas fa-chevron-right"></i>
                   <span>item one</span>
@@ -84,13 +81,12 @@
                 </div>
     
                 <div id="c2" class="collapse" data-parent="#item2">
-                  <!-- sub menus go here -->
                   <p>sub menu</p>
                   <p>sub menu</p>
                   <p>sub menu</p>
                   <p>sub menu</p>
                 </div>
-              </div>
+              </div> -->
           
           <!-- <div class="accordion" id="accordionExample3">
             <div id="headingThree">

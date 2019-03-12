@@ -9,6 +9,34 @@ import * as $ from 'jquery';
 })
 export class ServicesHomeComponent implements OnInit {
 
+  // dummy data for menus
+  menus = [
+    {
+      mName: 'depOne',
+      subMenus : [
+        'sub menu one',
+        'sub menu two',
+        'sub menu three'
+      ]
+    },
+    {
+      mName: 'depTwo',
+      subMenus : [
+        'sub menu one',
+        'sub menu two',
+        'sub menu three'
+      ]
+    },
+    {
+      mName: 'depThree',
+      subMenus : [
+        'sub menu one',
+        'sub menu two',
+        'sub menu three'
+      ]
+    }
+  ];
+
 
   constructor(
     private router: Router,
@@ -17,13 +45,14 @@ export class ServicesHomeComponent implements OnInit {
 
   ngOnInit() {
     const that = this;
-    window.onresize = this.windowResize;
 
+    window.onresize = this.windowResize;
 
     // tslint:disable-next-line: space-before-function-paren
     $('.menu-item').click(function () {
       $('.menu-item').removeClass('active-item');
-      $(this).addClass('active-item');
+      $(this).closest('.menu-item').addClass('active-item');
+      console.log('clicked');
     });
 
   }
@@ -32,34 +61,39 @@ export class ServicesHomeComponent implements OnInit {
   windowResize() {
     const wd = window.innerWidth;
 
-    if (wd < 700) {
-      document.getElementsByClassName('sidebar-nav')[0].style.width = '0px';
-      document.getElementsByClassName('contents')[0].style.marginLeft = '0px';
-      document.getElementsByClassName('sidebar-toggler')[0].style.marginLeft = '0px';
+    // run this code only for service component
+    if ( location.pathname.toString().split('/').includes('services')) {
 
-    } else if (wd > 700 && wd < 800) {
-      document.getElementsByClassName('sidebar-nav')[0].style.width = '100px';
-      document.getElementsByClassName('contents')[0].style.marginLeft = '100px';
-    } else {
-      document.getElementsByClassName('sidebar-nav')[0].style.width = '300px';
-      document.getElementsByClassName('contents')[0].style.marginLeft = '300px';
+      if (wd < 700) {
+        (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '0px';
+        (document.getElementsByClassName('contents')[0] as HTMLElement).style.marginLeft = '0px';
+        (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '0px';
 
+      } else if (wd > 700 && wd < 800) {
+        (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '100px';
+        (document.getElementsByClassName('contents')[0] as HTMLElement).style.marginLeft = '100px';
+      } else {
+        (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '300px';
+        (document.getElementsByClassName('contents')[0] as HTMLElement).style.marginLeft = '300px';
+
+      }
     }
+
   }
 
   toggleNavbar() {
-    const navWidth = document.getElementsByClassName('sidebar-nav')[0].style.width;
+    const navWidth = (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width;
     console.log('navWidth: ', navWidth);
 
     if (navWidth === '0px') {
-      document.getElementsByClassName('sidebar-nav')[0].style.width = '300px';
-      document.getElementsByClassName('contents')[0].style.marginLeft = '300px';
-      document.getElementsByClassName('sidebar-toggler')[0].style.marginLeft = '300px';
+      (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '300px';
+      (document.getElementsByClassName('contents')[0] as HTMLElement).style.marginLeft = '300px';
+      (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '300px';
 
     } else {
-      document.getElementsByClassName('sidebar-nav')[0].style.width = '0px';
-      document.getElementsByClassName('contents')[0].style.marginLeft = '0px';
-      document.getElementsByClassName('sidebar-toggler')[0].style.marginLeft = '0px';
+      (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '0px';
+      (document.getElementsByClassName('contents')[0] as HTMLElement).style.marginLeft = '0px';
+      (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '0px';
     }
 
   }
