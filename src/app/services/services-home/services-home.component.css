@@ -11,39 +11,52 @@
 
 .services .m-service {
   display: flex;
-  border: 1px solid #282560;
-  padding: 2px;
+  min-height: 50px;
   margin: 1rem 0px;
   text-transform: uppercase;
   cursor: pointer;
+  justify-content: center;
 }
 
 .services .m-contents {
   display: flex;
-  margin: auto;
+  width: 100%;
 }
 
 .services .sr-icon {
-  height: fit-content;
-  flex: 1 auto;
-  margin-right: 12px;
+  height: 100%;
+  background-color: #282560;
+  width: 19%;
+  border: 1px solid #282560;
+}
+
+.active-service .sr-icon {
+  background-color: #01a79b !important;
 }
 
 .services .sr-icon img {
-  width: 50px;
-  float: right;
+  width: 33px;
+  margin: auto;
+  padding-top: 6px;
+  display: block;
 }
 
 .services .sr-name {
-  flex: 1 auto;
-  display: table;
-  height: 50px;
+  padding-left: 10px;
+  flex: auto;
+  border: 1px solid #282560;
+  border-left: none;
 }
 
-.services .sr-name>p {
-  display: table-cell;
-  vertical-align: middle;
+.services .sr-name p {
+  display: block !important;
+  margin: 0px !important;
   font-weight: 600;
+
+}
+
+.services .sr-name.sp p {
+  line-height: 3.2;
 }
 
 .sidebar-nav {

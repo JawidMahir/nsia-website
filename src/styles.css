@@ -48,10 +48,11 @@ body {
   width: 80vw;
   margin-left: auto;
   margin-right: auto;
-  
+
 }
 
-.form-control, .btn {
+.form-control,
+.btn {
   border-radius: 0px !important;
 }
 
@@ -126,4 +127,13 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(138, 137, 137);
+}
+
+/* General CSS */
+.no-data {
+  width: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 0px;
+  color: #BFC0C0;
 }

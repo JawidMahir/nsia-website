@@ -229,7 +229,7 @@ export class HomeComponent implements OnInit {
       } else {
 
         // extract html tags from strings
-        el.acf.brief = this.htmlToPlaintext(el.acf.brief);
+        el.acf.brief = this.dataService.htmlToPlaintext(el.acf.brief);
       }
 
       if (!el.hasOwnProperty('better_featured_image')) {
@@ -255,10 +255,6 @@ export class HomeComponent implements OnInit {
 
 
   // Helper functions
-
-  private htmlToPlaintext(text) {
-    return text ? String(text).replace(/<[^>]+>/gm, '') : '';
-  }
 
   private extractDay(dateString) {
     return dateString.split('-')[2].substr(0, 2);

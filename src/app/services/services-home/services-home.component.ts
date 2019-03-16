@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { NsiaServicesService } from '../nsia-services.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -13,72 +14,169 @@ export class ServicesHomeComponent implements OnInit {
   menus = [];
   serviceName = 'statistics';
 
-  commingMenus = [
-    {
-      mName: 'depOne',
-      subMenus: [
-        'sub menu one',
-        'sub menu two',
-        'sub menu three'
-      ]
-    },
-    {
-      mName: 'depTwo',
-      subMenus: [
-        'sub menu one',
-        'sub menu two',
-        'sub menu three'
-      ]
-    },
-    {
-      mName: 'depThree',
-      subMenus: [
-        'sub menu one',
-        'sub menu two',
-        'sub menu three'
-      ]
-    },
-    {
-      mName: 'depFour',
-      subMenus: []
-    }
-  ];
+  // A global variable used to determine the type of service
+  serviceType = 'stats';
 
-  contents = {
-    name: 'statistics',
-    deputy: 'ahmad ilyas',
-    image: '../../../assets/images/happy-dace.jpg',
-    details: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus aperiam eius unde rerum, optio quas commodi
-    esse, numquam consectetur nam obcaecati neque, ipsa quasi labore tenetur maxime odio tempore! A magnam
-    dolor reprehenderit error iure. Sed dolores vel, vitae ullam sint rerum tempora odit quidem ratione eius?
-    Nihil molestiae sint sapiente ea vitae delectus totam voluptas dolor veniam, neque iure doloribus
-    voluptatem laborum! Inventore cumque eius, voluptatem mollitia magni quis error perspiciatis quaerat rerum,
-    impedit nobis. Asperiores, obcaecati minus! Illo cupiditate enim quaerat perspiciatis aliquam deserunt
-    repellendus quibusdam molestias qui.
-    <br/>
-    <br/>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus aperiam eius unde rerum, optio quas commodi
-    esse, numquam consectetur nam obcaecati neque, ipsa quasi labore tenetur maxime odio tempore! A magnam
-    dolor reprehenderit error iure. Sed dolores vel, vitae ullam sint rerum tempora odit quidem ratione eius?
-    Nihil molestiae sint sapiente ea vitae delectus totam voluptas dolor veniam, neque iure doloribus
-    voluptatem laborum! Inventore cumque eius, voluptatem mollitia magni quis error perspiciatis quaerat rerum,
-    impedit nobis. Asperiores, obcaecati minus! Illo cupiditate enim quaerat perspiciatis aliquam deserunt
-    repellendus quibusdam molestias qui.`
+  serviceContents = {
+    sdu: Object,
+    stats: Object,
+    gis: Object,
+    nid: Object
   };
+
+  departmentsFullDetails = [];
+
+  contents;
+  deputyDepartments;
+  deputyHeadships;
 
 
   constructor(
     private router: Router,
-    private cdref: ChangeDetectorRef
+    private cdref: ChangeDetectorRef,
+    private nsiaServices: NsiaServicesService,
   ) { }
 
   ngOnInit() {
     const that = this;
     window.onresize = this.windowResize;
 
-    this.menus = this.commingMenus;
+
+    this.getDeputyDetails('statistics_services', 'service');
+    this.getDeputyDepartments('statistics_services', 'department');
+    this.getDeputyDepartments('statistics_services', 'headship');
 
 
+  }
+
+  keepContentsLocal(deputyType) {
+    switch (deputyType) {
+      case 'statistics_services':
+        this.serviceContents.stats = this.contents;
+        break;
+      case 'gis_services':
+        this.serviceContents.gis = this.contents;
+        break;
+      case 'national_identity_services':
+        this.serviceContents.nid = this.contents;
+        break;
+      case 'sdu_services':
+        this.serviceContents.sdu = this.contents;
+        break;
+    }
+  }
+
+  assignDepartmentsToDeputy(deputyType) {
+    switch (deputyType) {
+      case 'statistics_services':
+        this.serviceContents.stats['departments'] = this.deputyDepartments;
+        break;
+      case 'gis_services':
+        this.serviceContents.gis['departments'] = this.deputyDepartments;
+        break;
+      case 'national_identity_services':
+        this.serviceContents.nid['departments'] = this.deputyDepartments;
+        break;
+      case 'sdu_services':
+        this.serviceContents.sdu['departments'] = this.deputyDepartments;
+        break;
+    }
+  }
+
+  getDeputyDetails(deputyType, tag) {
+    const customParams = [];
+    customParams.push('title.rendered');
+    customParams.push('content.rendered');
+    customParams.push('better_featured_image.source_url');
+
+    this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
+      if (data[0]) {
+        this.contents = data[0];
+        console.log('Service data: ', this.contents);
+        // strip html tags
+        this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
+        this.keepContentsLocal(deputyType);
+      }
+
+    });
+  }
+
+  /**
+   *
+   * @param deputyType is either department or headship
+   * @param tag is department
+   */
+
+  getDeputyDepartments(deputyType, tag) {
+    const customParams = [];
+    customParams.push('id');
+    customParams.push('title.rendered');
+    customParams.push('acf.department');
+
+    this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
+      if (tag === 'department') {
+        this.deputyDepartments = data;
+        console.log('Departments data: ', this.deputyDepartments);
+      } else {
+        this.deputyHeadships = data;
+        console.log('Headships data: ', this.deputyHeadships);
+      }
+
+      this.arrangeDepartments(deputyType);
+    });
+  }
+
+  getDepartmentDetails(id, el) {
+
+    this.contents = null;
+    console.log('ID is: ', id);
+    console.log($(el).closest('.m-item-c').attr('aria-expanded'));
+    const customParams = [];
+    let flag = false;
+
+    for (const dep of this.departmentsFullDetails) {
+      if (dep.id === id) {
+        this.contents = dep;
+        console.log('local se: ', dep);
+
+        flag = true;
+        break;
+      }
+    }
+
+    if (!flag) {
+      customParams.push('id');
+      customParams.push('title.rendered');
+      customParams.push('content.rendered');
+      customParams.push('better_featured_image.source_url');
+
+      this.nsiaServices.getDepartmentDetails(id, customParams).subscribe((data) => {
+        console.log('Department full data: ', data);
+        if (data[0]) {
+          this.contents = data[0];
+          this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
+          this.departmentsFullDetails.push(data[0]);
+        }
+      });
+    }
+  }
+
+  arrangeDepartments(deputyType) {
+    let tempHeadships = [];
+    if (this.deputyDepartments && this.deputyHeadships) {
+      for (const dep of this.deputyDepartments) {
+        tempHeadships = [];
+        for (const hdShip of this.deputyHeadships) {
+          if (dep.acf.department === hdShip.acf.department) {
+            tempHeadships.push(hdShip);
+          }
+        }
+        dep.headships = tempHeadships;
+      }
+    }
+
+    console.log('after', this.deputyDepartments);
+    this.assignDepartmentsToDeputy(deputyType);
   }
 
   activeMenu(menuItem) {
@@ -87,10 +185,7 @@ export class ServicesHomeComponent implements OnInit {
     $(menuItem).closest('.menu-item').addClass('active-item');
 
     if ($(menuItem).closest('.menu-item').hasClass('sidebar-title')) {
-      console.log('moinat');
-    } else {
-      const name = $(menuItem).closest('.menu-item').attr('id');
-      that.contents.name += '/ ' + name;
+      this.contents = this.serviceContents[this.serviceType];
     }
   }
 
@@ -136,7 +231,10 @@ export class ServicesHomeComponent implements OnInit {
   }
 
   toggleServices(el) {
+
     const id = $(el).closest('.m-service').attr('id');
+    this.serviceType = id;
+    this.serviceName = $(el).closest('.m-service').find('.sr-name p').html();
     console.log('service id: ', id);
 
     $('.m-service').removeClass('active-service');
@@ -146,27 +244,48 @@ export class ServicesHomeComponent implements OnInit {
     this.activeMenu($('.sidebar-title'));
 
 
-    // collapse all menus
+    if (this.serviceContents[id].title) {
+      console.log('from local ', this.serviceContents[id]);
+      this.contents = this.serviceContents[id];
+      this.deputyDepartments = this.contents.departments;
+    } else {
+      let serviceType;
+      this.contents = null;
+      this.deputyDepartments = null;
 
+      switch (id) {
+        case 'sdu':
+          serviceType = 'sdu_services';
+          this.getDeputyDetails(serviceType, 'service');
+          this.getDeputyDepartments(serviceType, 'department');
+          this.getDeputyDepartments(serviceType, 'headship');
+          break;
 
-    switch (id) {
-      case 'isd':
-        this.contents.name = 'information systems development';
-        this.serviceName = 'information systems development';
-        break;
-      case 'stats':
-        this.contents.name = 'statistics';
-        this.serviceName = 'statistics';
-        break;
-      case 'gis':
-        this.contents.name = 'Geographical Information Systems';
-        this.serviceName = 'Geographical Information Systems';
-        break;
-      case 'accra':
-        this.contents.name = 'National Identity';
-        this.serviceName = 'National Identity';
-        break;
+        case 'stats':
+          serviceType = 'statistics_services';
+          this.getDeputyDetails(serviceType, 'service');
+          this.getDeputyDepartments(serviceType, 'department');
+          this.getDeputyDepartments(serviceType, 'headship');
+          break;
+
+        case 'gis':
+          serviceType = 'gis_services';
+          this.getDeputyDetails(serviceType, 'service');
+          this.getDeputyDepartments(serviceType, 'department');
+          this.getDeputyDepartments(serviceType, 'headship');
+          break;
+
+        case 'nid':
+          serviceType = 'iational_identity_service';
+          this.getDeputyDetails(serviceType, 'service');
+          this.getDeputyDepartments(serviceType, 'department');
+          this.getDeputyDepartments(serviceType, 'headship');
+          break;
+      }
     }
+
+
+
   }
 
 }
