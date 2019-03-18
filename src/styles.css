@@ -31,6 +31,26 @@ body {
 
 }
 
+#scroll {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  background-color: #01a79b;
+  color: #fff;
+  display: none;
+  padding: 11px 16px;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  border-radius: 60px
+}
+
+#scroll i {
+  font-size: 28px;
+}
+
 .text-green {
   color: #01a79b;
 }
@@ -49,6 +69,19 @@ body {
   margin-left: auto;
   margin-right: auto;
 
+}
+
+.c-btn-outline-white {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  padding: 6px 16px;
+  transition: background .2s ease-in-out;
+}
+
+.c-btn-outline-white:hover {
+  background-color: #fff;
+  color: #282560;
 }
 
 .form-control,

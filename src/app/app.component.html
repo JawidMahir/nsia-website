@@ -3,6 +3,11 @@
 <app-navbar></app-navbar>
 <div class="custom-container">
 
+
+  <div id="scroll" data-toggle="tooltip" data-placement="top" title="TOP">
+    <i class="fas fa-angle-up"></i>
+  </div>
+
   <nav class="navigation">
     <div class="full-path" *ngFor="let pt of currentPath; let i = index">
       <small class="fullpath" *ngIf="i !== 0 && i !== currentPath.length - 1">{{ pt }}</small>

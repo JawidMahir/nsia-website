@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class DataService {
   api = 'http://172.16.222.104/nsia/wp-json/wp/v2/';
   language = 'en';
+  serviceType = 'stats';
 
   constructor(private http: HttpClient) { }
 

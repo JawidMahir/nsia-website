@@ -27,11 +27,11 @@ export class HomeComponent implements OnInit {
   };
 
   carousel = {
-    nsia: '',
-    isd: '',
-    gis: '',
-    stats: '',
-    accra: ''
+    nsia: null,
+    isd: null,
+    gis: null,
+    stats: null,
+    nid: null
   };
 
 
@@ -51,41 +51,11 @@ export class HomeComponent implements OnInit {
   };
 
 
+
   population;
   gdp;
   cpi;
   gender;
-
-  dummyData = [
-    {
-      img: '../../assets/images/news1.png',
-      title: 'We Did something',
-      brief: 'lorem ipsum adidaad farin is good person',
-      day: '23',
-      month: 'feb'
-    },
-    {
-      img: '../../assets/images/news2.png',
-      title: 'They did nothing',
-      brief: 'lorem ipsum adidaad farin is good person',
-      day: '23',
-      month: 'feb'
-    },
-    {
-      img: '../../assets/images/news3.png',
-      title: 'jafar says something',
-      brief: 'lorem ipsum adidaad farin is good person',
-      day: '23',
-      month: 'feb'
-    },
-    {
-      img: '../../assets/images/news1.png',
-      title: 'karim says nothing',
-      brief: 'lorem ipsum adidaad farin is good person',
-      day: '23',
-      month: 'feb'
-    }
-  ];
 
   constructor(
     private dataService: DataService,
@@ -297,6 +267,7 @@ export class HomeComponent implements OnInit {
     customParams.push('better_featured_image.alt_text');
     customParams.push('better_featured_image.caption.rendered');
     customParams.push('acf.order');
+    customParams.push('acf.icon');
 
     this.dataService.getCarouselSlides(customParams, 'Slider').subscribe((data) => {
       console.log('Carousel Data(Before): ', data);
@@ -317,10 +288,17 @@ export class HomeComponent implements OnInit {
   prepareCarouselSlides(data) {
 
     this.carousel.nsia = data[0];
-    this.carousel.isd = data[1];
+    this.carousel.stats = data[1];
     this.carousel.gis = data[2];
-    this.carousel.stats = data[3];
-    this.carousel.accra = data[4];
+    this.carousel.isd = data[3];
+    this.carousel.nid = data[4];
+
+    // Strip HTML tags from the contents
+    this.carousel.nsia.content.rendered = this.dataService.htmlToPlaintext(this.carousel.nsia.content.rendered);
+    this.carousel.isd.content.rendered = this.dataService.htmlToPlaintext(this.carousel.isd.content.rendered);
+    this.carousel.gis.content.rendered = this.dataService.htmlToPlaintext(this.carousel.gis.content.rendered);
+    this.carousel.stats.content.rendered = this.dataService.htmlToPlaintext(this.carousel.stats.content.rendered);
+    this.carousel.nid.content.rendered = this.dataService.htmlToPlaintext(this.carousel.nid.content.rendered);
   }
 
   getInitialStats() {
@@ -340,5 +318,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  updateServiceType(sType) {
+    this.dataService.serviceType = sType;
+  }
 
 }

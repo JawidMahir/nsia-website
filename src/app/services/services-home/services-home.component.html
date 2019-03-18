@@ -94,8 +94,8 @@
           <div class="deputy-image">
             <img [src]="contents.better_featured_image.source_url" alt="image">
           </div>
-          <div class="deputy-info">
-            <strong>Ahmad</strong>
+          <div class="deputy-info" *ngIf="contents.acf">
+            <strong>{{ contents.acf.name }}</strong>
           </div>
         </div>
         <div class="col-md-9 col-sm-6">

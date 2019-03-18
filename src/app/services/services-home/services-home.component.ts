@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, ParamMap, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { NsiaServicesService } from '../nsia-services.service';
+import { DataService } from '../../data.service';
+import { switchMap } from 'rxjs/operators';
 import * as $ from 'jquery';
 
 @Component({
@@ -34,6 +36,8 @@ export class ServicesHomeComponent implements OnInit {
   constructor(
     private router: Router,
     private cdref: ChangeDetectorRef,
+    private route: ActivatedRoute,
+    private dataService: DataService,
     private nsiaServices: NsiaServicesService,
   ) { }
 
@@ -41,12 +45,30 @@ export class ServicesHomeComponent implements OnInit {
     const that = this;
     window.onresize = this.windowResize;
 
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
 
-    this.getDeputyDetails('statistics_services', 'service');
-    this.getDeputyDepartments('statistics_services', 'department');
-    this.getDeputyDepartments('statistics_services', 'headship');
+    const sType = this.dataService.serviceType;
+    switch (sType) {
+      case 'sdu':
+        $('#sdu').trigger('click');
+        break;
+      case 'gis':
+        $('#gis').trigger('click');
+        break;
+      case 'stats':
+        $('#stats').trigger('click');
+        break;
+      case 'nid':
+        $('#nid').trigger('click');
+        break;
+    }
 
-
+    this.dataService.serviceType = 'stats';
   }
 
   keepContentsLocal(deputyType) {
@@ -87,6 +109,7 @@ export class ServicesHomeComponent implements OnInit {
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('content.rendered');
+    customParams.push('acf.name');
     customParams.push('better_featured_image.source_url');
 
     this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
@@ -148,6 +171,7 @@ export class ServicesHomeComponent implements OnInit {
       customParams.push('id');
       customParams.push('title.rendered');
       customParams.push('content.rendered');
+      customParams.push('acf.name');
       customParams.push('better_featured_image.source_url');
 
       this.nsiaServices.getDepartmentDetails(id, customParams).subscribe((data) => {
@@ -181,11 +205,17 @@ export class ServicesHomeComponent implements OnInit {
 
   activeMenu(menuItem) {
     const that = this;
+    // this.contents = null;
     $('.menu-item').removeClass('active-item');
     $(menuItem).closest('.menu-item').addClass('active-item');
 
     if ($(menuItem).closest('.menu-item').hasClass('sidebar-title')) {
-      this.contents = this.serviceContents[this.serviceType];
+      if (this.serviceContents[this.serviceType].title) {
+        this.contents = this.serviceContents[this.serviceType];
+        console.log('from this click ', this.serviceContents);
+      } else {
+        this.contents = null;
+      }
     }
   }
 
@@ -276,7 +306,7 @@ export class ServicesHomeComponent implements OnInit {
           break;
 
         case 'nid':
-          serviceType = 'iational_identity_service';
+          serviceType = 'national_identity_service';
           this.getDeputyDetails(serviceType, 'service');
           this.getDeputyDepartments(serviceType, 'department');
           this.getDeputyDepartments(serviceType, 'headship');
