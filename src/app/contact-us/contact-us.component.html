@@ -1,73 +1,53 @@
 <div class="margin-top">
   <div class="custom-container">
-      <div class="section-wrapper">
-        <div class="row">
-          <div class="col-md-8 col-sm-8 col-lg-8 col-xs-11">
-            <h4>{{ 'contact.title' | translate }}</h4><hr>
-            <strong>Customer Service Phone #:</strong><span> 	+93 (0) 20 22 11 708 </span><hr>
-            <strong>Working Hours:</strong><span>	Saturday - Wednesday from 8:00 a.m. to 5:00 p.m. Kabul Time </span><hr>
-            <strong>E-mail:</strong><span>	info@accra.gov.af </span><hr>
-            <strong>Address:</strong><span>	Sadarat Square, Inside Old MoI Building, Kabul - Afghanistan </span><br><br><br>
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="section-wrapper">
+      <div class="row">
+        <div class="col-md-8 col-sm-8 col-lg-8 col-xs-11">
+          <h4>{{ 'contact.title' | translate }}</h4>
+          <hr>
+          <strong>Customer Service Phone #:</strong><span> +93 (0) 20 22 11 708 </span>
+          <hr>
+          <strong>Working Hours:</strong><span> Saturday - Wednesday from 8:00 a.m. to 5:00 p.m. Kabul Time </span>
+          <hr>
+          <strong>E-mail:</strong><span> info@accra.gov.af </span>
+          <hr>
+          <strong>Address:</strong><span> Sadarat Square, Inside Old MoI Building, Kabul - Afghanistan </span><br><br><br>
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="row">
-                <div class="col-md-6"><br>
-                  <h4>Feedback Form</h4><br>
-                    <input 
-                    type = "text" 
-                    id = "name"
-                    formControlName = 'name'
-                    placeholder = "{{ 'input.name' | translate }}" 
-                    autofocus>
-                    <span 
-                    *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched"
-                    class="help-block">{{ 'error.name' | translate }}</span><br>
+              <div class="col-md-6"><br>
+                <h4>Feedback Form</h4><br>
+                <input type="text" id="name" formControlName='name' placeholder="{{ 'input.name' | translate }}"
+                  autofocus>
+                <span *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched" class="help-block">{{
+                  'error.name' | translate }}</span><br>
 
-                    <input 
-                    type = "email" 
-                    id = "email"
-                    formControlName = 'email'
-                    placeholder="{{ 'input.email' | translate }}">
-                    <span 
-                    *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched"
-                    class="help-block">{{ 'error.email' | translate }}</span><br>
-                    
-                    <input 
-                    type = "text"  
-                    id = "phone" 
-                    formControlName = 'phone'
-                    placeholder="{{ 'input.phone' | translate }}" >
-                    <br>
+                <input type="email" id="email" formControlName='email' placeholder="{{ 'input.email' | translate }}">
+                <span *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched" class="help-block">{{
+                  'error.email' | translate }}</span><br>
 
-                    <input 
-                    type="text" 
-                    id="organization" 
-                    formControlName = 'organization'
-                    placeholder="{{ 'input.organization' | translate }}">
+                <input type="text" id="phone" formControlName='phone' placeholder="{{ 'input.phone' | translate }}">
+                <br>
 
-                  </div>
-                  <div class="col-md-6"><br><br><br><br>
-                        <textarea 
-                        id="message" 
-                        formControlName = 'message'
-                        placeholder="{{ 'input.message' | translate }}" 
-                        rows="6">
+                <input type="text" id="organization" formControlName='organization' placeholder="{{ 'input.organization' | translate }}">
+
+              </div>
+              <div class="col-md-6"><br><br><br><br>
+                <textarea id="message" formControlName='message' placeholder="{{ 'input.message' | translate }}" rows="6">
                         </textarea>
-                        <span 
-                         *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched"
-                          class="help-block">{{ 'error.message' | translate }}</span><br>
+                <span *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched" class="help-block">{{
+                  'error.message' | translate }}</span><br>
 
-                        <button
-                        class="subscribe-btn float-right">
-                        {{ 'input.submit' | translate }}
-                        </button>
-                  </div>
-            </div> 
-            </form>
-          </div>
-          <div class="col-md-4 col-sm-4 col-lg-4 col-xs-11">
-              <app-news></app-news>
-          </div>
+                <button class="subscribe-btn float-right">
+                  {{ 'input.submit' | translate }}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-11">
+          <app-news></app-news>
         </div>
       </div>
+    </div>
   </div>
 </div>

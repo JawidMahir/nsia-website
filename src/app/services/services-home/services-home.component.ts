@@ -52,6 +52,18 @@ export class ServicesHomeComponent implements OnInit {
       window.scrollTo(0, 0);
     });
 
+    this.showServiceDetails();
+
+    /**
+     * Change service on dropdown click, if the route is pointing to service component itself
+     */
+    this.dataService.callToServiceMethodSource.subscribe(() => {
+      console.log('Service Component is called');
+      this.showServiceDetails();
+    });
+  }
+
+  showServiceDetails() {
     const sType = this.dataService.serviceType;
     switch (sType) {
       case 'sdu':
@@ -68,7 +80,7 @@ export class ServicesHomeComponent implements OnInit {
         break;
     }
 
-    this.dataService.serviceType = 'stats';
+    // this.dataService.serviceType = 'stats';
   }
 
   keepContentsLocal(deputyType) {

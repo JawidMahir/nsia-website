@@ -17,8 +17,8 @@
 
             <div class="contact-details">
               <div class="c-item">
-                <a class="contact" routerLink="contact-us">Contact Us <i class="fas fa-phone"></i> </a>
-                <p> <i class="fas fa-phone"></i> Contact Us</p>
+                <!-- <a class="contact" >Contact Us <i class="fas fa-phone"></i> </a> -->
+                <p> <i class="fas fa-phone contact" routerLink="contact-us"></i> Contact Us</p>
               </div>
               <div class="c-item">
                 <p> <i class="fas fa-clock"></i> 8:00 A.M. - 5:00 P.M.</p>
@@ -38,7 +38,8 @@
                   </div>
                 </div>
                 <div class="change-language c-item">
-                  <select name="lang-change" id="lang-change" class="form-control custom-form-control" #languageChange (change)='useLanguage(languageChange.value)'>
+                  <select name="lang-change" id="lang-change" class="form-control custom-form-control" #languageChange
+                    (change)='useLanguage(languageChange.value)'>
                     <option value="en">{{ 'lang.english' | translate }}</option>
                     <option value="fa">{{ 'lang.dari' | translate }}</option>
                     <option value="ps">{{ 'lang.pashto' | translate }}</option>
@@ -58,10 +59,88 @@
     <div class="custom-container">
 
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsable-nav" aria-controls="collapsable-nav"
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsable-nav" aria-controls="collapsable-nav"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <!-- Custom Responsive navbar -->
+      <button class="resp-toggler" (click)="toggleRespNav()">
+        <i class="fas fa-bars"></i>
       </button>
+      <div class="responsive-nav" id="responsive-nav">
+        <div class="r-menu">
+          <div class="r-menu-item">
+            <p routerLink="home"><i class="fas fa-home"></i></p>
+          </div>
+          <div class="r-menu-item">
+            <p routerLink="about-us">
+              {{ 'menu.about-us' | translate }}</p>
+            <ul>
+              <li routerLink="about-us/about-nsia">About NSIA</li>
+              <li routerLink="about-us/biographies">Biographies</li>
+              <li routerLink="about-us/finance">Finance</li>
+              <li routerLink="about-us/gender">Gender</li>
+              <li routerLink="about-us/structure">Structure</li>
+              <li routerLink="about-us/vision-mission">Vision & Mission</li>
+            </ul>
+          </div>
+          <div class="r-menu-item">
+            <p routerLink="services">
+              {{ 'menu.services' | translate }}</p>
+            <ul>
+              <li routerLink="/services" (click)="updateServiceType('stats')">Statistics</li>
+              <li routerLink="/services" (click)="updateServiceType('nid')">NID</li>
+              <li routerLink="/services" (click)="updateServiceType('gis')">GIS</li>
+              <li routerLink="/services" (click)="updateServiceType('sdu')">Information Systems</li>
+              <li routerLink="/services" (click)="updateServiceType('prs')">Provincial Services</li>
+            </ul>
+          </div>
+          <div class="r-menu-item">
+            <p routerLink="library">
+                {{ 'menu.library' | translate }}</p>
+            <ul>
+              <li routerLink="library/reports">Reports</li>
+              <li routerLink="library/articles">Articles</li>
+            </ul>
+          </div>
+          <div class="r-menu-item">
+            <p routerLink="access-info">
+                {{ 'menu.access-info' | translate }}</p>
+            <ul>
+              <li routerLink="access-info/guidelines">Guidelines</li>
+              <li routerLink="access-info/statistics">Statistics</li>
+              <li routerLink="access-info/nid">National Identity</li>
+              <li routerLink="access-info/regualtions">Regulations</li>
+              <li routerLink="access-info/policies">Policies</li>
+            </ul>
+          </div>
+          <div class="r-menu-item">
+            <p routerLink="media-room">
+                {{ 'menu.media-room' | translate }}</p>
+            <ul>
+              <li routerLink="media-room/event">events</li>
+              <li routerLink="media-room/news-updates">News & Updates</li>
+              <li routerLink="media-room/press-release">Press Release</li>
+              <li routerLink="media-room/magazine">Magazine</li>
+              <li routerLink="media-room/newsletters">Newsletters</li>
+              <li routerLink="media-room/poster">Poster</li>
+              <li routerLink="media-room/booklet">Booklet</li>
+              <li routerLink="media-room/brochures">Brochures</li>
+            </ul>
+          </div>
+
+          <div class="r-menu-item">
+            <p routerLink="opportunities">
+                {{ 'menu.opportunities' | translate }}</p>
+            <ul>
+              <li routerLink="opportunities/administration">Administration</li>
+              <li routerLink="opportunities/procurements">Procurements</li>
+              <li routerLink="opportunities/tenders">Tenders</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <div class="collapse navbar-collapse" id="collapsable-nav">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item" id="home">
@@ -97,11 +176,13 @@
             </a>
             <i class="fas fa-chevron-down"></i>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a href="" class="dropdown-item" routerLink="services/statistics">Statistics</a>
-              <a href="" class="dropdown-item" routerLink="services/accra">ACCRA</a>
-              <a href="" class="dropdown-item" routerLink="services/gis">GIS</a>
-              <a href="" class="dropdown-item" routerLink="services/info-sys">Information Systems</a>
-              <a href="" class="dropdown-item" routerLink="services/province-service">Provincial Services</a>
+              <a href="" class="dropdown-item" routerLink="/services" (click)="updateServiceType('stats')">Statistics</a>
+              <a href="" class="dropdown-item" routerLink="/services" (click)="updateServiceType('nid')">NID</a>
+              <a href="" class="dropdown-item" routerLink="/services" (click)="updateServiceType('gis')">GIS</a>
+              <a href="" class="dropdown-item" routerLink="/services" (click)="updateServiceType('sdu')">Information
+                Systems</a>
+              <a href="" class="dropdown-item" routerLink="/services" (click)="updateServiceType('prs')">Provincial
+                Services</a>
             </div>
           </li>
           <div class="seperator">

@@ -6,6 +6,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AboutUsRoutingModule } from './about-us-routing.module';
 
+// Import shared Module here
+import { SharedModule } from '../shared/shared.module';
+
 
 import { AboutHomeComponent } from './about-home/about-home.component';
 import { AboutNsiaComponent } from './about-nsia/about-nsia.component';
@@ -37,6 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
     CommonModule,
     AboutUsRoutingModule,
     HttpClientModule,
+    SharedModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

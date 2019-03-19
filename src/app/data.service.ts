@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,13 @@ export class DataService {
   nodeapi = 'http://172.16.222.104:6001/api/';
   language = 'en';
   serviceType = 'stats';
+  callToServiceMethodSource   = new Subject<any>();
 
+  serviceCmpMethodCalled$ = this.callToServiceMethodSource.asObservable();
+
+  callServiceCmpMethod() {
+    this.callToServiceMethodSource.next();
+  }
   constructor(private http: HttpClient) { }
 
 
