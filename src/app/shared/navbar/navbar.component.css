@@ -32,13 +32,77 @@
   display: block;
 }
 
+.header .contact-details .c-item {
+  cursor: pointer;
+}
+
 .header .c-item {
   display: inline-block;
   margin: 4px;
+  margin-right: 0px;
+  margin-left: 30px;
 }
 
 .navbar {
   padding: 0px !important;
+}
+
+.header select {
+  padding: 5px;
+  appearance: none;
+  width: 100%;
+
+}
+
+.header .change-language {
+  background-color: #282560;
+  position: relative;
+  width: 110px;
+}
+
+.header .change-language i {
+  color: #fff;
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  font-size: 12px;
+  z-index: 1;
+  text-align: center;
+  width: 10%;
+  height: 100%;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.header .form-control:focus {
+  color: #fff;
+  border: none !important;
+  background-color: #282560;
+  box-shadow: none;
+}
+
+.header .search-input .wrapper {
+  display: flex;
+  align-items: center;
+  color: grey;
+  border-bottom: 1px solid grey;
+  transition: border .5s ease-in-out;
+}
+
+.header .search-input .wrapper i {
+  transition: color .5s ease-in-out;
+}
+
+.header .search-input .wrapper:focus-within {
+  border-bottom: 1px solid #282560;
+  color: #282560;
+}
+
+
+.header .search-input .wrapper .search-box {
+  border: none;
+  padding: 4px;
+  outline: none !important;
 }
 
 #navbar {
@@ -170,6 +234,7 @@
   color: #fff !important;
   background-color: #282560 !important;
 }
+
 #navbar.active-bar li:hover,
 #navbar.active-bar li:hover a,
 #navbar.active-bar li:hover i {
@@ -190,7 +255,7 @@
   border-color: #fff;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1100px) {
   .seperator {
     display: none;
   }
@@ -198,4 +263,20 @@
 .contact{
   color:#282560;
   text-decoration: none; 
+}
+
+@media only screen and (max-width: 1390px) {
+  #navbar .nav-item {
+    padding: 0px 8px;
+  }
+
+  #navbar a {
+    padding: 14px 11px;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  #navbar .nav-item {
+    padding: 0px 6px;
+  }
 }

@@ -3,25 +3,26 @@
   <div class="services">
     <div class="row">
       <div class="col-md-3 col-sm-6">
-        <div class="m-service active-service" id="isd" (click)="toggleServices($event.target)">
+        <div class="m-service active-service" id="stats" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
-              <img src="../../../assets/logo/stats.png" alt="">
+              <img src="../../../assets/logo/stats.svg" alt="">
             </div>
-            <div class="sr-name">
+            <div class="sr-name sp">
               <p>statistics</p>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
-        <div class="m-service" id="stats" (click)="toggleServices($event.target)">
+        <div class="m-service" id="sdu" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
-              <img src="../../../assets/logo/sys-dev.png" alt="">
+              <img src="../../../assets/logo/sys-dev.svg" alt="">
             </div>
             <div class="sr-name">
-              <p>system development unit</p>
+              <p>systems</p>
+              <p>development unit</p>
             </div>
           </div>
         </div>
@@ -30,21 +31,22 @@
         <div class="m-service " id="gis" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
-              <img src="../../../assets/logo/gis.png" alt="">
+              <img src="../../../assets/logo/gis.svg" alt="">
             </div>
             <div class="sr-name">
-              <p>geographic information system</p>
+              <p>Geographical</p>
+              <p>Information Systems</p>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
-        <div class="m-service " id="accra" (click)="toggleServices($event.target)">
+        <div class="m-service " id="nid" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
-              <img src="../../../assets/logo/nid.png" alt="">
+              <img src="../../../assets/logo/nid.svg" alt="">
             </div>
-            <div class="sr-name">
+            <div class="sr-name sp">
               <p>national identity</p>
             </div>
           </div>
@@ -55,86 +57,62 @@
   <div class="main-wrapper">
 
     <nav class="sidebar-nav">
-      <div class="sidebar-title menu-item active-item">
-        <span> <i class="fas fa-chevron-right"></i> about statistics</span>
+      <div class="sidebar-title menu-item active-item" (click)="activeMenu($event.target)">
+        <span> <i class="fas fa-chevron-right"></i> {{'about ' + serviceName}}</span>
       </div>
       <div class="sidebar">
-        <div class="sidebar-menu">
-          <div class="accordion menu-item " id="{{ mn.mName }}" *ngFor = "let mn of menus">
-            <div class="m-item-c" data-toggle="collapse" [attr.data-target]="'#sub-' + mn.mName" aria-expanded="true" aria-controls="collapseOne">
+        <div class="sidebar-menu" *ngIf="deputyDepartments">
+          <div class="accordion menu-item" id="{{ dp.acf.department }}" *ngFor="let dp of deputyDepartments" (click)="activeMenu($event.target)">
+            <div class="m-item-c" data-toggle="collapse" [attr.data-target]="'#sub-' + dp.acf.department" aria-expanded="true"
+              aria-controls="collapseOne">
               <i class="fas fa-chevron-right"></i>
-              <span>{{ mn.mName }}</span>
-              <i class="fas fa-chevron-down"></i>
+              <span>{{ dp.acf.department }}</span>
+              <i class="fas fa-chevron-down" *ngIf="dp.headships"></i>
             </div>
 
-            <div id="{{ 'sub-' + mn.mName }}" class="collapse sub-menu" [attr.data-parent]="'#' + mn.mName" >
+            <div id="{{ 'sub-' + dp.acf.department }}" class="collapse sub-menu" [attr.data-parent]="'#' + dp.acf.department">
               <!-- sub menus go here -->
-              <p *ngFor = "let subMn of mn.subMenus">{{ subMn }}</p>
-            </div>
-          </div>
-
-          <!-- <div class="accordion menu-item" id="item2">
-                <div class="m-item-c" data-toggle="collapse" data-target="#c2" aria-expanded="true" aria-controls="collapseOne">
-                  <i class="fas fa-chevron-right"></i>
-                  <span>item one</span>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-    
-                <div id="c2" class="collapse" data-parent="#item2">
-                  <p>sub menu</p>
-                  <p>sub menu</p>
-                  <p>sub menu</p>
-                  <p>sub menu</p>
-                </div>
-              </div> -->
-          
-          <!-- <div class="accordion" id="accordionExample3">
-            <div id="headingThree">
-              <h2 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree"
-                  aria-expanded="true" aria-controls="collapseThree">
-                  Item 2
-                </button>
-              </h2>
-            </div>
-
-            <div id="collapseThree" class="collapse" aria-labelledby="collapseThree" data-parent="#accordionExample3">
-              <div class="">
-               
+              <div class="sub-menu-item" (click)="getDepartmentDetails(dp.id, $event.target)">
+                <p>{{ 'about ' + dp.acf.department }}</p>
+              </div>
+              <div class="sub-menu-item" *ngFor="let subDp of dp.headships" (click)="getDepartmentDetails(subDp.id, $event.target)">
+                <p>{{ subDp.acf.department }}</p>
               </div>
             </div>
-          </div> -->
-
-
-          <!-- <a href="" routerLink="./statistics">Statistics</a>
-
-          <a href="" routerLink="./accra">ACCRA</a>
-
-          <a href="" routerLink="./gis">GIS</a>
-
-          <a href="" routerLink="./info-sys">Information Systems</a>
-
-          <a href="" routerLink="./province-service">Provincial Services</a> -->
-
+          </div>
         </div>
       </div>
     </nav>
     <div class="sidebar-toggler">
       <div class="t-btn" (click)="toggleNavbar()">0</div>
     </div>
-    <div class="contents">
+    <div class="contents" *ngIf="contents;else nodata">
 
-      <router-outlet></router-outlet>
+      <!-- <router-outlet></router-outlet> -->
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="deputy-image">
+            <img [src]="contents.better_featured_image.source_url" alt="image">
+          </div>
+          <div class="deputy-info" *ngIf="contents.acf">
+            <strong>{{ contents.acf.name }}</strong>
+          </div>
+        </div>
+        <div class="col-md-9 col-sm-6">
+          <div class="details-title">
+            <h5> <strong> {{ contents.title.rendered}} </strong></h5>
+          </div>
+          <div class="details">{{ contents.content.rendered }}</div>
+        </div>
+      </div>
 
     </div>
+    <ng-template #nodata>
+      <div class="contents">
+        <div class="jumbotron text-center no-data">
+          <h4>NO DATA</h4>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
-
-
-<!-- <div>
-  <a href="" routerLink="./statistics">Statistics</a>
-  <a href="" routerLink="./accra">ACCRA</a>
-  <a href="" routerLink="./gis">GIS</a>
-  <a href="" routerLink="./info-sys">Information Systems</a>
-  <a href="" routerLink="./province-service">Provincial Services</a>
-</div> -->

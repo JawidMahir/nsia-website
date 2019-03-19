@@ -8,6 +8,7 @@ export class DataService {
   api = 'http://172.16.222.104/nsia/wp-json/wp/v2/';
   nodeapi = 'http://172.16.222.104:6001/api/';
   language = 'en';
+  serviceType = 'stats';
 
   constructor(private http: HttpClient) { }
 
@@ -68,6 +69,11 @@ export class DataService {
       })
     };
     return this.http.post(this.nodeapi + 'contacts/add', contactData, httpOptions);
+  }
+
+
+  htmlToPlaintext(text) {
+    return text ? String(text).replace(/<[^>]+>/gm, '') : '';
   }
 
 }

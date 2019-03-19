@@ -1,52 +1,66 @@
 <div class="">
   <div id="nsiaCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-      <li data-target="#nsiaCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#nsiaCarousel" data-slide-to="1"></li>
-      <li data-target="#nsiaCarousel" data-slide-to="2"></li>
-      <li data-target="#nsiaCarousel" data-slide-to="3"></li>
-      <li data-target="#nsiaCarousel" data-slide-to="4"></li>
+      <li data-target="#nsiaCarousel" data-slide-to="0" class="active" data-toggle="tooltip" data-placement="top" title="NSIA"></li>
+      <li data-target="#nsiaCarousel" data-slide-to="1" data-toggle="tooltip" data-placement="top" title="Information Systems"></li>
+      <li data-target="#nsiaCarousel" data-slide-to="2" data-toggle="tooltip" data-placement="top" title="Statistics"></li>
+      <li data-target="#nsiaCarousel" data-slide-to="3" data-toggle="tooltip" data-placement="top" title="Geographic Information System"></li>
+      <li data-target="#nsiaCarousel" data-slide-to="4" data-toggle="tooltip" data-placement="top" title="NID"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100" *ngIf="carousel.nsia" src="{{ carousel.nsia.better_featured_image.source_url }}" alt="{{ carousel.nsia.better_featured_image.alt_text }}">
+      <div class="carousel-item active" *ngIf="carousel.nsia">
+        <img class="d-block w-100" src="{{ carousel.nsia.better_featured_image.source_url }}" alt="{{ carousel.nsia.better_featured_image.alt_text }}">
         <div class="caption w-100 d-block">
           <div class="custom-container">
-            <h1>{{ carousel.nsia.title?.rendered }}</h1>
+            <div class="service-details">
+              <h1>{{ carousel.nsia.title?.rendered }}</h1>
+              <p>{{ carousel.nsia.content?.rendered }}</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" *ngIf="carousel.isd" src="{{ carousel.isd.better_featured_image.source_url }}" alt="{{ carousel.isd.better_featured_image.alt_text }}">
+      <div class="carousel-item" *ngIf="carousel.stats">
+        <img class="d-block w-100" src="{{ carousel.stats.better_featured_image.source_url }}" alt="{{ carousel.stats.better_featured_image.alt_text }}">
         <div class="caption w-100 d-block">
           <div class="custom-container">
-            <h1>{{ carousel.isd.title?.rendered }}</h1>
+            <div class="service-details">
+              <h1>{{ carousel.stats.title?.rendered }}</h1>
+              <p>{{ carousel.stats.content?.rendered }}</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" *ngIf="carousel.gis" src="{{ carousel.gis.better_featured_image.source_url }}" alt="{{ carousel.gis.better_featured_image.alt_text }}">
+      <div class="carousel-item" *ngIf="carousel.gis">
+        <img class="d-block w-100" src="{{ carousel.gis.better_featured_image.source_url }}" alt="{{ carousel.gis.better_featured_image.alt_text }}">
         <div class="caption w-100 d-block">
           <div class="custom-container">
-            <h1>{{ carousel.gis.title?.rendered }}</h1>
+            <div class="service-details">
+              <h1>{{ carousel.gis.title?.rendered }}</h1>
+              <p>{{ carousel.gis.content?.rendered }}</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" *ngIf="carousel.stats" src="{{ carousel.stats.better_featured_image.source_url }}"
-          alt="{{ carousel.stats.better_featured_image.alt_text }}">
+      <div class="carousel-item" *ngIf="carousel.isd">
+        <img class="d-block w-100" src="{{ carousel.isd.better_featured_image.source_url }}" alt="{{ carousel.isd.better_featured_image.alt_text }}">
         <div class="caption w-100 d-block">
           <div class="custom-container">
-            <h1>{{ carousel.stats.title?.rendered }}</h1>
+            <div class="service-details">
+              <h1>{{ carousel.isd.title?.rendered }}</h1>
+              <p>{{ carousel.isd.content?.rendered }}</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" *ngIf="carousel.accra" src="{{ carousel.accra.better_featured_image.source_url }}"
-          alt="{{ carousel.accra.better_featured_image.alt_text }}">
+
+      <div class="carousel-item" *ngIf="carousel.nid">
+        <img class="d-block w-100" src="{{ carousel.nid.better_featured_image.source_url }}" alt="{{ carousel.nid.better_featured_image.alt_text }}">
         <div class="caption w-100 d-block">
           <div class="custom-container">
-            <h1>{{ carousel.accra.title?.rendered }}</h1>
+            <div class="service-details">
+              <h1>{{ carousel.nid.title?.rendered }}</h1>
+              <p>{{ carousel.nid.content?.rendered }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -61,6 +75,9 @@
     </a> -->
   </div>
 </div>
+
+
+
 <div class="custom-container">
   <div class="section-wrapper">
     <div class="row">
@@ -136,63 +153,66 @@
           </div>
           <div class="col-md-8 col-sm-12">
             <div class="nsia-services row">
-              <div class="col-lg-6 col-md-12 col-sm-12">
+              <div class="col-lg-6 col-md-12 col-sm-12" *ngIf="carousel.stats">
+                <div class="sr-item ">
+                  <div class="service-icon">
+                    <img [src]="carousel.stats.acf.icon.url" alt="">
+                  </div>
+                  <div class="sr-brief">
+                    <h5>{{ carousel.stats.title?.rendered }}</h5>
+                    <p>{{ carousel.stats.content?.rendered }}</p>
+                  </div>
+                  <div class="read-more">
+                    <button class="c-btn-outline-white" routerLink="/services" (click)="updateServiceType('stats')">Read
+                      More</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-12 col-sm-12" *ngIf="carousel.gis">
+                <div class="sr-item ">
+                  <div class="service-icon">
+                    <img [src]="carousel.gis.acf.icon.url" alt="">
+                  </div>
+                  <div class="sr-brief">
+                    <h5>{{ carousel.gis.title?.rendered }}</h5>
+                    <p>{{ carousel.gis.content?.rendered }}</p>
+                  </div>
+                  <div class="read-more">
+                    <button class="c-btn-outline-white" routerLink="/services" (click)="updateServiceType('gis')">Read
+                      More</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12 col-sm-12" *ngIf="carousel.isd">
                 <div class="sr-item ">
                   <!-- <img src="../../assets/logo/Div.svg" alt=""> -->
                   <div class="service-icon">
-                    <img src="../../assets/logo/sys-dev.png" alt="">
+                    <img [src]="carousel.isd.acf.icon.url" alt="">
                   </div>
                   <div class="sr-brief">
-                    <h5>Systems Development Unit</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa sapiente quod cum velit eos ipsam
-                      doloremque consequatur fugiat perferendis. Id saepe natus rem impedit repudiandae a quasi,
-                      commodi
-                      odio eveniet. Perferendis nisi</p>
+                    <h5>{{ carousel.isd.title?.rendered }}</h5>
+                    <p>{{ carousel.isd.content?.rendered }}</p>
+                  </div>
+                  <div class="read-more">
+                    <button class="c-btn-outline-white" routerLink="/services" (click)="updateServiceType('sdu')">Read
+                      More</button>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6 col-md-12 col-sm-12">
+              <div class="col-lg-6 col-md-12 col-sm-12" *ngIf="carousel.nid">
                 <div class="sr-item ">
                   <div class="service-icon">
-                    <img src="../../assets/logo/gis.png" alt="">
+                    <img [src]="carousel.nid.acf.icon.url" alt="">
                   </div>
                   <div class="sr-brief">
-                    <h5>Geographic Information System</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa sapiente quod cum velit eos ipsam
-                      doloremque consequatur fugiat perferendis. Id saepe natus rem impedit repudiandae a quasi,
-                      commodi
-                      odio eveniet. Perferendis nisi</p>
+                    <h5>{{ carousel.nid.title?.rendered }}</h5>
+                    <p>{{ carousel.nid.content?.rendered }}</p>
                   </div>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-12 col-sm-12">
-                <div class="sr-item ">
-                  <div class="service-icon">
-                    <img src="../../assets/logo/stats.png" alt="">
+                  <div class="read-more">
+                    <button class="c-btn-outline-white" routerLink="/services" (click)="updateServiceType('nid')">Read
+                      More</button>
                   </div>
-                  <div class="sr-brief">
-                    <h5>Statistics</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa sapiente quod cum velit eos ipsam
-                      doloremque consequatur fugiat perferendis. Id saepe natus rem impedit repudiandae a quasi,
-                      commodi
-                      odio eveniet. Perferendis nisi</p>
-                  </div>
-
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-12 col-sm-12">
-                <div class="sr-item ">
-                  <div class="service-icon">
-                    <img src="../../assets/logo/nid.png" alt="">
-                  </div>
-                  <div class="sr-brief">
-                    <h5>National Identity</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa sapiente quod cum velit eos ipsam
-                      doloremque consequatur fugiat perferendis. Id saepe natus rem impedit repudiandae a quasi,
-                      commodi
-                      odio eveniet. Perferendis nisi</p>
-                  </div>
-
                 </div>
               </div>
             </div>
@@ -485,8 +505,8 @@
           <h4>Upcoming Events</h4>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 ls-btn" id="nav-upcoming_publications-tab" data-toggle="tab" data-target="#nav-upcoming_publications" role="tab"
-        aria-controls="nav-upcoming_publications" aria-selected="false" redirect-url="/library/articles">
+      <div class="col-md-4 col-sm-6 ls-btn" id="nav-upcoming_publications-tab" data-toggle="tab" data-target="#nav-upcoming_publications"
+        role="tab" aria-controls="nav-upcoming_publications" aria-selected="false" redirect-url="/library/articles">
         <div class="news-category events-cat">
           <h4>Upcoming Publications</h4>
         </div>
