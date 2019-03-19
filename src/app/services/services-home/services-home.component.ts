@@ -43,7 +43,7 @@ export class ServicesHomeComponent implements OnInit {
 
   ngOnInit() {
     const that = this;
-    window.onresize = this.windowResize;
+    // window.onresize = this.windowResize;
 
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
@@ -219,43 +219,19 @@ export class ServicesHomeComponent implements OnInit {
     }
   }
 
-
-  windowResize() {
-    const wd = window.innerWidth;
-
-    // run this code only for service component
-    if (location.pathname.toString().split('/').includes('services')) {
-
-      if (wd < 700) {
-        (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '0px';
-        (document.getElementsByClassName('contents')[0] as HTMLElement).style.marginLeft = '0px';
-        (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '0px';
-
-      } else if (wd > 700 && wd < 800) {
-        (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '100px';
-        (document.getElementsByClassName('contents')[0] as HTMLElement).style.marginLeft = '100px';
-      } else {
-        (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '300px';
-        (document.getElementsByClassName('contents')[0] as HTMLElement).style.marginLeft = '300px';
-
-      }
-    }
-
-  }
-
   toggleNavbar() {
     const navWidth = (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width;
     console.log('navWidth: ', navWidth);
 
     if (navWidth === '0px') {
-      (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '300px';
-      (document.getElementsByClassName('contents')[0] as HTMLElement).style.marginLeft = '300px';
-      (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '300px';
+      (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '25vw';
+      (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '25vw';
+      $('.sidebar-toggler i').removeClass('fa-chevron-right').addClass('fa-chevron-left');
 
     } else {
       (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '0px';
-      (document.getElementsByClassName('contents')[0] as HTMLElement).style.marginLeft = '0px';
       (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '0px';
+      $('.sidebar-toggler i').removeClass('fa-chevron-left').addClass('fa-chevron-right');
     }
 
   }

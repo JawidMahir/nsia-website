@@ -2,7 +2,7 @@
 
   <div class="services">
     <div class="row">
-      <div class="col-md-3 col-sm-6">
+      <div class="col-lg-3 col-md-6">
         <div class="m-service active-service" id="stats" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-lg-3 col-md-6">
         <div class="m-service" id="sdu" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-lg-3 col-md-6">
         <div class="m-service " id="gis" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-lg-3 col-md-6">
         <div class="m-service " id="nid" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
@@ -84,7 +84,9 @@
       </div>
     </nav>
     <div class="sidebar-toggler">
-      <div class="t-btn" (click)="toggleNavbar()">0</div>
+      <div class="t-btn" (click)="toggleNavbar()">
+        <i class="fas fa-chevron-right"></i>
+      </div>
     </div>
     <div class="contents" *ngIf="contents;else nodata">
 

@@ -81,7 +81,7 @@
 <div class="custom-container">
   <div class="section-wrapper">
     <div class="row">
-      <div class="col-md-3 col-sm-3">
+      <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/population.png" alt="Population">
           <div class="stats">
@@ -90,7 +90,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-3">
+      <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/gdp.png" alt="gdp">
           <div class="stats">
@@ -100,7 +100,7 @@
         </div>
 
       </div>
-      <div class="col-md-3 col-sm-3">
+      <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/cpi.png" alt="cpi">
           <div class="stats">
@@ -110,7 +110,7 @@
         </div>
 
       </div>
-      <div class="col-md-3 col-sm-3">
+      <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/gender.png" alt="Population">
           <div class="stats">
@@ -222,41 +222,6 @@
     </div>
   </div>
 
-  <!-- Following are the sample cards that are used for dynamic contents -->
-  <div class="samples" style="display:none">
-    <div class="col-md-3 col-sm-6" id="news-card">
-      <div class="news-item">
-        <img src="../../assets/images/news1.png" alt="featured-image">
-        <div class="contents">
-          <h4>MCU did something</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-        </div>
-        <div class="news-date">
-          <h4>23</h4>
-          <p>Jan</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6" id="events-card">
-      <div class="news-item">
-        <img src="../../assets/images/news1.png" alt="featured-image">
-        <div class="contents">
-          <h4>MCU did something</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-        </div>
-        <div class="news-date">
-          <h4>23</h4>
-          <p>Jan</p>
-        </div>
-      </div>
-    </div>
-    <div class="jumbotron text-center no-data">
-      <h4>NO DATA</h4>
-    </div>
-
-  </div>
-
-
 
   <div class="section-wrapper latest-section">
     <div class="nav row" id="nav-tab" role="tablist">
@@ -289,7 +254,7 @@
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
         <div class="row" *ngIf="newsBriefs.news != ''; else nonews">
-          <div class="col-md-3 col-sm-6" *ngFor="let nw of newsBriefs.news">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let nw of newsBriefs.news">
             <div class="news-item">
               <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
@@ -312,7 +277,7 @@
       </div>
       <div class="tab-pane fade" id="nav-publications" role="tabpanel" aria-labelledby="nav-publications-tab">
         <div class="row" *ngIf="newsBriefs.publications != ''; else nopublications">
-          <div class="col-md-3 col-sm-6" *ngFor="let pb of newsBriefs.publications">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pb of newsBriefs.publications">
             <div class="news-item">
               <img src="{{ pb.better_featured_image.source_url }}" alt="{{ pb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
@@ -335,7 +300,7 @@
       </div>
       <div class="tab-pane fade" id="nav-press" role="tabpanel" aria-labelledby="nav-press-tab">
         <div class="row" *ngIf="newsBriefs.press != ''; else nopress">
-          <div class="col-md-3 col-sm-6" *ngFor="let pr of newsBriefs.press">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pr of newsBriefs.press">
             <div class="news-item">
               <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
@@ -358,7 +323,7 @@
       </div>
       <div class="tab-pane fade" id="nav-announcements" role="tabpanel" aria-labelledby="nav-announcements-tab">
         <div class="row" *ngIf="newsBriefs.announcements != ''; else noannouncements">
-          <div class="col-md-3 col-sm-6" *ngFor="let an of newsBriefs.announcements">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let an of newsBriefs.announcements">
             <div class="news-item">
               <img src="{{ an.better_featured_image.source_url }}" alt="{{ an.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
@@ -392,7 +357,7 @@
   <div class="section-wrapper bussiness">
     <div class=" bussiness-card">
       <div class="row">
-        <div class="col-md-4 col-sm-6">
+        <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="title">
             <h4>stakeholders</h4>
             <div class="t-icon">
@@ -417,7 +382,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-lg-4 col-md-6  col-sm-6">
           <div class="title donor-title">
             <h4>donors</h4>
             <div class="t-icon">
@@ -442,7 +407,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-lg-4 col-md-6  col-sm-6">
           <div class="title">
             <h4>customers</h4>
             <div class="t-icon">

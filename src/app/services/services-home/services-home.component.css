@@ -61,7 +61,7 @@
 
 .sidebar-nav {
   position: absolute;
-  width: 300px;
+  width: 19vw;
   min-height: 400px;
   color: grey;
   overflow: hidden;
@@ -118,8 +118,9 @@
 /* Contents CSS */
 
 .contents {
-  margin-left: 300px;
+  width: calc(100% - 19vw);
   padding: 0px 3rem;
+  float: right;
   transition: margin .5s;
 }
 
@@ -142,11 +143,12 @@
 .sidebar-toggler {
   position: absolute;
   display: none;
-  padding: 8px;
+  padding: 8px 16px;
   left: 10%;
   background-color: #01a79b;
   color: #fff;
   transition: margin .5s;
+  z-index: 100;
 
 }
 
@@ -196,8 +198,18 @@
 
 
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 900px) {
   .sidebar-toggler {
     display: block;
+    left: 12px;
+  }
+
+  .contents {
+    width: 100%;
+  }
+
+  .sidebar-nav {
+    width: 0px;
+    background-color:  #fff !important;
   }
 }
