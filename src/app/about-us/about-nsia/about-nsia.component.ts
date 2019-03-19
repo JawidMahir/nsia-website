@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-about-nsia',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-nsia.component.css']
 })
 export class AboutNsiaComponent implements OnInit {
-
-  constructor() { }
+  constructor(
+   
+    private router: Router
+  ) {}
 
   ngOnInit() {
+   
   }
-
+ 
 }

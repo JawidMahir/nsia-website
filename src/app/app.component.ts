@@ -39,8 +39,6 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
-
   createNavigationBreadPath() {
     this.currentPath = this.router.url.toString().split('/');
 
@@ -49,7 +47,5 @@ export class AppComponent implements OnInit {
     }
     console.log('path:  ', this.currentPath);
   }
-
-
 
 }

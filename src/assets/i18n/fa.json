@@ -14,5 +14,16 @@
     "menu.library": "کتابخانه",
     "menu.access-info": "دسترسي به معلومات",
     "menu.media-room": "مطبوعات",
-    "menu.opportunities": "فرستها"
+    "menu.opportunities": "فرستها",
+    "sidebar.title": "اخبار",
+    "contact.title": "تماس با ما",
+    "input.name" : "*نام",
+    "input.organization" : "سازمان",
+    "input.email" : "*ایمیل",
+    "input.phone" : "تلفن",
+    "input.message" : "*پیام",
+    "input.submit" : "فرستادن",
+    "error.name" : "لطفا نام خود را وارد نمایید!",
+    "error.email" : "لطفا ایمیل درست را وارد نمایید!" ,
+    "error.message" : "لطفا پیام خود را وارد نمایید!"
 }

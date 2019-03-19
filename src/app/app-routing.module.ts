@@ -3,11 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  }, {
+    path: 'contact-us',
+    component: ContactUsComponent
   }, {
     path: 'about-us',
     loadChildren: './about-us/about-us.module#AboutUsModule'

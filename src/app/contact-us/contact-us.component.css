@@ -1,0 +1,27 @@
+h4{
+    font-weight: bold !important;
+}
+input,textarea{
+    border: none;
+    border-bottom: 1px solid #282560;
+    display: block;
+    background: transparent;
+    width: 100%;
+    padding: 4px;
+    margin-bottom: 2%;
+}
+.subscribe-btn {
+    padding: 6px 16px;
+    background-color: #282560;
+    color: #fff;
+    border: none;
+}
+strong{
+    font-size: 17px;
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+textarea.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
