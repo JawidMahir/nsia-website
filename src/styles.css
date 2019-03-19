@@ -127,3 +127,28 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(138, 137, 137);
 }
+.globalsidebar {
+  height: 100%;
+  overflow-wrap: break-word;
+  background-color: #f1f1f1;
+  padding:15px; 
+  font-weight: bold !important;
+}
+.globalsidebar a {
+  display: block;
+  color:#282560;
+}
+.globalsidebar a:hover:not(.active) {
+  color: #01a79b;
+}
+.margin-top{
+  margin-top: 30px;
+}
+.globalsidebar p{
+  color: gray;
+  font-size: small;
+  font-weight: normal;
+}
+.verticalLine{
+border-left: 1px solid #282560;
+}

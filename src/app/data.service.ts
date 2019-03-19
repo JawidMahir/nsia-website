@@ -5,7 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-  api = 'http://172.16.223.39/nsia/wp-json/wp/v2/';
+  api = 'http://172.16.222.104/nsia/wp-json/wp/v2/';
+  nodeapi = 'http://172.16.222.104:6001/api/';
   language = 'en';
 
   constructor(private http: HttpClient) { }
@@ -59,6 +60,14 @@ export class DataService {
       })
     };
     return this.http.post(this.api + 'users/register', user, httpOptions);
+  }
+  addContactData(contactData){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(this.nodeapi + 'contacts/add', contactData, httpOptions);
   }
 
 }

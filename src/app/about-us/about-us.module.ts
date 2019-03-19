@@ -31,7 +31,7 @@ export function createTranslateLoader(http: HttpClient) {
     GenderComponent,
     StructureComponent,
     BiographiesComponent,
-    AboutUsComponent
+    AboutUsComponent,
   ],
   imports: [
     CommonModule,

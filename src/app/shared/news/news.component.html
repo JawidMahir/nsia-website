@@ -1,0 +1,25 @@
+<div class="globalsidebar verticalLine">
+    <h4>{{ 'sidebar.title' | translate }}</h4>
+    <hr>
+    <div *ngIf="newsBriefs.news != ''; else nonews">
+        <div class="row" *ngFor="let nw of newsBriefs.news">
+          <div class="col-md-3 display">
+            <img src="../../assets/images/newsIcon.png" alt="News">
+          </div>
+          <div class="col-md-9 display">
+            <a href="#home">
+            {{ nw.title.rendered }}
+           </a>
+           <p>{{ nw.date }}</p>
+          </div>
+        </div> 
+     </div>
+    <ng-template #nonews>
+      <div class="jumbotron text-center no-data">
+        <h4>NO DATA</h4>
+      </div>
+    </ng-template>
+    <div class="text-center">
+      <button class="btn btn-outline-info" (click)="readMoreRedirect($event.target)" id="news-read-more">View All News</button>
+    </div>
+</div>

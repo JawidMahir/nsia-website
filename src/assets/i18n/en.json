@@ -14,5 +14,16 @@
     "menu.library": "library",
     "menu.access-info": "access to info",
     "menu.media-room": "media room",
-    "menu.opportunities": "opportunities"
+    "menu.opportunities": "opportunities",
+    "sidebar.title": "NEWS",
+    "contact.title": "CONTACT US",
+    "input.name" : "Name*",
+    "input.organization" : "Organization",
+    "input.email" : "Email*",
+    "input.phone" : "Phone",
+    "input.message" : "Message*",
+    "input.submit" : "Submit",
+    "error.name" : "Please enter the name!",
+    "error.email" : "Please enter the valid email!",
+    "error.message" : "Please enter the message!"
 }

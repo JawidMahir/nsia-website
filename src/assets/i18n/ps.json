@@ -15,5 +15,16 @@
     "menu.library": "کتابتون",
     "menu.access-info": "معلواتو ته لاسرسی",
     "menu.media-room": "مطبوعات",
-    "menu.opportunities": "فرستونه"
+    "menu.opportunities": "فرستونه",
+    "sidebar.title": "خبرونه",
+    "contact.title": "موږ سره اړیکه ونیسئ",
+    "input.name" : "*نوم",
+    "input.organization" : "سازمان",
+    "input.email" : "*ایمیل",
+    "input.phone" : "تلیفون",
+    "input.message" : "*پیغام",
+    "input.submit" : "سپارل",
+    "error.name" : "مهرباني وکړئ نوم وليکئ!",
+    "error.email" : "Please enter the valid email!",
+    "error.message" : "مهرباني وکړئ پیغام ولیکئ!"
 }

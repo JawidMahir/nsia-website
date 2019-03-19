@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
@@ -13,6 +13,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { NewsComponent } from './shared/news/news.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -23,13 +25,17 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     NavbarComponent,
     HomeComponent,
+    ContactUsComponent,
     NotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    ContactUsComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     LoadingBarHttpClientModule,
     LoadingBarModule,

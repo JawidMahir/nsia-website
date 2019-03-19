@@ -17,16 +17,12 @@ export class AppComponent implements OnInit {
     const that = this;
     // If the page is refreshed then this is called
     this.createNavigationBreadPath();
-
-
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         that.createNavigationBreadPath();
       }
     });
   }
-
-
   createNavigationBreadPath() {
     this.currentPath = this.router.url.toString().split('/');
 
@@ -35,7 +31,5 @@ export class AppComponent implements OnInit {
     }
     console.log('path:  ', this.currentPath);
   }
-
-
 
 }
