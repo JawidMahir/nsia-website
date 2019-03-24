@@ -31,10 +31,15 @@ body {
 
 }
 
+.bg-gradient {
+  background: linear-gradient(to right, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%);
+}
+
+
 #scroll {
   position: fixed;
   right: 30px;
-  bottom: 30px;
+  bottom: 60px;
   z-index: 1200;
   cursor: pointer;
   width: 50px;
@@ -162,37 +167,41 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(138, 137, 137);
 }
+
 .globalsidebar {
   height: 100%;
   overflow-wrap: break-word;
   background-color: #f1f1f1;
-  padding:15px; 
+  padding: 15px;
   font-weight: bold !important;
 }
+
 .globalsidebar a {
   display: block;
-  color:#282560;
+  color: #282560;
 }
+
 .globalsidebar a:hover:not(.active) {
   color: #01a79b;
 }
-.margin-top{
+
+.margin-top {
   margin-top: 30px;
 }
-.globalsidebar p{
+
+.globalsidebar p {
   color: gray;
   font-size: small;
   font-weight: normal;
 }
-.verticalLine{
-border-left: 1px solid #282560;
+
+.verticalLine {
+  border-left: 1px solid #282560;
 }
 
 /* General CSS */
 .no-data {
   width: 100%;
-  margin-left: 15px;
-  margin-right: 15px;
   border-radius: 0px;
   color: #BFC0C0;
 }

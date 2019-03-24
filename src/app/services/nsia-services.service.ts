@@ -31,6 +31,27 @@ export class NsiaServicesService {
     });
   }
 
+  getProvinces() {
+    return this.http.get<Array<any>>(this.dataService.api + 'posts', {
+      params: {
+        lang: this.dataService.language,
+        'filter[category_name]': 'provincial_services',
+        fields: 'acf.province,id'
+      }
+    });
+  }
+
+  getProvinceDetails(id, customP) {
+    return this.http.get(this.dataService.api + 'posts', {
+      params: {
+        lang: this.dataService.language,
+        'filter[category_name]': 'provincial_services',
+        'filter[p]': id,
+        fields: customP.join(',')
+      }
+    });
+  }
+
 
   htmlToPlaintext(text) {
     return text ? String(text).replace(/<[^>]+>/gm, '') : '';

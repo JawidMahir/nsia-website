@@ -42,10 +42,9 @@
 }
 
 .services .sr-name {
-  padding-left: 10px;
+  padding: 0px 10px;
   flex: auto;
   border: 1px solid #282560;
-  border-left: none;
 }
 
 .services .sr-name p {
@@ -80,7 +79,7 @@
 }
 
 .sidebar-nav .sidebar-title {
-  padding-left: 4px;
+  padding: 0px 4px;
   cursor: pointer;
   color: grey;
 }
@@ -144,7 +143,6 @@
   position: absolute;
   display: none;
   padding: 8px 16px;
-  left: 10%;
   background-color: #01a79b;
   color: #fff;
   transition: margin .5s;
@@ -196,6 +194,45 @@
   margin: 0px !important;
 }
 
+.sidebar-nav .pr-services {
+  color: #282560;
+  font-weight: 600;
+  cursor: auto;
+}
+
+.sidebar .provincial-services ul {
+  list-style: none;
+  padding-top: 12px;
+  border-top: 1px solid #282560;
+}
+
+.sidebar .provincial-services ul li {
+  padding: 4px 0px;
+  padding-left: 4px;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+.sidebar .provincial-services ul li.active-province {
+  color: #282560;
+  font-weight: 600;
+}
+
+.sidebar .provincial-services ul li:hover {
+  color: #282560;
+  background-color: #eae9ff;
+}
+
+.sidebar .provincial-services i {
+  font-size: 12px;
+  color: #282560;
+}
+
+.sidebar .provincial-services ul li:hover i,
+.sidebar .provincial-services ul li.active-province i {
+  visibility: visible !important;
+}
+
 
 
 @media only screen and (max-width: 900px) {
@@ -210,6 +247,14 @@
 
   .sidebar-nav {
     width: 0px;
-    background-color:  #fff !important;
+    background-color: #fff !important;
+  }
+}
+
+
+
+@media only screen and (min-width: 1000px) {
+  .sidebar-nav {
+    width: 19vw !important;
   }
 }

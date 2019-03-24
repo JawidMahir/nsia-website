@@ -82,6 +82,11 @@ export class NavbarComponent implements OnInit {
       console.log(event.lang);
       console.log(location.pathname);
       this.dataService.language = event.lang;
+      if (event.lang !== 'en') {
+        $('body').addClass('rtl');
+      } else {
+        $('body').removeClass('rtl');
+      }
       this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
         this.router.navigate([location.pathname]));
     });

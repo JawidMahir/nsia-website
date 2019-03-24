@@ -18,6 +18,8 @@ export class ServicesHomeComponent implements OnInit {
 
   // A global variable used to determine the type of service
   serviceType = 'stats';
+  provincialServices = false;
+  provinces;
 
   serviceContents = {
     sdu: Object,
@@ -25,6 +27,31 @@ export class ServicesHomeComponent implements OnInit {
     gis: Object,
     nid: Object
   };
+
+  prDummyData = {
+    acf: {
+      name: 'ahmadullah alyar'
+    },
+    title: {
+      rendered: 'About Kabul Province'
+    },
+    content: {
+      rendered: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum'
+    },
+    better_featured_image: {
+      source_url: '../../../assets/images/happy-dace.jpg'
+    }
+  };
+
+  dummyProvinces = [
+    'kabul',
+    'kandahar',
+    'zabul',
+    'farah',
+    'bamyan',
+    'badakhshan'
+  ];
+
 
   departmentsFullDetails = [];
 
@@ -65,20 +92,28 @@ export class ServicesHomeComponent implements OnInit {
 
   showServiceDetails() {
     const sType = this.dataService.serviceType;
-    switch (sType) {
-      case 'sdu':
-        $('#sdu').trigger('click');
-        break;
-      case 'gis':
-        $('#gis').trigger('click');
-        break;
-      case 'stats':
-        $('#stats').trigger('click');
-        break;
-      case 'nid':
-        $('#nid').trigger('click');
-        break;
+    if (sType === 'prs') {
+      this.getProvinces();
+      $('.m-service').removeClass('active-service');
+      $('.provinces li:first-child').addClass('active-province');
+    } else {
+      this.provincialServices = false;
+      switch (sType) {
+        case 'sdu':
+          $('#sdu').trigger('click');
+          break;
+        case 'gis':
+          $('#gis').trigger('click');
+          break;
+        case 'stats':
+          $('#stats').trigger('click');
+          break;
+        case 'nid':
+          $('#nid').trigger('click');
+          break;
+      }
     }
+
 
     // this.dataService.serviceType = 'stats';
   }
@@ -133,6 +168,17 @@ export class ServicesHomeComponent implements OnInit {
         this.keepContentsLocal(deputyType);
       }
 
+    });
+  }
+
+  getProvinces() {
+    this.nsiaServices.getProvinces().subscribe((data) => {
+      console.log('Provinces: ', data);
+      if (data.length > 0) {
+        this.provincialServices = true;
+        this.provinces = data;
+        this.getProvinceDetails(this.provinces[0].id);
+      }
     });
   }
 
@@ -215,6 +261,33 @@ export class ServicesHomeComponent implements OnInit {
     this.assignDepartmentsToDeputy(deputyType);
   }
 
+  provinceData(pItem, province) {
+
+    console.log('Province: ', province);
+    $('.province').removeClass('active-province');
+    $(pItem).closest('.province').addClass('active-province');
+
+    this.getProvinceDetails(province);
+  }
+
+  getProvinceDetails(id) {
+
+    this.contents = null;
+    const customParams = [];
+    customParams.push('title.rendered');
+    customParams.push('content.rendered');
+    customParams.push('acf.name');
+    customParams.push('acf.province');
+    customParams.push('better_featured_image.source_url');
+
+    this.nsiaServices.getProvinceDetails(id, customParams).subscribe((data) => {
+      this.contents = data[0];
+      this.contents.title.rendered = this.nsiaServices.htmlToPlaintext(this.contents.title.rendered);
+      this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
+      console.log(id + ' data:', this.contents);
+    });
+  }
+
   activeMenu(menuItem) {
     const that = this;
     // this.contents = null;
@@ -234,15 +307,28 @@ export class ServicesHomeComponent implements OnInit {
   toggleNavbar() {
     const navWidth = (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width;
     console.log('navWidth: ', navWidth);
+    let rtl = false;
+
+    if ($('body').hasClass('rtl')) {
+      rtl = true;
+    }
 
     if (navWidth === '0px') {
-      (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '25vw';
-      (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '25vw';
+      (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '19vw';
+      if (rtl) {
+        (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginRight = '19vw';
+      } else {
+        (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '19vw';
+      }
       $('.sidebar-toggler i').removeClass('fa-chevron-right').addClass('fa-chevron-left');
 
     } else {
       (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '0px';
-      (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '0px';
+      if (rtl) {
+        (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginRight = '0px';
+      } else {
+        (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '0px';
+      }
       $('.sidebar-toggler i').removeClass('fa-chevron-left').addClass('fa-chevron-right');
     }
 
@@ -250,6 +336,7 @@ export class ServicesHomeComponent implements OnInit {
 
   toggleServices(el) {
 
+    this.provincialServices = false;
     const id = $(el).closest('.m-service').attr('id');
     this.serviceType = id;
     this.serviceName = $(el).closest('.m-service').find('.sr-name p').html();

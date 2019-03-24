@@ -47,41 +47,43 @@
   padding: 0px !important;
 }
 
-.header select {
+.header select,
+#navbar select {
   padding: 5px;
   appearance: none;
   width: 100%;
-
+  border: none;
 }
 
-.header .change-language {
+.change-language {
   background-color: #282560;
   position: relative;
   width: 110px;
 }
 
-.header .change-language i {
+.change-language i {
   color: #fff;
   position: absolute;
   right: 15px;
   top: 12px;
-  font-size: 12px;
+  font-size: 12px !important;
   z-index: 1;
   text-align: center;
   width: 10%;
   height: 100%;
   pointer-events: none;
   box-sizing: border-box;
+  margin-top: 0px !important;
 }
 
-.header .form-control:focus {
+.form-control:focus {
   color: #fff;
   border: none !important;
   background-color: #282560;
   box-shadow: none;
 }
 
-.header .search-input .wrapper {
+.search-input .wrapper {
   display: flex;
   align-items: center;
   color: grey;
@@ -89,17 +91,17 @@
   transition: border .5s ease-in-out;
 }
 
-.header .search-input .wrapper i {
+.search-input .wrapper i {
   transition: color .5s ease-in-out;
 }
 
-.header .search-input .wrapper:focus-within {
+.search-input .wrapper:focus-within {
   border-bottom: 1px solid #282560;
   color: #282560;
 }
 
 
-.header .search-input .wrapper .search-box {
+.search-input .wrapper .search-box {
   border: none;
   padding: 4px;
   outline: none !important;
@@ -214,11 +216,17 @@
 .resp-toggler,
 .responsive-nav {
   display: none;
+
 }
 
 .resp-toggler {
   background-color: #fff;
+  padding: 8px 17px
+}
 
+
+.resp-toggler i {
+  font-size: 24px;
 }
 
 .responsive-nav {
@@ -228,6 +236,11 @@
   background-color: #fff;
   z-index: 120;
   transition: height .2s ease-in-out;
+}
+
+.responsive-navbar {
+  display: none;
+  padding: 10px 0px;
 }
 
 .responsive-nav .r-menu {
@@ -306,6 +319,50 @@
   border-color: #fff;
 }
 
+#navbar .tls {
+  display: none;
+  float: right;
+  margin-top: 5px;
+}
+
+#navbar .web-tls {
+  display: flex;
+}
+
+#navbar .web-tls .wrapper {
+  height: 100%;
+  margin-right: 27px;
+  padding: 0px 5px;
+}
+
+#navbar.active-bar .web-tls .wrapper {
+  height: 100%;
+  margin-right: 27px;
+  padding: 0px 5px;
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+#navbar.active-bar .web-tls .wrapper:focus-within {
+  border-bottom: 1px solid #01a79b;
+  color: #01a79b;
+}
+
+#navbar.active-bar .web-tls .wrapper input {
+  color: #fff;
+}
+
+
+
+#navbar .web-tls .wrapper input {
+  background-color: transparent;
+}
+
+
+
+
+
+
 @media only screen and (max-width: 1100px) {
   .seperator {
     display: none;
@@ -335,8 +392,41 @@
 
 @media only screen and (max-width: 990px) {
 
+
+
+  .logo-wrapper,
+  .header-details {
+    display: inline-flex;
+    margin: auto;
+  }
+
+  .logos {
+    margin-bottom: 12px;
+  }
+
+  .logo-wrapper .nsia-logo {
+    margin: 0px 8px;
+  }
+
+  .header-details {
+    float: none !important;
+
+  }
+
   .resp-toggler,
   .responsive-nav {
+    display: inline-block;
+  }
+
+  .header .website-tools {
+    display: none;
+  }
+
+  #navbar .tls {
+    display: block;
+  }
+
+  .responsive-navbar {
     display: block;
   }
 

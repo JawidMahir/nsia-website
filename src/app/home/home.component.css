@@ -67,7 +67,6 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  background: linear-gradient(to right, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%);
   color: #fff;
 
 }
@@ -182,7 +181,6 @@
   right: 0;
   margin: 0px 15px;
   padding: 16px;
-  background: linear-gradient(to right, rgb(39, 35, 97), rgba(39, 35, 97, 0.4) 100%);
 }
 
 .latest-section .news-date {
@@ -271,6 +269,11 @@
   cursor: pointer;
 }
 
+.billboard {
+  direction: ltr !important;
+  background: linear-gradient(to right, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%) ;
+}
+
 
 .billboard img {
   height: 400px;
@@ -283,7 +286,6 @@
 
 .billboard-contents .event-date {
   display: block;
-  left: 30;
   text-align: center;
   max-width: 170px;
 
@@ -292,7 +294,7 @@
 .billboard-contents .event-date .b-date {
   background-color: #3932b9;
   color: #fff;
-  padding: 12px 40px;
+  padding: 24px;
 
 }
 
@@ -319,4 +321,5 @@
 
 .billboard-contents .event-desc p {
   max-width: 400px;
+  margin-bottom: 0px !important;
 }

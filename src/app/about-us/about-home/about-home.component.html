@@ -4,7 +4,10 @@
       <div class="row">
         <div class="col-12 col-md-8 col-sm-8 col-lg-8 col-xs-9">
           <div class="content">
-            <router-outlet></router-outlet>
+            <!-- <router-outlet></router-outlet> -->
+            <main [@fadeInOut]="getPage(o)">
+              <router-outlet #o="outlet"></router-outlet>
+            </main>
 
           </div>
         </div>

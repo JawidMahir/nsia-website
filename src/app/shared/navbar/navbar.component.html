@@ -4,15 +4,17 @@
     <div class="custom-container">
 
       <div class="row">
-        <div class="col-md-6 col-sm-6 logos">
-          <div class="gov-logo">
-            <img src="../../../assets/logo/national-emblem.svg" alt="">
-          </div>
-          <div class="nsia-logo">
-            <img src="../../../assets/logo/nsia-logo.svg" alt="">
+        <div class="col-lg-6 col-md-12 logos">
+          <div class="logo-wrapper">
+            <div class="gov-logo">
+              <img src="../../../assets/logo/national-emblem.svg" alt="">
+            </div>
+            <div class="nsia-logo">
+              <img src="../../../assets/logo/nsia-logo.svg" alt="">
+            </div>
           </div>
         </div>
-        <div class="col-md-6 col-sm-6">
+        <div class="col-lg-6 col-md-12">
           <div class="header-details">
 
             <div class="contact-details">
@@ -38,8 +40,8 @@
                   </div>
                 </div>
                 <div class="change-language c-item">
-                  <select name="lang-change" id="lang-change" class="form-control custom-form-control" #languageChange
-                    (change)='useLanguage(languageChange.value)'>
+                  <select name="lang-change" id="lang-change" class="form-control custom-form-control" #languageChange1
+                    (change)='useLanguage(languageChange1.value)'>
                     <option value="en">{{ 'lang.english' | translate }}</option>
                     <option value="fa">{{ 'lang.dari' | translate }}</option>
                     <option value="ps">{{ 'lang.pashto' | translate }}</option>
@@ -64,9 +66,33 @@
         <span class="navbar-toggler-icon"></span>
       </button> -->
       <!-- Custom Responsive navbar -->
-      <button class="resp-toggler" (click)="toggleRespNav()">
-        <i class="fas fa-bars"></i>
-      </button>
+      <div class="responsive-navbar">
+        <button class="resp-toggler" (click)="toggleRespNav()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="tls">
+          <div class="web-tls">
+
+            <div class="search-input c-item">
+              <div class="wrapper">
+
+                <input type="text" placeholder="search website" class="search-box">
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+            <div class="change-language c-item">
+              <select name="lang-change" id="lang-change" class="form-control custom-form-control" #languageChange2
+                (change)='useLanguage(languageChange2.value)'>
+                <option value="en">{{ 'lang.english' | translate }}</option>
+                <option value="fa">{{ 'lang.dari' | translate }}</option>
+                <option value="ps">{{ 'lang.pashto' | translate }}</option>
+              </select>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="responsive-nav" id="responsive-nav">
         <div class="r-menu">
           <div class="r-menu-item">
@@ -97,7 +123,7 @@
           </div>
           <div class="r-menu-item">
             <p routerLink="library">
-                {{ 'menu.library' | translate }}</p>
+              {{ 'menu.library' | translate }}</p>
             <ul>
               <li routerLink="library/reports">Reports</li>
               <li routerLink="library/articles">Articles</li>
@@ -105,7 +131,7 @@
           </div>
           <div class="r-menu-item">
             <p routerLink="access-info">
-                {{ 'menu.access-info' | translate }}</p>
+              {{ 'menu.access-info' | translate }}</p>
             <ul>
               <li routerLink="access-info/guidelines">Guidelines</li>
               <li routerLink="access-info/statistics">Statistics</li>
@@ -116,7 +142,7 @@
           </div>
           <div class="r-menu-item">
             <p routerLink="media-room">
-                {{ 'menu.media-room' | translate }}</p>
+              {{ 'menu.media-room' | translate }}</p>
             <ul>
               <li routerLink="media-room/event">events</li>
               <li routerLink="media-room/news-updates">News & Updates</li>
@@ -131,7 +157,7 @@
 
           <div class="r-menu-item">
             <p routerLink="opportunities">
-                {{ 'menu.opportunities' | translate }}</p>
+              {{ 'menu.opportunities' | translate }}</p>
             <ul>
               <li routerLink="opportunities/administration">Administration</li>
               <li routerLink="opportunities/procurements">Procurements</li>
@@ -142,7 +168,7 @@
       </div>
 
       <div class="collapse navbar-collapse" id="collapsable-nav">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav mt-2 mt-lg-0">
           <li class="nav-item" id="home">
             <a href="" routerLink="">
               <i class="fas fa-home"></i>

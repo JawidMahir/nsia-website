@@ -6,6 +6,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Import shared Module here
 import { SharedModule } from './shared/shared.module';
@@ -40,6 +41,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     LoadingBarHttpClientModule,
     LoadingBarModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -6,8 +6,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  api = 'http://172.16.222.104/nsia/wp-json/wp/v2/';
-  nodeapi = 'http://172.16.222.104:6001/api/';
+  api = 'http://172.16.222.81/nsia/wp-json/wp/v2/';
+  nodeapi = 'http://172.16.222.81:6001/api/';
   language = 'en';
   serviceType = 'stats';
   callToServiceMethodSource   = new Subject<any>();
@@ -69,7 +69,7 @@ export class DataService {
     };
     return this.http.post(this.api + 'users/register', user, httpOptions);
   }
-  addContactData(contactData){
+  addContactData(contactData) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

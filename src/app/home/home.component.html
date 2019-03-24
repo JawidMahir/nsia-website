@@ -84,7 +84,7 @@
       <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/population.png" alt="Population">
-          <div class="stats">
+          <div class="stats bg-gradient">
             <h6>{{ 'stats.population' | translate }}</h6>
             <h3 *ngIf="population">{{ population.acf.statistics }} </h3>
           </div>
@@ -93,7 +93,7 @@
       <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/gdp.png" alt="gdp">
-          <div class="stats">
+          <div class="stats ">
             <h6>{{ 'stats.gdp' | translate }}</h6>
             <h3 *ngIf="gdp">{{ gdp.acf.statistics }} </h3>
           </div>
@@ -103,7 +103,7 @@
       <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/cpi.png" alt="cpi">
-          <div class="stats">
+          <div class="stats bg-gradient">
             <h6>{{ 'stats.cpi' | translate }}</h6>
             <h3 *ngIf="cpi">{{ cpi.acf.statistics }} </h3>
           </div>
@@ -113,7 +113,7 @@
       <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/gender.png" alt="Population">
-          <div class="stats">
+          <div class="stats bg-gradient">
             <h6>{{ 'stats.gender' | translate }}</h6>
             <h3>45% Male</h3>
             <h3>55% Female</h3>
@@ -258,7 +258,7 @@
             <div class="news-item">
               <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ nw.title.rendered }}</h4>
                 <p>{{ nw.acf.brief }}</p>
               </div>
@@ -281,7 +281,7 @@
             <div class="news-item">
               <img src="{{ pb.better_featured_image.source_url }}" alt="{{ pb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ pb.title.rendered }}</h4>
                 <p>{{ pb.acf.brief }}</p>
               </div>
@@ -304,7 +304,7 @@
             <div class="news-item">
               <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ pr.title.rendered }}</h4>
                 <p>{{ pr.acf.brief }}</p>
               </div>
@@ -327,7 +327,7 @@
             <div class="news-item">
               <img src="{{ an.better_featured_image.source_url }}" alt="{{ an.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ an.title.rendered }}</h4>
                 <p>{{ an.acf.brief }}</p>
               </div>
@@ -445,9 +445,9 @@
             <h1 id="day">24th</h1>
             <p id="month">December</p>
           </div>
-          <div class="b-register">
+          <!-- <div class="b-register">
             <span>Register</span>
-          </div>
+          </div> -->
         </div>
         <div class="event-desc">
           <h1><b>
@@ -491,7 +491,7 @@
             <div class="news-item">
               <img src="{{ ev.better_featured_image?.source_url }}" alt="{{ ev.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ ev.title.rendered }}</h4>
                 <p>{{ ev.acf.brief }}</p>
               </div>
@@ -514,7 +514,7 @@
             <div class="news-item">
               <img src="{{ upb.better_featured_image?.source_url }}" alt="{{ upb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ upb.title.rendered }}</h4>
                 <p>{{ upb.acf.brief }}</p>
               </div>
@@ -537,7 +537,7 @@
             <div class="news-item">
               <img src="{{ srv.better_featured_image?.source_url }}" alt="{{ srv.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ srv.title.rendered }}</h4>
                 <p>{{ srv.acf.brief }}</p>
               </div>
