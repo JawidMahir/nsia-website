@@ -6,11 +6,15 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { OpportunitiesRoutingModule } from './opportunities-routing.module';
 
+// Import shared Module here
+import { SharedModule } from '../shared/shared.module';
+
 import { AdministrationComponent } from './administration/administration.component';
 import { OpportunitiesHomeComponent } from './opportunities-home/opportunities-home.component';
 import { ProcurementsComponent } from './procurements/procurements.component';
 import { TendersComponent } from './tenders/tenders.component';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
+import { TenderComponent } from './tender/tender.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -23,11 +27,13 @@ export function createTranslateLoader(http: HttpClient) {
     OpportunitiesHomeComponent,
     ProcurementsComponent,
     TendersComponent,
-    OpportunitiesComponent
+    OpportunitiesComponent,
+    TenderComponent
   ],
   imports: [
     CommonModule,
     OpportunitiesRoutingModule,
+    SharedModule,
     HttpClientModule,
     TranslateModule.forChild({
       loader: {

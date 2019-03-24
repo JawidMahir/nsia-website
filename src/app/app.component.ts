@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { trigger, animate, style, group, animateChild, query, stagger, transition, state } from '@angular/animations';
 import * as $ from 'jquery';
+import { TranslateService } from '@ngx-translate/core';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -37,10 +39,13 @@ export class AppComponent implements OnInit {
   title = 'NSIA';
   currentPath;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService, private translateService: TranslateService) { }
 
   ngOnInit() {
     const that = this;
+
+    this.checkDefaultLanguage();
+
     // If the page is refreshed then this is called
     this.createNavigationBreadPath();
 
@@ -78,6 +83,23 @@ export class AppComponent implements OnInit {
     // tslint:disable-next-line: no-string-literal
 
     return outlet.activatedRouteData.state;
+  }
+
+  checkDefaultLanguage() {
+    const lang = localStorage.getItem('lang');
+    if (lang) {
+      this.dataService.language = lang;
+      this.translateService.use(lang);
+      console.log('app component: ', location.pathname);
+
+      this.router.navigate([location.pathname]);
+      // // this.dataService.callNavbarCmpMethod();
+      // if (lang !== 'en') {
+      //   $('body').addClass('rtl');
+      // }
+    } else {
+      this.translateService.setDefaultLang('en');
+    }
   }
 
 }

@@ -113,3 +113,12 @@
 .footer .social-media {
   float: right;
 }
+
+.footer .social-media a {
+  color: #fff;
+  transition: color .1s ease-in-out;
+}
+
+.footer .social-media a:hover {
+  color: #01a79b;
+}

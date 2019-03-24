@@ -79,8 +79,17 @@
 }
 
 /*
+* NEWS Related RTL CSS
+*/
+.rtl .verticalLine {
+  border-left: none;
+  border-right: 1px solid #282560;
+}
+
+
+/*
   * Service page RTL
-  */
+*/
 
 @media only screen and (max-width: 900px) {
 
@@ -100,4 +109,12 @@
 .rtl .sidebar-nav .sidebar .menu-item span {
   margin-left: 0px;
   margin-right: 24px;
+}
+
+
+/*
+*   TENDERS related RTL CSS
+*/
+.rtl .tender .tender-details span {
+  float: right;
 }

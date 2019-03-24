@@ -1,0 +1,12 @@
+.tender .title {
+    font-weight: 700;
+}
+
+.tender .tender-details strong {
+  margin: 0px 20px;
+}
+
+.tender .tender-details,
+.tender .tender-description {
+  margin-top: 2rem;
+}
