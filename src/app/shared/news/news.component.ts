@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {formatDate } from '@angular/common';
 
 import { DataService } from '../../data.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -30,26 +31,13 @@ export class NewsComponent implements OnInit {
      this.newsBriefs['news'] = this.refineData(newsData);
     });
   } 
-  private extractDay(dateString) {
-    return dateString.split('-')[2].substr(0, 2);
-  }
-
-  private extractMonth(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleString('en-us', { month: 'long' }).substr(0, 3);
-  }
-
-  private extractYear(dateString) {
-    return dateString.split('-')[0].substr(0, 4);
-  }
   
  refineData(data) {
     for (const el of data) {
       if (!el.hasOwnProperty('date')) {
         el.date = '00'+'th'+'MNT'+'';
       } else {
-        const dateString = el.date;
-        el.date = this.extractDay(dateString)+'th'+' '+this.extractMonth(dateString)+' '+this.extractYear(dateString);
+        el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
       }
     }
     return data;

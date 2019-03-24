@@ -7,6 +7,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Import shared Module here
+import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +19,6 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import { NewsComponent } from './shared/news/news.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -31,7 +34,6 @@ export function createTranslateLoader(http: HttpClient) {
     NotFoundComponent,
     FooterComponent,
     ContactUsComponent,
-    NewsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,13 +43,16 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     LoadingBarHttpClientModule,
     LoadingBarModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
         deps: [HttpClient],
       }
-    })
+    }),
+    SharedModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

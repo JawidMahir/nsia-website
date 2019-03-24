@@ -1,19 +1,16 @@
 <div class="margin-top">
   <div class="custom-container">
-    <div class="section-wrapper">
-      <div  *ngIf="news != ''; else nonews">
-          <!-- <div class="row">
-              <img src="{{ news.better_featured_image.source_url }}" alt="{{ news.better_featured_image.alt_text }}"
-              (error)="imageError($event.target);">
+    <div class="section-wrapper"> 
+          <div class="row">
+              <img src="{{ contents.image.url }}" alt="{{ contents.image.alt }}">
           </div>
           <div class="row">
               <div class="content">
-                <h1>{{ news.title.rendered }}</h1>
-                <h5>{{ news.date }}</h5>
-                <p>{{ news.content.rendered }}</p>
+                <h1>{{ title }}</h1>
+                <h5>{{ contents.date }}</h5>
+                <p>{{ contents.contents }}</p>
               </div>
-          </div> -->
-      </div>
+          </div> 
     </div>
   </div>
 </div>

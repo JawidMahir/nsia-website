@@ -81,39 +81,39 @@
 <div class="custom-container">
   <div class="section-wrapper">
     <div class="row">
-      <div class="col-md-3 col-sm-3">
+      <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/population.png" alt="Population">
-          <div class="stats">
+          <div class="stats bg-gradient">
             <h6>{{ 'stats.population' | translate }}</h6>
             <h3 *ngIf="population">{{ population.acf.statistics }} </h3>
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-3">
+      <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/gdp.png" alt="gdp">
-          <div class="stats">
+          <div class="stats ">
             <h6>{{ 'stats.gdp' | translate }}</h6>
             <h3 *ngIf="gdp">{{ gdp.acf.statistics }} </h3>
           </div>
         </div>
 
       </div>
-      <div class="col-md-3 col-sm-3">
+      <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/cpi.png" alt="cpi">
-          <div class="stats">
+          <div class="stats bg-gradient">
             <h6>{{ 'stats.cpi' | translate }}</h6>
             <h3 *ngIf="cpi">{{ cpi.acf.statistics }} </h3>
           </div>
         </div>
 
       </div>
-      <div class="col-md-3 col-sm-3">
+      <div class="col-lg-3 col-md-6 news-item-wrapper">
         <div class="stat-card card">
           <img src="../../assets/images/gender.png" alt="Population">
-          <div class="stats">
+          <div class="stats bg-gradient">
             <h6>{{ 'stats.gender' | translate }}</h6>
             <h3>45% Male</h3>
             <h3>55% Female</h3>
@@ -288,11 +288,11 @@
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
         <div class="row" *ngIf="newsBriefs.news != ''; else nonews">
-          <div class="col-md-3 col-sm-6" *ngFor="let nw of newsBriefs.news">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let nw of newsBriefs.news">
             <div class="news-item">
               <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ nw.title.rendered }}</h4>
                 <p>{{ nw.acf.brief }}</p>
               </div>
@@ -311,11 +311,11 @@
       </div>
       <div class="tab-pane fade" id="nav-publications" role="tabpanel" aria-labelledby="nav-publications-tab">
         <div class="row" *ngIf="newsBriefs.publications != ''; else nopublications">
-          <div class="col-md-3 col-sm-6" *ngFor="let pb of newsBriefs.publications">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pb of newsBriefs.publications">
             <div class="news-item">
               <img src="{{ pb.better_featured_image.source_url }}" alt="{{ pb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ pb.title.rendered }}</h4>
                 <p>{{ pb.acf.brief }}</p>
               </div>
@@ -334,11 +334,11 @@
       </div>
       <div class="tab-pane fade" id="nav-press" role="tabpanel" aria-labelledby="nav-press-tab">
         <div class="row" *ngIf="newsBriefs.press != ''; else nopress">
-          <div class="col-md-3 col-sm-6" *ngFor="let pr of newsBriefs.press">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pr of newsBriefs.press">
             <div class="news-item">
               <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ pr.title.rendered }}</h4>
                 <p>{{ pr.acf.brief }}</p>
               </div>
@@ -357,11 +357,11 @@
       </div>
       <div class="tab-pane fade" id="nav-announcements" role="tabpanel" aria-labelledby="nav-announcements-tab">
         <div class="row" *ngIf="newsBriefs.announcements != ''; else noannouncements">
-          <div class="col-md-3 col-sm-6" *ngFor="let an of newsBriefs.announcements">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let an of newsBriefs.announcements">
             <div class="news-item">
               <img src="{{ an.better_featured_image.source_url }}" alt="{{ an.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ an.title.rendered }}</h4>
                 <p>{{ an.acf.brief }}</p>
               </div>
@@ -391,7 +391,7 @@
   <div class="section-wrapper bussiness">
     <div class=" bussiness-card">
       <div class="row">
-        <div class="col-md-4 col-sm-6">
+        <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="title">
             <h4>stakeholders</h4>
             <div class="t-icon">
@@ -416,7 +416,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-lg-4 col-md-6  col-sm-6">
           <div class="title donor-title">
             <h4>donors</h4>
             <div class="t-icon">
@@ -441,7 +441,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-lg-4 col-md-6  col-sm-6">
           <div class="title">
             <h4>customers</h4>
             <div class="t-icon">
@@ -479,9 +479,9 @@
             <h1 id="day">24th</h1>
             <p id="month">December</p>
           </div>
-          <div class="b-register">
+          <!-- <div class="b-register">
             <span>Register</span>
-          </div>
+          </div> -->
         </div>
         <div class="event-desc">
           <h1><b>
@@ -525,7 +525,7 @@
             <div class="news-item">
               <img src="{{ ev.better_featured_image?.source_url }}" alt="{{ ev.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ ev.title.rendered }}</h4>
                 <p>{{ ev.acf.brief }}</p>
               </div>
@@ -548,7 +548,7 @@
             <div class="news-item">
               <img src="{{ upb.better_featured_image?.source_url }}" alt="{{ upb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ upb.title.rendered }}</h4>
                 <p>{{ upb.acf.brief }}</p>
               </div>
@@ -571,7 +571,7 @@
             <div class="news-item">
               <img src="{{ srv.better_featured_image?.source_url }}" alt="{{ srv.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
-              <div class="contents">
+              <div class="contents bg-gradient">
                 <h4>{{ srv.title.rendered }}</h4>
                 <p>{{ srv.acf.brief }}</p>
               </div>

@@ -48,6 +48,17 @@ export class NavbarComponent implements OnInit {
       }
     });
 
+    /**
+     * Listener for responsive navbar collapse on item click
+     */
+    $('#responsive-nav li').click(() => {
+      that.toggleRespNav();
+    });
+
+    $('#responsive-nav p').click(() => {
+      that.toggleRespNav();
+    });
+
 
     this.langeuageChangeListener();
 
@@ -55,6 +66,12 @@ export class NavbarComponent implements OnInit {
     window.onscroll = () => {
       that.makeNavbarSticky(sticky);
     };
+  }
+
+  toggleRespNav() {
+    $('#responsive-nav').toggleClass('r-show');
+    console.log('I am clicked');
+
   }
 
   langeuageChangeListener() {
@@ -65,6 +82,11 @@ export class NavbarComponent implements OnInit {
       console.log(event.lang);
       console.log(location.pathname);
       this.dataService.language = event.lang;
+      if (event.lang !== 'en') {
+        $('body').addClass('rtl');
+      } else {
+        $('body').removeClass('rtl');
+      }
       this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
         this.router.navigate([location.pathname]));
     });
@@ -72,6 +94,11 @@ export class NavbarComponent implements OnInit {
 
   useLanguage(language: string) {
     this.translate.use(language);
+  }
+
+  updateServiceType(sType) {
+    this.dataService.serviceType = sType;
+    this.dataService.callServiceCmpMethod();
   }
 
 

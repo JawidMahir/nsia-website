@@ -1,12 +1,11 @@
 img{
-    height: 80%;
-    width: 90%;
+    width: 80%;  
+    height: 400px;
     display: block;
     margin: 3% auto;
-    
 }
 .content{
-    margin: 0px 5%;
+    margin: 0px 10%;
 }
 h5{
     font-weight: bold !important;

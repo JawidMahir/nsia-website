@@ -42,10 +42,9 @@
 }
 
 .services .sr-name {
-  padding-left: 10px;
+  padding: 0px 10px;
   flex: auto;
   border: 1px solid #282560;
-  border-left: none;
 }
 
 .services .sr-name p {
@@ -61,7 +60,7 @@
 
 .sidebar-nav {
   position: absolute;
-  width: 300px;
+  width: 19vw;
   min-height: 400px;
   color: grey;
   overflow: hidden;
@@ -80,7 +79,7 @@
 }
 
 .sidebar-nav .sidebar-title {
-  padding-left: 4px;
+  padding: 0px 4px;
   cursor: pointer;
   color: grey;
 }
@@ -118,8 +117,9 @@
 /* Contents CSS */
 
 .contents {
-  margin-left: 300px;
+  width: calc(100% - 19vw);
   padding: 0px 3rem;
+  float: right;
   transition: margin .5s;
 }
 
@@ -142,11 +142,11 @@
 .sidebar-toggler {
   position: absolute;
   display: none;
-  padding: 8px;
-  left: 10%;
+  padding: 8px 16px;
   background-color: #01a79b;
   color: #fff;
   transition: margin .5s;
+  z-index: 100;
 
 }
 
@@ -194,10 +194,67 @@
   margin: 0px !important;
 }
 
+.sidebar-nav .pr-services {
+  color: #282560;
+  font-weight: 600;
+  cursor: auto;
+}
+
+.sidebar .provincial-services ul {
+  list-style: none;
+  padding-top: 12px;
+  border-top: 1px solid #282560;
+}
+
+.sidebar .provincial-services ul li {
+  padding: 4px 0px;
+  padding-left: 4px;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+.sidebar .provincial-services ul li.active-province {
+  color: #282560;
+  font-weight: 600;
+}
+
+.sidebar .provincial-services ul li:hover {
+  color: #282560;
+  background-color: #eae9ff;
+}
+
+.sidebar .provincial-services i {
+  font-size: 12px;
+  color: #282560;
+}
+
+.sidebar .provincial-services ul li:hover i,
+.sidebar .provincial-services ul li.active-province i {
+  visibility: visible !important;
+}
 
 
-@media only screen and (max-width: 700px) {
+
+@media only screen and (max-width: 900px) {
   .sidebar-toggler {
     display: block;
+    left: 12px;
+  }
+
+  .contents {
+    width: 100%;
+  }
+
+  .sidebar-nav {
+    width: 0px;
+    background-color: #fff !important;
+  }
+}
+
+
+
+@media only screen and (min-width: 1000px) {
+  .sidebar-nav {
+    width: 19vw !important;
   }
 }

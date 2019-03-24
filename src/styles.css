@@ -31,10 +31,16 @@ body {
 
 }
 
+.bg-gradient {
+  background: linear-gradient(to right, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%);
+}
+
+
 #scroll {
   position: fixed;
   right: 30px;
-  bottom: 30px;
+  bottom: 60px;
+  z-index: 1200;
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -162,12 +168,17 @@ body {
   background: rgb(138, 137, 137);
 }
 
-
 /* General CSS */
 .no-data {
   width: 100%;
-  margin-left: 15px;
-  margin-right: 15px;
   border-radius: 0px;
   color: #BFC0C0;
+}
+
+
+@media only screen and (max-width: 1050px) {
+  .custom-container {
+    width: 95% !important;
+    margin: auto;
+  }
 }

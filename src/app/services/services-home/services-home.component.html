@@ -2,7 +2,7 @@
 
   <div class="services">
     <div class="row">
-      <div class="col-md-3 col-sm-6">
+      <div class="col-lg-3 col-md-6">
         <div class="m-service active-service" id="stats" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-lg-3 col-md-6">
         <div class="m-service" id="sdu" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-lg-3 col-md-6">
         <div class="m-service " id="gis" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-lg-3 col-md-6">
         <div class="m-service " id="nid" (click)="toggleServices($event.target)">
           <div class="m-contents">
             <div class="sr-icon">
@@ -57,11 +57,14 @@
   <div class="main-wrapper">
 
     <nav class="sidebar-nav">
-      <div class="sidebar-title menu-item active-item" (click)="activeMenu($event.target)">
+      <div class="sidebar-title menu-item active-item" (click)="activeMenu($event.target)" *ngIf="!provincialServices">
         <span> <i class="fas fa-chevron-right"></i> {{'about ' + serviceName}}</span>
       </div>
+      <div class="sidebar-title pr-services" *ngIf="provincialServices">
+        <span>Provincial Services</span>
+      </div>
       <div class="sidebar">
-        <div class="sidebar-menu" *ngIf="deputyDepartments">
+        <div class="sidebar-menu" *ngIf="deputyDepartments && !provincialServices">
           <div class="accordion menu-item" id="{{ dp.acf.department }}" *ngFor="let dp of deputyDepartments" (click)="activeMenu($event.target)">
             <div class="m-item-c" data-toggle="collapse" [attr.data-target]="'#sub-' + dp.acf.department" aria-expanded="true"
               aria-controls="collapseOne">
@@ -81,10 +84,28 @@
             </div>
           </div>
         </div>
+        <div class="provincial-services" *ngIf="provincialServices && provinces">
+          <ul class="provinces">
+            <li class="province active-province" (click)="provinceData($event.target, provinces[0].id)">
+              <i class="fas fa-chevron-right"></i>
+              <span>
+                {{ provinces[0].acf.province }}
+              </span>
+            </li>
+            <li class="province" *ngFor="let pr of provinces | slice:1" (click)="provinceData($event.target, pr.id)">
+              <i class="fas fa-chevron-right"></i>
+              <span >
+                {{ pr.acf.province }}
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="sidebar-toggler">
-      <div class="t-btn" (click)="toggleNavbar()">0</div>
+      <div class="t-btn" (click)="toggleNavbar()">
+        <i class="fas fa-chevron-right"></i>
+      </div>
     </div>
     <div class="contents" *ngIf="contents;else nodata">
 
@@ -92,7 +113,7 @@
       <div class="row">
         <div class="col-md-3 col-sm-6">
           <div class="deputy-image">
-            <img [src]="contents.better_featured_image.source_url" alt="image">
+            <img [src]="contents.better_featured_image?.source_url" alt="image">
           </div>
           <div class="deputy-info" *ngIf="contents.acf">
             <strong>{{ contents.acf.name }}</strong>

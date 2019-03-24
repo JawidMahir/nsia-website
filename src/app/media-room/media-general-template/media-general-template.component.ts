@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {formatDate } from '@angular/common';
 import { DataService } from 'src/app/data.service';
 
 @Component({
@@ -8,8 +9,17 @@ import { DataService } from 'src/app/data.service';
   styleUrls: ['./media-general-template.component.css']
 })
 export class MediaGeneralTemplateComponent implements OnInit {
-    news:'';
-    id:any;
+  news='';
+  title: any;
+  contents = {
+    contents: null,
+    date:null,
+    image: {
+      url: '',
+      alt: ''
+    }
+  };
+  id:any;
   constructor(private route: ActivatedRoute,
               private dataService: DataService) {}
 
@@ -17,7 +27,7 @@ export class MediaGeneralTemplateComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getNewsDetails(this.id);
   }
-  
+   
   getNewsDetails(id){
     const customParams = [];
     customParams.push('title.rendered');
@@ -27,28 +37,19 @@ export class MediaGeneralTemplateComponent implements OnInit {
     customParams.push('date');
     this.dataService.getPostDetails(id,customParams).subscribe((newsData) => {
       this.news = this.refineData(newsData[0]);
-      console.log(this.news)
+      this.title=this.news['title']['rendered'];
+      this.contents.contents = this.news['content']['rendered'];
+      this.contents.date = this.news['date'];
+      this.contents.image.url = this.news['better_featured_image']['source_url'];
+      this.contents.image.alt = this.news['better_featured_image']['alt_text'];
     });
-  }
-  private extractDay(dateString) {
-    return dateString.split('-')[2].substr(0, 2);
-  }
-
-  private extractMonth(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleString('en-us', { month: 'long' }).substr(0, 3);
-  }
-
-  private extractYear(dateString) {
-    return dateString.split('-')[0].substr(0, 4); 
   }
   
   refineData(data) {
       if (!data.hasOwnProperty('date')) {
         data.date = '00'+'th'+'MNT'+'';
       } else {
-        const dateString = data.date;
-        data.date = this.extractDay(dateString)+'th'+' '+this.extractMonth(dateString)+' '+this.extractYear(dateString);
+        data.date = formatDate(data.date, 'dd MMM yyyy', 'en-US', '+0530');
         data.content.rendered = this.dataService.htmlToPlaintext(data.content.rendered);
       }
     return data;
