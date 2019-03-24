@@ -25,5 +25,7 @@
     "input.submit" : "فرستادن",
     "error.name" : "لطفا نام خود را وارد نمایید!",
     "error.email" : "لطفا ایمیل درست را وارد نمایید!" ,
-    "error.message" : "لطفا پیام خود را وارد نمایید!"
+    "error.message" : "لطفا پیام خود را وارد نمایید!",
+    "pagination.previous" : "قبلی",
+    "pagination.next" : "بعدی"
 }

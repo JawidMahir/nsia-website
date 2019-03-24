@@ -1,12 +1,12 @@
-<div class="globalsidebar verticalLine">
+<div class="globalsidebar">
     <h4>{{ 'sidebar.title' | translate }}</h4>
     <hr>
     <div *ngIf="newsBriefs.news != ''; else nonews">
         <div class="row" *ngFor="let nw of newsBriefs.news">
-          <div class="col-md-3 display">
+          <div class="col-md-3 col-sm-5 col-xs-11 display">
             <img src="../../assets/images/newsIcon.png" alt="News">
           </div>
-          <div class="col-md-9 display">
+          <div class="col-md-9 col-sm-7 col-xs-4 display">
             <a href="#home">
             {{ nw.title.rendered }}
            </a>

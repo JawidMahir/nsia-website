@@ -5,8 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-  api = 'http://172.16.222.104/nsia/wp-json/wp/v2/';
-  nodeapi = 'http://172.16.222.104:6001/api/';
+  api = 'http://172.16.222.81/nsia/wp-json/wp/v2/';
+  nodeapi = 'http://172.16.222.81:6001/api/';
   language = 'en';
   serviceType = 'stats';
 
@@ -69,6 +69,16 @@ export class DataService {
       })
     };
     return this.http.post(this.nodeapi + 'contacts/add', contactData, httpOptions);
+  }
+  
+  getPostDetails(id, customP) {
+    return this.http.get(this.api + 'posts', {
+      params: {
+        lang: this.language,
+        'filter[p]': id,
+        fields: customP.join(',')
+      }
+    });
   }
 
 

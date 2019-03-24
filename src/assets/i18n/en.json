@@ -25,5 +25,8 @@
     "input.submit" : "Submit",
     "error.name" : "Please enter the name!",
     "error.email" : "Please enter the valid email!",
-    "error.message" : "Please enter the message!"
+    "error.message" : "Please enter the message!",
+    "pagination.previous" : "Previous",
+    "pagination.next" : "Next"
+    
 }

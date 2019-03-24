@@ -11,6 +11,7 @@ import { NewsUpdatesComponent } from './news-updates/news-updates.component';
 import { PostersComponent } from './posters/posters.component';
 import { PressReleaseComponent } from './press-release/press-release.component';
 import { MediaRoomComponent } from './media-room/media-room.component';
+import { MediaGeneralTemplateComponent } from './media-general-template/media-general-template.component';
 
 
 const mediaRoutes: Routes = [
@@ -29,6 +30,7 @@ const mediaRoutes: Routes = [
           { path: 'poster', component: PostersComponent },
           { path: 'booklet', component: BookletComponent },
           { path: 'brochures', component: BrochuresComponent },
+          { path: 'media/:id', component: MediaGeneralTemplateComponent},
           { path: '', component: MediaRoomComponent }
         ]
       }

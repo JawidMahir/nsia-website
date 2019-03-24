@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { MediaRoutingModule } from './media-routing.module';
 
@@ -16,6 +17,7 @@ import { NewsUpdatesComponent } from './news-updates/news-updates.component';
 import { PostersComponent } from './posters/posters.component';
 import { PressReleaseComponent } from './press-release/press-release.component';
 import { MediaRoomComponent } from './media-room/media-room.component';
+import { MediaGeneralTemplateComponent } from './media-general-template/media-general-template.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -32,12 +34,14 @@ export function createTranslateLoader(http: HttpClient) {
     NewsUpdatesComponent,
     PostersComponent,
     PressReleaseComponent,
-    MediaRoomComponent
+    MediaRoomComponent,
+    MediaGeneralTemplateComponent
   ],
   imports: [
     CommonModule,
     MediaRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
