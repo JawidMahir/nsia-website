@@ -171,7 +171,7 @@ export class HomeComponent implements OnInit {
 
 
     // Broadcast the change so that all related directives update their data
-    this.cdref.detectChanges();
+    // this.cdref.detectChanges();
 
   }
 

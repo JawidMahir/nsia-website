@@ -1,3 +1,46 @@
-<p>
-  tenders works!
-</p>
+<div class="tenders">
+  <div class="title">
+    <h1>Tenders</h1>
+  </div>
+  <div class="tender-contents">
+    <table class="table">
+      <thead>
+        <th><span>
+            Description
+          </span></th>
+        <th>
+          <span>
+            Publish date
+          </span>
+        </th>
+        <th>
+          <span>
+            Closing date
+          </span>
+        </th>
+      </thead>
+      <tbody *ngIf="tenders">
+        <tr class="tender"  *ngFor="let tn of tenders">
+          <td class="description">
+            <a class="headline" [routerLink]="['/opportunities/tender', tn.id]">
+              {{ tn.title.rendered }}
+            </a>
+            <p class="tender-brief">
+              {{ getBrief(tn.content.rendered) }}
+            </p>
+          </td>
+          <td>
+            <span>
+              {{ tn.date }}
+            </span>
+          </td>
+          <td>
+            <span>
+              {{ tn.acf.closing_date }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

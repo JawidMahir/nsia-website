@@ -17,11 +17,11 @@ export class NavbarComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private router: Router,
-    private dataService: DataService
+    private dataService: DataService,
   ) {
 
-    translate.setDefaultLang('en');
-    this.langeuageChangeListener();
+    // translate.setDefaultLang('en');
+    // this.langeuageChangeListener();
 
   }
 
@@ -66,6 +66,12 @@ export class NavbarComponent implements OnInit {
     window.onscroll = () => {
       that.makeNavbarSticky(sticky);
     };
+
+
+    /**
+     * Detecte language change on reload
+     */
+    $('#lang-change').val(this.dataService.language);
   }
 
   toggleRespNav() {
@@ -79,16 +85,19 @@ export class NavbarComponent implements OnInit {
     // When the language changes, refresh the component to fetch the
     // language specific contents
     this.translate.onLangChange.subscribe((event) => {
-      console.log(event.lang);
-      console.log(location.pathname);
       this.dataService.language = event.lang;
+      // Save the language into localstorage for future reference
+      localStorage.setItem('lang', event.lang);
       if (event.lang !== 'en') {
         $('body').addClass('rtl');
       } else {
         $('body').removeClass('rtl');
       }
+      console.log('the path is :', location.pathname);
+      const pt = location.pathname;
+
       this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
-        this.router.navigate([location.pathname]));
+        this.router.navigate([pt]));
     });
   }
 

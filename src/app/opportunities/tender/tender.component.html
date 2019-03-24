@@ -1,0 +1,42 @@
+<div class="tender" *ngIf="selectedTender; else nodata">
+  <h1 class="title">
+    {{ selectedTender.title.rendered }}
+  </h1>
+  <div class="tender-details">
+
+    <div class="p-date">
+
+      <span>Publish date:</span>
+      <strong>{{ selectedTender.date }}</strong>
+    </div>
+
+
+    <div class="c-date">
+      <span>Closing date:</span>
+      <strong>{{ selectedTender.acf.closing_date }}</strong>
+    </div>
+
+
+    <div class="t-number">
+      <span>Tender Number:</span>
+      <strong>{{ selectedTender.acf.tender_number }}</strong>
+    </div>
+
+
+    <div class="t-city">
+      <span>City:</span>
+      <strong>{{ selectedTender.acf.city }}</strong>
+    </div>
+
+  </div>
+  <div class="tender-description">
+    <h4>Description:</h4>
+    <hr>
+    <p>{{ selectedTender.content.rendered }}</p>
+  </div>
+</div>
+<ng-template class="container" #nodata>
+  <div class="jumbotron text-center no-data">
+    NO DATA
+  </div>
+</ng-template>
