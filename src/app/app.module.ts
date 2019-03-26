@@ -6,7 +6,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
-import {NgxPaginationModule} from 'ngx-pagination';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Import shared Module here
@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { RouterModule } from '@angular/router';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -43,6 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     LoadingBarHttpClientModule,
     LoadingBarModule,
+    RouterModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {

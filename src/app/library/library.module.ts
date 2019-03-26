@@ -10,6 +10,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { LibraryHomeComponent } from './library-home/library-home.component';
 import { ReportsComponent } from './reports/reports.component';
 import { LibraryComponent } from './library/library.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -22,11 +23,12 @@ export function createTranslateLoader(http: HttpClient) {
     LibraryHomeComponent,
     ReportsComponent,
     LibraryComponent
-  ],
+  ],  
   imports: [
     CommonModule,
     LibraryRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

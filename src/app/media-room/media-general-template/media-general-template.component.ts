@@ -10,15 +10,6 @@ import { DataService } from 'src/app/data.service';
 })
 export class MediaGeneralTemplateComponent implements OnInit {
   news='';
-  title: any;
-  contents = {
-    contents: null,
-    date:null,
-    image: {
-      url: '',
-      alt: ''
-    }
-  };
   id:any;
   constructor(private route: ActivatedRoute,
               private dataService: DataService) {}
@@ -37,11 +28,6 @@ export class MediaGeneralTemplateComponent implements OnInit {
     customParams.push('date');
     this.dataService.getPostDetails(id,customParams).subscribe((newsData) => {
       this.news = this.refineData(newsData[0]);
-      this.title=this.news['title']['rendered'];
-      this.contents.contents = this.news['content']['rendered'];
-      this.contents.date = this.news['date'];
-      this.contents.image.url = this.news['better_featured_image']['source_url'];
-      this.contents.image.alt = this.news['better_featured_image']['alt_text'];
     });
   }
   
@@ -53,6 +39,13 @@ export class MediaGeneralTemplateComponent implements OnInit {
         data.content.rendered = this.dataService.htmlToPlaintext(data.content.rendered);
       }
     return data;
+  }
+
+  imageError(el) {
+    el.onerror = '';
+    el.src = '../../assets/images/noimage.png';
+    console.log(el);
+    return true;
   }
   
 }

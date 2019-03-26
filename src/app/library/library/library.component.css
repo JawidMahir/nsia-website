@@ -1,0 +1,31 @@
+.lib-btn{
+    display: inline;
+    text-align: center;
+    font-weight: bold !important;
+    border: 1px solid #282560;
+    margin: 5px; 
+    text-transform: uppercase;
+    cursor: pointer;
+    padding-top:10px;
+}
+.lib{
+    margin: 3% 8%;
+}
+.active-libraray {
+    background-color: #282560;   
+    color:#fff;
+}
+img{
+    height: 75%;
+    width: 70%;
+}
+h5{
+    font-weight: bold !important;
+    margin-top: 20px; 
+}
+.content{
+    text-align: center;
+}
+a{
+    color:#282560;
+}

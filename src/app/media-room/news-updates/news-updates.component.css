@@ -3,7 +3,6 @@
     overflow-wrap: break-word;
     padding:15px; 
     font-weight: bold !important;
-    border : 1px solid transparent;
     border-left : 1px solid #282560; 
 }
 .globalsidebar a {
@@ -41,8 +40,7 @@ a{
     margin-bottom: 20px;
     overflow-wrap: break-word;
 }
-
-.news-date { 
+.attachment-type { 
     bottom: 0;
     position: absolute;
     left: 0;
@@ -54,7 +52,7 @@ a{
 }
 .pmaterial{
     background-color: #01a79b; 
-    margin-left:20px;
+    margin:0px 10px;
     margin-bottom: 20px;
 }
 a:hover:not(.active) {
@@ -66,4 +64,9 @@ a:hover:not(.active) {
 }
 .text-center {
     text-align: center;
+}
+.icon{
+    height: 80%;
+    width: 50%;
+    margin : auto;
 }

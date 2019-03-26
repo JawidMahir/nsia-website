@@ -30,7 +30,7 @@ const mediaRoutes: Routes = [
           { path: 'poster', component: PostersComponent },
           { path: 'booklet', component: BookletComponent },
           { path: 'brochures', component: BrochuresComponent },
-          { path: 'media/:id', component: MediaGeneralTemplateComponent},
+          { path: 'news/:id', component: MediaGeneralTemplateComponent},
           { path: '', component: MediaRoomComponent }
         ]
       }
