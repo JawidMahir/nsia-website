@@ -7,14 +7,14 @@
             <img src="../../assets/images/newsIcon.png" alt="News">
           </div>
           <div class="col-md-9 col-sm-7 col-xs-4 display">
-            <a href="#home">
-            {{ nw.title.rendered }}
-           </a>
+            <a [routerLink]="['/media-room/news', nw.id]"> 
+            {{ nw.title.rendered }} 
+            </a> 
            <p>{{ nw.date }}</p>
           </div>
         </div> 
      </div>
-    <ng-template #nonews>
+    <ng-template #nonews> 
       <div class="jumbotron text-center no-data">
         <h4>NO DATA</h4>
       </div>

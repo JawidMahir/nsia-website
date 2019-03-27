@@ -7,17 +7,20 @@
                   <h4>{{ 'sidebar.title' | translate }}</h4><br> 
                     <div class="row news" *ngFor="let nw of newsBriefs.news | paginate: { itemsPerPage: 4 , currentPage: p }">
                         <div class="col-md-4 col-sm-7">
-                            <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
+                            <img src="{{ nw.better_featured_image?.source_url }}" alt="{{ nw.better_featured_image?.alt_text }}"
                             (error)="imageError($event.target);">
-                            <div class="news-date">
-                                <p>image</p>
+                            <div class="attachment-type">
+                                <p *ngIf="nw.acf.attachment_type == 'image' else vedio;">image</p>
+                                <ng-template #vedio>
+                                  <p>vedio</p>
+                                </ng-template>
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-5">
-                                <div>
+                                <div> 
                                     <h5>{{ nw.title.rendered }}</h5>
-                                    <p>{{ nw.content.rendered }}</p>
-                                    <a [routerLink]="['../media', nw.id]">Read more ...</a><br>
+                                    <p>{{ getBrief(nw.content.rendered) }}</p>
+                                    <a [routerLink]="['../news', nw.id]">Read more ...</a><br>
                                     <span>{{ nw.date }}</span>
                                 </div>
                         </div>

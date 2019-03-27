@@ -7,6 +7,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -22,6 +23,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ChooseLangComponent } from './choose-lang/choose-lang.component';
 import { MainComponent } from './main/main.component';
+import { RouterModule } from '@angular/router';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -48,6 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     LoadingBarHttpClientModule,
     LoadingBarModule,
+    RouterModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {

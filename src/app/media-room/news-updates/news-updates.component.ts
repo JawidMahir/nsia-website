@@ -12,8 +12,7 @@ export class NewsUpdatesComponent implements OnInit {
     news: ''
   };
 
-  constructor(private dataService: DataService) { 
-  }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.getNewsData('news' , 5);
@@ -23,12 +22,14 @@ export class NewsUpdatesComponent implements OnInit {
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('content.rendered');
+    customParams.push('acf.attachment_type');
     customParams.push('better_featured_image.source_url');
     customParams.push('better_featured_image.alt_text');
     customParams.push('date');
     customParams.push('id');
     this.dataService.getCardsData(customParams, type, perPage).subscribe((newsData) => {
      this.newsBriefs['news'] = this.refineData(newsData);
+     console.log(this.newsBriefs['news']);
     });
   } 
   
@@ -43,6 +44,20 @@ export class NewsUpdatesComponent implements OnInit {
     }
     return data;
   }
-  
 
+  getBrief(ds) {
+    if (ds.length > 40) {
+      return ds.substring(0, 260) + '...';
+    }
+    return ds;
+  }
+
+  imageError(el) {
+    el.onerror = '';
+    el.src = '../../assets/images/noimage.png';
+    console.log(el);
+    return true;
+  }
+
+  
 }

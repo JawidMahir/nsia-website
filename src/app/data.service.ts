@@ -100,7 +100,6 @@ export class DataService {
     });
   }
 
-
   htmlToPlaintext(text) {
     return text ? String(text).replace(/<[^>]+>/gm, '') : '';
   }

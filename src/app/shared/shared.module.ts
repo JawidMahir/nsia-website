@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -19,6 +20,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     CommonModule,
+    RouterModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

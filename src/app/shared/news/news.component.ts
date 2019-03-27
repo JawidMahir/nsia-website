@@ -27,6 +27,7 @@ export class NewsComponent implements OnInit {
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('date');
+    customParams.push('id');
     this.dataService.getCardsData(customParams, type, perPage).subscribe((newsData) => {
      this.newsBriefs['news'] = this.refineData(newsData);
     });
