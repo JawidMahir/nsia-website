@@ -1,3 +1,22 @@
-<p>
-  structure works!
-</p>
+<div class="about-us structure" *ngIf="structure; else nodata">
+    <div class="title-wrapper">
+      <h4 class="title" >{{ structure.title.rendered }}</h4>
+    </div>
+    <div class="description">
+      <p>{{ structure.content?.rendered }}</p>
+      <div class="org-str">
+        <div class="download-btn">
+          <i class="fas fa-file-pdf"></i>
+          <span>download</span>
+        </div>
+        <div class="feature-image">
+          <img [src]="structure.better_featured_image.source_url" alt="Structure">
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #nodata>
+    <div class="jumbotron text-center no-data">
+      <h4>NO DATA</h4>
+    </div>
+  </ng-template>

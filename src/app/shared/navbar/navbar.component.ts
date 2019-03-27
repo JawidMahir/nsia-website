@@ -26,9 +26,13 @@ export class NavbarComponent implements OnInit {
   }
 
 
+
+
   ngOnInit() {
     const that = this;
     let currentRoute = '';
+
+    window.onload = this.showActiveTab;
 
     this.navbar = document.getElementById('navbar');
 
@@ -43,7 +47,7 @@ export class NavbarComponent implements OnInit {
           $('#home').addClass('active');
         } else {
           const url = currentRoute.split('/')[1];
-          $('[routerLink=' + url + ']').closest('.nav-item').addClass('active');
+          $('[routerLink="/' + url + '"]').closest('.nav-item').addClass('active');
         }
       }
     });
@@ -78,6 +82,19 @@ export class NavbarComponent implements OnInit {
     $('#responsive-nav').toggleClass('r-show');
     console.log('I am clicked');
 
+  }
+
+  showActiveTab() {
+    let currentRoute = '';
+    $('.nav-item').removeClass('active');
+
+    currentRoute = location.pathname.toString();
+    if (currentRoute === '/home') {
+      $('#home').addClass('active');
+    } else {
+      const url = currentRoute.split('/')[1];
+      $('[routerLink="/' + url + '"]').closest('.nav-item').addClass('active');
+    }
   }
 
   langeuageChangeListener() {

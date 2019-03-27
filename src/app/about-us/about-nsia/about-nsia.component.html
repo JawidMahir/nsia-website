@@ -1,19 +1,40 @@
-<div class="margin-top">
-  <div class="custom-container">
-    <div class="section-wrapper">
-      <div class="row">
-        <div class="col-12 col-md-8 col-sm-8 col-lg-8 col-xs-9">
-          <div class="content">
-            <h4>About NSIA</h4>
-            <p>This example use media queries to transform the sidebar to a top navigation bar when the screen size is
-              700px or less.</p>
-            <p>We have also added a media query for screens that are 400px or less, which will vertically stack and
-              center the navigation links.</p>
-          </div>
+<div class="about-us about-nsia" *ngIf="aboutNSIA; else nodata">
+  <div class="title-wrapper">
+    <h4 class="title">{{ aboutNSIA.title.rendered }}</h4>
+  </div>
+  <div class="vision-mission">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="title">
+          <h5>our vision</h5>
         </div>
-        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-11">
+        <div class="vision">
+          <p>{{ aboutNSIA.acf?.vision }}</p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="title">
+          <h5>our mission</h5>
+        </div>
+        <div class="mission">
+          <p>{{ aboutNSIA.acf?.mission }}</p>
         </div>
       </div>
     </div>
   </div>
+  <div class="about-details">
+    <div class="featured-video">
+        <!-- <iframe src="https://www.youtube.com/embed/EDN6l8wLn5o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      <iframe [src]="videoURL(aboutNSIA.acf.about_link)" frameborder="0" allow="autoplay; encrypted-media"
+        allowfullscreen></iframe>
+    </div>
+    <div class="details">
+      <p>{{ aboutNSIA.content?.rendered }}</p>
+    </div>
+  </div>
 </div>
+<ng-template #nodata>
+  <div class="jumbotron text-center no-data">
+    <h4>NO DATA</h4>
+  </div>
+</ng-template>

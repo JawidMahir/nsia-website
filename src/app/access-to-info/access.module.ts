@@ -6,6 +6,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AccessRoutingModule } from './access-routing.module';
 
+import { ScrollSpyDirective } from '../scrollspy.directive';
+
+
 import { AccessHomeComponent } from './access-home/access-home.component';
 import { GuidelinesComponent } from './guidelines/guidelines.component';
 import { NationalIdentityComponent } from './national-identity/national-identity.component';
@@ -26,7 +29,8 @@ export function createTranslateLoader(http: HttpClient) {
     PoliciesComponent,
     RegulationsComponent,
     StatisticsComponent,
-    AccessToInfoComponent
+    AccessToInfoComponent,
+    ScrollSpyDirective
   ],
   imports: [
     CommonModule,

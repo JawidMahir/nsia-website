@@ -36,69 +36,29 @@ import { DataService } from './data.service';
 })
 export class AppComponent implements OnInit {
 
-  title = 'NSIA';
-  currentPath;
-
   constructor(private router: Router, private dataService: DataService, private translateService: TranslateService) { }
 
   ngOnInit() {
-    const that = this;
 
-    this.checkDefaultLanguage();
-
-    // If the page is refreshed then this is called
-    this.createNavigationBreadPath();
-
-
-    // tslint:disable-next-line: space-before-function-paren
-    $(window).scroll(function () {
-      if ($(this).scrollTop() > 100) {
-        $('#scroll').fadeIn();
-      } else {
-        $('#scroll').fadeOut();
-      }
-    });
-    $('#scroll').click(() => {
-      $('html, body').animate({ scrollTop: 0 }, 600);
-      return false;
-    });
-
-
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        that.createNavigationBreadPath();
-      }
-    });
-  }
-  createNavigationBreadPath() {
-    this.currentPath = this.router.url.toString().split('/');
-
-    if (this.currentPath.includes('home')) {
-      this.currentPath = [];
+    if (location.pathname === '/') {
+      this.router.navigate(['choose-lang']);
+    } else {
+      this.checkDefaultLanguage();
     }
-    console.log('path:  ', this.currentPath);
   }
 
-  getPage(outlet) {
-    // tslint:disable-next-line: no-string-literal
-
-    return outlet.activatedRouteData.state;
-  }
 
   checkDefaultLanguage() {
     const lang = localStorage.getItem('lang');
     if (lang) {
       this.dataService.language = lang;
       this.translateService.use(lang);
-      console.log('app component: ', location.pathname);
-
-      this.router.navigate([location.pathname]);
-      // // this.dataService.callNavbarCmpMethod();
-      // if (lang !== 'en') {
-      //   $('body').addClass('rtl');
-      // }
+      if (lang !== 'en') {
+        $('body').toggleClass('rtl');
+      }
     } else {
-      this.translateService.setDefaultLang('en');
+      this.dataService.redirectPath = location.pathname;
+      this.router.navigate(['choose-lang']);
     }
   }
 

@@ -48,6 +48,14 @@
   float: left !important;
 }
 
+.rtl .contact-details .c-item {
+  direction: ltr;
+}
+
+.rtl #navbar a {
+  float: right !important;
+}
+
 .rtl .c-item {
   margin-left: 0px !important;
   margin-right: 30px !important;
@@ -81,9 +89,9 @@
 /*
 * NEWS Related RTL CSS
 */
-.rtl .verticalLine {
-  border-left: none;
-  border-right: 1px solid #282560;
+.rtl .globalsidebar {
+  border-left: none !important;
+  border-right: 1px solid #282560 !important;
 }
 
 

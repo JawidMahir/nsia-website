@@ -1,0 +1,29 @@
+
+/* First Primary: #01a79b green */
+/* Second Primary: #282560 blue */
+
+
+.download-btn {
+    width: fit-content;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #01a79b;
+    color: #fff;
+    position: absolute;
+}
+
+.download-btn span {
+    margin-left: 4px;
+    text-transform: capitalize;
+}
+
+.download-btn i {
+    color: #282560;
+}
+
+.org-str {
+    margin-top: 3rem; 
+}
+.feature-image img{
+    width: 100%;
+}

@@ -16,7 +16,7 @@ export class NewsUpdatesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getNewsData('news' , 5); 
+    this.getNewsData('news' , 5);
   }
 
   getNewsData(type , perPage ){

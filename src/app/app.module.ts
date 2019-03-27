@@ -6,8 +6,9 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 // Import shared Module here
 import { SharedModule } from './shared/shared.module';
@@ -19,6 +20,8 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ChooseLangComponent } from './choose-lang/choose-lang.component';
+import { MainComponent } from './main/main.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -34,6 +37,8 @@ export function createTranslateLoader(http: HttpClient) {
     NotFoundComponent,
     FooterComponent,
     ContactUsComponent,
+    ChooseLangComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,

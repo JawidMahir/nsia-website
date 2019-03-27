@@ -294,11 +294,21 @@ export class HomeComponent implements OnInit {
     this.carousel.nid = data[4];
 
     // Strip HTML tags from the contents
-    this.carousel.nsia.content.rendered = this.dataService.htmlToPlaintext(this.carousel.nsia.content.rendered);
-    this.carousel.isd.content.rendered = this.dataService.htmlToPlaintext(this.carousel.isd.content.rendered);
-    this.carousel.gis.content.rendered = this.dataService.htmlToPlaintext(this.carousel.gis.content.rendered);
-    this.carousel.stats.content.rendered = this.dataService.htmlToPlaintext(this.carousel.stats.content.rendered);
-    this.carousel.nid.content.rendered = this.dataService.htmlToPlaintext(this.carousel.nid.content.rendered);
+    if (this.carousel.nsia.content) {
+      this.carousel.nsia.content.rendered = this.dataService.htmlToPlaintext(this.carousel.nsia.content.rendered);
+    }
+    if (this.carousel.isd.content) {
+      this.carousel.isd.content.rendered = this.dataService.htmlToPlaintext(this.carousel.isd.content.rendered);
+    }
+    if (this.carousel.gis.content) {
+      this.carousel.gis.content.rendered = this.dataService.htmlToPlaintext(this.carousel.gis.content.rendered);
+    }
+    if (this.carousel.stats.content) {
+      this.carousel.stats.content.rendered = this.dataService.htmlToPlaintext(this.carousel.stats.content.rendered);
+    }
+    if (this.carousel.nid.content) {
+      this.carousel.nid.content.rendered = this.dataService.htmlToPlaintext(this.carousel.nid.content.rendered);
+    }
   }
 
   getInitialStats() {

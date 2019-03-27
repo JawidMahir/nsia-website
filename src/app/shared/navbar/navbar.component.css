@@ -167,9 +167,13 @@
   height: fit-content;
 }
 
+#navbar .nav-item.active .fas {
+  color: #01a79b !important;
+}
+
 #navbar .nav-item.active .fa-chevron-down {
   margin-top: 18px !important;
-  color: #01a79b;
+  color: #01a79b !important;
 }
 
 #navbar .dropdown-menu {

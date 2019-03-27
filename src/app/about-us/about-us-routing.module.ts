@@ -27,7 +27,7 @@ const aboutRoutes: Routes = [
           { path: 'gender', component: GenderComponent },
           { path: 'structure', component: StructureComponent },
           { path: 'biographies', component: BiographiesComponent },
-          { path: '', component: AboutUsComponent}
+          { path: '', component: AboutNsiaComponent}
         ]
       }
     ]

@@ -1,1 +1,208 @@
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+<div class="custom-container">
+
+  <div class="full-details">
+    <div class="info-wrapper">
+      <h1>HI</h1>
+      <div class="info-details">
+        <div class="full-media">
+          <img class="fit-cover" src="../../../assets/images/news1.png" alt="image">
+        </div>
+        <div class="full-text">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat vero accusamus quam omnis. Illum magni
+            autem perferendis sapiente deserunt laudantium facilis eaque quidem, quia repellat quisquam temporibus
+            corporis ex accusantium qui maxime eius pariatur voluptate consequatur cupiditate reiciendis iure eos sunt
+            eligendi? Exercitationem commodi magnam, expedita rem nam eum consectetur ad a explicabo veritatis
+            perspiciatis vero autem voluptate nostrum modi fugiat molestias, sunt quas cumque, sapiente nulla pariatur
+            itaque voluptates! Veritatis iure nulla excepturi, id rerum cum nisi eius voluptates assumenda quae beatae
+            ipsam commodi tempore magnam quaerat culpa repellendus.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat vero accusamus quam omnis. Illum magni
+            autem perferendis sapiente deserunt laudantium facilis eaque quidem, quia repellat quisquam temporibus
+            corporis ex accusantium qui maxime eius pariatur voluptate consequatur cupiditate reiciendis iure eos sunt
+            eligendi? Exercitationem commodi magnam, expedita rem nam eum consectetur ad a explicabo veritatis
+            perspiciatis vero autem voluptate nostrum modi fugiat molestias, sunt quas cumque, sapiente nulla pariatur
+            itaque voluptates! Veritatis iure nulla excepturi, id rerum cum nisi eius voluptates assumenda quae beatae
+            ipsam commodi tempore magnam quaerat culpa repellendus.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat vero accusamus quam omnis. Illum magni
+            autem perferendis sapiente deserunt laudantium facilis eaque quidem, quia repellat quisquam temporibus
+            corporis ex accusantium qui maxime eius pariatur voluptate consequatur cupiditate reiciendis iure eos sunt
+            eligendi? Exercitationem commodi magnam, expedita rem nam eum consectetur ad a explicabo veritatis
+            perspiciatis vero autem voluptate nostrum modi fugiat molestias, sunt quas cumque, sapiente nulla pariatur
+            itaque voluptates! Veritatis iure nulla excepturi, id rerum cum nisi eius voluptates assumenda quae beatae
+            ipsam commodi tempore magnam quaerat culpa repellendus.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat vero accusamus quam omnis. Illum magni
+            autem perferendis sapiente deserunt laudantium facilis eaque quidem, quia repellat quisquam temporibus
+            corporis ex accusantium qui maxime eius pariatur voluptate consequatur cupiditate reiciendis iure eos sunt
+            eligendi? Exercitationem commodi magnam, expedita rem nam eum consectetur ad a explicabo veritatis
+            perspiciatis vero autem voluptate nostrum modi fugiat molestias, sunt quas cumque, sapiente nulla pariatur
+            itaque voluptates! Veritatis iure nulla excepturi, id rerum cum nisi eius voluptates assumenda quae beatae
+            ipsam commodi tempore magnam quaerat culpa repellendus.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat vero accusamus quam omnis. Illum magni
+            autem perferendis sapiente deserunt laudantium facilis eaque quidem, quia repellat quisquam temporibus
+            corporis ex accusantium qui maxime eius pariatur voluptate consequatur cupiditate reiciendis iure eos sunt
+            eligendi? Exercitationem commodi magnam, expedita rem nam eum consectetur ad a explicabo veritatis
+            perspiciatis vero autem voluptate nostrum modi fugiat molestias, sunt quas cumque, sapiente nulla pariatur
+            itaque voluptates! Veritatis iure nulla excepturi, id rerum cum nisi eius voluptates assumenda quae beatae
+            ipsam commodi tempore magnam quaerat culpa repellendus.</p>
+        </div>
+      </div>
+    </div>
+    <div class="close-btn" (click)="hideFullInfo()">
+      X
+    </div>
+  </div>
+
+  <div class="main-wrapper">
+
+    <nav class="sidebar-nav">
+      <div class="sidebar">
+        <div class="sidebar-menu">
+          <ul>
+            <li class="ai-type active-type" (click)="scrollTo('section1', $event.target)">
+              <i class="fas fa-chevron-right"></i>
+              <span>Guidlines</span>
+            </li>
+            <li class="ai-type " (click)="scrollTo('section2', $event.target)">
+              <i class="fas fa-chevron-right"></i>
+
+              <span>Statistics</span>
+            </li>
+            <li class="ai-type " (click)="scrollTo('section3', $event.target)">
+              <i class="fas fa-chevron-right"></i>
+              <span>National Identity</span>
+            </li>
+            <li class="ai-type " (click)="scrollTo('section4', $event.target)">
+              <i class="fas fa-chevron-right"></i>
+              <span>Regulations</span>
+            </li>
+            <li class="ai-type " (click)="scrollTo('section5', $event.target)">
+              <i class="fas fa-chevron-right"></i>
+              <span>Policies</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+    <div class="sidebar-toggler">
+      <div class="t-btn" (click)="toggleNavbar()">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+    <div class="contents">
+
+      <!-- <router-outlet></router-outlet> -->
+      <div id="ai-sections" scrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)">
+        <div id="section1">
+          <div class="section-title active-section">
+            <h4 class="info-section ">Section 1</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="section-details">
+            <div class="row">
+
+              <div class="info-card col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="info-item" (click)="showInfo()">
+                  <div class="info-item-media">
+                    <img src="../../../assets/images/news1.png" alt="media item">
+                    <div class="blue-mask"></div>
+                  </div>
+                  <div class="info-item-title">
+                    <p>Something happened</p>
+                  </div>
+                  <div class="info-item-brief">
+                    <small>I told you something has happend</small>
+                  </div>
+                </div>
+              </div>
+              <div class="info-card col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="info-item" (click)="showInfo()">
+                  <div class="info-item-media">
+                    <img src="../../../assets/images/news1.png" alt="media item">
+                  </div>
+                  <div class="info-item-title">
+                    <p>Something happened</p>
+                  </div>
+                  <div class="info-item-brief">
+                    <small>I told you something has happend</small>
+                  </div>
+                </div>
+              </div>
+              <div class="info-card col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="info-item" (click)="showInfo()">
+                  <div class="info-item-media">
+                    <img src="../../../assets/images/news1.png" alt="media item">
+                  </div>
+                  <div class="info-item-title">
+                    <p>Something happened</p>
+                  </div>
+                  <div class="info-item-brief">
+                    <small>I told you something has happend</small>
+                  </div>
+                </div>
+              </div>
+              <div class="info-card col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="info-item" (click)="showInfo()">
+                  <div class="info-item-media">
+                    <img src="../../../assets/images/news1.png" alt="media item">
+                  </div>
+                  <div class="info-item-title">
+                    <p>Something happened</p>
+                  </div>
+                  <div class="info-item-brief">
+                    <small>I told you something has happend</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div id="section2">
+          <div class="section-title">
+            <h4 class="info-section ">Section 2</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed suscipit tenetur temporibus fugit culpa
+            fugiat non eligendi ipsum placeat accusamus. Ullam quos, sed et esse quae, cum deleniti unde facere debitis
+            distinctio dolore inventore vitae aut quidem. Totam, unde quo?</div>
+        </div>
+        <div id="section3">
+          <div class="section-title">
+            <h4 class="info-section ">Section 3</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed suscipit tenetur temporibus fugit culpa
+            fugiat non eligendi ipsum placeat accusamus. Ullam quos, sed et esse quae, cum deleniti unde facere debitis
+            distinctio dolore inventore vitae aut quidem. Totam, unde quo?</div>
+        </div>
+        <div id="section4">
+          <div class="section-title">
+            <h4 class="info-section ">Section 4</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed suscipit tenetur temporibus fugit culpa
+            fugiat non eligendi ipsum placeat accusamus. Ullam quos, sed et esse quae, cum deleniti unde facere debitis
+            distinctio dolore inventore vitae aut quidem. Totam, unde quo?</div>
+        </div>
+
+        <div id="section5">
+          <div class="section-title">
+            <h4 class="info-section ">Section 5</h4>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed suscipit tenetur temporibus fugit culpa
+            fugiat non eligendi ipsum placeat accusamus. Ullam quos, sed et esse quae, cum deleniti unde facere debitis
+            distinctio dolore inventore vitae aut quidem. Totam, unde quo?</div>
+        </div>
+      </div>
+    </div>
+    <!-- <ng-template #nodata>
+          <div class="contents">
+            <div class="jumbotron text-center no-data">
+              <h4>NO DATA</h4>
+            </div>
+          </div>
+        </ng-template> -->
+  </div>
+</div>

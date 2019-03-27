@@ -114,11 +114,21 @@
   float: right;
 }
 
+.footer .social-media .s-media {
+  display: inline-block;
+  background-color: #01a79b;
+  margin: 1px;
+  min-width: 45px;
+}
+
 .footer .social-media a {
   color: #fff;
   transition: color .1s ease-in-out;
+  height: 100%;
+  width: 100%;
+  display: block;
 }
 
 .footer .social-media a:hover {
-  color: #01a79b;
+  color: #282560;
 }

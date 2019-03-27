@@ -1,4 +1,20 @@
-h4{
-    font-weight: bold !important;
+/* First Primary: #01a79b green */
+/* Second Primary: #282560 blue */
+
+
+.about-nsia .vision-mission,
+.about-nsia .vision-mission .title {
+    border-bottom: 1px solid #282560;
+    margin-bottom: 15px;
 }
 
+
+.about-nsia .about-details .featured-video {
+    margin: 4% 0px;
+}
+
+.about-nsia .about-details .featured-video iframe,
+.about-nsia .about-details .featured-video img {
+    width: 100%;
+    height: 400px;
+}

@@ -1,0 +1,141 @@
+.sidebar-menu ul {
+  list-style: none;
+}
+
+.sidebar-menu ul li {
+  display: block;
+  border-top: 1px solid #282560;
+  padding: 8px 4px;
+  cursor: pointer;
+}
+
+.sidebar-menu ul li span {
+  margin: 0px;
+  margin: 4px;
+}
+
+.active-type {
+  color: #282560;
+  font-weight: 600;
+}
+
+.sidebar-menu ul li.active-type i {
+  visibility: visible !important;
+}
+
+.section-title.active-section {
+  color: #01a79b;
+  border-bottom: 2px solid #01a79b !important;
+}
+
+.section-title.active-section .info-section {
+  color: #282560 !important;
+}
+
+#ai-sections {
+  height: 450px;
+  overflow-y: scroll;
+  padding: 0px 2px;
+  overflow-x: hidden;
+}
+
+#ai-sections .section-title {
+  display: flex;
+  border-bottom: 1px solid #282560;
+  margin: 1rem 0px;
+}
+
+#ai-sections .section-title .info-section {
+  flex: auto;
+  color: #d2d0d0;
+  margin-bottom: 0px !important;
+}
+
+#ai-sections .section-title i {
+  margin: 12px;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+
+}
+
+.info-card {
+    margin-bottom: 2rem;
+}
+
+.info-item {
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.info-item-media {
+    overflow: hidden;
+}
+
+.info-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: .2s ease-in-out;
+}
+
+.info-item:hover img {
+    transform: scale(1.1);
+}
+
+.info-item .info-item-title p {
+    margin: 0px !important;
+    font-weight: 600;
+}
+
+.full-details {
+    position: fixed;
+    display: none;
+    background-color: #282560e3;
+    z-index: 1200;
+    /* height: 100%; */
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: scroll;
+}
+
+.full-details .info-wrapper {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 50vw;
+    color: #fff;
+    
+}
+
+.full-details .info-wrapper ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.full-details .info-wrapper .full-text {
+    margin-top: 2rem;
+}
+
+
+.full-details .info-wrapper .full-media img {
+    width: 100%;
+    height: 350px;
+}
+
+.full-details .close-btn {
+    color: #fff;
+    position: absolute;
+    right: 200px;
+    top: 77px;
+    padding: 1px 12px;
+    background-color: #01a79b;
+    color: #282560;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 600;
+}

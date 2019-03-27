@@ -1,0 +1,18 @@
+.bios .uni-logo img {
+  width: 75%;
+}
+
+.bios .bio {
+  margin-bottom: 2rem;
+}
+
+
+.bios .bio-name {
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.bios .details {
+    color: gray;
+    text-align: justify;
+}
