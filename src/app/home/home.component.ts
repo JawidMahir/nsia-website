@@ -253,6 +253,13 @@ export class HomeComponent implements OnInit {
 
   }
 
+  getBrief(ds) {
+    if (ds.length > 100) {
+      return ds.substring(0, 99) + '...';
+    }
+    return ds;
+  }
+
 
 
   getCarouselSlides() {

@@ -11,7 +11,8 @@
           <hr>
           <strong>E-mail:</strong><span> info@accra.gov.af </span>
           <hr>
-          <strong>Address:</strong><span> Sadarat Square, Inside Old MoI Building, Kabul - Afghanistan </span><br><br><br>
+          <strong>Address:</strong><span> Sadarat Square, Inside Old MoI Building, Kabul - Afghanistan
+          </span><br><br><br>
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="col-md-6"><br>
@@ -28,16 +29,19 @@
                 <input type="text" id="phone" formControlName='phone' placeholder="{{ 'input.phone' | translate }}">
                 <br>
 
-                <input type="text" id="organization" formControlName='organization' placeholder="{{ 'input.organization' | translate }}">
+                <input type="text" id="organization" formControlName='organization'
+                  placeholder="{{ 'input.organization' | translate }}">
 
               </div>
               <div class="col-md-6"><br><br><br><br>
-                <textarea id="message" formControlName='message' placeholder="{{ 'input.message' | translate }}" rows="6">
+                <textarea id="message" formControlName='message' placeholder="{{ 'input.message' | translate }}"
+                  rows="6">
                         </textarea>
-                <span *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched" class="help-block">{{
+                <span *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched"
+                  class="help-block">{{
                   'error.message' | translate }}</span><br>
 
-                <button class="subscribe-btn float-right">
+                <button class="subscribe-btn float-right"  [disabled]="contactForm.invalid">
                   {{ 'input.submit' | translate }}
                 </button>
               </div>

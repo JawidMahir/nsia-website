@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {formatDate } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { LibraryServicesService } from '../library-services.service';
 import * as $ from 'jquery';
 
@@ -10,6 +10,7 @@ import * as $ from 'jquery';
 })
 export class LibraryComponent implements OnInit {
   contents;
+  p;
   libraryContents = {
     books: '',
     surveys: '',
@@ -19,14 +20,14 @@ export class LibraryComponent implements OnInit {
     policies: ''
   };
 
-  constructor(private libraryService:LibraryServicesService) { }
+  constructor(private libraryService: LibraryServicesService) { }
 
   ngOnInit() {
-    let element : HTMLElement = document.getElementById('books') as HTMLElement;
+    const element: HTMLElement = document.getElementById('books') as HTMLElement;
     element.click();
   }
 
-  showLibraries(el){ 
+  showLibraries(el) {
     const id = $(el).closest('.lib-btn').attr('id');
     $('.lib-btn').removeClass('active-libraray');
     $(el).closest('.lib-btn').addClass('active-libraray');
@@ -38,13 +39,11 @@ export class LibraryComponent implements OnInit {
       customParams.push('better_featured_image.alt_text');
       customParams.push('acf.library_attachment.url');
       customParams.push('acf.library_attachment.filename');
-      this.libraryService.getLibraryData(customParams,id).subscribe((libraryData=>{
+      this.libraryService.getLibraryData(customParams, id).subscribe((libraryData => {
         this.libraryContents[id] = libraryData;
         this.contents = this.refineData(this.libraryContents[id]);
-        
       }));
-    }
-    else{
+    } else {
       this.contents = this.libraryContents[id];
     }
   }
@@ -59,7 +58,7 @@ export class LibraryComponent implements OnInit {
   refineData(data) {
     for (const el of data) {
       if (!el.hasOwnProperty('date')) {
-        el.date = '00'+'th'+'MNT'+'';
+        el.date = '00' + 'th' + 'MNT' + '';
       } else {
         el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
       }

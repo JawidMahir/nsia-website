@@ -25,11 +25,13 @@ export class DataService {
 
   serviceCmpMethodCalled$ = this.callToServiceMethodSource.asObservable();
 
+  constructor(private http: HttpClient) { }
+
+
   callServiceCmpMethod() {
     this.callToServiceMethodSource.next();
   }
 
-  constructor(private http: HttpClient) { }
 
 
   getPosts() {

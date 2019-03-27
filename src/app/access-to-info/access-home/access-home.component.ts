@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { DomSanitizer } from '@angular/platform-browser';
+import { InfoService } from '../info.service';
 
 @Component({
   selector: 'app-access-home',
@@ -8,15 +10,23 @@ import * as $ from 'jquery';
 })
 export class AccessHomeComponent implements OnInit {
 
-  currentSection = 'section1';
-  constructor() { }
+  currentSection = 'guidelines';
+  accessInfo;
+  selectedInfo;
+  constructor(private info: InfoService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.getAccessInfo();
   }
 
 
   onSectionChange(sectionId: string) {
     this.currentSection = sectionId;
+    console.log('section changed: ', this.currentSection);
+
+    $('.section-title').removeClass('active-section');
+    $('#' + this.currentSection).find('.section-title').addClass('active-section');
+
   }
 
   scrollTo(section, el) {
@@ -61,12 +71,70 @@ export class AccessHomeComponent implements OnInit {
 
   }
 
+  getScroll(el) {
+    // console.log($(el).scrollTop());
+  }
+
+  videoURL(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
   hideFullInfo() {
     $('.full-details').hide();
   }
 
-  showInfo() {
+  showInfo(info) {
+    this.selectedInfo = info;
     $('.full-details').show();
+  }
+
+  getAccessInfo() {
+    const customParams = [];
+    customParams.push('id');
+    customParams.push('title');
+    customParams.push('content');
+    customParams.push('better_featured_image.source_url');
+    customParams.push('acf');
+
+    this.info.getInfo(customParams).subscribe((data) => {
+      console.log('access info: ', data);
+      if (data) {
+        this.accessInfo = data;
+        for (const ai of this.accessInfo) {
+
+          if (ai.hasOwnProperty('content')) {
+            ai.content.rendered = this.info.htmlToPlaintext(ai.content.rendered);
+          }
+        }
+      }
+    });
+
+  }
+
+  sectionExist(sc) {
+    for (const section of this.accessInfo) {
+      if ((section.acf.info_type).toLowerCase() === sc) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  getBrief(ds) {
+    if (ds.length > 40) {
+      return ds.substring(0, 39) + '...';
+    }
+    return ds;
+  }
+
+
+
+  imageError(el) {
+    el.onerror = '';
+    el.src = '../../assets/images/noimage.png';
+    console.log(el);
+    return true;
   }
 
 }

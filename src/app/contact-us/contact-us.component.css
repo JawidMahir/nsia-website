@@ -16,6 +16,11 @@ input,textarea{
     color: #fff;
     border: none;
 }
+
+.subscribe-btn:disabled {
+    cursor: not-allowed;
+    color: #61607a;
+}
 strong{
     font-size: 17px;
 }
