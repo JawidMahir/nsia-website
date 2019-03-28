@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {formatDate } from '@angular/common';
-import { DataService } from '../../data.service';
+import { MediaServicesService } from '../media-services.service';
 
 @Component({
   selector: 'app-news-updates',
@@ -8,17 +8,15 @@ import { DataService } from '../../data.service';
   styleUrls: ['./news-updates.component.css']
 })
 export class NewsUpdatesComponent implements OnInit {
-  newsBriefs = {
-    news: ''
-  };
+    news: '';
 
-  constructor(private dataService: DataService) { }
+  constructor(private mediaService: MediaServicesService) { }
 
   ngOnInit() {
-    this.getNewsData('news' , 5);
+    this.getNewsData('news'); 
   }
 
-  getNewsData(type , perPage ){
+  getNewsData(type){
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('content.rendered');
@@ -27,9 +25,8 @@ export class NewsUpdatesComponent implements OnInit {
     customParams.push('better_featured_image.alt_text');
     customParams.push('date');
     customParams.push('id');
-    this.dataService.getCardsData(customParams, type, perPage).subscribe((newsData) => {
-     this.newsBriefs['news'] = this.refineData(newsData);
-     console.log(this.newsBriefs['news']);
+    this.mediaService.getMediaData(customParams, type).subscribe((newsData) => {
+     this.news = this.refineData(newsData);
     });
   } 
   
@@ -39,7 +36,7 @@ export class NewsUpdatesComponent implements OnInit {
         el.date = '00'+'th'+'MNT'+'';
       } else {
         el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
-        el.content.rendered = this.dataService.htmlToPlaintext(el.content.rendered);
+        el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
       }
     }
     return data;
@@ -52,7 +49,7 @@ export class NewsUpdatesComponent implements OnInit {
     return ds;
   }
 
-  imageError(el) {
+  imageError(el) { 
     el.onerror = '';
     el.src = '../../assets/images/noimage.png';
     console.log(el);
