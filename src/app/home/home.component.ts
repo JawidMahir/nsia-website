@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
       alt: ''
     }
   };
+  nsiaServiceText;
+  stakeHolders;
 
   carousel = {
     nsia: null,
@@ -33,6 +35,8 @@ export class HomeComponent implements OnInit {
     stats: null,
     nid: null
   };
+
+
 
 
   newsReadMore = '/media-room/news-updates';
@@ -67,10 +71,15 @@ export class HomeComponent implements OnInit {
     this.x = location.pathname;
     const that = this;
     $('.carousel').carousel({
-      interval: 4000,
+      interval: 400000,
       ride: 'carousel'
     });
 
+    // stakeholder-carousel
+
+    this.testFunction();
+
+    this.getNsiaText();
 
     /**
      * Get carousel slides data from server
@@ -82,7 +91,6 @@ export class HomeComponent implements OnInit {
     // instantiate the first news category on page load
     this.getCardsData('news', 4);
     this.getCardsData('events', 3);
-
 
 
     /** Listeners */
@@ -115,6 +123,68 @@ export class HomeComponent implements OnInit {
 
       that.getCardsData(categoryType, perPage);
 
+    });
+  }
+
+  testFunction() {
+    const dummyData = [
+      {
+        name: 'abc',
+        logo: '../../assets/logo/national-emblem.svg'
+      }, {
+        name: 'ahmad',
+        logo: '../../assets/logo/national-emblem.svg'
+      }, {
+        name: 'karim',
+        logo: '../../assets/logo/national-emblem.svg'
+      }, {
+        name: 'agha',
+        logo: '../../assets/logo/national-emblem.svg'
+      }, {
+        name: 'saheb',
+        logo: '../../assets/logo/national-emblem.svg'
+      }, {
+        name: 'samad',
+        logo: '../../assets/logo/national-emblem.svg'
+      }, {
+        name: 'un',
+        logo: '../../assets/logo/national-emblem.svg'
+      }, {
+        name: 'who',
+        logo: '../../assets/logo/national-emblem.svg'
+      }, {
+        name: 'me',
+        logo: '../../assets/logo/national-emblem.svg'
+      }, {
+        name: 'awesome',
+        logo: '../../assets/logo/national-emblem.svg'
+      },
+    ];
+    this.stakeHolders = [];
+    let threeArray = [];
+
+    for (let i = 0, j = 0; i < dummyData.length; i++) {
+      if (i % 3 === 0) {
+        this.stakeHolders.push(threeArray);
+        threeArray = [];
+        threeArray.push(dummyData[i]);
+      } else {
+        threeArray.push(dummyData[i]);
+      }
+    }
+
+    if (threeArray.length > 0) {
+      this.stakeHolders.push(threeArray);
+    }
+
+    console.log('My real array is: ', this.stakeHolders);
+  }
+
+  getNsiaText() {
+    this.dataService.getNsiaText().subscribe((data) => {
+      if (data[0]) {
+        this.nsiaServiceText = this.dataService.htmlToPlaintext(data[0].content.rendered);
+      }
     });
   }
 
@@ -254,8 +324,8 @@ export class HomeComponent implements OnInit {
   }
 
   getBrief(ds) {
-    if (ds.length > 100) {
-      return ds.substring(0, 99) + '...';
+    if (ds.length > 250) {
+      return ds.substring(0, 249) + '...';
     }
     return ds;
   }

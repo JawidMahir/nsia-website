@@ -2,12 +2,34 @@
     "lang.english": "English",
     "lang.dari": "دري",
     "lang.pashto": "پښتو",
-    "stats.population": "Population",
-    "stats.gdp": "GDP",
-    "stats.cpi": "CPI",
-    "stats.gender": "Gender",
-    "demo.title": "Translation demo {{name}}",
-    "demo.text": "This is a simple demonstration app for ngx-translate",
+
+    "label.no-data": "NO DATA",
+    "label.copy-right": "All rights reserved, National Statistics and Information Authority",
+
+    
+    "label.contact-us": "Contact Us",
+    "label.head-office": "NSIA HEAD OFFICE",
+    "label.search-website": "search website",
+    "label.nsia-service": "nsia services",
+    "label.population": "Population",
+    "label.gdp": "GDP",
+    "label.cpi": "CPI",
+    "label.gender": "Gender",
+    "label.latest-news": "latest news",
+    "label.latest-pubs": "latest publications",
+    "label.press-release": "press release",
+    "label.important-announce": "important announcements",
+    
+    "label.stakeholders": "stakeholders",
+    "label.donors": "donors",
+    "label.customers": "customers",
+
+
+    "label.upcoming-events": "upcoming events",
+    "label.upcoming-pubs": "upcoming publications",
+    "label.surveys": "surveys",
+    
+
     "menu.home": "home",
     "menu.about-us": "about us",
     "menu.services": "services",
@@ -15,6 +37,52 @@
     "menu.access-info": "access to info",
     "menu.media-room": "media room",
     "menu.opportunities": "opportunities",
+
+    "submenu.about-nsia": "About NSIA",
+    "submenu.biographies": "Biographies",
+    "submenu.gender": "Gender",
+    "submenu.structure": "Structure",
+    "submenu.statistics": "Statistics",
+    "submenu.nid": "National Identity",
+    "submenu.gis": "Geographical information Systems",
+    "submenu.isd": "Information Systems",
+    "submenu.provincial-s": "Provincial Services",
+    "submenu.reports": "Reports",
+    "submenu.articles": "Articles",
+    "submenu.events": "events",
+    "submenu.news-updates": "News & Updates",
+    "submenu.press-release": "Press Release",
+    "submenu.administrations": "Administration",
+    "submenu.procurement": "procurement",
+
+
+    "label.newsletter": "newsletter",
+    "label.news-letter-subscribe": "Subscribe to Newsletter here",
+    "label.emai-address": "Enter your email address",
+    "label.subscribe": "Subscribe",
+    "label.history": "history",
+    "label.authority-functions": "authority and functions",
+    "label.organization-structure": "organization structure",
+    "label.quick-links": "quick links",
+    "label.laws": "laws",
+    "label.guidelines": "guidelines",
+    "label.stats": "stats",
+    "label.jobs": "jobs",
+    "label.etazkira": "eTazkira",
+    "label.paper-tazkira": "paper tazkira",
+    "label.birth-registration": "birth registration",
+    "label.death-registration": "death registration",
+    "label.marriage-registration": "marriage registration",
+    "label.divorce-registration": "divorce registration",
+    "label.foreign-registration": "foreign registration",
+    "label.regulations": "regulations",
+
+    "label.promoting-material": "Promoting material",
+    "label.news": "News",
+
+
+    "label.about-service": "about {{ serviceName }}",
+
     "sidebar.title": "NEWS",
     "contact.title": "CONTACT US",
     "input.name" : "Name*",
@@ -27,6 +95,16 @@
     "error.email" : "Please enter the valid email!",
     "error.message" : "Please enter the message!",
     "pagination.previous" : "Previous",
-    "pagination.next" : "Next"
+    "pagination.next" : "Next",
+
+    "btn.read-more": "read more",
+    "btn.download": "download",
+    "btn.view-all-news": "View all news",
+    "btn.books": "books",
+    "btn.surveys": "surveys",
+    "btn.reports": "reports",
+    "btn.magazines": "magazines",
+    "btn.policies": "policies"
+
     
 }

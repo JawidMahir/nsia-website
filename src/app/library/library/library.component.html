@@ -1,23 +1,26 @@
 <div class="margin-top">
   <div class="custom-container">
     <div class="section-wrapper">
-      <div class="row lib">
-        <div class="col-lg-1 col-md-3 lib-btn active-libraray" id="books" (click)="showLibraries($event.target)">
+      <div class=" lib">
+        <div class=" lib-btn active-libraray" id="books" (click)="showLibraries($event.target)">
           <p class="books">BOOKS</p>
         </div>
-        <div class="col-lg-2 col-md-3 lib-btn" id="surveys" (click)="showLibraries($event.target)">
+        <div class=" lib-btn" id="surveys" (click)="showLibraries($event.target)">
           <p>SURVEYS</p>
         </div>
-        <div class="col-lg-2 col-md-3 lib-btn" id="reports" (click)="showLibraries($event.target)">
+        <div class=" lib-btn" id="reports" (click)="showLibraries($event.target)">
           <p>REPORTS</p>
         </div>
-        <div class="col-lg-2 col-md-3 lib-btn" id="magazine" (click)="showLibraries($event.target)">
+        <div class=" lib-btn" id="magazine" (click)="showLibraries($event.target)">
           <p>MAGAZINE</p>
         </div>
-        <div class="col-lg-2 col-md-3 lib-btn" id="newsletter" (click)="showLibraries($event.target)">
+        <div class=" lib-btn" id="articles" (click)="showLibraries($event.target)">
+          <p>ARTICLES</p>
+        </div>
+        <div class=" lib-btn" id="newsletter" (click)="showLibraries($event.target)">
           <p>NEWSLETTER</p>
         </div>
-        <div class="col-lg-2 col-md-3 lib-btn" id="policies" (click)="showLibraries($event.target)">
+        <div class=" lib-btn" id="policies" (click)="showLibraries($event.target)">
           <p>POLICIES</p>
         </div>
       </div>
@@ -25,12 +28,12 @@
         <div class="col-lg-3 col-md-3 col-sm-6"
           *ngFor="let content of contents | paginate: { itemsPerPage: 12 , currentPage: p }">
           <a href="{{content.acf.library_attachment.url}}" download="{{content.acf.library_attachment.filename}}"
-            target="_self">
+            target="_blank">
             <img src="{{ content.better_featured_image?.source_url }}"
               alt="{{ content.better_featured_image?.alt_text }}" (error)="imageError($event.target);">
           </a>
           <h5><a href="{{content.acf.library_attachment.url}}" download="{{content.acf.library_attachment.filename}}"
-              target="_self">{{content.title.rendered}}</a></h5>
+              target="_blank">{{content.title.rendered}}</a></h5>
           <p>{{content.date}}</p>
         </div>
       </div>

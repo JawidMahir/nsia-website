@@ -10,7 +10,7 @@
             *ngIf="selectedInfo.acf.attachment_type === 'image'" (error)="imageError($event.target)">
 
           <iframe [src]="videoURL(selectedInfo.acf.link)" frameborder="0" allow="autoplay; encrypted-media"
-            allowfullscreen *ngIf="selectedInfo.acf.attachment_type === 'vedio'"></iframe>
+            allowfullscreen *ngIf="selectedInfo.acf.attachment_type === 'video'"></iframe>
         </div>
         <div class="full-text">
           <p> {{ selectedInfo.content.rendered }}</p>
@@ -84,7 +84,7 @@
                         (error)="imageError($event.target);">
                       <div class="blue-mask">
                         <div class="media-icon">
-                          <i class="fab fa-youtube" *ngIf="info.acf.attachment_type==='vedio'"></i>
+                          <i class="fab fa-youtube" *ngIf="info.acf.attachment_type==='video'"></i>
                           <i class="fas fa-image" *ngIf="info.acf.attachment_type==='image'"></i>
                         </div>
                       </div>
@@ -116,7 +116,7 @@
                         (error)="imageError($event.target);">
                       <div class="blue-mask">
                         <div class="media-icon">
-                          <i class="fab fa-youtube" *ngIf="info.acf.attachment_type==='vedio'"></i>
+                          <i class="fab fa-youtube" *ngIf="info.acf.attachment_type==='video'"></i>
                           <i class="fas fa-image" *ngIf="info.acf.attachment_type==='image'"></i>
                         </div>
                       </div>
@@ -149,7 +149,7 @@
                         (error)="imageError($event.target);">
                       <div class="blue-mask">
                         <div class="media-icon">
-                          <i class="fab fa-youtube" *ngIf="info.acf.attachment_type==='vedio'"></i>
+                          <i class="fab fa-youtube" *ngIf="info.acf.attachment_type==='video'"></i>
                           <i class="fas fa-image" *ngIf="info.acf.attachment_type==='image'"></i>
                         </div>
                       </div>
@@ -181,7 +181,7 @@
                         (error)="imageError($event.target);">
                       <div class="blue-mask">
                         <div class="media-icon">
-                          <i class="fab fa-youtube" *ngIf="info.acf.attachment_type==='vedio'"></i>
+                          <i class="fab fa-youtube" *ngIf="info.acf.attachment_type==='video'"></i>
                           <i class="fas fa-image" *ngIf="info.acf.attachment_type==='image'"></i>
                         </div>
                       </div>
@@ -214,7 +214,7 @@
                         (error)="imageError($event.target);">
                       <div class="blue-mask">
                         <div class="media-icon">
-                          <i class="fab fa-youtube" *ngIf="info.acf.attachment_type==='vedio'"></i>
+                          <i class="fab fa-youtube" *ngIf="info.acf.attachment_type==='video'"></i>
                           <i class="fas fa-image" *ngIf="info.acf.attachment_type==='image'"></i>
                         </div>
                       </div>

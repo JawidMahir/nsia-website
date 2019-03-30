@@ -24,6 +24,7 @@
             </div>
           </div>
         </div>
+        <div class="c-gradient"></div>
       </div>
       <div class="carousel-item" *ngIf="carousel.stats">
         <img class="d-block w-100" src="{{ carousel.stats.better_featured_image.source_url }}"
@@ -32,8 +33,9 @@
           <div class="custom-container">
             <div class="service-details">
               <h1>{{ carousel.stats.title?.rendered }}</h1>
-              <p>{{ getBrief(carousel.stats.content?.rendered) }}</p>
-              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('stats')">Read More</button>
+              <h5>{{ getBrief(carousel.stats.content?.rendered) }}</h5>
+              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('stats')">Read
+                More</button>
             </div>
           </div>
         </div>
@@ -45,8 +47,9 @@
           <div class="custom-container">
             <div class="service-details">
               <h1>{{ carousel.gis.title?.rendered }}</h1>
-              <p>{{ getBrief(carousel.gis.content?.rendered) }}</p>
-              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('gis')">Read More</button>
+              <h5>{{ getBrief(carousel.gis.content?.rendered) }}</h5>
+              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('gis')">Read
+                More</button>
             </div>
           </div>
         </div>
@@ -58,8 +61,9 @@
           <div class="custom-container">
             <div class="service-details">
               <h1>{{ carousel.isd.title?.rendered }}</h1>
-              <p>{{ getBrief(carousel.isd.content?.rendered) }}</p>
-              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('isd')">Read More</button>
+              <h5>{{ getBrief(carousel.isd.content?.rendered) }}</h5>
+              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('isd')">Read
+                More</button>
             </div>
           </div>
         </div>
@@ -72,8 +76,9 @@
           <div class="custom-container">
             <div class="service-details">
               <h1>{{ carousel.nid.title?.rendered }}</h1>
-              <p>{{ getBrief(carousel.nid.content?.rendered) }}</p>
-              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('nid')">Read More</button>
+              <h5>{{ getBrief(carousel.nid.content?.rendered) }}</h5>
+              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('nid')">Read
+                More</button>
             </div>
           </div>
         </div>
@@ -99,7 +104,7 @@
         <div class="stat-card card">
           <img src="../../assets/images/population.png" alt="Population">
           <div class="stats bg-gradient">
-            <h6>{{ 'stats.population' | translate }}</h6>
+            <h6>{{ 'label.population' | translate }}</h6>
             <h3 *ngIf="population">{{ population.acf.statistics }} </h3>
           </div>
         </div>
@@ -108,7 +113,7 @@
         <div class="stat-card card">
           <img src="../../assets/images/gdp.png" alt="gdp">
           <div class="stats ">
-            <h6>{{ 'stats.gdp' | translate }}</h6>
+            <h6>{{ 'label.gdp' | translate }}</h6>
             <h3 *ngIf="gdp">{{ gdp.acf.statistics }} </h3>
           </div>
         </div>
@@ -118,7 +123,7 @@
         <div class="stat-card card">
           <img src="../../assets/images/cpi.png" alt="cpi">
           <div class="stats bg-gradient">
-            <h6>{{ 'stats.cpi' | translate }}</h6>
+            <h6>{{ 'label.cpi' | translate }}</h6>
             <h3 *ngIf="cpi">{{ cpi.acf.statistics }} </h3>
           </div>
         </div>
@@ -128,7 +133,7 @@
         <div class="stat-card card">
           <img src="../../assets/images/gender.png" alt="Population">
           <div class="stats bg-gradient">
-            <h6>{{ 'stats.gender' | translate }}</h6>
+            <h6>{{ 'label.gender' | translate }}</h6>
             <h3>45% Male</h3>
             <h3>55% Female</h3>
           </div>
@@ -145,24 +150,11 @@
         <div class="row">
           <div class="col-md-4 col-sm-12">
             <div class="service-title">
-              <h1 class="text-green">NSIA</h1>
-              <h1>SERVICES</h1>
+              <!-- <h1 class="text-green">{{ 'label.nsia' | translate}}</h1> -->
+              <h1>{{ 'label.nsia-service' | translate}}</h1>
             </div>
-            <div class="service-desc">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur delectus, aliquid officiis ipsum
-                repellat
-                sunt fugit incidunt, ab rem cum omnis culpa illum perspiciatis nesciunt doloremque quisquam quis ea
-                adipisci. Corrupti exercitationem inventore recusandae. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Tenetur delectus, aliquid officiis ipsum
-                repellat
-                sunt fugit incidunt, ab rem cum omnis culpa illum perspiciatis nesciunt doloremque quisquam quis ea
-                adipisci. Corrupti exercitationem inventore recusandae. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Tenetur delectus, aliquid officiis ipsum
-                repellat
-                sunt fugit incidunt, ab rem cum omnis culpa illum perspiciatis nesciunt doloremque quisquam quis ea
-                adipisci. Corrupti exercitationem inventore recusandae.
-              </p>
+            <div class="service-desc" *ngIf="nsiaServiceText">
+              <p>{{ nsiaServiceText }}</p>
             </div>
           </div>
           <div class="col-md-8 col-sm-12">
@@ -411,23 +403,28 @@
             <h4>stakeholders</h4>
             <div class="t-icon">
               <div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
+                <i class="fas fa-chevron-left" href="#stakeholder-carousel" role="button" data-slide="prev"></i>
+                <i class="fas fa-chevron-right" href="#stakeholder-carousel" role="button" data-slide="next"></i>
               </div>
             </div>
           </div>
           <div class="stakeholders b-category">
-            <div class="bs-item">
-              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
-              <h6>Government</h6>
-            </div>
-            <div class="bs-item">
-              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
-              <h6>Government</h6>
-            </div>
-            <div class="bs-item">
-              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
-              <h6>Government</h6>
+            <div id="stakeholder-carousel" class="carousel slide bussiness-carousel" data-ride="carousel"
+              *ngIf="stakeHolders">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="bs-item" *ngFor="let st of stakeHolders[1]">
+                    <img [src]="st.logo" alt="stakeholder">
+                    <h6>{{ st.name }}</h6>
+                  </div>
+                </div>
+                <div class="carousel-item" *ngFor="let stk of stakeHolders | slice:2">
+                  <div class="bs-item" *ngFor="let st of stk">
+                    <img [src]="st.logo" alt="stakeholder">
+                    <h6>{{ st.name }}</h6>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -436,23 +433,28 @@
             <h4>donors</h4>
             <div class="t-icon">
               <div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
+                <i class="fas fa-chevron-left" href="#donors-carousel" role="button" data-slide="prev"></i>
+                <i class="fas fa-chevron-right" href="#donors-carousel" role="button" data-slide="next"></i>
               </div>
             </div>
           </div>
           <div class="donors b-category">
-            <div class="bs-item">
-              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
-              <h6>Government</h6>
-            </div>
-            <div class="bs-item">
-              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
-              <h6>Government</h6>
-            </div>
-            <div class="bs-item">
-              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
-              <h6>Government</h6>
+            <div id="donors-carousel" class="carousel slide bussiness-carousel" data-ride="carousel"
+              *ngIf="stakeHolders">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="bs-item" *ngFor="let st of stakeHolders[1]">
+                    <img [src]="st.logo" alt="stakeholder">
+                    <h6>{{ st.name }}</h6>
+                  </div>
+                </div>
+                <div class="carousel-item" *ngFor="let stk of stakeHolders | slice:2">
+                  <div class="bs-item" *ngFor="let st of stk">
+                    <img [src]="st.logo" alt="stakeholder">
+                    <h6>{{ st.name }}</h6>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -461,23 +463,28 @@
             <h4>customers</h4>
             <div class="t-icon">
               <div>
-                <i class="fas fa-chevron-left"></i>
-                <i class="fas fa-chevron-right"></i>
+                <i class="fas fa-chevron-left" href="#customers-carousel" role="button" data-slide="prev"></i>
+                <i class="fas fa-chevron-right" href="#customers-carousel" role="button" data-slide="next"></i>
               </div>
             </div>
           </div>
           <div class="customers b-category">
-            <div class="bs-item">
-              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
-              <h6>Government</h6>
-            </div>
-            <div class="bs-item">
-              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
-              <h6>Government</h6>
-            </div>
-            <div class="bs-item">
-              <img src="../../assets/logo/national-emblem.svg" alt="stakeholder">
-              <h6>Government</h6>
+            <div id="customers-carousel" class="carousel slide bussiness-carousel" data-ride="carousel"
+              *ngIf="stakeHolders">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="bs-item" *ngFor="let st of stakeHolders[1]">
+                    <img [src]="st.logo" alt="stakeholder">
+                    <h6>{{ st.name }}</h6>
+                  </div>
+                </div>
+                <div class="carousel-item" *ngFor="let stk of stakeHolders | slice:2">
+                  <div class="bs-item" *ngFor="let st of stk">
+                    <img [src]="st.logo" alt="stakeholder">
+                    <h6>{{ st.name }}</h6>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

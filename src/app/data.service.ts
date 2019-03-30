@@ -32,6 +32,16 @@ export class DataService {
     this.callToServiceMethodSource.next();
   }
 
+  getNsiaText() {
+    return this.http.get(this.api + 'posts', {
+      params: {
+        'filter[category_name]': 'nsia_services',
+        lang: this.language,
+        fields: 'content.rendered'
+      }
+    });
+  }
+
 
 
   getPosts() {

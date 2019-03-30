@@ -25,6 +25,11 @@
   background: linear-gradient(to left, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%) !important;
 }
 
+.rtl .service-card .service-title {
+  padding-right: 0px !important;
+  padding-left: 20% !important;
+}
+
 .rtl .carousel img,
 .rtl .stat-card img {
   -webkit-transform: scaleX(-1);
@@ -67,6 +72,11 @@
 
 .rtl .navbar-nav {
   padding-right: 0px;
+}
+
+.rtl .navbar-nav .dropdown-menu {
+  right: 0px;
+  width: fit-content;
 }
 
 .rtl .dropdown-item {

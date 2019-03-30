@@ -1,6 +1,19 @@
 .carousel .carousel-item img {
   height: 80vh;
+  object-fit: cover;
 }
+
+.c-gradient {
+  position: absolute;
+  height: 100%;
+  background-image: linear-gradient(180deg, #fffffffd 0%, rgba(255, 255, 255, 0) 23%);
+  width: 100%;
+  top: 0;
+}
+
+
+
+
 
 @media only screen and (max-width: 900px) {
   .carousel .carousel-item img {
@@ -90,6 +103,11 @@
   padding-right: 20%;
   width: fit-content;
   border-bottom: 1px solid #fff;
+  padding-bottom: 8px;
+}
+
+.service-card .service-title h1 {
+  text-transform: uppercase;
 }
 
 .service-card .service-desc {
@@ -215,6 +233,15 @@
   background-color: transparent;
 }
 
+.bussiness-carousel {
+  width: 100%;
+}
+
+.bussiness-carousel .bs-item {
+  display: inline-block;
+  width: 33%;
+}
+
 .bussiness .title {
   display: flex;
 }
@@ -272,7 +299,7 @@
 
 .billboard {
   direction: ltr !important;
-  background: linear-gradient(to right, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%) ;
+  background: linear-gradient(to right, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%);
 }
 
 
