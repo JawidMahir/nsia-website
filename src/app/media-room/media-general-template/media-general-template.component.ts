@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { formatDate } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from 'src/app/data.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class MediaGeneralTemplateComponent implements OnInit {
   id: any;
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -27,9 +29,12 @@ export class MediaGeneralTemplateComponent implements OnInit {
     customParams.push('content.rendered');
     customParams.push('better_featured_image.source_url');
     customParams.push('better_featured_image.alt_text');
+    customParams.push('acf.attachment_type');
+    customParams.push('acf.link');
     customParams.push('date');
     this.dataService.getPostDetails(id, customParams).subscribe((newsData) => {
       this.news = this.refineData(newsData[0]);
+      console.log(this.news);
     });
   }
 
@@ -48,6 +53,9 @@ export class MediaGeneralTemplateComponent implements OnInit {
     el.src = '../../assets/images/noimage.png';
     console.log(el);
     return true;
+  }
+  videoURL(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }

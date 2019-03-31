@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {formatDate } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 import { MediaServicesService } from '../media-services.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { MediaServicesService } from '../media-services.service';
 })
 export class EventsComponent implements OnInit {
   events = '';
-  constructor(private mediaService: MediaServicesService) { }
+  constructor(private mediaService: MediaServicesService,
+              private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getEventsData('events'); 
@@ -20,13 +22,14 @@ export class EventsComponent implements OnInit {
     customParams.push('title.rendered');
     customParams.push('content.rendered');
     customParams.push('acf.attachment_type');
+    customParams.push('acf.link');
     customParams.push('better_featured_image.source_url'); 
     customParams.push('better_featured_image.alt_text');
     customParams.push('date');
     customParams.push('id');
     this.mediaService.getMediaData(customParams, type).subscribe((eventsData) => {
      this.events = this.refineData(eventsData);
-     console.log(this.events);
+     console.log(this.events); 
     });
   } 
   
@@ -54,6 +57,10 @@ export class EventsComponent implements OnInit {
     el.src = '../../assets/images/noimage.png';
     console.log(el);
     return true;
+  }
+
+  videoURL(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }

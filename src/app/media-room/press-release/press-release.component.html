@@ -6,9 +6,12 @@
           <div *ngIf="press != ''; else nopress">
             <h4>{{'submenu.press-release' | translate}}</h4><br>
             <div class="row news" *ngFor="let pre of press | paginate: { itemsPerPage: 4 , currentPage: p }">
-              <div class="col-md-4 col-sm-7">
-                <img src="{{ pre.better_featured_image?.source_url }}" alt="{{ pre.better_featured_image?.alt_text }}"
+              <div class="col-md-4 col-sm-7 featured-video">
+                  <img *ngIf="pre.acf.attachment_type == 'image' else showvedio;" [src]="pre.better_featured_image?.source_url" [alt]="pre.better_featured_image?.source_url.alt_text"
                   (error)="imageError($event.target);">
+                  <ng-template #showvedio>
+                      <iframe [src]="videoURL(pre?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                  </ng-template> 
                 <div class="attachment-type">
                   <p *ngIf="pre.acf.attachment_type == 'image' else vedio;">{{'label.image' | translate}}</p>
                   <ng-template #vedio>
@@ -19,7 +22,7 @@
               <div class="col-md-7 col-sm-5">
                 <div>
                   <h5>{{ pre.title.rendered }}</h5>
-                  <p>{{ getBrief(pre.content.rendered) }}</p>
+                  <p class="content">{{ getBrief(pre.content.rendered) }}</p>
                   <a [routerLink]="['../media', pre.id]">{{'btn.read-more' | translate}}</a><br>
                   <span>{{ pre.date }}</span>
                 </div>

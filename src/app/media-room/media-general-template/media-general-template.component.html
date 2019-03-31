@@ -1,14 +1,19 @@
 <div class="margin-top">
   <div class="section-wrapper" *ngIf="news">
     <div class="row">
-      <img [src]="news.better_featured_image?.source_url" [alt]="news.better_featured_image?.source_url.alt_text"
+      <img *ngIf="news.acf.attachment_type == 'image' else vedio;" [src]="news.better_featured_image?.source_url" [alt]="news.better_featured_image?.source_url.alt_text"
         (error)="imageError($event.target);">
+        <ng-template #vedio>
+          <div class="col-md-12 featured-video">
+             <iframe [src]="videoURL(news?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>  
+        </ng-template>
     </div>
     <div class="row">
       <div class="content">
-        <h1>{{ news.title?.rendered }}</h1>
+        <h2>{{ news.title?.rendered }}</h2>
         <h6>{{ news.date }}</h6>
-        <p>{{ news.content?.rendered }}</p>
+        <p>{{ news.content?.rendered }}</p>    
       </div>
     </div>
   </div>

@@ -6,9 +6,12 @@
           <div *ngIf="news != ''; else nonews">
             <h4>{{'label.news' | translate}}</h4><br>
             <div class="row news" *ngFor="let nw of news | paginate: { itemsPerPage: 4 , currentPage: p }">
-              <div class="col-md-4 col-sm-7">
-                <img src="{{ nw.better_featured_image?.source_url }}" alt="{{ nw.better_featured_image?.alt_text }}"
+              <div class="col-md-4 col-sm-7 featured-video">
+                  <img *ngIf="nw.acf.attachment_type == 'image' else showvedio;" [src]="nw.better_featured_image?.source_url" [alt]="nw.better_featured_image?.source_url.alt_text"
                   (error)="imageError($event.target);">
+                  <ng-template #showvedio>
+                      <iframe [src]="videoURL(nw?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                  </ng-template> 
                 <div class="attachment-type">
                   <p *ngIf="nw.acf.attachment_type == 'image' else vedio;">{{'label.image' | translate}}</p>
                   <ng-template #vedio>
@@ -19,7 +22,7 @@
               <div class="col-md-7 col-sm-5">
                 <div>
                   <h5>{{ nw.title.rendered }}</h5>
-                  <p>{{ getBrief(nw.content.rendered) }}</p>
+                  <p class="content">{{ getBrief(nw.content.rendered) }}</p>
                   <a [routerLink]="['../media', nw.id]">{{'btn.read-more' | translate}}</a><br>
                   <span>{{ nw.date }}</span>
                 </div>
