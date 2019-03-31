@@ -19,13 +19,14 @@
 
             <div class="contact-details">
               <div class="c-item">
-                <p routerLink="/contact-us"> <i class="fas fa-phone contact" ></i> Contact Us</p>
+                <p routerLink="/contact-us"> <i class="fas fa-phone contact"></i> {{ 'label.contact-us' | translate }}
+                </p>
               </div>
               <div class="c-item">
                 <p> <i class="fas fa-clock"></i> 8:00 A.M. - 5:00 P.M.</p>
               </div>
               <div class="c-item">
-                <p> <i class="fas fa-map-marker-alt"></i> NSIA HEAD OFFICE</p>
+                <p> <i class="fas fa-map-marker-alt"></i> {{'label.head-office' | translate}}</p>
               </div>
             </div>
 
@@ -34,7 +35,7 @@
                 <div class="search-input c-item">
                   <div class="wrapper">
 
-                    <input type="text" placeholder="search website" class="search-box">
+                    <input type="text" placeholder="{{'label.search-website' | translate }}" class="search-box">
                     <i class="fas fa-search"></i>
                   </div>
                 </div>
@@ -75,7 +76,7 @@
             <div class="search-input c-item">
               <div class="wrapper">
 
-                <input type="text" placeholder="search website" class="search-box">
+                <input type="text" placeholder="{{'label.search-website' | translate }}" class="search-box">
                 <i class="fas fa-search"></i>
               </div>
             </div>
@@ -101,11 +102,11 @@
             <p routerLink="/about-us">
               {{ 'menu.about-us' | translate }}</p>
             <ul>
-              <li routerLink="about-us/about-nsia">About NSIA</li>
-              <li routerLink="about-us/biographies">Biographies</li>
+              <li routerLink="about-us/about-nsia">{{'submenu.about-nsia' | translate}}</li>
+              <li routerLink="about-us/biographies">{{'submenu.biographies' | translate}}</li>
               <!-- <li routerLink="about-us/finance">Finance</li> -->
-              <li routerLink="about-us/gender">Gender</li>
-              <li routerLink="about-us/structure">Structure</li>
+              <li routerLink="about-us/gender">{{'submenu.gender' | translate}}</li>
+              <li routerLink="about-us/structure">{{'submenu.structure' | translate}}</li>
               <!-- <li routerLink="about-us/vision-mission">Vision & Mission</li> -->
             </ul>
           </div>
@@ -113,20 +114,20 @@
             <p routerLink="/services">
               {{ 'menu.services' | translate }}</p>
             <ul>
-              <li routerLink="/services" (click)="updateServiceType('stats')">Statistics</li>
-              <li routerLink="/services" (click)="updateServiceType('nid')">National Identity</li>
-              <li routerLink="/services" (click)="updateServiceType('gis')">Geographical information Systems</li>
-              <li routerLink="/services" (click)="updateServiceType('sdu')">Information Systems</li>
-              <li routerLink="/services" (click)="updateServiceType('prs')">Provincial Services</li>
+              <li routerLink="/services" (click)="updateServiceType('stats')">{{'submenu.statistics' | translate}}</li>
+              <li routerLink="/services" (click)="updateServiceType('nid')">{{'submenu.nid' | translate}}</li>
+              <li routerLink="/services" (click)="updateServiceType('gis')">{{'submenu.gis' | translate}}</li>
+              <li routerLink="/services" (click)="updateServiceType('sdu')">{{'submenu.isd' | translate}}</li>
+              <li routerLink="/services" (click)="updateServiceType('prs')">{{'submenu.provincial-s' | translate}}</li>
             </ul>
           </div>
           <div class="r-menu-item">
             <p routerLink="library">
               {{ 'menu.library' | translate }}</p>
-            <ul>
-              <li routerLink="library/reports">Reports</li>
-              <li routerLink="library/articles">Articles</li>
-            </ul>
+            <!-- <ul>
+              <li routerLink="library/reports">{{'submenu.reports' | translate}}</li>
+              <li routerLink="library/articles">{{'submenu.articles' | translate}}</li>
+            </ul> -->
           </div>
           <div class="r-menu-item">
             <p routerLink="access-info">
@@ -143,9 +144,9 @@
             <p routerLink="media-room">
               {{ 'menu.media-room' | translate }}</p>
             <ul>
-              <li routerLink="media-room/event">events</li>
-              <li routerLink="media-room/news-updates">News & Updates</li>
-              <li routerLink="media-room/press-release">Press Release</li>
+              <li routerLink="media-room/event">{{'submenu.events' | translate}}</li>
+              <li routerLink="media-room/news-updates">{{'submenu.news-updates' | translate}}</li>
+              <li routerLink="media-room/press-release">{{'submenu.press-release' | translate}}</li>
               <!-- <li routerLink="media-room/magazine">Magazine</li>
               <li routerLink="media-room/newsletters">Newsletters</li>
               <li routerLink="media-room/poster">Poster</li>
@@ -158,8 +159,8 @@
             <p routerLink="opportunities">
               {{ 'menu.opportunities' | translate }}</p>
             <ul>
-              <li routerLink="opportunities/administration">Administration</li>
-              <li routerLink="opportunities/procurements">Tenders</li>
+              <li routerLink="opportunities/jobs">{{'submenu.administrations' | translate}}</li>
+              <li routerLink="opportunities/procurements">{{'submenu.procurement' | translate}}</li>
               <!-- <li routerLink="opportunities/tenders">Tenders</li> -->
             </ul>
           </div>
@@ -177,17 +178,19 @@
             <div></div>
           </div>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              routerLink="/about-us">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" routerLink="/about-us">
               {{ 'menu.about-us' | translate }}
             </a>
             <i class="fas fa-chevron-down"></i>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a href="" class="dropdown-item" routerLink="/about-us/about-nsia">About NSIA</a>
-              <a href="" class="dropdown-item" routerLink="/about-us/biographies">Biographies</a>
+              <a href="" class="dropdown-item"
+                routerLink="/about-us/about-nsia">{{'submenu.about-nsia' | translate}}</a>
+              <a href="" class="dropdown-item"
+                routerLink="/about-us/biographies">{{'submenu.biographies' | translate}}</a>
               <!-- <a href="" class="dropdown-item" routerLink="/about-us/finance">Finance</a> -->
-              <a href="" class="dropdown-item" routerLink="/about-us/gender">Gender</a>
-              <a href="" class="dropdown-item" routerLink="/about-us/structure">Structure</a>
+              <a href="" class="dropdown-item" routerLink="/about-us/gender">{{'submenu.gender' | translate}}</a>
+              <a href="" class="dropdown-item" routerLink="/about-us/structure">{{'submenu.structure' | translate}}</a>
               <!-- <a href="" class="dropdown-item" routerLink="/about-us/vision-mission">Vision And Mission</a> -->
             </div>
           </li>
@@ -195,41 +198,44 @@
             <div></div>
           </div>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              routerLink="/services">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" routerLink="/services">
               {{ 'menu.services' | translate }}
             </a>
             <i class="fas fa-chevron-down"></i>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a href="" class="dropdown-item" routerLink="/services" (click)="updateServiceType('stats')">Statistics</a>
-              <a href="" class="dropdown-item" routerLink="/services" (click)="updateServiceType('nid')">National Identity</a>
-              <a href="" class="dropdown-item" routerLink="/services" (click)="updateServiceType('gis')">Geographical Information Systems</a>
-              <a href="" class="dropdown-item" routerLink="/services" (click)="updateServiceType('sdu')">Information
-                Systems</a>
-              <a href="" class="dropdown-item" routerLink="/services" (click)="updateServiceType('prs')">Provincial
-                Services</a>
+              <a href="" class="dropdown-item" routerLink="/services"
+                (click)="updateServiceType('stats')">{{'submenu.statistics' | translate}}</a>
+              <a href="" class="dropdown-item" routerLink="/services"
+                (click)="updateServiceType('nid')">{{'submenu.nid' | translate}}</a>
+              <a href="" class="dropdown-item" routerLink="/services"
+                (click)="updateServiceType('gis')">{{'submenu.gis' | translate}}</a>
+              <a href="" class="dropdown-item" routerLink="/services"
+                (click)="updateServiceType('sdu')">{{'submenu.isd' | translate}}</a>
+              <a href="" class="dropdown-item" routerLink="/services"
+                (click)="updateServiceType('prs')">{{'submenu.provincial-s' | translate}}</a>
             </div>
           </li>
           <div class="seperator">
             <div></div>
           </div>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              routerLink="/library">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" routerLink="/library">
               {{ 'menu.library' | translate }}
             </a>
-            <i class="fas fa-chevron-down"></i>
+            <!-- <i class="fas fa-chevron-down"></i>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a href="" class="dropdown-item" routerLink="/library/reports">Reports</a>
-              <a href="" class="dropdown-item" routerLink="/library/articles">Articles</a>
-            </div>
+              <a href="" class="dropdown-item" routerLink="/library/reports">{{'submenu.reports' | translate}}</a>
+              <a href="" class="dropdown-item" routerLink="/library/articles">{{'submenu.articles' | translate}}</a>
+            </div> -->
           </li>
           <div class="seperator">
             <div></div>
           </div>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              routerLink="/access-info">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" routerLink="/access-info">
               {{ 'menu.access-info' | translate }}
             </a>
             <!-- <i class="fas fa-chevron-down"></i>
@@ -245,16 +251,18 @@
             <div></div>
           </div>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              routerLink="/media-room">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" routerLink="/media-room">
               {{ 'menu.media-room' | translate }}
             </a>
             <i class="fas fa-chevron-down"></i>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a href="" class="dropdown-item" routerLink="/media-room/event">Events</a>
-              <a href="" class="dropdown-item" routerLink="/media-room/news-updates">News and updates</a>
-              <a href="" class="dropdown-item" routerLink="/media-room/press-release">Press release</a>
-              <a href="" class="dropdown-item" routerLink="/media-room/magazine">Promoting materials</a>
+              <a href="" class="dropdown-item" routerLink="/media-room/event">{{'submenu.events' | translate}}</a>
+              <a href="" class="dropdown-item"
+                routerLink="/media-room/news-updates">{{'submenu.news-updates' | translate}}</a>
+              <a href="" class="dropdown-item"
+                routerLink="/media-room/press-release">{{'submenu.press-release' | translate}}</a>
+              <!-- <a href="" class="dropdown-item" routerLink="/media-room/magazine">Promoting materials</a> -->
               <!-- <a href="" class="dropdown-item" routerLink="/media-room/newsletters">Newsletters</a>
               <a href="" class="dropdown-item" routerLink="/media-room/poster">Poster</a>
               <a href="" class="dropdown-item" routerLink="/media-room/booklet">Booklet</a>
@@ -265,15 +273,17 @@
             <div></div>
           </div>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              routerLink="/opportunities">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" routerLink="/opportunities">
               {{ 'menu.opportunities' | translate }}
             </a>
             <i class="fas fa-chevron-down"></i>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a href="" class="dropdown-item" routerLink="/opportunities/administration">Administration</a>
+              <a href="" class="dropdown-item"
+                routerLink="/opportunities/jobs">{{'submenu.administrations' | translate}}</a>
               <!-- <a href="" class="dropdown-item" routerLink="/opportunities/procurements">Procurements</a> -->
-              <a href="" class="dropdown-item" routerLink="/opportunities/tenders">Procurements</a>
+              <a href="" class="dropdown-item"
+                routerLink="/opportunities/tenders">{{'submenu.procurement' | translate}}</a>
             </div>
           </li>
           <div class="seperator">

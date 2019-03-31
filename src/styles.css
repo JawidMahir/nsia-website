@@ -82,11 +82,15 @@ body {
 }
 
 .c-btn-outline-blue {
-  border: none;
+  border: 1px solid #282560;
   background-color: #282560;
   color: #fff;
   padding: 6px 16px;
   transition: background .2s ease-in-out;
+}
+
+.c-border-blue:hover {
+  border: 1px solid #282560;
 }
 
 .c-btn-outline-blue:hover {
@@ -561,5 +565,5 @@ body {
 .promote-material .download-promo span {
   font-size: 12px;
   color: #fff;
-  margin-left: 6px;
+  margin: 0px 6px;
 }

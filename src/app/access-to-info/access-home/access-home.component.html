@@ -32,27 +32,27 @@
               [class.active-type]="currentSection == 'guidelines' || currentSection == undefined"
               (click)="scrollTo('guidelines', $event.target)">
               <i class="fas fa-chevron-right"></i>
-              <span>Guidelines</span>
+              <span>{{'label.guidelines' | translate }}</span>
             </li>
             <li class="ai-type" [class.active-type]="currentSection == 'statistics'"
               (click)="scrollTo('statistics', $event.target)">
               <i class="fas fa-chevron-right"></i>
-              <span>Statistics</span>
+              <span>{{'submenu.statistics' | translate}}</span>
             </li>
             <li class="ai-type" [class.active-type]="currentSection == 'national_identity'"
               (click)="scrollTo('national_identity', $event.target)">
               <i class="fas fa-chevron-right"></i>
-              <span>National Identity</span>
+              <span>{{'submenu.nid' | translate}}</span>
             </li>
             <li class="ai-type" [class.active-type]="currentSection == 'regulations'"
               (click)="scrollTo('regulations', $event.target)">
               <i class="fas fa-chevron-right"></i>
-              <span>Regulations</span>
+              <span>{{'label.regulations' | translate}}</span>
             </li>
             <li class="ai-type" [class.active-type]="currentSection == 'policies'"
               (click)="scrollTo('policies', $event.target)">
               <i class="fas fa-chevron-right"></i>
-              <span>Policies</span>
+              <span>{{'btn.policies' | translate}}</span>
             </li>
           </ul>
         </div>
@@ -71,7 +71,7 @@
         (scroll)="getScroll($event.target)" *ngIf="accessInfo">
         <div id="guidelines">
           <div class="section-title active-section">
-            <h4 class="info-section ">Guidelines</h4>
+            <h4 class="info-section ">{{'label.guidelines' | translate }}</h4>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="section-details" *ngIf="sectionExist('guidlines')">
@@ -103,7 +103,7 @@
         </div>
         <div id="statistics">
           <div class="section-title">
-            <h4 class="info-section ">Statistics</h4>
+            <h4 class="info-section ">{{'submenu.statistics' | translate}}</h4>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="section-details" *ngIf="sectionExist('statistics')">
@@ -135,7 +135,7 @@
         </div>
         <div id="national_identity">
           <div class="section-title">
-            <h4 class="info-section ">National Identity</h4>
+            <h4 class="info-section ">{{'submenu.nid' | translate}}</h4>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="section-details" *ngIf="sectionExist('national_identity')">
@@ -168,7 +168,7 @@
         </div>
         <div id="regulations">
           <div class="section-title">
-            <h4 class="info-section ">Regulations</h4>
+            <h4 class="info-section ">{{'label.regulations' | translate}}</h4>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="section-details" *ngIf="sectionExist('regulations')">
@@ -201,7 +201,7 @@
 
         <div id="policies">
           <div class="section-title">
-            <h4 class="info-section ">Policies</h4>
+            <h4 class="info-section ">{{'btn.policies' | translate}}</h4>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="section-details" *ngIf="sectionExist('policies')">

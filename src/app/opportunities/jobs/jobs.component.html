@@ -1,0 +1,47 @@
+<div class="jobs">
+    <div class="title">
+      <h1>{{'submenu.procurement' | translate }}</h1>
+    </div>
+    <div class="job-contents">
+      <table class="table">
+        <thead>
+          <th><span>
+              {{'label.description'| translate}}
+            </span></th>
+          <th>
+            <span>
+              {{'label.p-date' | translate}}
+            </span>
+          </th>
+          <th>
+            <span>
+              {{'label.c-date' | translate}}
+            </span>
+          </th>
+        </thead>
+        <tbody *ngIf="dJobs">
+          <tr class="job" *ngFor="let jb of jobs">
+            <td class="description">
+              <a class="headline" [routerLink]="['/opportunities/job', jb.id]">
+                {{ jb.title.rendered }}
+              </a>
+              <p class="job-brief">
+                {{ getBrief(jb.content.rendered) }}
+              </p>
+            </td>
+            <td>
+              <span>
+                {{ jb.date }}
+              </span>
+            </td>
+            <td>
+              <span>
+                {{ jb.acf.closing_date }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

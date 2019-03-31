@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { Router, ParamMap, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { NsiaServicesService } from '../nsia-services.service';
 import { DataService } from '../../data.service';
@@ -10,11 +10,13 @@ import * as $ from 'jquery';
   templateUrl: './services-home.component.html',
   styleUrls: ['./services-home.component.css']
 })
-export class ServicesHomeComponent implements OnInit {
+export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
   // dummy data for menus
   menus = [];
-  serviceName = 'statistics';
+  srName = 'foo';
+  serviceName;
+
 
   // A global variable used to determine the type of service
   serviceType = 'stats';
@@ -28,33 +30,8 @@ export class ServicesHomeComponent implements OnInit {
     nid: Object
   };
 
-  prDummyData = {
-    acf: {
-      name: 'ahmadullah alyar'
-    },
-    title: {
-      rendered: 'About Kabul Province'
-    },
-    content: {
-      rendered: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum'
-    },
-    better_featured_image: {
-      source_url: '../../../assets/images/happy-dace.jpg'
-    }
-  };
-
-  dummyProvinces = [
-    'kabul',
-    'kandahar',
-    'zabul',
-    'farah',
-    'bamyan',
-    'badakhshan'
-  ];
-
-
   departmentsFullDetails = [];
-
+  dept;
   contents;
   deputyDepartments;
   deputyHeadships;
@@ -70,7 +47,9 @@ export class ServicesHomeComponent implements OnInit {
 
   ngOnInit() {
     const that = this;
+    this.serviceName = 'statistics';
     // window.onresize = this.windowResize;
+
 
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
@@ -79,7 +58,6 @@ export class ServicesHomeComponent implements OnInit {
       window.scrollTo(0, 0);
     });
 
-    this.showServiceDetails();
 
     /**
      * Change service on dropdown click, if the route is pointing to service component itself
@@ -90,8 +68,15 @@ export class ServicesHomeComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.showServiceDetails();
+    });
+  }
+
   showServiceDetails() {
     const sType = this.dataService.serviceType;
+    console.log('showServiceMethod: sType: ', sType);
     if (sType === 'prs') {
       this.getProvinces();
       $('.m-service').removeClass('active-service');
@@ -153,6 +138,8 @@ export class ServicesHomeComponent implements OnInit {
   }
 
   getDeputyDetails(deputyType, tag) {
+    console.log('getting service data');
+
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('content.rendered');
@@ -192,7 +179,7 @@ export class ServicesHomeComponent implements OnInit {
     const customParams = [];
     customParams.push('id');
     customParams.push('title.rendered');
-    customParams.push('acf.department');
+    customParams.push('acf');
 
     this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
       if (tag === 'department') {
@@ -205,6 +192,13 @@ export class ServicesHomeComponent implements OnInit {
 
       this.arrangeDepartments(deputyType);
     });
+  }
+
+  imageError(el) {
+    el.onerror = '';
+    el.src = '../../assets/images/noimage.png';
+    console.log(el);
+    return true;
   }
 
   getDepartmentDetails(id, el) {
@@ -245,11 +239,15 @@ export class ServicesHomeComponent implements OnInit {
 
   arrangeDepartments(deputyType) {
     let tempHeadships = [];
+    this.dept = deputyType.split('_')[0] + '_department';
+    console.log('deputy related department: ', this.dept);
+
+
     if (this.deputyDepartments && this.deputyHeadships) {
       for (const dep of this.deputyDepartments) {
         tempHeadships = [];
         for (const hdShip of this.deputyHeadships) {
-          if (dep.acf.department === hdShip.acf.department) {
+          if (dep.acf[this.dept] === hdShip.acf[this.dept]) {
             tempHeadships.push(hdShip);
           }
         }
@@ -335,11 +333,15 @@ export class ServicesHomeComponent implements OnInit {
   }
 
   toggleServices(el) {
+    console.log('ToggleService Called');
 
     this.provincialServices = false;
     const id = $(el).closest('.m-service').attr('id');
     this.serviceType = id;
+    // The departments in each service has a different key name, so we have to change it
+    this.dept = id + '_department';
     this.serviceName = $(el).closest('.m-service').find('.sr-name p').html();
+    console.log('service name: ', this.serviceName);
     console.log('service id: ', id);
 
     $('.m-service').removeClass('active-service');

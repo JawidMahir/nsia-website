@@ -26,7 +26,7 @@ export class MediaRoomHomeComponent implements OnInit {
     const customParams = [];
     customParams.push('acf.library_attachment.url');
     this.mediaService.getNewsData(customParams, type, perPage).subscribe((newsData) => {
-      this.newsletters.push(newsData);
+      this.newsletters.push(newsData[0]);
       console.log(this.newsletters);
     });
 

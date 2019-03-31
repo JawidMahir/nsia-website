@@ -1,0 +1,38 @@
+.jobs .job-title {
+  margin-top: 1rem;
+}
+
+.jobs .job-specs {
+  display: flex;
+  display: flex;
+  padding: 8px;
+  background-color: #01a79b;
+  color: #fff;
+  margin: 2rem 0px;
+}
+.jobs .spec-item,
+.jobs .job-full-specs table,
+.jobs .detail-section h3 {
+  text-transform: capitalize;
+}
+
+.jobs .job-specs i {
+  margin: 0px 4px;
+}
+
+.jobs .job-specs .spec-item {
+  flex: auto;
+}
+
+.jobs .job-specifications tr td:nth-child(odd) span {
+  font-weight: 600;
+}
+
+.jobs .job-details {
+  margin-top: 2rem;
+}
+
+
+.jobs .detail-section {
+  margin-bottom: 2rem;
+}

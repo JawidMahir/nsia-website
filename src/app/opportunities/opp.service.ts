@@ -30,6 +30,27 @@ export class OppService {
     });
   }
 
+  getJobs(customParams) {
+    return this.http.get(this.dataService.api + 'posts', {
+      params: {
+        'filter[category_name]': 'job',
+        lang: this.dataService.language,
+        fields: customParams.join(','),
+      }
+    });
+  }
+
+  getJobDetails(customParams, id) {
+    return this.http.get(this.dataService.api + 'posts', {
+      params: {
+        'filter[category_name]': 'job',
+        'filter[p]': id,
+        lang: this.dataService.language,
+        fields: customParams.join(','),
+      }
+    });
+  }
+
   htmlToPlaintext(text) {
     return text ? String(text).replace(/<[^>]+>/gm, '') : '';
   }

@@ -36,6 +36,12 @@ export class HomeComponent implements OnInit {
     nid: null
   };
 
+  businessMainData = {
+    stakeholders: [],
+    donors: [],
+    customers: []
+  };
+
 
 
 
@@ -77,7 +83,7 @@ export class HomeComponent implements OnInit {
 
     // stakeholder-carousel
 
-    this.testFunction();
+    // this.reArrangeBusinessData();
 
     this.getNsiaText();
 
@@ -86,6 +92,7 @@ export class HomeComponent implements OnInit {
      */
     this.getCarouselSlides();
     this.getInitialStats();
+    this.getBusinessData();
 
 
     // instantiate the first news category on page load
@@ -126,58 +133,39 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  testFunction() {
-    const dummyData = [
-      {
-        name: 'abc',
-        logo: '../../assets/logo/national-emblem.svg'
-      }, {
-        name: 'ahmad',
-        logo: '../../assets/logo/national-emblem.svg'
-      }, {
-        name: 'karim',
-        logo: '../../assets/logo/national-emblem.svg'
-      }, {
-        name: 'agha',
-        logo: '../../assets/logo/national-emblem.svg'
-      }, {
-        name: 'saheb',
-        logo: '../../assets/logo/national-emblem.svg'
-      }, {
-        name: 'samad',
-        logo: '../../assets/logo/national-emblem.svg'
-      }, {
-        name: 'un',
-        logo: '../../assets/logo/national-emblem.svg'
-      }, {
-        name: 'who',
-        logo: '../../assets/logo/national-emblem.svg'
-      }, {
-        name: 'me',
-        logo: '../../assets/logo/national-emblem.svg'
-      }, {
-        name: 'awesome',
-        logo: '../../assets/logo/national-emblem.svg'
-      },
-    ];
-    this.stakeHolders = [];
-    let threeArray = [];
+  reArrangeBusinessData() {
 
-    for (let i = 0, j = 0; i < dummyData.length; i++) {
-      if (i % 3 === 0) {
-        this.stakeHolders.push(threeArray);
-        threeArray = [];
-        threeArray.push(dummyData[i]);
+    const arrangeDataOf = (dArray) => {
+      let threeArray = [];
+      const tempArray = [];
+      if (dArray.length > 0) {
+        for (let i = 0, j = 0; i < dArray.length; i++) {
+          if (i % 3 === 0 && i !== 0) {
+            tempArray.push(threeArray);
+            threeArray = [];
+            threeArray.push(dArray[i]);
+          } else {
+            threeArray.push(dArray[i]);
+          }
+        }
+
+        if (threeArray.length > 0) {
+          tempArray.push(threeArray);
+        }
+
+        return tempArray;
       } else {
-        threeArray.push(dummyData[i]);
+        return dArray;
       }
-    }
 
-    if (threeArray.length > 0) {
-      this.stakeHolders.push(threeArray);
-    }
+    };
 
-    console.log('My real array is: ', this.stakeHolders);
+    this.businessMainData.donors = arrangeDataOf(this.businessMainData.donors);
+    this.businessMainData.stakeholders = arrangeDataOf(this.businessMainData.stakeholders);
+    this.businessMainData.customers = arrangeDataOf(this.businessMainData.customers);
+
+    console.log('After refinment the data is: ', this.businessMainData);
+
   }
 
   getNsiaText() {
@@ -388,20 +376,58 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  getBusinessData() {
+    const customParams = [];
+    customParams.push('title.rendered');
+    customParams.push('acf');
+    customParams.push('better_featured_image.source_url');
+    this.dataService.getBusinessData(customParams).subscribe((data) => {
+      console.log('business data: ', data);
+      if (data) {
+        this.categorizeBusinessData(data);
+      }
+
+    });
+  }
+
+  categorizeBusinessData(data) {
+    for (const bs of data) {
+      switch (bs.acf.business_type) {
+        case 'stakeholders':
+          this.businessMainData.stakeholders.push(bs);
+          break;
+        case 'donors':
+          this.businessMainData.donors.push(bs);
+          break;
+        case 'customers':
+          this.businessMainData.customers.push(bs);
+          break;
+      }
+    }
+
+    this.reArrangeBusinessData();
+  }
+
   getInitialStats() {
 
     const customParams = [];
     customParams.push('title.rendered');
-    customParams.push('acf.statistics');
-    customParams.push('featured_media');
+    customParams.push('acf');
+    customParams.push('better_featured_image.source_url');
 
     this.dataService.getInitialStats(customParams, 'statistics').subscribe((data: Array<object>) => {
-      this.gender = data[0];
-      this.cpi = data[1];
-      this.gdp = data[2];
-      this.population = data[3];
+      if (data) {
+        this.gender = data[0];
+        this.cpi = data[1];
+        this.gdp = data[2];
+        this.population = data[3];
 
-      console.log(data);
+        console.log('stats data', data);
+      }
+
+    }, (error) => {
+      console.log('Data error: ', error);
+
     });
   }
 

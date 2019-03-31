@@ -7,6 +7,7 @@ import { ProcurementsComponent } from './procurements/procurements.component';
 import { TendersComponent } from './tenders/tenders.component';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
 import { TenderComponent } from './tender/tender.component';
+import { JobsComponent } from './jobs/jobs.component';
 
 
 const oppRoutes: Routes = [
@@ -21,6 +22,8 @@ const oppRoutes: Routes = [
           { path: 'procurements', component: ProcurementsComponent },
           { path: 'tenders', component: TendersComponent },
           { path: 'tender/:id', component: TenderComponent },
+          { path: 'job/:id', component: AdministrationComponent },
+          { path: 'jobs', component: JobsComponent },
           { path: '', component: OpportunitiesComponent }
         ]
       }

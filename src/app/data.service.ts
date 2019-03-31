@@ -58,6 +58,8 @@ export class DataService {
       params: {
         'filter[category_name]': catName,
         lang: this.language,
+        per_page: '4',
+        orderby: 'date',
         fields: customP.join(',')
       }
     });
@@ -67,6 +69,16 @@ export class DataService {
     return this.http.get<Array<object>>(this.api + 'posts', {
       params: {
         'filter[category_name]': catName,
+        lang: this.language,
+        fields: customP.join(','),
+      }
+    });
+  }
+
+  getBusinessData(customP) {
+    return this.http.get(this.api + 'posts', {
+      params: {
+        'filter[category_name]': 'business',
         lang: this.language,
         fields: customP.join(','),
       }

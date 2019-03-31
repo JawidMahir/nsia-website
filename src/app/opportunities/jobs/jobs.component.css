@@ -1,0 +1,19 @@
+.jobs .title {
+    font-weight: 600;
+    font-size: 30px;
+}
+
+/* First Primary: #01a79b green */
+/* Second Primary: #282560 blue */
+
+.jobs .job .headline {
+    color: #282560;
+    cursor: pointer;
+    transition: color .1s ease-in-out;
+}
+
+
+.jobs .job .headline:hover {
+    color: #01a79b;
+    text-decoration: underline;
+}

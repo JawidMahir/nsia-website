@@ -15,6 +15,7 @@ import { ProcurementsComponent } from './procurements/procurements.component';
 import { TendersComponent } from './tenders/tenders.component';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
 import { TenderComponent } from './tender/tender.component';
+import { JobsComponent } from './jobs/jobs.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -28,7 +29,8 @@ export function createTranslateLoader(http: HttpClient) {
     ProcurementsComponent,
     TendersComponent,
     OpportunitiesComponent,
-    TenderComponent
+    TenderComponent,
+    JobsComponent
   ],
   imports: [
     CommonModule,

@@ -1,44 +1,43 @@
 <div class="margin-top">
-        <div class="custom-container">
-          <div class="section-wrapper">
-            <div class="row">
-              <div class="col-md-8 col-sm-7 col-xs-11">
-                <div *ngIf="events != ''; else noevents">
-                  <h4>Events</h4><br>
-                  <div class="row news" *ngFor="let event of events | paginate: { itemsPerPage: 4 , currentPage: p }">
-                    <div class="col-md-4 col-sm-7">
-                      <img src="{{ event.better_featured_image?.source_url }}" alt="{{ event.better_featured_image?.alt_text }}"
-                        (error)="imageError($event.target);">
-                      <div class="attachment-type">
-                        <p *ngIf="event.acf.attachment_type == 'image' else vedio;">image</p>
-                        <ng-template #vedio> 
-                          <p>vedio</p>
-                        </ng-template>
-                      </div>
-                    </div>
-                    <div class="col-md-7 col-sm-5"> 
-                      <div>
-                        <h5>{{ event.title.rendered }}</h5>
-                        <p>{{ getBrief(event.content.rendered) }}</p> 
-                        <a [routerLink]="['../media', event.id]">Read more ...</a><br>
-                        <span>{{ event.date }}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <pagination-controls class="news-pagination" (pageChange)="p = $event" autoHide="true" responsive="true"
-                      maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
-                      nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
-                  </div>
+  <div class="custom-container">
+    <div class="section-wrapper">
+      <div class="row">
+        <div class="col-md-8 col-sm-7 col-xs-11">
+          <div *ngIf="events != ''; else noevents">
+            <h4>{{'submenu.events' | translate}}</h4><br>
+            <div class="row news" *ngFor="let event of events | paginate: { itemsPerPage: 4 , currentPage: p }">
+              <div class="col-md-4 col-sm-7">
+                <img src="{{ event.better_featured_image?.source_url }}"
+                  alt="{{ event.better_featured_image?.alt_text }}" (error)="imageError($event.target);">
+                <div class="attachment-type">
+                  <p *ngIf="event.acf.attachment_type == 'image' else vedio;">{{'label.image' | translate}}</p>
+                  <ng-template #vedio>
+                    <p>{{ 'label.video' | translate }}</p>
+                  </ng-template>
                 </div>
               </div>
-              <ng-template #nonews>
-                <div class="jumbotron text-center no-data">
-                  <h4>NO DATA</h4>
+              <div class="col-md-7 col-sm-5">
+                <div>
+                  <h5>{{ event.title.rendered }}</h5>
+                  <p>{{ getBrief(event.content.rendered) }}</p>
+                  <a [routerLink]="['../media', event.id]">{{'btn.read-more' | translate}}</a><br>
+                  <span>{{ event.date }}</span>
                 </div>
-              </ng-template>
+              </div>
+            </div>
+            <div class="text-center">
+              <pagination-controls class="news-pagination" (pageChange)="p = $event" autoHide="true" responsive="true"
+                maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
+                nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
             </div>
           </div>
         </div>
+        <ng-template #nonews>
+          <div class="jumbotron text-center no-data">
+            <h4>{{'label.no-data' | translate}}</h4>
+          </div>
+        </ng-template>
       </div>
-      
+    </div>
+  </div>
+</div>

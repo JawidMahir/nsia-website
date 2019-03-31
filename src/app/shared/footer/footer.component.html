@@ -3,15 +3,16 @@
     <div class="row">
       <div class="col-md-3 col-sm-6">
         <div class="link-title">
-          <h4>Newsletter</h4>
+          <h4>{{'label.newsletter' | translate}}</h4>
         </div>
         <div class="links">
-          <p>Subscrib to Newsletter here</p>
+          <p>{{'label.news-letter-subscribe' | translate}}</p>
           <input type="email" name="email" id="email" placeholder="Enter your email address" #useremail required
             [(ngModel)]="email" (input)="checkEmail()">
-          <button [disabled]="!validEmail" (click)="subscribe(useremail.value)" class="subscribe-btn">Subscribe</button>
+          <button [disabled]="!validEmail" (click)="subscribe(useremail.value)"
+            class="subscribe-btn">{{'label.subscribe' | translate}}</button>
         </div>
-        <div class="alert alert-success alert-dismissible fade show" id="success-subscribe" role="alert">
+        <!-- <div class="alert alert-success alert-dismissible fade show" id="success-subscribe" role="alert">
           <strong>Thank You,</strong> You will receive our regular publications to your inbox.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -23,92 +24,92 @@
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
+        </div> -->
 
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="link-title">
-          <h4>About Us</h4>
+          <h4>{{'menu.about-us' | translate}}</h4>
         </div>
 
         <div class="links">
           <ul>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">about nsia </a>
+              <a href="">{{'submenu.about-nsia' | translate}} </a>
             </li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">history</a></li>
+              <a href="">{{'label.history' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">vision and mission</a></li>
+              <a href="">{{'label.vision-mission'| translate }}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">Authority and functions</a></li>
+              <a href="">{{'label.authority-functions' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">organization structure</a></li>
+              <a href="">{{'label.organization-structure' | translate}}</a></li>
           </ul>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="link-title">
-          <h4>Quick Links</h4>
+          <h4>{{'label.quick-links' | translate}}</h4>
         </div>
         <div class="links">
           <ul>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">eTazkera Enrollment Centers</a></li>
+              <a href="">{{'label.tazkira-enrollement' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">Laws</a></li>
+              <a href="">{{'label.laws' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">guidelines</a></li>
+              <a href="">{{'label.guidelines' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">stats</a></li>
+              <a href="">{{'label.stats' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">tenders</a></li>
+              <a href="">{{'submenu.procurement' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">jobs</a></li>
+              <a href="">{{'label.jobs' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">contact us</a></li>
+              <a href="">{{'label.contact-us' | translate}}</a></li>
           </ul>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="link-title">
-          <h4>Services</h4>
+          <h4>{{'menu.services' | translate}}</h4>
         </div>
         <div class="links">
           <ul>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">eTazkira</a></li>
+              <a href="">{{'label.etazkira' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">paper tazkira</a></li>
+              <a href="">{{'label.paper-tazkira' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">birth registration</a></li>
+              <a href="">{{'label.birth-registration' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">death registration</a></li>
+              <a href="">{{'label.death-registration' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">marriage registration</a></li>
+              <a href="">{{'label.marriage-registration' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">divorce registration</a></li>
+              <a href="">{{'label.divorce-registration' | translate}}</a></li>
             <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">Foreigners registration</a></li>
+              <a href="">{{'label.foreign-registration' | translate}}</a></li>
           </ul>
         </div>
       </div>
@@ -129,7 +130,7 @@
         <div class="copy-right">
           <span>
             <b>
-              © {{ year }}, All rights reserved, National Statistics and Information Authority
+              {{ 'label.copy-right' | translate:{'year':year } }}
             </b>
           </span>
         </div>

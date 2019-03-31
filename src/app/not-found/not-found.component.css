@@ -1,0 +1,23 @@
+.not-found {
+    min-height: 600px;
+}
+.not-found-wrapper .error-message{
+ font-size: 7rem;
+}
+
+.not-found-wrapper .details p {
+    font-size: 20px;
+}
+
+.not-found-wrapper  {
+    max-width: 28vw;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+
+.not-found-wrapper button {
+    margin: 0px 8px
+}
+
+

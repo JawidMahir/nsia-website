@@ -20,7 +20,8 @@
             <div class="service-details">
               <h1>{{ carousel.nsia.title?.rendered }}</h1>
               <h5>{{ getBrief(carousel.nsia.content?.rendered) }}</h5>
-              <button routerLink="/about-us/about-nsia" class="c-btn-outline-blue">Read More</button>
+              <button routerLink="/about-us/about-nsia"
+                class="c-btn-outline-blue">{{ 'btn.read-more' | translate }}</button>
             </div>
           </div>
         </div>
@@ -34,8 +35,8 @@
             <div class="service-details">
               <h1>{{ carousel.stats.title?.rendered }}</h1>
               <h5>{{ getBrief(carousel.stats.content?.rendered) }}</h5>
-              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('stats')">Read
-                More</button>
+              <button class="c-btn-outline-blue" routerLink="/services"
+                (click)="updateServiceType('stats')">{{ 'btn.read-more' | translate }}</button>
             </div>
           </div>
         </div>
@@ -48,8 +49,8 @@
             <div class="service-details">
               <h1>{{ carousel.gis.title?.rendered }}</h1>
               <h5>{{ getBrief(carousel.gis.content?.rendered) }}</h5>
-              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('gis')">Read
-                More</button>
+              <button class="c-btn-outline-blue" routerLink="/services"
+                (click)="updateServiceType('gis')">{{ 'btn.read-more' | translate }}</button>
             </div>
           </div>
         </div>
@@ -62,8 +63,8 @@
             <div class="service-details">
               <h1>{{ carousel.isd.title?.rendered }}</h1>
               <h5>{{ getBrief(carousel.isd.content?.rendered) }}</h5>
-              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('isd')">Read
-                More</button>
+              <button class="c-btn-outline-blue" routerLink="/services"
+                (click)="updateServiceType('isd')">{{ 'btn.read-more' | translate }}</button>
             </div>
           </div>
         </div>
@@ -77,8 +78,8 @@
             <div class="service-details">
               <h1>{{ carousel.nid.title?.rendered }}</h1>
               <h5>{{ getBrief(carousel.nid.content?.rendered) }}</h5>
-              <button class="c-btn-outline-blue" routerLink="/services" (click)="updateServiceType('nid')">Read
-                More</button>
+              <button class="c-btn-outline-blue" routerLink="/services"
+                (click)="updateServiceType('nid')">{{ 'btn.read-more' | translate }}</button>
             </div>
           </div>
         </div>
@@ -169,8 +170,8 @@
                     <p>{{ carousel.stats.content?.rendered }}</p>
                   </div>
                   <div class="read-more">
-                    <button class="c-btn-outline-white" routerLink="/services" (click)="updateServiceType('stats')">Read
-                      More</button>
+                    <button class="c-btn-outline-white" routerLink="/services"
+                      (click)="updateServiceType('stats')">{{ 'btn.read-more' | translate }}</button>
                   </div>
                 </div>
               </div>
@@ -185,8 +186,8 @@
                     <p>{{ carousel.gis.content?.rendered }}</p>
                   </div>
                   <div class="read-more">
-                    <button class="c-btn-outline-white" routerLink="/services" (click)="updateServiceType('gis')">Read
-                      More</button>
+                    <button class="c-btn-outline-white" routerLink="/services"
+                      (click)="updateServiceType('gis')">{{ 'btn.read-more' | translate }}</button>
                   </div>
                 </div>
               </div>
@@ -201,8 +202,8 @@
                     <p>{{ carousel.isd.content?.rendered }}</p>
                   </div>
                   <div class="read-more">
-                    <button class="c-btn-outline-white" routerLink="/services" (click)="updateServiceType('sdu')">Read
-                      More</button>
+                    <button class="c-btn-outline-white" routerLink="/services"
+                      (click)="updateServiceType('sdu')">{{ 'btn.read-more' | translate }}</button>
                   </div>
                 </div>
               </div>
@@ -216,8 +217,8 @@
                     <p>{{ carousel.nid.content?.rendered }}</p>
                   </div>
                   <div class="read-more">
-                    <button class="c-btn-outline-white" routerLink="/services" (click)="updateServiceType('nid')">Read
-                      More</button>
+                    <button class="c-btn-outline-white" routerLink="/services"
+                      (click)="updateServiceType('nid')">{{ 'btn.read-more' | translate }}</button>
                   </div>
                 </div>
               </div>
@@ -227,40 +228,6 @@
       </div>
     </div>
   </div>
-  <!-- Following are the sample cards that are used for dynamic contents -->
-  <div class="samples" style="display:none">
-    <div class="col-md-3 col-sm-6" id="news-card">
-      <div class="news-item">
-        <img src="../../assets/images/news1.png" alt="featured-image">
-        <div class="contents">
-          <h4>MCU did something</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-        </div>
-        <div class="news-date">
-          <h4>23</h4>
-          <p>Jan</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6" id="events-card">
-      <div class="news-item">
-        <img src="../../assets/images/news1.png" alt="featured-image">
-        <div class="contents">
-          <h4>MCU did something</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illo velit necessitatibus?</p>
-        </div>
-        <div class="news-date">
-          <h4>23</h4>
-          <p>Jan</p>
-        </div>
-      </div>
-    </div>
-    <div class="jumbotron text-center no-data">
-      <h4>NO DATA</h4>
-    </div>
-
-  </div>
-
 
 
   <div class="section-wrapper latest-section">
@@ -268,26 +235,26 @@
       <div class="col-md-3 col-sm-6 active ls-btn" id="nav-news-tab" data-toggle="tab" data-target="#nav-news"
         role="tab" aria-controls="nav-news" aria-selected="true" redirect-url="/media-room/news-updates">
         <div class="news-category active-news news-cat">
-          <h5>Latest News</h5>
+          <h5>{{ 'label.latest-news' | translate}}</h5>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-publications-tab" data-toggle="tab" data-target="#nav-publications"
         role="tab" aria-controls="nav-publications" aria-selected="false" redirect-url="/library/articles">
         <div class="news-category news-cat">
-          <h5>Latest Publications</h5>
+          <h5>{{ 'label.latest-pubs' | translate }}</h5>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-press-tab" data-toggle="tab" data-target="#nav-press" role="tab"
         aria-controls="nav-press" aria-selected="false" redirect-url="/media-room/press-release">
         <div class="news-category news-cat">
-          <h5>Press Release</h5>
+          <h5>{{ 'label.press-release' | translate}}</h5>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-announcements-tab" data-toggle="tab"
         data-target="#nav-announcements" role="tab" aria-controls="nav-announcements" aria-selected="false"
         redirect-url="/media-room/news-updates">
         <div class="news-category news-cat">
-          <h5>Important Announcements</h5>
+          <h5>{{ 'label.important-announce' | translate }}</h5>
         </div>
       </div>
     </div>
@@ -312,7 +279,7 @@
         </div>
         <ng-template #nonews>
           <div class="jumbotron text-center no-data">
-            <h4>NO DATA</h4>
+            <h4>{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>
@@ -335,7 +302,7 @@
         </div>
         <ng-template #nopublications>
           <div class="jumbotron text-center no-data">
-            <h4>NO DATA</h4>
+            <h4>{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>
@@ -358,7 +325,7 @@
         </div>
         <ng-template #nopress>
           <div class="jumbotron text-center no-data">
-            <h4>NO DATA</h4>
+            <h4>{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>
@@ -381,15 +348,15 @@
         </div>
         <ng-template #noannouncements>
           <div class="jumbotron text-center no-data">
-            <h4>NO DATA</h4>
+            <h4>{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 text-center">
-        <button class="btn btn-lg btn-outline-info" (click)="readMoreRedirect($event.target)" id="news-read-more">Read
-          More</button>
+        <button class="btn btn-lg btn-outline-info" (click)="readMoreRedirect($event.target)"
+          id="news-read-more">{{ 'btn.read-more' | translate }}</button>
       </div>
     </div>
   </div>
@@ -400,7 +367,7 @@
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="title">
-            <h4>stakeholders</h4>
+            <h4>{{ 'label.stakeholders' | translate }}</h4>
             <div class="t-icon">
               <div>
                 <i class="fas fa-chevron-left" href="#stakeholder-carousel" role="button" data-slide="prev"></i>
@@ -410,18 +377,18 @@
           </div>
           <div class="stakeholders b-category">
             <div id="stakeholder-carousel" class="carousel slide bussiness-carousel" data-ride="carousel"
-              *ngIf="stakeHolders">
+              *ngIf="businessMainData.stakeholders">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <div class="bs-item" *ngFor="let st of stakeHolders[1]">
-                    <img [src]="st.logo" alt="stakeholder">
-                    <h6>{{ st.name }}</h6>
+                  <div class="bs-item" *ngFor="let st of businessMainData.stakeholders[0]">
+                    <img [src]="st.better_featured_image?.source_url" alt="stakeholder">
+                    <h6>{{ st.title.rendered }}</h6>
                   </div>
                 </div>
-                <div class="carousel-item" *ngFor="let stk of stakeHolders | slice:2">
+                <div class="carousel-item" *ngFor="let stk of businessMainData.stakeholders | slice:1">
                   <div class="bs-item" *ngFor="let st of stk">
-                    <img [src]="st.logo" alt="stakeholder">
-                    <h6>{{ st.name }}</h6>
+                    <img [src]="st.better_featured_image?.source_url" alt="stakeholder">
+                    <h6>{{ st.title.rendered }}</h6>
                   </div>
                 </div>
               </div>
@@ -430,7 +397,7 @@
         </div>
         <div class="col-lg-4 col-md-6  col-sm-6">
           <div class="title donor-title">
-            <h4>donors</h4>
+            <h4>{{ 'label.donors' | translate }}</h4>
             <div class="t-icon">
               <div>
                 <i class="fas fa-chevron-left" href="#donors-carousel" role="button" data-slide="prev"></i>
@@ -440,18 +407,18 @@
           </div>
           <div class="donors b-category">
             <div id="donors-carousel" class="carousel slide bussiness-carousel" data-ride="carousel"
-              *ngIf="stakeHolders">
+              *ngIf="businessMainData.donors">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <div class="bs-item" *ngFor="let st of stakeHolders[1]">
-                    <img [src]="st.logo" alt="stakeholder">
-                    <h6>{{ st.name }}</h6>
+                  <div class="bs-item" *ngFor="let dn of businessMainData.donors[0]">
+                    <img [src]="dn.better_featured_image?.source_url" alt="stakeholder">
+                    <h6>{{ dn.title.rendered }}</h6>
                   </div>
                 </div>
-                <div class="carousel-item" *ngFor="let stk of stakeHolders | slice:2">
-                  <div class="bs-item" *ngFor="let st of stk">
-                    <img [src]="st.logo" alt="stakeholder">
-                    <h6>{{ st.name }}</h6>
+                <div class="carousel-item" *ngFor="let dnr of businessMainData.donors | slice:1">
+                  <div class="bs-item" *ngFor="let dn of dnr">
+                    <img [src]="dn.better_featured_image?.source_url" alt="donors">
+                    <h6>{{ dn.title.rendered }}</h6>
                   </div>
                 </div>
               </div>
@@ -460,7 +427,7 @@
         </div>
         <div class="col-lg-4 col-md-6  col-sm-6">
           <div class="title">
-            <h4>customers</h4>
+            <h4>{{ 'label.customers' | translate }}</h4>
             <div class="t-icon">
               <div>
                 <i class="fas fa-chevron-left" href="#customers-carousel" role="button" data-slide="prev"></i>
@@ -470,18 +437,18 @@
           </div>
           <div class="customers b-category">
             <div id="customers-carousel" class="carousel slide bussiness-carousel" data-ride="carousel"
-              *ngIf="stakeHolders">
+              *ngIf="businessMainData.customers">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <div class="bs-item" *ngFor="let st of stakeHolders[1]">
-                    <img [src]="st.logo" alt="stakeholder">
-                    <h6>{{ st.name }}</h6>
+                  <div class="bs-item" *ngFor="let cs of businessMainData.customers[0]">
+                    <img [src]="cs.better_featured_image?.source_url" alt="cutomer">
+                    <h6>{{ cs.title.rendered }}</h6>
                   </div>
                 </div>
-                <div class="carousel-item" *ngFor="let stk of stakeHolders | slice:2">
-                  <div class="bs-item" *ngFor="let st of stk">
-                    <img [src]="st.logo" alt="stakeholder">
-                    <h6>{{ st.name }}</h6>
+                <div class="carousel-item" *ngFor="let cst of businessMainData.customers | slice:1">
+                  <div class="bs-item" *ngFor="let cs of cst">
+                    <img [src]="cs.better_featured_image?.source_url" alt="customers">
+                    <h6>{{ cs.title.rendered }}</h6>
                   </div>
                 </div>
               </div>
@@ -523,20 +490,20 @@
       <div class="col-md-4 col-sm-6 ls ls-btn" id="nav-events-tab" data-toggle="tab" data-target="#nav-events"
         role="tab" aria-controls="nav-events" aria-selected="true" redirect-url="/media-room/event">
         <div class="news-category active-news events-cat">
-          <h5>Upcoming Events</h5>
+          <h5>{{ 'label.upcoming-events' | translate }}</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 ls-btn" id="nav-upcoming_publications-tab" data-toggle="tab"
         data-target="#nav-upcoming_publications" role="tab" aria-controls="nav-upcoming_publications"
         aria-selected="false" redirect-url="/library/articles">
         <div class="news-category events-cat">
-          <h5>Upcoming Publications</h5>
+          <h5>{{ 'label.upcoming-pubs' | translate }}</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 ls-btn" id="nav-surveys-tab" data-toggle="tab" data-target="#nav-surveys" role="tab"
         aria-controls="nav-surveys" aria-selected="false" redirect-url="/library/reports">
         <div class="news-category events-cat">
-          <h5>Surveys</h5>
+          <h5>{{ 'label.surveys' | translate }}</h5>
         </div>
       </div>
     </div>
@@ -561,7 +528,7 @@
         </div>
         <ng-template #noevents>
           <div class="jumbotron text-center no-data">
-            <h4>NO DATA</h4>
+            <h4>{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>
@@ -585,7 +552,7 @@
         </div>
         <ng-template #nouPubs>
           <div class="jumbotron text-center no-data">
-            <h4>NO DATA</h4>
+            <h4>{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>
@@ -608,15 +575,15 @@
         </div>
         <ng-template #nousurveys>
           <div class="jumbotron text-center no-data">
-            <h4>NO DATA</h4>
+            <h4>{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 text-center">
-        <button class="btn btn-lg btn-outline-info" (click)="readMoreRedirect($event.target)" id="events-read-more">Read
-          More</button>
+        <button class="btn btn-lg btn-outline-info" (click)="readMoreRedirect($event.target)"
+          id="events-read-more">{{ 'btn.read-more' | translate }}</button>
       </div>
     </div>
   </div>

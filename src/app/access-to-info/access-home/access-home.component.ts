@@ -23,8 +23,12 @@ export class AccessHomeComponent implements OnInit {
   onSectionChange(sectionId: string) {
     this.currentSection = sectionId;
     console.log('section changed: ', this.currentSection);
-
     $('.section-title').removeClass('active-section');
+
+    if (this.currentSection === undefined) {
+      $('#guidelines').find('.section-title').addClass('active-section');
+    }
+
     $('#' + this.currentSection).find('.section-title').addClass('active-section');
 
   }
@@ -72,7 +76,7 @@ export class AccessHomeComponent implements OnInit {
   }
 
   getScroll(el) {
-    // console.log($(el).scrollTop());
+    console.log($(el).scrollTop());
   }
 
   videoURL(url) {

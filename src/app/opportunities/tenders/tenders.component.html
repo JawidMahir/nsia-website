@@ -1,26 +1,26 @@
 <div class="tenders">
   <div class="title">
-    <h1>Tenders</h1>
+    <h1>{{'submenu.procurement' | translate }}</h1>
   </div>
   <div class="tender-contents">
     <table class="table">
       <thead>
         <th><span>
-            Description
+            {{'label.description'| translate}}
           </span></th>
         <th>
           <span>
-            Publish date
+            {{'label.p-date' | translate}}
           </span>
         </th>
         <th>
           <span>
-            Closing date
+            {{'label.c-date' | translate}}
           </span>
         </th>
       </thead>
       <tbody *ngIf="tenders">
-        <tr class="tender"  *ngFor="let tn of tenders">
+        <tr class="tender" *ngFor="let tn of tenders">
           <td class="description">
             <a class="headline" [routerLink]="['/opportunities/tender', tn.id]">
               {{ tn.title.rendered }}

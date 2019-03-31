@@ -4,7 +4,7 @@
     "lang.pashto": "پښتو",
 
     "label.no-data": "NO DATA",
-    "label.copy-right": "All rights reserved, National Statistics and Information Authority",
+    "label.copy-right": "© {{ year }}, All rights reserved, National Statistics and Information Authority",
 
     
     "label.contact-us": "Contact Us",
@@ -52,8 +52,9 @@
     "submenu.events": "events",
     "submenu.news-updates": "News & Updates",
     "submenu.press-release": "Press Release",
-    "submenu.administrations": "Administration",
+    "submenu.administrations": "Careers",
     "submenu.procurement": "procurement",
+    "submenu.jobs": "Jobs",
 
 
     "label.newsletter": "newsletter",
@@ -63,7 +64,9 @@
     "label.history": "history",
     "label.authority-functions": "authority and functions",
     "label.organization-structure": "organization structure",
+    "label.vision-mission": "vision and mission",
     "label.quick-links": "quick links",
+    "label.tazkira-enrollement": "eTazkera Enrollment Centers",
     "label.laws": "laws",
     "label.guidelines": "guidelines",
     "label.stats": "stats",
@@ -77,11 +80,43 @@
     "label.foreign-registration": "foreign registration",
     "label.regulations": "regulations",
 
+    "label.date-posted": "Date posted",
+    "label.reference":"Reference",
+    "label.closing-date": "Closing date",
+    "label.work-type": "Work Type",
+    "lable.vacancies-num": "Number of Vacancies",
+    "label.functional-area": "Functional Area",
+    "label.nationality": "Nationality",
+    "label.salary-range": "Salary Range",
+    "label.experience": "Years of experience",
+    "label.contract-duration": "Contract-duration",
+    "label.extension-possibility": "Extention Possibility",
+    "label.contract-type": "Contract Type",
+    "label.probation-period": "Probation Period",
+    "label.required-languages": "Required Languages",
+    "label.job-summary": "Job Summary",
+    "label.skills-required": "Skills required",
+    "label.skills-description": "Skills Description",
+    "label.responsibilities": "Duties and responsibilities",
+    "label.location": "Job Location",
+    "label.qualifications": "Qualifications",
+    "label.submission-guidelines": "Submission Guidelines",
+    "label.submission-email": "Submission email",
+
+
     "label.promoting-material": "Promoting material",
     "label.news": "News",
+    "label.vision": "Our Vision",
+    "label.mission": "Our mission",
+    "label.image": "image",
+    "label.video": "video",
+    "label.description": "description",
+    "label.p-date": "publish date",
+    "label.c-date": "closing date",
+    
 
 
-    "label.about-service": "about {{ serviceName }}",
+    "label.about-service": "about {{sr}}",
 
     "sidebar.title": "NEWS",
     "contact.title": "CONTACT US",
@@ -104,7 +139,8 @@
     "btn.surveys": "surveys",
     "btn.reports": "reports",
     "btn.magazines": "magazines",
-    "btn.policies": "policies"
+    "btn.policies": "policies",
+    "btn.articles": "Articles"
 
     
 }

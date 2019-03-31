@@ -3,25 +3,25 @@
     <div class="section-wrapper">
       <div class=" lib">
         <div class=" lib-btn active-libraray" id="books" (click)="showLibraries($event.target)">
-          <p class="books">BOOKS</p>
+          <p class="books">{{'btn.books' | translate}}</p>
         </div>
         <div class=" lib-btn" id="surveys" (click)="showLibraries($event.target)">
-          <p>SURVEYS</p>
+          <p>{{'btn.surveys' | translate}}</p>
         </div>
         <div class=" lib-btn" id="reports" (click)="showLibraries($event.target)">
-          <p>REPORTS</p>
+          <p>{{'btn.reports' | translate}}</p>
         </div>
         <div class=" lib-btn" id="magazine" (click)="showLibraries($event.target)">
-          <p>MAGAZINE</p>
+          <p>{{'btn.magazines' | translate}}</p>
         </div>
         <div class=" lib-btn" id="articles" (click)="showLibraries($event.target)">
-          <p>ARTICLES</p>
+          <p>{{'submenu.articles' | translate}}</p>
         </div>
         <div class=" lib-btn" id="newsletter" (click)="showLibraries($event.target)">
-          <p>NEWSLETTER</p>
+          <p>{{'label.newsletter' | translate}}</p>
         </div>
         <div class=" lib-btn" id="policies" (click)="showLibraries($event.target)">
-          <p>POLICIES</p>
+          <p>{{'btn.policies' | translate}}</p>
         </div>
       </div>
       <div class="row content" *ngIf="contents != '' ; else nodata">
@@ -39,7 +39,7 @@
       </div>
       <ng-template #nodata>
         <div class="jumbotron text-center no-data">
-          <h4>NO DATA</h4>
+          <h4>{{'label.no-data' | translate}}</h4>
         </div>
       </ng-template>
       <div class="text-center">
