@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {formatDate } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 import { MediaServicesService } from '../media-services.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { MediaServicesService } from '../media-services.service';
 export class NewsUpdatesComponent implements OnInit {
     news: '';
 
-  constructor(private mediaService: MediaServicesService) { }
+  constructor(private mediaService: MediaServicesService,
+              private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getNewsData('news'); 
@@ -21,6 +23,7 @@ export class NewsUpdatesComponent implements OnInit {
     customParams.push('title.rendered');
     customParams.push('content.rendered');
     customParams.push('acf.attachment_type');
+    customParams.push('acf.link');
     customParams.push('better_featured_image.source_url');
     customParams.push('better_featured_image.alt_text');
     customParams.push('date');
@@ -54,6 +57,10 @@ export class NewsUpdatesComponent implements OnInit {
     el.src = '../../assets/images/noimage.png';
     console.log(el);
     return true;
+  }
+
+  videoURL(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   
