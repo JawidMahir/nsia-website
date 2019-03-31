@@ -19,7 +19,8 @@ input,textarea{
 
 .subscribe-btn:disabled {
     cursor: not-allowed;
-    color: #61607a;
+    background-color: #636183;
+    color: #fff;
 }
 strong{
     font-size: 17px;

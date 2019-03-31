@@ -12,7 +12,8 @@
 
 .lib-btn:hover {
   border-color: #282560;
-  color: #282560;
+  background-color: #282560;
+  color: #fff;
 }
 
 .lib-btn p {
@@ -23,6 +24,13 @@
   margin: 3% 8%;
   display: flex;
 }
+
+.search-wrapper {
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
 
 .active-libraray {
   background-color: #282560;

@@ -4,15 +4,50 @@
       <div class="row">
         <div class="col-md-8 col-sm-8 col-lg-8 col-xs-11">
           <h4>{{ 'label.contact-us' | translate }}</h4>
-          <hr>
-          <strong>Customer Service Phone #:</strong><span> +93 (0) 20 22 11 708 </span>
-          <hr>
-          <strong>Working Hours:</strong><span> Saturday - Wednesday from 8:00 a.m. to 5:00 p.m. Kabul Time </span>
-          <hr>
-          <strong>E-mail:</strong><span> info@accra.gov.af </span>
-          <hr>
-          <strong>Address:</strong><span> Sadarat Square, Inside Old MoI Building, Kabul - Afghanistan
-          </span><br><br><br>
+          <div class="contact-us">
+            <table class="table text-blue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span><strong>Customer Service Phone #:</strong></span>
+                  </td>
+                  <td>
+                    <span>+93 (0) 20 22 11 708</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span>
+                      <strong>Working Hours:</strong>
+                    </span>
+                  </td>
+                  <td>
+                    <span>Saturday - Wednesday from 8:00 a.m. to 5:00 p.m. Kabul Time</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span>
+                      <strong>E-mail:</strong>
+                    </span>
+                  </td>
+                  <td>
+                    <span>info@nsia.gov.af</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span>
+                      <strong>Address:</strong>
+                    </span>
+                  </td>
+                  <td>
+                    <span>7th District, Chahel saton street, beside of bagh babar</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="col-md-6"><br>

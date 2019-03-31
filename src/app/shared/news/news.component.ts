@@ -50,4 +50,12 @@ export class NewsComponent implements OnInit {
       this.router.navigate([this.newsReadMore]);
     }
   }
+
+  getBrief(ds) {
+    if (ds.length > 60) {
+      return ds.substring(0, 59) + '...';
+    }
+    return ds;
+  }
+
 }

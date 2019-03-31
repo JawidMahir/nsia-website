@@ -8,7 +8,7 @@
       </div>
       <div class="col-md-9 col-sm-7 col-xs-4 display">
         <a [routerLink]="['/media-room/news', nw.id]">
-          {{ nw.title.rendered }}
+          {{ getBrief(nw.title.rendered) }}
         </a>
         <p>{{ nw.date }}</p>
       </div>

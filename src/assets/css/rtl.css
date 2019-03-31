@@ -96,6 +96,10 @@
   float: left !important;
 }
 
+.rtl .footer .copy-right span {
+  float: right !important;
+}
+
 /*
 * NEWS Related RTL CSS
 */

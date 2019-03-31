@@ -24,9 +24,12 @@
   </div>
   <div class="about-details">
     <div class="featured-video">
-        <iframe src="https://www.youtube.com/embed/EDN6l8wLn5o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <!-- <iframe [src]="videoURL(aboutNSIA.acf.about_link)" frameborder="0" allow="autoplay; encrypted-media"
-        allowfullscreen></iframe> -->
+        <!-- <iframe src="https://www.youtube.com/embed/EDN6l8wLn5o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      <iframe *ngIf="aboutNSIA.acf.hasOwnProperty('link'); else novideo" [src]="videoURL(aboutNSIA.acf.link)" frameborder="0" allow="autoplay; encrypted-media"
+        allowfullscreen></iframe>
+        <ng-template #novideo>
+          <img src="../../../assets/images/noimage-h.png" class="fit-cover" alt="">
+        </ng-template>
     </div>
     <div class="details">
       <p>{{ aboutNSIA.content?.rendered }}</p>

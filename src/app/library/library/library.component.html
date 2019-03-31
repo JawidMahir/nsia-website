@@ -24,9 +24,18 @@
           <p>{{'btn.policies' | translate}}</p>
         </div>
       </div>
+      <div class="search-wrapper">
+        <div class="search-input">
+          <div class="wrapper">
+            <input type="text" placeholder="{{'label.search-website' | translate }}" class="search-box"
+              [(ngModel)]="filterText">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+      </div>
       <div class="row content" *ngIf="contents != '' ; else nodata">
         <div class="col-lg-3 col-md-3 col-sm-6"
-          *ngFor="let content of contents | paginate: { itemsPerPage: 12 , currentPage: p }">
+          *ngFor="let content of contents | paginate: { itemsPerPage: 12 , currentPage: p } | libFilter:filterText">
           <a href="{{content.acf.library_attachment.url}}" download="{{content.acf.library_attachment.filename}}"
             target="_blank">
             <img src="{{ content.better_featured_image?.source_url }}"
