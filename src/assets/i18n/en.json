@@ -117,6 +117,7 @@
 
 
     "label.about-service": "about {{sr}}",
+    "label.about-rs": "about {{title}}",
 
     "sidebar.title": "NEWS",
     "contact.title": "CONTACT US",

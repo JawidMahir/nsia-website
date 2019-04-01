@@ -32,7 +32,7 @@
             <div class="sr-icon">
               <img src="../../../assets/logo/gis.svg" alt="">
             </div>
-            <div class="sr-name">
+            <div class="sr-name sp">
               <p>{{'submenu.gis' | translate}}</p>
             </div>
           </div>
@@ -63,25 +63,27 @@
         <span>{{'submenu.provincial-s' | translate }}</span>
       </div>
       <div class="sidebar">
-        <div class="sidebar-menu" *ngIf="deputyDepartments && !provincialServices">
+        <div class="sidebar-menu" *ngIf="deputyDepartments.length > 0 && !provincialServices">
           <div class="accordion menu-item" id="{{ dp.acf[dept] }}" *ngFor="let dp of deputyDepartments"
             (click)="activeMenu($event.target)">
             <div class="m-item-c" data-toggle="collapse" [attr.data-target]="'#sub-' + dp.acf[dept]"
               aria-expanded="true" aria-controls="collapseOne">
               <i class="fas fa-chevron-right"></i>
-              <span>{{ dp.acf[dept] }}</span>
+              <span>{{ dp.title.rendered }}</span>
               <i class="fas fa-chevron-down" *ngIf="dp.headships"></i>
             </div>
 
-            <div id="{{ 'sub-' + dp.acf[dept] }}" class="collapse sub-menu"
-              [attr.data-parent]="'#' + dp.acf[dept]">
+            <div id="{{ 'sub-' + dp.acf[dept] }}" class="collapse sub-menu" [attr.data-parent]="'#' + dp.acf[dept]">
               <!-- sub menus go here -->
               <div class="sub-menu-item" (click)="getDepartmentDetails(dp.id, $event.target)">
-                <p>{{ 'about ' + dp.acf[dept] }}</p>
+                <!-- <p>{{ 'about ' + dp.title.rendered }}</p> -->
+                <p>{{ 'label.about-rs' | translate:{'title': dp.title.rendered} }}</p>
               </div>
-              <div class="sub-menu-item" *ngFor="let subDp of dp.headships"
-                (click)="getDepartmentDetails(subDp.id, $event.target)">
-                <p>{{ subDp.acf[dept] }}</p>
+              <div *ngIf="dp.headships">
+                <div class="sub-menu-item" *ngFor="let subDp of dp.headships"
+                  (click)="getDepartmentDetails(subDp.id, $event.target)">
+                  <p>{{ subDp.title.rendered }}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -115,8 +117,7 @@
       <div class="row">
         <div class="col-md-3 col-sm-6">
           <div class="deputy-image">
-            <img [src]="contents.better_featured_image?.source_url" alt="image"
-            (error)="imageError($event.target)">
+            <img [src]="contents.better_featured_image?.source_url" alt="image" (error)="imageError($event.target)">
           </div>
           <div class="deputy-info" *ngIf="contents.acf">
             <strong>{{ contents.acf.name }}</strong>
@@ -126,7 +127,7 @@
           <div class="details-title">
             <h5> <strong> {{ contents.title.rendered}} </strong></h5>
           </div>
-          <div class="details">{{ contents.content.rendered }}</div>
+          <div *ngIf="contents.content" class="details" [innerHTML]="contents.content.rendered"></div>
         </div>
       </div>
 

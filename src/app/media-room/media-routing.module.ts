@@ -25,13 +25,8 @@ const mediaRoutes: Routes = [
           { path: 'event', component: EventsComponent },
           { path: 'news-updates', component: NewsUpdatesComponent },
           { path: 'press-release', component: PressReleaseComponent },
-          { path: 'magazine', component: MagazineComponent },
-          { path: 'newsletters', component: NewsLettersComponent },
-          { path: 'poster', component: PostersComponent },
-          { path: 'booklet', component: BookletComponent },
-          { path: 'brochures', component: BrochuresComponent },
           { path: 'media/:id', component: MediaGeneralTemplateComponent},
-          { path: '', component: MediaRoomComponent }
+          { path: '', component: EventsComponent }
         ]
       }
     ]

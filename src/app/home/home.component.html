@@ -40,6 +40,7 @@
             </div>
           </div>
         </div>
+        <div class="c-gradient"></div>
       </div>
       <div class="carousel-item" *ngIf="carousel.gis">
         <img class="d-block w-100" src="{{ carousel.gis.better_featured_image.source_url }}"
@@ -54,6 +55,7 @@
             </div>
           </div>
         </div>
+        <div class="c-gradient"></div>
       </div>
       <div class="carousel-item" *ngIf="carousel.isd">
         <img class="d-block w-100" src="{{ carousel.isd.better_featured_image.source_url }}"
@@ -68,6 +70,7 @@
             </div>
           </div>
         </div>
+        <div class="c-gradient"></div>
       </div>
 
       <div class="carousel-item" *ngIf="carousel.nid">
@@ -83,6 +86,7 @@
             </div>
           </div>
         </div>
+        <div class="c-gradient"></div>
       </div>
     </div>
     <!-- <a class="carousel-control-prev" href="#nsiaCarousel" role="button" data-slide="prev">
@@ -267,7 +271,7 @@
               <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
-                <h4>{{ nw.title.rendered }}</h4>
+                <h4>{{ getTitleBrief(nw.title.rendered) }}</h4>
                 <p>{{ nw.acf.brief }}</p>
               </div>
               <div class="news-date">
@@ -290,7 +294,7 @@
               <img src="{{ pb.better_featured_image.source_url }}" alt="{{ pb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
-                <h4>{{ pb.title.rendered }}</h4>
+                <h4>{{ getTitleBrief(pb.title.rendered) }}</h4>
                 <p>{{ pb.acf.brief }}</p>
               </div>
               <div class="news-date">
@@ -313,7 +317,7 @@
               <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
-                <h4>{{ pr.title.rendered }}</h4>
+                <h4>{{ getTitleBrief(pr.title.rendered) }}</h4>
                 <p>{{ pr.acf.brief }}</p>
               </div>
               <div class="news-date">
@@ -336,7 +340,7 @@
               <img src="{{ an.better_featured_image.source_url }}" alt="{{ an.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
-                <h4>{{ an.title.rendered }}</h4>
+                <h4>{{ getTitleBrief(an.title.rendered) }}</h4>
                 <p>{{ an.acf.brief }}</p>
               </div>
               <div class="news-date">
@@ -516,7 +520,7 @@
               <img src="{{ ev.better_featured_image?.source_url }}" alt="{{ ev.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
-                <h4>{{ ev.title.rendered }}</h4>
+                <h4>{{ getTitleBrief(ev.title.rendered) }}</h4>
                 <p>{{ ev.acf.brief }}</p>
               </div>
               <div class="news-date">
@@ -540,7 +544,7 @@
               <img src="{{ upb.better_featured_image?.source_url }}" alt="{{ upb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
-                <h4>{{ upb.title.rendered }}</h4>
+                <h4>{{ getTitleBrief(upb.title.rendered) }}</h4>
                 <p>{{ upb.acf.brief }}</p>
               </div>
               <div class="news-date">
@@ -563,7 +567,7 @@
               <img src="{{ srv.better_featured_image?.source_url }}" alt="{{ srv.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
-                <h4>{{ srv.title.rendered }}</h4>
+                <h4>{{ getTitleBrief(srv.title.rendered) }}</h4>
                 <p>{{ srv.acf.brief }}</p>
               </div>
               <div class="news-date">

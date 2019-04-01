@@ -21,7 +21,7 @@
               </div>
               <div class="col-md-7 col-sm-5">
                 <div>
-                  <h5>{{ nw.title.rendered }}</h5>
+                  <h5>{{ getBrief(nw.title.rendered) }}</h5>
                   <p class="content">{{ getBrief(nw.content.rendered) }}</p>
                   <a [routerLink]="['../media', nw.id]">{{'btn.read-more' | translate}}</a><br>
                   <span>{{ nw.date }}</span>

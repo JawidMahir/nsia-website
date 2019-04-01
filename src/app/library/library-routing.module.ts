@@ -12,12 +12,7 @@ const libraryRoutes: Routes = [
     component: LibraryHomeComponent,
     children: [
       {
-        path: '',
-        children: [
-          { path: 'articles', component: ArticlesComponent },
-          { path: 'reports', component: ReportsComponent },
-          { path: '', component: LibraryComponent }
-        ]
+        path: '', component: LibraryComponent
       }
     ]
   }

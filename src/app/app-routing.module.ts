@@ -6,6 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MainComponent } from './main/main.component';
 import { ChooseLangComponent } from './choose-lang/choose-lang.component';
+import { CanDeactivateGuard } from './services/can-deactivate.guard';
 
 const routes: Routes = [
   {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { Router, ParamMap, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { NsiaServicesService } from '../nsia-services.service';
 import { DataService } from '../../data.service';
@@ -8,7 +8,8 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-services-home',
   templateUrl: './services-home.component.html',
-  styleUrls: ['./services-home.component.css']
+  styleUrls: ['./services-home.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
@@ -33,8 +34,8 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   departmentsFullDetails = [];
   dept;
   contents;
-  deputyDepartments;
-  deputyHeadships;
+  deputyDepartments = [];
+  deputyHeadships = [];
 
 
   constructor(
@@ -75,7 +76,13 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   }
 
   showServiceDetails() {
-    const sType = this.dataService.serviceType;
+    let sType;
+    if (localStorage.getItem('serviceType')) {
+      sType = localStorage.getItem('serviceType');
+    } else {
+      sType = this.dataService.serviceType;
+    }
+    localStorage.setItem('serviceType', sType);
     console.log('showServiceMethod: sType: ', sType);
     if (sType === 'prs') {
       this.getProvinces();
@@ -135,6 +142,9 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
         this.serviceContents.sdu['departments'] = this.deputyDepartments;
         break;
     }
+
+    console.log('departments assigned', this.serviceContents);
+
   }
 
   getDeputyDetails(deputyType, tag) {
@@ -148,14 +158,40 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
     this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
       if (data[0]) {
-        this.contents = data[0];
+        // this.contents = data[0];
+        this.contents = this.styleDetailsLink(data[0]);
         console.log('Service data: ', this.contents);
-        // strip html tags
-        this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
         this.keepContentsLocal(deputyType);
+        // strip html tags
+        // this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
+
       }
 
     });
+
+  }
+
+  styleDetailsLink(data) {
+    let contentRendered;
+    if (data.hasOwnProperty('content')) {
+      contentRendered = data.content.rendered;
+
+      // wrap contents in a div first
+      contentRendered = '<div>' + contentRendered + '</div>';
+
+      const details = $.parseHTML(contentRendered);
+      if ($(details).has('a')) {
+        $(details).find('a').attr('target', '_blank');
+        $(details).find('a').closest('p').addClass('attachment');
+        $(details).find('a').closest('p').prepend('<img src="../../../assets/images/pdf.png" alt="pdf">');
+      }
+
+      data.content.rendered = $(details).html();
+    }
+    console.log('details are done');
+
+
+    return data;
   }
 
   getProvinces() {
@@ -189,6 +225,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
         this.deputyHeadships = data;
         console.log('Headships data: ', this.deputyHeadships);
       }
+      // this.styleDetailsLink();
 
       this.arrangeDepartments(deputyType);
     });
@@ -207,17 +244,17 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     console.log('ID is: ', id);
     console.log($(el).closest('.m-item-c').attr('aria-expanded'));
     const customParams = [];
-    let flag = false;
+    const flag = false;
 
-    for (const dep of this.departmentsFullDetails) {
-      if (dep.id === id) {
-        this.contents = dep;
-        console.log('local se: ', dep);
+    // for (const dep of this.departmentsFullDetails) {
+    //   if (dep.id === id) {
+    //     this.contents = dep;
+    //     console.log('local se: ', dep);
 
-        flag = true;
-        break;
-      }
-    }
+    //     flag = true;
+    //     break;
+    //   }
+    // }
 
     if (!flag) {
       customParams.push('id');
@@ -230,11 +267,14 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
         console.log('Department full data: ', data);
         if (data[0]) {
           this.contents = data[0];
-          this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
+          //  this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
           this.departmentsFullDetails.push(data[0]);
         }
       });
     }
+
+    // this.styleDetailsLink('department');
+
   }
 
   arrangeDepartments(deputyType) {
@@ -243,7 +283,8 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     console.log('deputy related department: ', this.dept);
 
 
-    if (this.deputyDepartments && this.deputyHeadships) {
+    if (this.deputyDepartments.length > 0 && this.deputyHeadships.length > 0) {
+      console.log('I am called ', this.deputyDepartments, this.deputyHeadships);
       for (const dep of this.deputyDepartments) {
         tempHeadships = [];
         for (const hdShip of this.deputyHeadships) {
@@ -253,10 +294,11 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
         }
         dep.headships = tempHeadships;
       }
+
+      this.assignDepartmentsToDeputy(deputyType);
+      console.log('after arrangement', this.deputyDepartments);
     }
 
-    console.log('after', this.deputyDepartments);
-    this.assignDepartmentsToDeputy(deputyType);
   }
 
   provinceData(pItem, province) {
@@ -280,8 +322,9 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
     this.nsiaServices.getProvinceDetails(id, customParams).subscribe((data) => {
       this.contents = data[0];
+      // this.styleDetailsLink('province');
       this.contents.title.rendered = this.nsiaServices.htmlToPlaintext(this.contents.title.rendered);
-      this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
+      // this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
       console.log(id + ' data:', this.contents);
     });
   }
@@ -336,10 +379,16 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     console.log('ToggleService Called');
 
     this.provincialServices = false;
+    console.log('for array type: ', this.deputyDepartments instanceof Array);
+
     const id = $(el).closest('.m-service').attr('id');
     this.serviceType = id;
     // The departments in each service has a different key name, so we have to change it
     this.dept = id + '_department';
+    console.log('department type: ', this.dept);
+
+    localStorage.setItem('serviceType', id);
+
     this.serviceName = $(el).closest('.m-service').find('.sr-name p').html();
     console.log('service name: ', this.serviceName);
     console.log('service id: ', id);
@@ -351,48 +400,70 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     this.activeMenu($('.sidebar-title'));
 
 
-    if (this.serviceContents[id].title) {
-      console.log('from local ', this.serviceContents[id]);
-      this.contents = this.serviceContents[id];
-      this.deputyDepartments = this.contents.departments;
-    } else {
-      let serviceType;
-      this.contents = null;
-      this.deputyDepartments = null;
+    /**
+     * The following commented code is used to fetch data from already fetched data
+     * but due to asynchronous behaviour of it, we cannot predict the order of data coming and hence
+     * some bugs and errors occure
+     * -- I will check this in the next version, for now let it be commented
+     */
 
-      switch (id) {
-        case 'sdu':
-          serviceType = 'sdu_services';
-          this.getDeputyDetails(serviceType, 'service');
-          this.getDeputyDepartments(serviceType, 'department');
-          this.getDeputyDepartments(serviceType, 'headship');
-          break;
 
-        case 'stats':
-          serviceType = 'statistics_services';
-          this.getDeputyDetails(serviceType, 'service');
-          this.getDeputyDepartments(serviceType, 'department');
-          this.getDeputyDepartments(serviceType, 'headship');
-          break;
+    // if (this.serviceContents[id].title) {
+    //   console.log('from local ', this.serviceContents[id]);
+    //   this.contents = this.serviceContents[id];
+    //   this.deputyDepartments = this.serviceContents[id].departments;
+    //   this.cdref.detectChanges();
+    //   console.log('local departments: ', this.deputyDepartments);
+    //   console.log('departments type : ', this.deputyDepartments instanceof Array);
+    // } else {
 
-        case 'gis':
-          serviceType = 'gis_services';
-          this.getDeputyDetails(serviceType, 'service');
-          this.getDeputyDepartments(serviceType, 'department');
-          this.getDeputyDepartments(serviceType, 'headship');
-          break;
+    let serviceType;
+    this.contents = null;
+    this.deputyDepartments = [];
 
-        case 'nid':
-          serviceType = 'national_identity_service';
-          this.getDeputyDetails(serviceType, 'service');
-          this.getDeputyDepartments(serviceType, 'department');
-          this.getDeputyDepartments(serviceType, 'headship');
-          break;
-      }
+    switch (id) {
+      case 'sdu':
+        serviceType = 'sdu_services';
+        this.getDeputyDetails(serviceType, 'service');
+        this.getDeputyDepartments(serviceType, 'department');
+        this.getDeputyDepartments(serviceType, 'headship');
+        break;
+
+      case 'stats':
+        serviceType = 'statistics_services';
+        this.getDeputyDetails(serviceType, 'service');
+
+        this.getDeputyDepartments(serviceType, 'department');
+        this.getDeputyDepartments(serviceType, 'headship');
+        break;
+
+      case 'gis':
+        serviceType = 'gis_services';
+        this.getDeputyDetails(serviceType, 'service');
+        this.getDeputyDepartments(serviceType, 'department');
+        this.getDeputyDepartments(serviceType, 'headship');
+        break;
+
+      case 'nid':
+        serviceType = 'national_identity_services';
+        this.getDeputyDetails(serviceType, 'service');
+        this.getDeputyDepartments(serviceType, 'department');
+        this.getDeputyDepartments(serviceType, 'headship');
+        break;
     }
+    // }
 
 
 
+  }
+
+  canDeactivate() {
+    if (localStorage.getItem('serviceType')) {
+      localStorage.removeItem('serviceType');
+      return true;
+    } else {
+      return true;
+    }
   }
 
 }

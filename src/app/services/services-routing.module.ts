@@ -8,25 +8,14 @@ import { ProvincialServicesComponent } from './provincial-services/provincial-se
 import { ServicesHomeComponent } from './services-home/services-home.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ServicesComponent } from './services/services.component';
+import { CanDeactivateGuard } from './can-deactivate.guard';
 
 
 const servicesRoutes: Routes = [
   {
     path: '',
-    component: ServicesHomeComponent,
-    children: [
-      {
-        path: '',
-        children: [
-          { path: 'accra', component: AccraComponent },
-          { path: 'gis', component: GisComponent },
-          { path: 'info-sys', component: InformationSystemComponent },
-          { path: 'statistics', component: StatisticsComponent },
-          { path: 'province-service', component: ProvincialServicesComponent },
-          { path: '', component: ServicesComponent }
-        ]
-      }
-    ]
+    canDeactivate: [CanDeactivateGuard],
+    component: ServicesHomeComponent
   }
 ];
 

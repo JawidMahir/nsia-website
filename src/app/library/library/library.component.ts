@@ -11,6 +11,7 @@ import * as $ from 'jquery';
 export class LibraryComponent implements OnInit {
   contents;
   p;
+  filterText;
   libraryContents = {
     books: '',
     surveys: '',

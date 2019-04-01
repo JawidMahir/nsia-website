@@ -318,6 +318,13 @@ export class HomeComponent implements OnInit {
     return ds;
   }
 
+  getTitleBrief(title) {
+    if (title.length > 20) {
+      return title.substring(0, 19) + '...';
+    }
+    return title;
+  }
+
 
 
   getCarouselSlides() {

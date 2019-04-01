@@ -11,7 +11,7 @@ export class NsiaServicesService {
   constructor(private http: HttpClient, private dataService: DataService) { }
 
   getDuptyDetails(deputyType, tag, customP) {
-    return this.http.get(this.dataService.api + 'posts', {
+    return this.http.get<Array<any>>(this.dataService.api + 'posts', {
       params: {
         lang: this.dataService.language,
         'filter[category_name]': deputyType,

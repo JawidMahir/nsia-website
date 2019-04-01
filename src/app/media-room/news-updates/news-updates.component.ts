@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {formatDate } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MediaServicesService } from '../media-services.service';
 
@@ -9,16 +9,18 @@ import { MediaServicesService } from '../media-services.service';
   styleUrls: ['./news-updates.component.css']
 })
 export class NewsUpdatesComponent implements OnInit {
-    news: '';
+  news: '';
 
-  constructor(private mediaService: MediaServicesService,
-              private sanitizer: DomSanitizer) { }
+  constructor(
+    private mediaService: MediaServicesService,
+    private sanitizer: DomSanitizer
+  ) { }
 
   ngOnInit() {
-    this.getNewsData('news'); 
+    this.getNewsData('news');
   }
 
-  getNewsData(type){
+  getNewsData(type) {
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('content.rendered');
@@ -29,14 +31,14 @@ export class NewsUpdatesComponent implements OnInit {
     customParams.push('date');
     customParams.push('id');
     this.mediaService.getMediaData(customParams, type).subscribe((newsData) => {
-     this.news = this.refineData(newsData);
+      this.news = this.refineData(newsData);
     });
-  } 
-  
+  }
+
   refineData(data) {
     for (const el of data) {
       if (!el.hasOwnProperty('date')) {
-        el.date = '00'+'th'+'MNT'+'';
+        el.date = '00' + 'th' + 'MNT' + '';
       } else {
         el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
         el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
@@ -47,12 +49,12 @@ export class NewsUpdatesComponent implements OnInit {
 
   getBrief(ds) {
     if (ds.length > 40) {
-      return ds.substring(0, 260) + '...';
+      return ds.substring(0, 39) + '...';
     }
     return ds;
   }
 
-  imageError(el) { 
+  imageError(el) {
     el.onerror = '';
     el.src = '../../assets/images/noimage.png';
     console.log(el);
@@ -63,5 +65,5 @@ export class NewsUpdatesComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
-  
+
 }

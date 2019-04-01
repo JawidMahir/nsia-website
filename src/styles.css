@@ -358,14 +358,14 @@ button {
 }
 
 .sidebar .menu-item .m-item-c {
-  height: 35px;
+  height: fit-content;
 }
 
 .sidebar .menu-item .m-item-c .fa-chevron-down {
   float: right;
   position: relative;
-  top: calc(50% - 10px);
   font-size: 10px;
+  line-height: 2.3;
 }
 
 .sidebar .menu-item .m-item-c .fa-chevron-right {
@@ -510,17 +510,15 @@ button {
   padding: 0px 10px;
   flex: auto;
   border: 1px solid #282560;
+  display: table;
+  height: 100%;
 }
 
 .services .sr-name p {
-  display: block !important;
+  display: table-cell !important;
   margin: 0px !important;
   font-weight: 600;
-
-}
-
-.services .sr-name.sp p {
-  line-height: 3.2;
+  vertical-align: middle
 }
 
 .main-wrapper .contents .deputy-image {

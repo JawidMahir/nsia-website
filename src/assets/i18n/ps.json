@@ -42,7 +42,7 @@
   "submenu.biographies": "ژوندليک",
   "submenu.gender": "جنسیت",
   "submenu.structure": "جوړښت",
-  "submenu.statistics": "شمېرې",
+  "submenu.statistics": "احصاییه",
   "submenu.nid": "ملي هویت",
   "submenu.gis": "د جغرافيايي اطلاعاتو سېستمونه",
   "submenu.isd": "اطلاعاتي سېستمونه",
@@ -118,7 +118,9 @@
   "label.c-date": "د پای نېټه",
 
 
-  "label.about-service": "په اړه {{ sr }}",
+  "label.about-service": "د {{ sr }} په اړه ",
+  "label.about-rs": "د {{title}} په اړه",
+
 
   "sidebar.title": "خبرونه",
   "contact.title": "موږ سره اړيکه ونیسئ",
@@ -134,7 +136,7 @@
   "pagination.previous": "مخکینی",
   "pagination.next": "وروستی",
 
-  "btn.read-more": "نور جزیات ولولئ",
+  "btn.read-more": "نور جزیات",
   "btn.download": "ډانلوډ",
   "btn.view-all-news": "د ټولو خبرونو کتنه",
   "btn.books": "کتابونه",

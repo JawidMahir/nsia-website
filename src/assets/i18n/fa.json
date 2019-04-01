@@ -36,7 +36,7 @@
   "menu.library": "کتابخانه",
   "menu.access-info": "دسترسی به اطلاعات",
   "menu.media-room": "اتاق رسانه",
-  "menu.opportunities": "فرصتها",
+  "menu.opportunities": "فرصت ها",
 
   "submenu.about-nsia": "درباره اداره ملی احصائیه و معلوما",
   "submenu.biographies": "زندگینامه",
@@ -54,7 +54,7 @@
   "submenu.press-release": "اعلامیههای مطبوعاتی",
   "submenu.administrations": "اداری",
   "submenu.procurement": "تدارکات",
-  "submenu.jobs": "Jobs",
+  "submenu.jobs": "استخدام",
 
 
 
@@ -85,7 +85,7 @@
   "label.reference": "شماره داوطلبی",
   "label.closing-date": "تاریخ ختم",
   "label.work-type": "نوع کار",
-  "label.vacancies-num": "تعداد بست",
+  "lable.vacancies-num": "تعداد بست",
   "label.functional-area": "محل وظیفه",
   "label.nationality": "ملیت",
   "label.salary-range": "اندازه معاش",
@@ -119,6 +119,8 @@
 
 
   "label.about-service": "درباره {{ sr }}",
+  "label.about-rs": "درباره {{title}}",
+
 
   "sidebar.title": "اخبار",
   "contact.title": "با ما به تماس شوید",
@@ -134,7 +136,7 @@
   "pagination.previous": "قبلی",
   "pagination.next": "بعدی",
 
-  "btn.read-more": "جزییات بیشتر را بخوانید",
+  "btn.read-more": "جزییات بیشتر",
   "btn.download": "دانلود",
   "btn.view-all-news": "مشاهده تمام اخبار",
   "btn.books": "کتاب ها",
@@ -142,6 +144,5 @@
   "btn.reports": "گزارش ها",
   "btn.magazines": "مجلات",
   "btn.policies": "پالسی ها"
-
 
 }
