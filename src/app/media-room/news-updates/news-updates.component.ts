@@ -31,6 +31,7 @@ export class NewsUpdatesComponent implements OnInit {
     customParams.push('date');
     customParams.push('id');
     this.mediaService.getMediaData(customParams, type).subscribe((newsData) => {
+      console.log('news data update: ', newsData);
       this.news = this.refineData(newsData);
     });
   }
@@ -41,7 +42,9 @@ export class NewsUpdatesComponent implements OnInit {
         el.date = '00' + 'th' + 'MNT' + '';
       } else {
         el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
-        el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
+        if (el.hasOwnProperty('content')) {
+          el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
+        }
       }
     }
     return data;

@@ -81,6 +81,7 @@ export class HomeComponent implements OnInit {
       ride: 'carousel'
     });
 
+
     // stakeholder-carousel
 
     // this.reArrangeBusinessData();
@@ -133,6 +134,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
   reArrangeBusinessData() {
 
     const arrangeDataOf = (dArray) => {
@@ -178,6 +180,7 @@ export class HomeComponent implements OnInit {
 
   getCardsData(type, perPage) {
     const customParams = [];
+    customParams.push('id');
     customParams.push('title.rendered');
     customParams.push('date');
     customParams.push('content.rendered');
@@ -190,7 +193,7 @@ export class HomeComponent implements OnInit {
     if (this.newsBriefs[type] === '') {
 
       this.dataService.getCardsData(customParams, type, perPage).subscribe((cardsData) => {
-        console.log('data: ', cardsData);
+        console.log('news data: ', cardsData);
 
         this.generateCards(type, cardsData);
       });
@@ -305,6 +308,9 @@ export class HomeComponent implements OnInit {
       console.log('before redirectNews: ', this.newsReadMore);
       this.router.navigate([this.newsReadMore]);
     } else {
+      if (this.eventsReadMore.split('/').includes('library')) {
+        localStorage.setItem('library-type', 'library');
+      }
       console.log('before redirectEvents: ', this.eventsReadMore);
       this.router.navigate([this.eventsReadMore]);
     }
@@ -424,10 +430,23 @@ export class HomeComponent implements OnInit {
 
     this.dataService.getInitialStats(customParams, 'statistics').subscribe((data: Array<object>) => {
       if (data) {
-        this.gender = data[0];
-        this.cpi = data[1];
-        this.gdp = data[2];
-        this.population = data[3];
+        for (const st of data) {
+          switch (st['acf'].statistics_type) {
+            case 'gender':
+              this.gender = st;
+              break;
+            case 'cpi':
+              this.cpi = st;
+              break;
+            case 'gdp':
+              this.gdp = st;
+              break;
+            case 'population':
+              this.population = st;
+              break;
+
+          }
+        }
 
         console.log('stats data', data);
       }

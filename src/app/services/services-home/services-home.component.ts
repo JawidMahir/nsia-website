@@ -85,6 +85,8 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     localStorage.setItem('serviceType', sType);
     console.log('showServiceMethod: sType: ', sType);
     if (sType === 'prs') {
+      this.provincialServices = true;
+      this.contents = null;
       this.getProvinces();
       $('.m-service').removeClass('active-service');
       $('.provinces li:first-child').addClass('active-province');
@@ -198,7 +200,6 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     this.nsiaServices.getProvinces().subscribe((data) => {
       console.log('Provinces: ', data);
       if (data.length > 0) {
-        this.provincialServices = true;
         this.provinces = data;
         this.getProvinceDetails(this.provinces[0].id);
       }

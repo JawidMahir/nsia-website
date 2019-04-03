@@ -43,7 +43,9 @@ export class MediaGeneralTemplateComponent implements OnInit {
       data.date = '00' + 'th' + 'MNT' + '';
     } else {
       data.date = formatDate(data.date, 'dd MMM yyyy', 'en-US', '+0530');
-      data.content.rendered = this.dataService.htmlToPlaintext(data.content.rendered);
+      if (data.hasOwnProperty('content')) {
+        data.content.rendered = this.dataService.htmlToPlaintext(data.content.rendered);
+      }
     }
     return data;
   }

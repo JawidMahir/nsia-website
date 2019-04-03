@@ -63,4 +63,8 @@ export class FooterComponent implements OnInit {
 
   }
 
+  updateServiceType(sType) {
+    this.dataService.serviceType = sType;
+  }
+
 }

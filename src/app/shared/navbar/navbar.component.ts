@@ -28,6 +28,29 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   }
 
+  dummyLinksOne = [
+    'somelink',
+    'jhon doe',
+    'sabrina',
+    'somegood book',
+    'wait what?',
+    'سیبیسببی',
+    'سیبسیبسب',
+    'نتنتتن',
+    'صضصصثضصث',
+    'سېېزرېز',
+    '۱۲۳۴سیبسی',
+    '123dfsdf'
+  ];
+
+  dummyLinksTwo = [
+    'service',
+    'tools',
+    '.pdf',
+    'some thing',
+    'of course'
+  ];
+
 
 
 
@@ -188,7 +211,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   updateServiceType(sType) {
     this.dataService.serviceType = sType;
+    localStorage.setItem('serviceType', sType);
     this.dataService.callServiceCmpMethod();
+  }
+
+  showSearchResult() {
+    $('.search-result-wrapper').toggleClass('show');
+  }
+
+  getSearchResults(val) {
+    console.log('This is the search query: ', val);
   }
 
 

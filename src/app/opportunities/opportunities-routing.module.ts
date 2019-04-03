@@ -19,8 +19,8 @@ const oppRoutes: Routes = [
         path: '',
         children: [
           { path: 'administration', component: AdministrationComponent },
-          { path: 'procurements', component: ProcurementsComponent },
-          { path: 'tenders', component: TendersComponent },
+          { path: 'tenders', component: ProcurementsComponent },
+          { path: 'procurements', component: TendersComponent },
           { path: 'tender/:id', component: TenderComponent },
           { path: 'job/:id', component: AdministrationComponent },
           { path: 'jobs', component: JobsComponent },

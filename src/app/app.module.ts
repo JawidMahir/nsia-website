@@ -26,6 +26,7 @@ import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 
 
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

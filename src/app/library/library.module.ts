@@ -15,6 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { LibFilterPipe } from './lib-filter.pipe';
 
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

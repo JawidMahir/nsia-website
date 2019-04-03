@@ -17,6 +17,7 @@ export class LibraryComponent implements OnInit {
     surveys: '',
     reports: '',
     magazine: '',
+    // articles: '',
     newsletter: '',
     policies: ''
   };
@@ -24,7 +25,12 @@ export class LibraryComponent implements OnInit {
   constructor(private libraryService: LibraryServicesService) { }
 
   ngOnInit() {
-    const element: HTMLElement = document.getElementById('books') as HTMLElement;
+    let element: HTMLElement;
+    if (localStorage.getItem('library-type')) {
+      element = document.getElementById('surveys') as HTMLElement;
+    } else {
+      element = document.getElementById('books') as HTMLElement;
+    }
     element.click();
   }
 
@@ -65,6 +71,15 @@ export class LibraryComponent implements OnInit {
       }
     }
     return data;
+  }
+
+  canDeactivate() {
+    if (localStorage.getItem('library-type')) {
+      localStorage.removeItem('library-type');
+      return true;
+    } else {
+      return true;
+    }
   }
 
 }

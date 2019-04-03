@@ -34,22 +34,22 @@
 
         <div class="links">
           <ul>
-            <li>
+            <li routerLink='/about-us'>
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'submenu.about-nsia' | translate}} </a>
+              <a>{{'submenu.about-nsia' | translate}} </a>
             </li>
-            <li>
+            <!-- <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.history' | translate}}</a></li>
-            <li>
+              <a>{{'label.history' | translate}}</a></li> -->
+            <!-- <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.vision-mission'| translate }}</a></li>
-            <li>
+              <a>{{'label.vision-mission'| translate }}</a></li> -->
+            <!-- <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.authority-functions' | translate}}</a></li>
-            <li>
+              <a>{{'label.authority-functions' | translate}}</a></li> -->
+            <li routerLink='/about-us/structure'>
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.organization-structure' | translate}}</a></li>
+              <a>{{'label.organization-structure' | translate}}</a></li>
           </ul>
         </div>
       </div>
@@ -60,26 +60,26 @@
         <div class="links">
           <ul>
             <li>
+              <i class="fas fa-chevron-right" routerLink="/services" (click)="updateServiceType('nid')"></i>
+              <a>{{'label.tazkira-enrollement' | translate}}</a></li>
+            <!-- <li>
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.tazkira-enrollement' | translate}}</a></li>
-            <li>
+              <a>{{'label.laws' | translate}}</a></li> -->
+            <li routerLink="/access-info">
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.laws' | translate}}</a></li>
-            <li>
+              <a>{{'label.guidelines' | translate}}</a></li>
+            <li routerLink="/services" (click)="updateServiceType('nid')">
+              <i class="fas fa-chevron-right" ></i>
+              <a>{{'label.stats' | translate}}</a></li>
+            <li routerLink="/opportunities/procurements">
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.guidelines' | translate}}</a></li>
-            <li>
+              <a>{{'submenu.procurement' | translate}}</a></li>
+            <li routerLink="/opportunities/jobs">
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.stats' | translate}}</a></li>
-            <li>
-              <i class="fas fa-chevron-right"></i>
-              <a href="">{{'submenu.procurement' | translate}}</a></li>
-            <li>
-              <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.jobs' | translate}}</a></li>
-            <li>
-              <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.contact-us' | translate}}</a></li>
+              <a>{{'label.jobs' | translate}}</a></li>
+            <li routerLink="/contact-us">
+              <i class="fas fa-chevron-right" ></i>
+              <a>{{'label.contact-us' | translate}}</a></li>
           </ul>
         </div>
       </div>
@@ -89,27 +89,27 @@
         </div>
         <div class="links">
           <ul>
-            <li>
+            <li routerLink="/services" (click)="updateServiceType('nid')">
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.etazkira' | translate}}</a></li>
-            <li>
+              <a>{{'label.etazkira' | translate}}</a></li>
+            <li routerLink="/services" (click)="updateServiceType('nid')">
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.paper-tazkira' | translate}}</a></li>
-            <li>
+              <a>{{'label.paper-tazkira' | translate}}</a></li>
+            <li routerLink="/services" (click)="updateServiceType('nid')">
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.birth-registration' | translate}}</a></li>
-            <li>
+              <a>{{'label.birth-registration' | translate}}</a></li>
+            <li routerLink="/services" (click)="updateServiceType('nid')">
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.death-registration' | translate}}</a></li>
-            <li>
+              <a>{{'label.death-registration' | translate}}</a></li>
+            <li routerLink="/services" (click)="updateServiceType('nid')">
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.marriage-registration' | translate}}</a></li>
-            <li>
+              <a>{{'label.marriage-registration' | translate}}</a></li>
+            <li routerLink="/services" (click)="updateServiceType('nid')">
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.divorce-registration' | translate}}</a></li>
-            <li>
+              <a>{{'label.divorce-registration' | translate}}</a></li>
+            <li routerLink="/services" (click)="updateServiceType('nid')">
               <i class="fas fa-chevron-right"></i>
-              <a href="">{{'label.foreign-registration' | translate}}</a></li>
+              <a>{{'label.foreign-registration' | translate}}</a></li>
           </ul>
         </div>
       </div>

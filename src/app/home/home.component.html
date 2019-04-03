@@ -66,7 +66,7 @@
               <h1>{{ carousel.isd.title?.rendered }}</h1>
               <h5 *ngIf="carousel.isd.content">{{ getBrief(carousel.isd.content?.rendered) }}</h5>
               <button class="c-btn-outline-blue" routerLink="/services"
-                (click)="updateServiceType('isd')">{{ 'btn.read-more' | translate }}</button>
+                (click)="updateServiceType('sdu')">{{ 'btn.read-more' | translate }}</button>
             </div>
           </div>
         </div>
@@ -243,7 +243,7 @@
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-publications-tab" data-toggle="tab" data-target="#nav-publications"
-        role="tab" aria-controls="nav-publications" aria-selected="false" redirect-url="/library/articles">
+        role="tab" aria-controls="nav-publications" aria-selected="false" redirect-url="/media-room/news-updates">
         <div class="news-category news-cat">
           <h5>{{ 'label.latest-pubs' | translate }}</h5>
         </div>
@@ -267,7 +267,7 @@
       <div class="tab-pane fade show active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
         <div class="row" *ngIf="newsBriefs.news != ''; else nonews">
           <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let nw of newsBriefs.news">
-            <div class="news-item">
+            <div class="news-item" [routerLink]="['/media-room/media', nw.id]">
               <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
@@ -290,7 +290,7 @@
       <div class="tab-pane fade" id="nav-publications" role="tabpanel" aria-labelledby="nav-publications-tab">
         <div class="row" *ngIf="newsBriefs.publications != ''; else nopublications">
           <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pb of newsBriefs.publications">
-            <div class="news-item">
+            <div class="news-item" [routerLink]="['/media-room/media', pb.id]">
               <img src="{{ pb.better_featured_image.source_url }}" alt="{{ pb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
@@ -313,7 +313,7 @@
       <div class="tab-pane fade" id="nav-press" role="tabpanel" aria-labelledby="nav-press-tab">
         <div class="row" *ngIf="newsBriefs.press != ''; else nopress">
           <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pr of newsBriefs.press">
-            <div class="news-item">
+            <div class="news-item" [routerLink]="['/media-room/media', pr.id]">
               <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
@@ -499,13 +499,13 @@
       </div>
       <div class="col-md-4 col-sm-6 ls-btn" id="nav-upcoming_publications-tab" data-toggle="tab"
         data-target="#nav-upcoming_publications" role="tab" aria-controls="nav-upcoming_publications"
-        aria-selected="false" redirect-url="/library/articles">
+        aria-selected="false" redirect-url="/media-room/news-updates">
         <div class="news-category events-cat">
           <h5>{{ 'label.upcoming-pubs' | translate }}</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 ls-btn" id="nav-surveys-tab" data-toggle="tab" data-target="#nav-surveys" role="tab"
-        aria-controls="nav-surveys" aria-selected="false" redirect-url="/library/reports">
+        aria-controls="nav-surveys" aria-selected="false" redirect-url="/library">
         <div class="news-category events-cat">
           <h5>{{ 'label.surveys' | translate }}</h5>
         </div>
@@ -516,7 +516,7 @@
       <div class="tab-pane fade show active" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
         <div class="row" *ngIf="newsBriefs.events != ''; else noevents">
           <div class="col-md-4 col-sm-6" *ngFor="let ev of newsBriefs.events">
-            <div class="news-item">
+            <div class="news-item" [routerLink]="['/media-room/media', ev.id]">
               <img src="{{ ev.better_featured_image?.source_url }}" alt="{{ ev.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">
@@ -540,7 +540,7 @@
         aria-labelledby="nav-upcoming_publications-tab">
         <div class="row" *ngIf="newsBriefs.upcoming_publications != ''; else nouPubs">
           <div class="col-md-4 col-sm-6" *ngFor="let upb of newsBriefs.upcoming_publications">
-            <div class="news-item">
+            <div class="news-item"  [routerLink]="['/media-room/media', upb.id]">
               <img src="{{ upb.better_featured_image?.source_url }}" alt="{{ upb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">

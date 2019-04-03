@@ -34,7 +34,10 @@
               <div class="tools-wrapper">
                 <div class="search-input c-item">
                   <div class="wrapper">
-                    <input type="text" placeholder="{{'label.search-website' | translate }}" class="search-box">
+                    <!-- <input type="text" placeholder="{{'label.search-website' | translate }}" 
+                    class="search-box" #searchText (input)="getSearchResults(searchText.value)" (focus)="showSearchResult()" (focusout)="showSearchResult()"> -->
+                    <input type="text" placeholder="{{'label.search-website' | translate }}" 
+                    class="search-box" #searchText >
                     <i class="fas fa-search"></i>
                   </div>
                 </div>
@@ -54,6 +57,22 @@
       </div>
     </div>
   </div>
+
+  <!-- <div class="search-result-wrapper">
+    <div class="search-results">
+      <h1>Hi there</h1>
+      <div class="result-one">
+        <ul>
+          <li *ngFor="let ln of dummyLinksOne">{{ln}}</li>
+        </ul>
+      </div>
+      <div class="result-two">
+        <ul>
+          <li *ngFor="let ln of dummyLinksTwo">{{ln}}</li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
 
 
   <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
@@ -282,7 +301,7 @@
                 routerLink="/opportunities/jobs">{{'submenu.administrations' | translate}}</a>
               <!-- <a href="" class="dropdown-item" routerLink="/opportunities/procurements">Procurements</a> -->
               <a href="" class="dropdown-item"
-                routerLink="/opportunities/tenders">{{'submenu.procurement' | translate}}</a>
+                routerLink="/opportunities/procurements">{{'submenu.procurement' | translate}}</a>
             </div>
           </li>
           <div class="seperator">
