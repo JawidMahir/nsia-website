@@ -30,7 +30,7 @@ export class MediaServicesService {
         orederby: 'date'
       }
     });
-  }
+  } 
 
   htmlToPlaintext(text) {
     return text ? String(text).replace(/<[^>]+>/gm, '') : '';

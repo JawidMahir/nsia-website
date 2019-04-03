@@ -35,7 +35,7 @@
       </div>
       <div class="row content" *ngIf="contents != '' ; else nodata">
         <div class="col-lg-3 col-md-3 col-sm-6"
-          *ngFor="let content of contents | paginate: { itemsPerPage: 12 , currentPage: p } | libFilter:filterText">
+          *ngFor="let content of contents | paginate: { itemsPerPage: 8 , currentPage: p , totalItems: total } | libFilter:filterText">
           <a href="{{content.acf.library_attachment.url}}" download="{{content.acf.library_attachment.filename}}"
             target="_blank">
             <img src="{{ content.better_featured_image?.source_url }}"
@@ -52,7 +52,7 @@
         </div>
       </ng-template>
       <div class="text-center">
-        <pagination-controls class="news-pagination" (pageChange)="p = $event" autoHide="true" responsive="true"
+        <pagination-controls class="lib-pagination" (pageChange)="pageChanged($event)" autoHide="true" responsive="true"
           maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
           nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
       </div>
