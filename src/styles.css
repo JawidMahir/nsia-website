@@ -77,7 +77,7 @@ button {
   background-color: #282560;
   color: #fff;
 }
-
+/* .service-custom-container, */
 .custom-container {
   width: 80vw;
   margin-left: auto;
@@ -263,6 +263,23 @@ button {
   .custom-container {
     width: 95% !important;
     margin: auto;
+  }
+
+  .service-custom-container {
+    width: 100vw;
+    background-color: #282560;
+  }
+
+  .service-custom-container .card {
+    border: none !important;
+  }
+
+  .latest-section-res {
+    display: block !important;
+  }
+
+  .latest-section-lg {
+    display: none !important;
   }
 }
 

@@ -139,91 +139,91 @@
           <img src="../../assets/images/gender.png" alt="Population">
           <div class="stats bg-gradient">
             <h6>{{ 'label.gender' | translate }}</h6>
-            <h3>45% Male</h3>
-            <h3>55% Female</h3>
+            <h3 *ngIf="gender">{{ gender.acf.statistics + ' Male' }}</h3>
+            <h3 *ngIf="gender">{{ gender.acf.female + ' Female' }}</h3>
           </div>
         </div>
 
       </div>
     </div>
   </div>
+</div>
 
 
-  <div class="section-wrapper service-section">
-    <div class="card service-card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-4 col-sm-12">
-            <div class="service-title">
-              <!-- <h1 class="text-green">{{ 'label.nsia' | translate}}</h1> -->
-              <h1>{{ 'label.nsia-service' | translate}}</h1>
-            </div>
-            <div class="service-desc" *ngIf="carousel.nsia">
-              <p>{{ carousel.nsia.content?.rendered }}</p>
-            </div>
+<div class="section-wrapper service-section service-custom-container">
+  <div class="card service-card custom-container">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 nsia-main">
+          <div class="service-title">
+            <!-- <h1 class="text-green">{{ 'label.nsia' | translate}}</h1> -->
+            <h1>{{ 'label.nsia-service' | translate}}</h1>
           </div>
-          <div class="col-md-8 col-sm-12">
-            <div class="nsia-services row">
-              <div class="col-lg-6 col-md-12 col-sm-12" *ngIf="carousel.stats">
-                <div class="sr-item ">
-                  <div class="service-icon">
-                    <img [src]="carousel.stats.acf.icon.url" alt="">
-                  </div>
-                  <div class="sr-brief">
-                    <h5>{{ carousel.stats.title?.rendered }}</h5>
-                    <p>{{ carousel.stats.content?.rendered }}</p>
-                  </div>
-                  <div class="read-more">
-                    <button class="c-btn-outline-white" routerLink="/services"
-                      (click)="updateServiceType('stats')">{{ 'btn.read-more' | translate }}</button>
-                  </div>
+          <div class="service-desc" *ngIf="carousel.nsia">
+            <p>{{ carousel.nsia.content?.rendered }}</p>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <div class="nsia-services row">
+            <div class="col-lg-6 col-md-6 col-sm-12" *ngIf="carousel.stats">
+              <div class="sr-item ">
+                <div class="service-icon">
+                  <img [src]="carousel.stats.acf.icon.url" alt="">
+                </div>
+                <div class="sr-brief">
+                  <h5>{{ carousel.stats.title?.rendered }}</h5>
+                  <p>{{ carousel.stats.content?.rendered }}</p>
+                </div>
+                <div class="read-more">
+                  <button class="c-btn-outline-white" routerLink="/services"
+                    (click)="updateServiceType('stats')">{{ 'btn.read-more' | translate }}</button>
                 </div>
               </div>
+            </div>
 
-              <div class="col-lg-6 col-md-12 col-sm-12" *ngIf="carousel.gis">
-                <div class="sr-item ">
-                  <div class="service-icon">
-                    <img [src]="carousel.gis.acf.icon.url" alt="">
-                  </div>
-                  <div class="sr-brief">
-                    <h5>{{ carousel.gis.title?.rendered }}</h5>
-                    <p>{{ carousel.gis.content?.rendered }}</p>
-                  </div>
-                  <div class="read-more">
-                    <button class="c-btn-outline-white" routerLink="/services"
-                      (click)="updateServiceType('gis')">{{ 'btn.read-more' | translate }}</button>
-                  </div>
+            <div class="col-lg-6 col-md-6 col-sm-12" *ngIf="carousel.gis">
+              <div class="sr-item ">
+                <div class="service-icon">
+                  <img [src]="carousel.gis.acf.icon.url" alt="">
+                </div>
+                <div class="sr-brief">
+                  <h5>{{ carousel.gis.title?.rendered }}</h5>
+                  <p>{{ carousel.gis.content?.rendered }}</p>
+                </div>
+                <div class="read-more">
+                  <button class="c-btn-outline-white" routerLink="/services"
+                    (click)="updateServiceType('gis')">{{ 'btn.read-more' | translate }}</button>
                 </div>
               </div>
-              <div class="col-lg-6 col-md-12 col-sm-12" *ngIf="carousel.isd">
-                <div class="sr-item ">
-                  <!-- <img src="../../assets/logo/Div.svg" alt=""> -->
-                  <div class="service-icon">
-                    <img [src]="carousel.isd.acf.icon.url" alt="">
-                  </div>
-                  <div class="sr-brief">
-                    <h5>{{ carousel.isd.title?.rendered }}</h5>
-                    <p>{{ carousel.isd.content?.rendered }}</p>
-                  </div>
-                  <div class="read-more">
-                    <button class="c-btn-outline-white" routerLink="/services"
-                      (click)="updateServiceType('sdu')">{{ 'btn.read-more' | translate }}</button>
-                  </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12" *ngIf="carousel.isd">
+              <div class="sr-item ">
+                <!-- <img src="../../assets/logo/Div.svg" alt=""> -->
+                <div class="service-icon">
+                  <img [src]="carousel.isd.acf.icon.url" alt="">
+                </div>
+                <div class="sr-brief">
+                  <h5>{{ carousel.isd.title?.rendered }}</h5>
+                  <p>{{ carousel.isd.content?.rendered }}</p>
+                </div>
+                <div class="read-more">
+                  <button class="c-btn-outline-white" routerLink="/services"
+                    (click)="updateServiceType('sdu')">{{ 'btn.read-more' | translate }}</button>
                 </div>
               </div>
-              <div class="col-lg-6 col-md-12 col-sm-12" *ngIf="carousel.nid">
-                <div class="sr-item ">
-                  <div class="service-icon">
-                    <img [src]="carousel.nid.acf.icon.url" alt="">
-                  </div>
-                  <div class="sr-brief">
-                    <h5>{{ carousel.nid.title?.rendered }}</h5>
-                    <p>{{ carousel.nid.content?.rendered }}</p>
-                  </div>
-                  <div class="read-more">
-                    <button class="c-btn-outline-white" routerLink="/services"
-                      (click)="updateServiceType('nid')">{{ 'btn.read-more' | translate }}</button>
-                  </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12" *ngIf="carousel.nid">
+              <div class="sr-item ">
+                <div class="service-icon">
+                  <img [src]="carousel.nid.acf.icon.url" alt="">
+                </div>
+                <div class="sr-brief">
+                  <h5>{{ carousel.nid.title?.rendered }}</h5>
+                  <p>{{ carousel.nid.content?.rendered }}</p>
+                </div>
+                <div class="read-more">
+                  <button class="c-btn-outline-white" routerLink="/services"
+                    (click)="updateServiceType('nid')">{{ 'btn.read-more' | translate }}</button>
                 </div>
               </div>
             </div>
@@ -232,31 +232,190 @@
       </div>
     </div>
   </div>
+</div>
 
 
-  <div class="section-wrapper latest-section">
+<div class="custom-container">
+
+  <div class="latest-section-res latest-section">
+    <div class="accordion" id="newsAccordion">
+      <div class="ls-res-item">
+        <div class="section-title active-section ls-btn" data-toggle="collapse" data-target="#res-latest-news"
+          aria-expanded="true" aria-controls="#res-latest-news" redirect-url="/media-room/news-updates" category="news">
+          <h5 class="info-section ">{{ 'label.latest-news' | translate}}</h5>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div id="res-latest-news" class="collapse show" data-parent="#newsAccordion">
+          <div class="row" *ngIf="newsBriefs.news != ''; else nonews">
+            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let nw of newsBriefs.news | slice:1">
+              <div class="news-item" [routerLink]="['/media-room/media', nw.id]">
+                <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
+                  (error)="imageError($event.target);">
+                <div class="contents bg-gradient">
+                  <h4>{{ getTitleBrief(nw.title.rendered) }}</h4>
+                  <p>{{ nw.acf.brief }}</p>
+                </div>
+                <div class="news-date">
+                  <h4>{{ nw.day }}</h4>
+                  <p>{{ nw.month }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+              <button class="btn btn-lg btn-outline-info news-read-more"
+                (click)="readMoreRedirect($event.target)">{{ 'btn.read-more' | translate }}</button>
+            </div>
+          </div>
+          <ng-template #nonews>
+            <div class="jumbotron text-center no-data">
+              <h4>{{ 'label.no-data' | translate }}</h4>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="ls-res-item">
+        <div class="section-title active-section ls-btn" data-toggle="collapse" data-target="#res-latest-pubs"
+          aria-expanded="true" aria-controls="#res-latest-pubs" redirect-url="/media-room/news-updates"
+          category="publications">
+          <h5 class="info-section ">{{ 'label.latest-pubs' | translate}}</h5>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div id="res-latest-pubs" class="collapse" data-parent="#newsAccordion">
+          <div class="row" *ngIf="newsBriefs.publications != ''; else nopublications">
+            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let pb of newsBriefs.publications">
+              <div class="news-item" [routerLink]="['/media-room/media', pb.id]">
+                <img src="{{ pb.better_featured_image.source_url }}" alt="{{ pb.better_featured_image.alt_text }}"
+                  (error)="imageError($event.target);">
+                <div class="contents bg-gradient">
+                  <h4>{{ getTitleBrief(pb.title.rendered) }}</h4>
+                  <p>{{ pb.acf.brief }}</p>
+                </div>
+                <div class="news-date">
+                  <h4>{{ pb.day }}</h4>
+                  <p>{{ pb.month }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+              <button class="btn btn-lg btn-outline-info news-read-more"
+                (click)="readMoreRedirect($event.target)">{{ 'btn.read-more' | translate }}</button>
+            </div>
+          </div>
+          <ng-template #nopublications>
+            <div class="jumbotron text-center no-data">
+              <h4>{{ 'label.no-data' | translate }}</h4>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="ls-res-item">
+        <div class="section-title active-section ls-btn" data-toggle="collapse" data-target="#res-latest-prs"
+          aria-expanded="true" aria-controls="#res-latest-prs" redirect-url="/media-room/press-release"
+          category="press">
+          <h5 class="info-section ">{{ 'label.press-release' | translate}}</h5>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div id="res-latest-prs" class="collapse" data-parent="#newsAccordion">
+          <div class="row" *ngIf="newsBriefs.press != ''; else nopress">
+            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let pr of newsBriefs.press">
+              <div class="news-item" [routerLink]="['/media-room/media', pr.id]">
+                <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
+                  (error)="imageError($event.target);">
+                <div class="contents bg-gradient">
+                  <h4>{{ getTitleBrief(pr.title.rendered) }}</h4>
+                  <p>{{ pr.acf.brief }}</p>
+                </div>
+                <div class="news-date">
+                  <h4>{{ pr.day }}</h4>
+                  <p>{{ pr.month }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+              <button class="btn btn-lg btn-outline-info news-read-more"
+                (click)="readMoreRedirect($event.target)">{{ 'btn.read-more' | translate }}</button>
+            </div>
+          </div>
+          <ng-template #nopress>
+            <div class="jumbotron text-center no-data">
+              <h4>{{ 'label.no-data' | translate }}</h4>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="ls-res-item">
+        <div class="section-title active-section ls-btn" data-toggle="collapse" data-target="#res-important-anc"
+          aria-expanded="true" aria-controls="#res-important-anc" redirect-url="/opportunities/jobs"
+          category="announcements">
+          <h5 class="info-section ">{{ 'label.important-announce' | translate}}</h5>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div id="res-important-anc" class="collapse" data-parent="#newsAccordion">
+          <div class="row" *ngIf="newsBriefs.announcements != ''; else noannouncements">
+            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let an of newsBriefs.announcements">
+              <div class="news-item">
+                <img src="{{ an.better_featured_image.source_url }}" alt="{{ an.better_featured_image.alt_text }}"
+                  (error)="imageError($event.target);">
+                <div class="contents bg-gradient">
+                  <h4>{{ getTitleBrief(an.title.rendered) }}</h4>
+                  <p>{{ an.acf.brief }}</p>
+                </div>
+                <div class="news-date">
+                  <h4>{{ an.day }}</h4>
+                  <p>{{ an.month }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+              <button class="btn btn-lg btn-outline-info news-read-more"
+                (click)="readMoreRedirect($event.target)">{{ 'btn.read-more' | translate }}</button>
+            </div>
+          </div>
+          <ng-template #noannouncements>
+            <div class="jumbotron text-center no-data">
+              <h4>{{ 'label.no-data' | translate }}</h4>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section-wrapper latest-section latest-section-lg">
     <div class="nav row" id="nav-tab" role="tablist">
       <div class="col-md-3 col-sm-6 active ls-btn" id="nav-news-tab" data-toggle="tab" data-target="#nav-news"
-        role="tab" aria-controls="nav-news" aria-selected="true" redirect-url="/media-room/news-updates">
+        role="tab" aria-controls="nav-news" aria-selected="true" redirect-url="/media-room/news-updates"
+        category="news">
         <div class="news-category active-news news-cat">
           <h5>{{ 'label.latest-news' | translate}}</h5>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-publications-tab" data-toggle="tab" data-target="#nav-publications"
-        role="tab" aria-controls="nav-publications" aria-selected="false" redirect-url="/media-room/news-updates">
+        role="tab" aria-controls="nav-publications" aria-selected="false" redirect-url="/media-room/news-updates"
+        category="publications">
         <div class="news-category news-cat">
           <h5>{{ 'label.latest-pubs' | translate }}</h5>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-press-tab" data-toggle="tab" data-target="#nav-press" role="tab"
-        aria-controls="nav-press" aria-selected="false" redirect-url="/media-room/press-release">
+        aria-controls="nav-press" aria-selected="false" redirect-url="/media-room/press-release" category="press">
         <div class="news-category news-cat">
           <h5>{{ 'label.press-release' | translate}}</h5>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-announcements-tab" data-toggle="tab"
         data-target="#nav-announcements" role="tab" aria-controls="nav-announcements" aria-selected="false"
-        redirect-url="/media-room/news-updates">
+        redirect-url="/opportunities/jobs" category="announcements">
         <div class="news-category news-cat">
           <h5>{{ 'label.important-announce' | translate }}</h5>
         </div>
@@ -359,8 +518,8 @@
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 text-center">
-        <button class="btn btn-lg btn-outline-info" (click)="readMoreRedirect($event.target)"
-          id="news-read-more">{{ 'btn.read-more' | translate }}</button>
+        <button class="btn btn-lg btn-outline-info news-read-more"
+          (click)="readMoreRedirect($event.target)">{{ 'btn.read-more' | translate }}</button>
       </div>
     </div>
   </div>
@@ -540,7 +699,7 @@
         aria-labelledby="nav-upcoming_publications-tab">
         <div class="row" *ngIf="newsBriefs.upcoming_publications != ''; else nouPubs">
           <div class="col-md-4 col-sm-6" *ngFor="let upb of newsBriefs.upcoming_publications">
-            <div class="news-item"  [routerLink]="['/media-room/media', upb.id]">
+            <div class="news-item" [routerLink]="['/media-room/media', upb.id]">
               <img src="{{ upb.better_featured_image?.source_url }}" alt="{{ upb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
               <div class="contents bg-gradient">

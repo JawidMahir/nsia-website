@@ -26,7 +26,7 @@
     <div class="featured-video">
         <!-- <iframe src="https://www.youtube.com/embed/EDN6l8wLn5o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
       <iframe *ngIf="aboutNSIA.acf.hasOwnProperty('link'); else novideo" [src]="videoURL(aboutNSIA.acf.link)" frameborder="0" allow="autoplay; encrypted-media"
-        allowfullscreen></iframe>
+        allowfullscreen style="height: 100%; width: 100%;"></iframe>
         <ng-template #novideo>
           <img src="../../../assets/images/noimage-h.png" class="fit-cover" alt="">
         </ng-template>

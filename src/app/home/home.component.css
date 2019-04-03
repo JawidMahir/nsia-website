@@ -12,12 +12,22 @@
 }
 
 
+.service-card .nsia-main {
+  margin-bottom: 2rem;
+}
+
 
 
 
 @media only screen and (max-width: 900px) {
   .carousel .carousel-item img {
     height: 50vh;
+  }
+
+
+  .service-wrapper {
+    background-color: red;
+    width: 100vw;
   }
 }
 
@@ -50,6 +60,14 @@
 
 .caption .service-details {
   width: 65%;
+}
+
+.caption .service-details h1 {
+  line-height: 1.4;
+}
+
+.caption .service-details h5 {
+  margin: 2rem 0px;
 }
 
 .caption h1 {
@@ -94,6 +112,8 @@
 }
 
 
+
+
 .service-card .service-title h1 {
   margin: 0px;
   font-weight: 600;
@@ -131,7 +151,7 @@
 .nsia-services .sr-item .service-icon {
   padding: 0px 5%;
   width: fit-content;
-  margin-top: -20%;
+  margin-top: -60px;
   background-color: #282560;
 
 }
@@ -150,6 +170,44 @@
   margin-bottom: 26px;
   text-align: initial;
 }
+
+.latest-section-lg {
+  display: block;
+}
+
+.latest-section-res {
+  display: none;
+}
+
+
+.latest-section-res .section-title {
+  display: flex;
+  border-bottom: 1px solid #282560;
+  margin: 1rem 0px;
+}
+
+.latest-section-res .section-title .info-section {
+  flex: auto;
+  color: #d2d0d0;
+  /* margin-bottom: 0px !important; */
+}
+
+.latest-section-res .section-title i {
+  margin: 12px;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+
+}
+
+.latest-section-res .section-title.active-section {
+  color: #01a79b;
+  border-bottom: 2px solid #01a79b !important;
+}
+
+.latest-section-res .section-title.active-section .info-section {
+  color: #282560;
+}
+
 
 .latest-section .navigator-line {
   border-bottom: 2px solid #282560;

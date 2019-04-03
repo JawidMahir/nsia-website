@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaServicesService } from '../media-services.service';
+import { DataService } from '../../data.service';
 
 @Component({
-  selector: 'app-media-room-home',
-  templateUrl: './media-room-home.component.html',
-  styleUrls: ['./media-room-home.component.css']
+  selector: 'app-promotional-materials',
+  templateUrl: './promotional-materials.component.html',
+  styleUrls: ['./promotional-materials.component.css']
 })
-export class MediaRoomHomeComponent implements OnInit {
+export class PromotionalMaterialsComponent implements OnInit {
 
   orgs = [];
   brochures = [];
@@ -16,7 +16,7 @@ export class MediaRoomHomeComponent implements OnInit {
   newsletters = [];
   promoMaterialFlag = false;
 
-  constructor(private mediaService: MediaServicesService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.getPromotingMaterial('Promotional_Materials');
@@ -26,7 +26,7 @@ export class MediaRoomHomeComponent implements OnInit {
   getNewsMaterial(type, perPage) {
     const customParams = [];
     customParams.push('acf.library_attachment.url');
-    this.mediaService.getNewsData(customParams, type, perPage).subscribe((newsData) => {
+    this.dataService.getNewsData(customParams, type, perPage).subscribe((newsData) => {
       console.log('Newsletter data: ', this.newsletters);
       if (newsData[0]) {
         this.newsletters.push(newsData[0]);
@@ -36,11 +36,12 @@ export class MediaRoomHomeComponent implements OnInit {
 
   }
 
+
   getPromotingMaterial(type) {
     const customParams = [];
     customParams.push('acf.promotional_materials_attachment.url');
     customParams.push('acf.promotional_materials_type');
-    this.mediaService.getMediaData(customParams, type).subscribe((promotingMaterialData) => {
+    this.dataService.getMediaData(customParams, type).subscribe((promotingMaterialData) => {
       console.log('Prmotional materials: ', promotingMaterialData);
       if (promotingMaterialData.length > 0) {
         this.promoMaterialFlag = true;
@@ -76,10 +77,6 @@ export class MediaRoomHomeComponent implements OnInit {
 
     });
 
-  }
-
-  checkPromoMaterials() {
-    return true;
   }
 
 }

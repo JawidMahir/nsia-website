@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
     this.x = location.pathname;
     const that = this;
     $('.carousel').carousel({
-      interval: 400000,
+      interval: 4000,
       ride: 'carousel'
     });
 
@@ -95,6 +95,9 @@ export class HomeComponent implements OnInit {
     this.getInitialStats();
     this.getBusinessData();
 
+    // disable the read more buttons in the begining
+    $('.news-read-more').prop('disabled', true);
+    $('#events-read-more').prop('disabled', true);
 
     // instantiate the first news category on page load
     this.getCardsData('news', 4);
@@ -105,28 +108,36 @@ export class HomeComponent implements OnInit {
 
     // tslint:disable-next-line: space-before-function-paren
     $('.ls-btn').click(function () {
-      const parent = $(this).attr('aria-controls');
+      const categoryType = $(this).attr('category');
       const redirecUrl = $(this).attr('redirect-url');
       let perPage = 4;
-      const categoryType = parent.split('-')[1];
 
       console.log('categoryType: ', categoryType);
+      console.log('redirect URL: ', redirecUrl);
 
 
 
       if ($(this).hasClass('col-md-3')) {
         $('.news-cat').removeClass('active-news');
         $(this).find('.news-cat').addClass('active-news');
-        $('#news-read-more').prop('disabled', true);
+        $('.news-read-more').prop('disabled', true);
         that.newsReadMore = redirecUrl;
 
-      } else {
+      } else if ($(this).hasClass('col-md-4')) {
 
         $('.events-cat').removeClass('active-news');
         $(this).find('.events-cat').addClass('active-news');
         $('#events-read-more').prop('disabled', true);
         that.eventsReadMore = redirecUrl;
         perPage = 3;
+      } else {
+        $('.news-cat').removeClass('active-news');
+        $(this).find('.news-cat').addClass('active-news');
+        $('.news-read-more').prop('disabled', true);
+        that.newsReadMore = redirecUrl;
+        perPage = 3;
+        console.log('it is else bro');
+
       }
 
       that.getCardsData(categoryType, perPage);
@@ -203,7 +214,7 @@ export class HomeComponent implements OnInit {
       const newsCategories = ['news', 'publications', 'press', 'announcements'];
 
       if (newsCategories.includes(type)) {
-        $('#news-read-more').prop('disabled', false);
+        $('.news-read-more').prop('disabled', false);
       } else {
         $('#events-read-more').prop('disabled', false);
 
@@ -219,7 +230,7 @@ export class HomeComponent implements OnInit {
     if (data.length > 0) {
       if (newsCategories.includes(sectionId)) {
 
-        $('#news-read-more').prop('disabled', false);
+        $('.news-read-more').prop('disabled', false);
       } else {
         $('#events-read-more').prop('disabled', false);
 
@@ -304,7 +315,7 @@ export class HomeComponent implements OnInit {
   }
 
   readMoreRedirect(el) {
-    if (el.id === 'news-read-more') {
+    if ($(el).hasClass('news-read-more')) {
       console.log('before redirectNews: ', this.newsReadMore);
       this.router.navigate([this.newsReadMore]);
     } else {

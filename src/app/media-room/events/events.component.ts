@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {formatDate } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MediaServicesService } from '../media-services.service';
 
@@ -11,32 +11,32 @@ import { MediaServicesService } from '../media-services.service';
 export class EventsComponent implements OnInit {
   events = '';
   constructor(private mediaService: MediaServicesService,
-              private sanitizer: DomSanitizer) { }
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.getEventsData('events'); 
+    this.getEventsData('events');
   }
 
-  getEventsData(type){
+  getEventsData(type) {
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('content.rendered');
     customParams.push('acf.attachment_type');
     customParams.push('acf.link');
-    customParams.push('better_featured_image.source_url'); 
+    customParams.push('better_featured_image.source_url');
     customParams.push('better_featured_image.alt_text');
     customParams.push('date');
     customParams.push('id');
     this.mediaService.getMediaData(customParams, type).subscribe((eventsData) => {
-     this.events = this.refineData(eventsData);
-     console.log(this.events); 
+      this.events = this.refineData(eventsData);
+      console.log(this.events);
     });
-  } 
-  
+  }
+
   refineData(data) {
     for (const el of data) {
       if (!el.hasOwnProperty('date')) {
-        el.date = '00'+'th'+'MNT'+'';
+        el.date = '00' + 'th' + 'MNT' + '';
       } else {
         el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
         el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
@@ -52,9 +52,9 @@ export class EventsComponent implements OnInit {
     return ds;
   }
 
-  imageError(el) { 
+  imageError(el) {
     el.onerror = '';
-    el.src = '../../assets/images/noimage.png';
+    el.src = '../../assets/images/noimage.svg';
     console.log(el);
     return true;
   }

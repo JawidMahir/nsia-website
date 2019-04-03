@@ -10,7 +10,7 @@ export class MediaServicesService {
   constructor(private http: HttpClient, private dataService: DataService) { } 
 
   getMediaData(customP, catName) {
-    return this.http.get(this.dataService.api + 'posts', {
+    return this.http.get<Array<any>>(this.dataService.api + 'posts', {
       params: {
         'filter[category_name]': catName,
         lang: this.dataService.language,

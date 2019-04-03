@@ -10,7 +10,7 @@ import * as $ from 'jquery';
 })
 
 export class LibraryComponent implements OnInit {
-  p: number = 1;
+  p = 1;
   customParams = [];
   contents = [];
   filterText;
@@ -21,7 +21,7 @@ export class LibraryComponent implements OnInit {
     surveys: '',
     reports: '',
     magazine: '',
-    // articles: '',
+    articles: '',
     newsletter: '',
     policies: ''
   };
@@ -62,12 +62,13 @@ export class LibraryComponent implements OnInit {
       console.log(this.total);
       this.libraryContents[this.id] = this.refineData(libraryData.body);
       this.contents = this.libraryContents[this.id];
+      console.log('contents: ', this.contents);
     }));
   }
 
   imageError(el) {
     el.onerror = '';
-    el.src = '../../assets/images/noimage.png';
+    el.src = '../../assets/images/noimage.svg';
     console.log(el);
     return true;
   }

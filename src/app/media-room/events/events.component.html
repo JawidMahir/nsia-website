@@ -7,11 +7,11 @@
             <h4>{{'submenu.events' | translate}}</h4><br>
             <div class="row news" *ngFor="let event of events | paginate: { itemsPerPage: 4 , currentPage: p }">
               <div class="col-md-4 col-sm-7 featured-video">
-                  <img *ngIf="event.acf.attachment_type == 'image' else showvedio;" [src]="event.better_featured_image?.source_url" [alt]="event.better_featured_image?.source_url.alt_text"
+                  <img  [src]="event.better_featured_image?.source_url" [alt]="event.better_featured_image?.source_url.alt_text"
                   (error)="imageError($event.target);">
-                  <ng-template #showvedio>
+                  <!-- <ng-template #showvedio>
                       <iframe [src]="videoURL(event?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-                  </ng-template>
+                  </ng-template> -->
                 <div class="attachment-type">
                   <p *ngIf="event.acf.attachment_type == 'image' else vedio;">{{'label.image' | translate}}</p>
                   <ng-template #vedio>
@@ -23,7 +23,7 @@
                 <div>
                   <h5>{{ event.title.rendered }}</h5>
                   <p class="content">{{ getBrief(event.content.rendered) }}</p>
-                  <a [routerLink]="['../media', event.id]">{{'btn.read-more' | translate}}</a><br>
+                  <a [routerLink]="['/media-room/media', event.id]">{{'btn.read-more' | translate}}</a><br>
                   <span>{{ event.date }}</span>
                 </div>
               </div>
