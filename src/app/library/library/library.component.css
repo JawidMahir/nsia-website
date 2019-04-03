@@ -54,3 +54,6 @@ h5 {
 a {
   color: #282560;
 }
+.lib-pagination /deep/ .ngx-pagination .current {
+  background: #01a79b;
+}

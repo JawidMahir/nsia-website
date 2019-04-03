@@ -9,10 +9,13 @@ export class LibraryServicesService {
 
   constructor(private http: HttpClient, private dataService: DataService) { }
 
-  getLibraryData(customP, catName) {
+  getLibraryData(customP, catName , page) {
     return this.http.get(this.dataService.api + 'posts', {
+      observe:'response',
       params: {
         'filter[category_name]': catName,
+        per_page:'8',
+        page : page,
         lang: this.dataService.language,
         fields: customP.join(','),
         orederby: 'date'

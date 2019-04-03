@@ -8,11 +8,15 @@ import * as $ from 'jquery';
   templateUrl: './library.component.html',
   styleUrls: ['./library.component.css']
 })
+
 export class LibraryComponent implements OnInit {
-  contents;
-  p;
+  p:number = 1;
+  customParams = [];
+  contents= [];
   filterText;
-  libraryContents = {
+  id;
+  total;
+  libraryContents = { 
     books: '',
     surveys: '',
     reports: '',
@@ -24,29 +28,33 @@ export class LibraryComponent implements OnInit {
   constructor(private libraryService: LibraryServicesService) { }
 
   ngOnInit() {
+    this.customParams.push('title.rendered');
+    this.customParams.push('date');
+    this.customParams.push('better_featured_image.source_url');
+    this.customParams.push('better_featured_image.alt_text');
+    this.customParams.push('acf.library_attachment.url');
+    this.customParams.push('acf.library_attachment.filename');
     const element: HTMLElement = document.getElementById('books') as HTMLElement;
-    element.click();
+    element.click();  
   }
 
   showLibraries(el) {
-    const id = $(el).closest('.lib-btn').attr('id');
+
+    this.p = 1;
+    this.id = $(el).closest('.lib-btn').attr('id');
     $('.lib-btn').removeClass('active-libraray');
     $(el).closest('.lib-btn').addClass('active-libraray');
-    if (this.libraryContents[id] === '') {
-      const customParams = [];
-      customParams.push('title.rendered');
-      customParams.push('date');
-      customParams.push('better_featured_image.source_url');
-      customParams.push('better_featured_image.alt_text');
-      customParams.push('acf.library_attachment.url');
-      customParams.push('acf.library_attachment.filename');
-      this.libraryService.getLibraryData(customParams, id).subscribe((libraryData => {
-        this.libraryContents[id] = libraryData;
-        this.contents = this.refineData(this.libraryContents[id]);
+      this.getData(this.customParams,this.p);  
+
+  }
+
+  getData(customParams , page){
+      this.libraryService.getLibraryData(customParams, this.id , page).subscribe((libraryData => {
+        this.total = libraryData.headers.get('X-WP-Total');
+        console.log(this.total);
+        this.libraryContents[this.id] = this.refineData(libraryData.body);
+        this.contents = this.libraryContents[this.id];
       }));
-    } else {
-      this.contents = this.libraryContents[id];
-    }
   }
 
   imageError(el) {
@@ -65,6 +73,11 @@ export class LibraryComponent implements OnInit {
       }
     }
     return data;
+  }
+
+  pageChanged(page:number){
+    this.getData(this.customParams,page);
+    this.p = page;
   }
 
 }

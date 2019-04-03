@@ -51,4 +51,4 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ]
 })
-export class MediaModule { }
+export class MediaModule {}
