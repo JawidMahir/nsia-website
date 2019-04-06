@@ -97,6 +97,19 @@
   display: flex
 }
 
+.search-results ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.search-results .result {
+  margin: 0px 2rem;
+}
+
+.search-results .search-item-title {
+  border-bottom: 1px solid #fff;
+}
+
 #mapModal .modal-body {
   padding: 0px;
   min-height: 70vh;

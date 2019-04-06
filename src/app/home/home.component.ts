@@ -81,6 +81,10 @@ export class HomeComponent implements OnInit {
       ride: 'carousel'
     });
 
+    // const test = 'abscsf3434fjayyyyyfsadaahmads';
+    // const pat = /a[a-z]*s/g;
+    // const my = test.match(pat);
+    // console.log('regex result: ', my);
 
     // stakeholder-carousel
 
@@ -131,13 +135,10 @@ export class HomeComponent implements OnInit {
         that.eventsReadMore = redirecUrl;
         perPage = 3;
       } else {
-        $('.news-cat').removeClass('active-news');
-        $(this).find('.news-cat').addClass('active-news');
         $('.news-read-more').prop('disabled', true);
         that.newsReadMore = redirecUrl;
         perPage = 3;
         console.log('it is else bro');
-
       }
 
       that.getCardsData(categoryType, perPage);

@@ -34,10 +34,10 @@
               <div class="tools-wrapper">
                 <div class="search-input c-item">
                   <div class="wrapper">
+                    <input type="text" placeholder="{{'label.search-website' | translate }}" [(ngModel)]="sText"
+                      class="search-box" #searchText (input)="showSearchResults(searchText.value)">
                     <!-- <input type="text" placeholder="{{'label.search-website' | translate }}" 
-                    class="search-box" #searchText (input)="getSearchResults(searchText.value)" (focus)="showSearchResult()" (focusout)="showSearchResult()"> -->
-                    <input type="text" placeholder="{{'label.search-website' | translate }}" 
-                    class="search-box" #searchText >
+                    class="search-box" #searchText > -->
                     <i class="fas fa-search"></i>
                   </div>
                 </div>
@@ -58,21 +58,46 @@
     </div>
   </div>
 
-  <!-- <div class="search-result-wrapper">
+  <div class="search-result-wrapper" id="search-result-wrapper">
     <div class="search-results">
-      <h1>Hi there</h1>
-      <div class="result-one">
+      <div class="result-links result">
+        <h4 class="search-item-title">Links</h4>
         <ul>
-          <li *ngFor="let ln of dummyLinksOne">{{ln}}</li>
+          <li *ngFor="let ln of webLinks | searchFilter:sText">{{ln}}</li>
         </ul>
       </div>
-      <div class="result-two">
+      <div class="result-services result" *ngIf="searchCategories.services.length > 0">
+        <h4 class="search-item-title">Services</h4>
         <ul>
-          <li *ngFor="let ln of dummyLinksTwo">{{ln}}</li>
+          <li *ngFor="let rs of searchCategories.services">{{rs.title.rendered}}</li>
         </ul>
+      </div>
+
+      <div class="result-attachments result" *ngIf="searchCategories.attachments.length > 0">
+        <h4 class="search-item-title">Attachments</h4>
+        <ul *ngIf="linksArray">
+          <li *ngFor="let at of searchCategories.attachments" [innerHTML]="at">
+          </li>
+        </ul>
+      </div>
+
+      <div class="result-attachments result">
+        <h4 class="search-item-title">Opportunities</h4>
+        <div class="sr-jobs" *ngIf="searchCategories.jobs.length > 0">
+          <h5>Jobs</h5>
+          <ul>
+            <li *ngFor="let jb of searchCategories.jobs">{{jb.title.rendered}}</li>
+          </ul>
+        </div>
+        <div class="sr-procurements" *ngIf="searchCategories.procurements.length > 0">
+          <h5>Procurements</h5>
+          <ul>
+            <li *ngFor="let prc of searchCategories.procurements">{{prc.title.rendered}}</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
 
   <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
@@ -120,11 +145,11 @@
             <p routerLink="/about-us">
               {{ 'menu.about-us' | translate }}</p>
             <ul>
-              <li routerLink="about-us/about-nsia">{{'submenu.about-nsia' | translate}}</li>
-              <li routerLink="about-us/biographies">{{'submenu.biographies' | translate}}</li>
+              <li routerLink="/about-us/about-nsia">{{'submenu.about-nsia' | translate}}</li>
+              <li routerLink="/about-us/biographies">{{'submenu.biographies' | translate}}</li>
               <!-- <li routerLink="about-us/finance">Finance</li> -->
-              <li routerLink="about-us/gender">{{'submenu.gender' | translate}}</li>
-              <li routerLink="about-us/structure">{{'submenu.structure' | translate}}</li>
+              <li routerLink="/about-us/gender">{{'submenu.gender' | translate}}</li>
+              <li routerLink="/about-us/structure">{{'submenu.structure' | translate}}</li>
               <!-- <li routerLink="about-us/vision-mission">Vision & Mission</li> -->
             </ul>
           </div>
@@ -140,7 +165,7 @@
             </ul>
           </div>
           <div class="r-menu-item">
-            <p routerLink="library">
+            <p routerLink="/library">
               {{ 'menu.library' | translate }}</p>
             <!-- <ul>
               <li routerLink="library/reports">{{'submenu.reports' | translate}}</li>
@@ -148,7 +173,7 @@
             </ul> -->
           </div>
           <div class="r-menu-item">
-            <p routerLink="access-info">
+            <p routerLink="/access-info">
               {{ 'menu.access-info' | translate }}</p>
             <!-- <ul>
               <li routerLink="access-info/guidelines">Guidelines</li>
@@ -159,12 +184,12 @@
             </ul> -->
           </div>
           <div class="r-menu-item">
-            <p routerLink="media-room">
+            <p routerLink="/media-room">
               {{ 'menu.media-room' | translate }}</p>
             <ul>
-              <li routerLink="media-room/event">{{'submenu.events' | translate}}</li>
-              <li routerLink="media-room/news-updates">{{'submenu.news-updates' | translate}}</li>
-              <li routerLink="media-room/press-release">{{'submenu.press-release' | translate}}</li>
+              <li routerLink="/media-room/event">{{'submenu.events' | translate}}</li>
+              <li routerLink="/media-room/news-updates">{{'submenu.news-updates' | translate}}</li>
+              <li routerLink="/media-room/press-release">{{'submenu.press-release' | translate}}</li>
               <!-- <li routerLink="media-room/magazine">Magazine</li>
               <li routerLink="media-room/newsletters">Newsletters</li>
               <li routerLink="media-room/poster">Poster</li>
@@ -174,11 +199,11 @@
           </div>
 
           <div class="r-menu-item">
-            <p routerLink="opportunities">
+            <p routerLink="/opportunities">
               {{ 'menu.opportunities' | translate }}</p>
             <ul>
-              <li routerLink="opportunities/jobs">{{'submenu.jobs' | translate}}</li>
-              <li routerLink="opportunities/procurements">{{'submenu.procurement' | translate}}</li>
+              <li routerLink="/opportunities/jobs">{{'submenu.jobs' | translate}}</li>
+              <li routerLink="/opportunities/procurements">{{'submenu.procurement' | translate}}</li>
               <!-- <li routerLink="opportunities/tenders">Tenders</li> -->
             </ul>
           </div>
@@ -297,8 +322,7 @@
             </a>
             <i class="fas fa-chevron-down"></i>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a href="" class="dropdown-item"
-                routerLink="/opportunities/jobs">{{'submenu.jobs' | translate}}</a>
+              <a href="" class="dropdown-item" routerLink="/opportunities/jobs">{{'submenu.jobs' | translate}}</a>
               <!-- <a href="" class="dropdown-item" routerLink="/opportunities/procurements">Procurements</a> -->
               <a href="" class="dropdown-item"
                 routerLink="/opportunities/procurements">{{'submenu.procurement' | translate}}</a>
@@ -325,8 +349,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade " id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel"
-  aria-hidden="true">
+<div class="modal fade " id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">

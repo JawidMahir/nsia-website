@@ -247,7 +247,7 @@
         </div>
         <div id="res-latest-news" class="collapse show" data-parent="#newsAccordion">
           <div class="row" *ngIf="newsBriefs.news != ''; else nonews">
-            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let nw of newsBriefs.news | slice:1">
+            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let nw of newsBriefs.news">
               <div class="news-item" [routerLink]="['/media-room/media', nw.id]">
                 <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
                   (error)="imageError($event.target);">

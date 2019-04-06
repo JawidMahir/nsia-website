@@ -6,6 +6,7 @@ import mapboxgl from 'mapbox-gl';
 import { DataService } from '../../data.service';
 
 import * as $ from 'jquery';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,11 +17,25 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   navbar: any;
   @ViewChild('map') mapElement: ElementRef;
   map: mapboxgl.Map;
+  sText;
+  searchPostsResult;
+  linksArray = [];
+  categories;
+
+  searchCategories = {
+    services: [],
+    biographies: [],
+    news: [],
+    jobs: [],
+    procurements: [],
+    attachments: []
+  };
 
   constructor(
     private translate: TranslateService,
     private router: Router,
     private dataService: DataService,
+    private searchService: SearchService
   ) {
 
     // translate.setDefaultLang('en');
@@ -28,19 +43,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   }
 
-  dummyLinksOne = [
-    'somelink',
-    'jhon doe',
-    'sabrina',
-    'somegood book',
-    'wait what?',
-    'سیبیسببی',
-    'سیبسیبسب',
-    'نتنتتن',
-    'صضصصثضصث',
-    'سېېزرېز',
-    '۱۲۳۴سیبسی',
-    '123dfsdf'
+  webLinks = [
+    'home',
+    'services',
+    'about-us',
+    'statistics',
+    'GIS',
+    'access-info',
+    'library',
+    'media-room',
+    'opportunities'
   ];
 
   dummyLinksTwo = [
@@ -64,6 +76,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
     mapboxgl.accessToken = mapToken;
     window.onload = this.showActiveTab;
+
+    // fetch all categories for search purpose
+    this.getCategoriesInfo();
 
     this.navbar = document.getElementById('navbar');
 
@@ -215,12 +230,155 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.dataService.callServiceCmpMethod();
   }
 
-  showSearchResult() {
-    $('.search-result-wrapper').toggleClass('show');
+  getCategoriesInfo() {
+    const customParams = [];
+    customParams.push('id');
+    customParams.push('name');
+    this.searchService.getCategories(customParams).subscribe((data) => {
+      if (data) {
+        console.log('categories: ', data);
+        this.categories = data;
+      }
+    });
   }
 
-  getSearchResults(val) {
-    console.log('This is the search query: ', val);
+  getCategoryName(catId) {
+    const name = this.categories.filter(cat => cat.id === catId);
+    return name[0].name;
+  }
+
+  // hideSearchResult(el) {
+  //   console.log('ID is:', el);
+  //   if ($('#search-result-wrapper').children(':focus').length === 0) {
+  //     $('.search-result-wrapper').removeClass('show');
+  //   }
+  //   this.sText = '';
+  // }
+
+  showSearchResults(val) {
+    if (val.length > 2) {
+      if (!$('.search-result-wrapper').hasClass('show')) {
+        $('.search-result-wrapper').addClass('show');
+      }
+      this.getSearchResults(val);
+    } else {
+      $('.search-result-wrapper').removeClass('show');
+    }
+
+  }
+
+  groupSearchResults(data) {
+
+    for (const dt of data) {
+      console.log('Post Category', this.getCategoryName(dt.categories[0]));
+      const catType = this.getCategoryName(dt.categories[0]);
+      const ct = catType.split('_');
+      const c = ct[ct.length - 1];
+      console.log('category type: ', c);
+      switch (c.toLowerCase()) {
+        case 'biography':
+          this.searchCategories.biographies.push(dt);
+          break;
+        case 'services':
+          this.searchCategories.services.push(dt);
+          this.getAttachments(dt);
+          break;
+        case 'events':
+        case 'news':
+        case 'press':
+        case 'publications':
+          this.searchCategories.news.push(dt);
+          break;
+        case 'job':
+          this.searchCategories.jobs.push(dt);
+          break;
+        case 'tender':
+          this.searchCategories.procurements.push(dt);
+          break;
+        case 'books':
+        case 'surveys':
+        case 'reports':
+        case 'magazine':
+        case 'article':
+        case 'newsletter':
+        case 'policies':
+          if (dt.acf.hasOwnProperty('library_attachment')) {
+            dt.acf.library_attachment.url = `<a href="${dt.acf.library_attachment.url}">${dt.title.rendered}</a>`;
+            this.searchCategories.attachments.push(dt.acf.library_attachment.url);
+          }
+          break;
+      }
+    }
+
+    console.log('categorized data: ', this.searchCategories);
+  }
+
+  getSearchResults(searchPattern) {
+    const customParams = [];
+    customParams.push('id');
+    customParams.push('title');
+    customParams.push('content.rendered');
+    customParams.push('acf');
+    customParams.push('categories');
+
+    this.matchCategoryNames(searchPattern);
+
+    this.searchService.getSearchResults(searchPattern, customParams).subscribe((data) => {
+      if (data) {
+        console.log('search results: ', data);
+        this.searchPostsResult = data;
+        //  this.getAttachments(data);
+
+        /**
+         * Remove the previous data
+         */
+        this.searchCategories.attachments = [];
+        this.searchCategories.biographies = [];
+        this.searchCategories.jobs = [];
+        this.searchCategories.news = [];
+        this.searchCategories.procurements = [];
+        this.searchCategories.services = [];
+
+        this.groupSearchResults(data);
+      }
+    });
+  }
+
+  matchCategoryNames(searchPattern) {
+    const matchedCatTypes = [];
+    for (const ct of this.categories) {
+      if (this.categories.name.includes(searchPattern)) {
+        matchedCatTypes.push(this.categories.name);
+      }
+    }
+
+    return matchedCatTypes;
+  }
+
+  getAttachments(ps) {
+    let tempLinksArray;
+    this.linksArray = [];
+    const pattern = /<a[A-Za-z0-9_@./#&\s>"=\-:]*<\/a>/g;
+
+    if (ps.hasOwnProperty('content')) {
+      tempLinksArray = [];
+      tempLinksArray = ps.content.rendered.match(pattern);
+      console.log('pattern result: ', tempLinksArray);
+      if (tempLinksArray) {
+        tempLinksArray.map((vl) => {
+          vl = vl.replace('">', '" target="_blank">');
+          // this.linksArray.push(vl);
+          this.searchCategories.attachments.push(vl);
+        });
+
+        console.log('links result: ', tempLinksArray);
+      }
+
+    }
+
+
+    console.log('the final links array is: ', this.linksArray);
+
   }
 
 
