@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { OpportunitiesRoutingModule } from './opportunities-routing.module';
 
@@ -37,6 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
     OpportunitiesRoutingModule,
     SharedModule,
     HttpClientModule,
+    NgxPaginationModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

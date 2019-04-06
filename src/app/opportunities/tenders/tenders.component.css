@@ -12,8 +12,16 @@
     transition: color .1s ease-in-out;
 }
 
-
 .tenders .tender .headline:hover {
     color: #01a79b;
-    text-decoration: underline;
+    text-decoration: underline; 
+} 
+
+.text-center {
+    text-align: center;
 }
+
+.tenders-pagination /deep/ .ngx-pagination .current {
+    background: #01a79b;
+}
+  

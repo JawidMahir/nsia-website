@@ -9,7 +9,20 @@ export class MediaServicesService {
 
   constructor(private http: HttpClient, private dataService: DataService) { } 
 
-  getMediaData(customP, catName) {
+  getMediaData(customP, catName , page) {
+    return this.http.get(this.dataService.api + 'posts', {
+      observe: 'response',
+      params: {
+        'filter[category_name]': catName,
+        per_page: '4',
+        page: page,
+        lang: this.dataService.language,
+        fields: customP.join(','),
+        orederby: 'date'
+      }
+    });
+  }
+  getPromotingData(customP, catName) {
     return this.http.get(this.dataService.api + 'posts', {
       params: {
         'filter[category_name]': catName,
@@ -23,7 +36,7 @@ export class MediaServicesService {
   getNewsData(customP, catName, perPage) {
     return this.http.get(this.dataService.api + 'posts', {
       params: {
-        'filter[category_name]': catName,
+        'filter[category_name]': catName, 
         lang: this.dataService.language,
         per_page: perPage,
         fields: customP.join(','),

@@ -9,7 +9,10 @@ import { MediaServicesService } from '../media-services.service';
   styleUrls: ['./news-updates.component.css']
 })
 export class NewsUpdatesComponent implements OnInit {
-  news: '';
+  customParams = [];
+  p: number = 1;
+  total = 1;
+  news = [];
 
   constructor(
     private mediaService: MediaServicesService,
@@ -17,23 +20,24 @@ export class NewsUpdatesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getNewsData('news');
+    this.getNewsData('news', this.p);
+    this.customParams.push('title.rendered');
+    this.customParams.push('content.rendered');
+    this.customParams.push('acf.attachment_type');
+    this.customParams.push('acf.link');
+    this.customParams.push('better_featured_image.source_url');
+    this.customParams.push('better_featured_image.alt_text');
+    this.customParams.push('date');
+    this.customParams.push('id');
   }
 
-  getNewsData(type) {
-    const customParams = [];
-    customParams.push('title.rendered');
-    customParams.push('content.rendered');
-    customParams.push('acf.attachment_type');
-    customParams.push('acf.link');
-    customParams.push('better_featured_image.source_url');
-    customParams.push('better_featured_image.alt_text');
-    customParams.push('date');
-    customParams.push('id');
-    this.mediaService.getMediaData(customParams, type).subscribe((newsData) => {
-      console.log('news data update: ', newsData);
-      this.news = this.refineData(newsData);
-    });
+  getNewsData(type , page) {
+    if(this.news.length < this.total){
+      this.mediaService.getMediaData(this.customParams, type ,page).subscribe((newsData) => {
+        this.news = this.news.concat(this.refineData(newsData.body));
+        this.total = parseInt(newsData.headers.get('X-WP-Total')); 
+      });
+    }
   }
 
   refineData(data) {
@@ -64,9 +68,9 @@ export class NewsUpdatesComponent implements OnInit {
     return true;
   }
 
-  videoURL(url) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  pageChanged(page: number) {
+    this.getNewsData('news', page);
+    this.p = page;
   }
-
 
 }

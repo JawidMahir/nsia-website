@@ -7,7 +7,6 @@ import { MediaServicesService } from '../media-services.service';
   styleUrls: ['./media-room-home.component.css']
 })
 export class MediaRoomHomeComponent implements OnInit {
-
   orgs = [];
   brochures = [];
   posters = [];
@@ -27,7 +26,6 @@ export class MediaRoomHomeComponent implements OnInit {
     customParams.push('acf.library_attachment.url');
     this.mediaService.getNewsData(customParams, type, perPage).subscribe((newsData) => {
       this.newsletters.push(newsData[0]);
-      console.log(this.newsletters);
     });
 
   }
@@ -36,7 +34,7 @@ export class MediaRoomHomeComponent implements OnInit {
     const customParams = [];
     customParams.push('acf.promotional_materials_attachment.url');
     customParams.push('acf.promotional_materials_type');
-    this.mediaService.getMediaData(customParams, type).subscribe((promotingMaterialData) => {
+    this.mediaService.getPromotingData(customParams, type).subscribe((promotingMaterialData) => {
      for (let key in promotingMaterialData) {
         switch(promotingMaterialData[key].acf.promotional_materials_type) { 
           case 'booklet': { 

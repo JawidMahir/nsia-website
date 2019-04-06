@@ -7,13 +7,14 @@ import { OppService } from '../opp.service';
   styleUrls: ['./tenders.component.css']
 })
 export class TendersComponent implements OnInit {
-
-  tenders;
+  p: number = 1;
+  total = 1;
+  tenders = [];
 
   constructor(private oppService: OppService) { }
 
   ngOnInit() {
-    this.getTenders();
+    this.getTenders(this.p);
   }
 
   getBrief(ds) {
@@ -23,7 +24,7 @@ export class TendersComponent implements OnInit {
     return ds;
   }
 
-  getTenders() {
+  getTenders(page) {
     const customParams = [];
     customParams.push('id');
     customParams.push('date');
@@ -31,19 +32,27 @@ export class TendersComponent implements OnInit {
     customParams.push('title.rendered');
     customParams.push('content.rendered');
     customParams.push('acf');
-
-    this.oppService.getTenders(customParams).subscribe((data) => {
-      console.log('tenders: ', data);
-      if (data.length > 0) {
-        this.tenders = data;
-        for (const tn of this.tenders) {
-          tn.content.rendered = this.oppService.htmlToPlaintext(tn.content.rendered);
-          const date = new Date(tn.date);
-          const tempDate = date.getDate()  + '/' + (Number(date.getMonth()) + 1 ) + '/' + date.getFullYear();
-          tn.date = tempDate;
+    if(this.tenders.length < this.total){ 
+      this.oppService.getTenders(customParams , page).subscribe((data) => {
+        if (data.body.length > 0) {
+          this.tenders = this.tenders.concat(this.refineData(data.body));
+          this.total = parseInt(data.headers.get('X-WP-Total')); 
         }
-      }
-    });
+      });
+   }
   }
-
+  
+  refineData(data){
+    for (const tn of data) {
+      tn.content.rendered = this.oppService.htmlToPlaintext(tn.content.rendered);
+      const date = new Date(tn.date);
+      const tempDate = date.getDate()  + '/' + (Number(date.getMonth()) + 1 ) + '/' + date.getFullYear();
+      tn.date = tempDate;
+    }
+    return data;
+  }
+  pageChanged(page: number) {
+    this.getTenders(page);
+    this.p = page;
+  }
 }

@@ -7,57 +7,31 @@ import { OppService } from '../opp.service';
   styleUrls: ['./jobs.component.css']
 })
 export class JobsComponent implements OnInit {
-  jobs;
-  dJobs = [
-    {
-      id: 421,
-      name: 'Data Analyst',
-      brief: 'ssflskjf alskfjl saldfjl sdj sdlkjflsjf',
-      pdate: '11-09-2019',
-      cdate: '22-09-2019'
-    }, {
-      id: 412,
-      name: 'SQL Analyst',
-      brief: 'ssflskjf alskfjl saldfjl sdj sdlkjflsjf',
-      pdate: '11-09-2019',
-      cdate: '22-09-2019'
-    }, {
-      id: 327,
-      name: 'JAVA Analyst',
-      brief: 'ssflskjf alskfjl saldfjl sdj sdlkjflsjf',
-      pdate: '11-09-2019',
-      cdate: '22-09-2019'
-    }
-  ];
+  p: number = 1;
+  total = 1;
+  jobs = [];
+
   constructor(private oppService: OppService) { }
 
   ngOnInit() {
-    this.getJobs();
+    this.getJobs(this.p);
   }
 
-  getJobs() {
+  getJobs(page) {
     const customParams = [];
     customParams.push('id');
     customParams.push('date');
     customParams.push('title.rendered');
     customParams.push('content.rendered');
     customParams.push('acf.closing_date');
-    this.oppService.getJobs(customParams).subscribe((data) => {
-      console.log('Jobs: ', data);
-      if (data) {
-        this.jobs = data;
-        for (const jb of this.jobs) {
-          if (jb.content) {
-            jb.content.rendered = this.oppService.htmlToPlaintext(jb.content.rendered);
-          }
-          const date = new Date(jb.date);
-          const tempDate = date.getDate() + '/' + (Number(date.getMonth()) + 1) + '/' + date.getFullYear();
-          jb.date = tempDate;
+    if(this.jobs.length < this.total){
+      this.oppService.getJobs(customParams,page).subscribe((data) => {
+        if (data) {
+          this.jobs = this.jobs.concat(this.refineData(data.body));
+          this.total = parseInt(data.headers.get('X-WP-Total'));
         }
-
-      }
-
-    });
+      });
+    }
   }
   getBrief(ds) {
     if (ds.length > 40) {
@@ -66,4 +40,21 @@ export class JobsComponent implements OnInit {
     return ds;
   }
 
+  refineData(data){
+    for (const jb of data) {
+      if (jb.content) {
+        jb.content.rendered = this.oppService.htmlToPlaintext(jb.content.rendered);
+      }
+      const date = new Date(jb.date);
+      const tempDate = date.getDate() + '/' + (Number(date.getMonth()) + 1) + '/' + date.getFullYear();
+      jb.date = tempDate;
+    }
+    return data;
+  }
+
+  pageChanged(page: number) {
+    this.getJobs(page);
+    this.p = page;
+  } 
+  
 }

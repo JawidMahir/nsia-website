@@ -8,31 +8,36 @@ import { MediaServicesService } from '../media-services.service';
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
+
 export class EventsComponent implements OnInit {
-  events = '';
+  customParams = [];
+  p: number = 1;
+  total = 1;
+  events=[];
   constructor(private mediaService: MediaServicesService,
               private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.getEventsData('events'); 
+    this.customParams.push('title.rendered');
+    this.customParams.push('content.rendered');
+    this.customParams.push('acf.attachment_type');
+    this.customParams.push('acf.link');
+    this.customParams.push('better_featured_image.source_url'); 
+    this.customParams.push('better_featured_image.alt_text');
+    this.customParams.push('date');
+    this.customParams.push('id');
+    this.getEventsData('events',this.p); 
   }
 
-  getEventsData(type){
-    const customParams = [];
-    customParams.push('title.rendered');
-    customParams.push('content.rendered');
-    customParams.push('acf.attachment_type');
-    customParams.push('acf.link');
-    customParams.push('better_featured_image.source_url'); 
-    customParams.push('better_featured_image.alt_text');
-    customParams.push('date');
-    customParams.push('id');
-    this.mediaService.getMediaData(customParams, type).subscribe((eventsData) => {
-     this.events = this.refineData(eventsData);
-     console.log(this.events); 
-    });
-  } 
-  
+  getEventsData(type,page){
+    if(this.events.length < this.total){
+      this.mediaService.getMediaData(this.customParams, type , page).subscribe((eventsData) => {
+        this.events = this.events.concat(this.refineData(eventsData.body));
+        this.total = parseInt(eventsData.headers.get('X-WP-Total')); 
+       });
+    }
+  }
+
   refineData(data) {
     for (const el of data) {
       if (!el.hasOwnProperty('date')) {
@@ -45,7 +50,7 @@ export class EventsComponent implements OnInit {
     return data;
   }
 
-  getBrief(ds) {
+  getBrief(ds) { 
     if (ds.length > 40) {
       return ds.substring(0, 260) + '...';
     }
@@ -58,9 +63,10 @@ export class EventsComponent implements OnInit {
     console.log(el);
     return true;
   }
+  
+  pageChanged(page: number) {
+    this.getEventsData('events', page);
+    this.p = page;
+  }  
 
-  videoURL(url) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
-
-}
+} 

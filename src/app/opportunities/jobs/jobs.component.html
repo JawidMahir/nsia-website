@@ -15,17 +15,17 @@
           </th>
           <th>
             <span>
-              {{'label.c-date' | translate}}
+              {{'label.c-date' | translate}} 
             </span>
           </th>
         </thead>
-        <tbody *ngIf="dJobs">
-          <tr class="job" *ngFor="let jb of jobs">
+        <tbody *ngIf="dJobs"> 
+          <tr class="job" *ngFor="let jb of jobs | paginate: { itemsPerPage: 2 , currentPage: p , totalItems: total }">
             <td class="description">
               <a class="headline" [routerLink]="['/opportunities/job', jb.id]">
                 {{ jb.title.rendered }}
               </a>
-              <p class="job-brief">
+              <p class="job-brief"> 
                 {{ getBrief(jb.content.rendered) }}
               </p>
             </td>
@@ -40,6 +40,11 @@
               </span>
             </td>
           </tr>
+          <div class="text-center">
+            <pagination-controls class="jobs-pagination" (pageChange)="pageChanged($event)" autoHide="true" responsive="true"
+              maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
+              nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
+          </div>
         </tbody>
       </table>
     </div>

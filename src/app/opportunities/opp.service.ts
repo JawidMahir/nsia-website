@@ -9,10 +9,13 @@ export class OppService {
 
   constructor(private http: HttpClient, private dataService: DataService) { }
 
-  getTenders(customParams) {
-    return this.http.get<Array<any>>(this.dataService.api + 'posts', {
+  getTenders(customParams , page) {
+    return this.http.get<Array<any>>(this.dataService.api + 'posts', { 
+      observe: 'response',
       params: {
         'filter[category_name]': 'tender',
+        per_page: '2',
+        page: page,
         lang: this.dataService.language,
         fields: customParams.join(','),
       }
@@ -30,10 +33,13 @@ export class OppService {
     });
   }
 
-  getJobs(customParams) {
+  getJobs(customParams , page) {
     return this.http.get(this.dataService.api + 'posts', {
+      observe: 'response',
       params: {
         'filter[category_name]': 'job',
+        per_page: '2',
+        page: page,
         lang: this.dataService.language,
         fields: customParams.join(','),
       }
@@ -54,4 +60,5 @@ export class OppService {
   htmlToPlaintext(text) {
     return text ? String(text).replace(/<[^>]+>/gm, '') : '';
   }
+  
 }

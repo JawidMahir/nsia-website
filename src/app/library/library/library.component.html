@@ -39,7 +39,7 @@
           <a href="{{content.acf.library_attachment.url}}" download="{{content.acf.library_attachment.filename}}"
             target="_blank">
             <img src="{{ content.better_featured_image?.source_url }}"
-              alt="{{ content.better_featured_image?.alt_text }}" (error)="imageError($event.target);">
+            alt="{{ content.better_featured_image?.alt_text }}" (error)="imageError($event.target);">
           </a>
           <h5><a href="{{content.acf.library_attachment.url}}" download="{{content.acf.library_attachment.filename}}"
               target="_blank">{{content.title.rendered}}</a></h5>
@@ -56,7 +56,6 @@
           maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
           nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
       </div>
-
     </div>
   </div>
 </div>

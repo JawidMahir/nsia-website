@@ -9,27 +9,31 @@ import { MediaServicesService } from '../media-services.service';
   styleUrls: ['./press-release.component.css']
 })
 export class PressReleaseComponent implements OnInit {
-    press = '';
+  customParams = [];
+  p: number = 1;
+  total = 1;
+  press = [];
   constructor(private mediaService: MediaServicesService,
-              private sanitizer: DomSanitizer) { }
+              private sanitizer: DomSanitizer) { } 
 
   ngOnInit() {
-    this.getEventsData('press');
+    this.customParams.push('title.rendered');
+    this.customParams.push('content.rendered');
+    this.customParams.push('acf.attachment_type');
+    this.customParams.push('acf.link');
+    this.customParams.push('better_featured_image.source_url');
+    this.customParams.push('better_featured_image.alt_text');
+    this.customParams.push('date');
+    this.customParams.push('id');
+    this.getPressData('press' , this. p);
   }
-  getEventsData(type){
-    const customParams = [];
-    customParams.push('title.rendered');
-    customParams.push('content.rendered');
-    customParams.push('acf.attachment_type');
-    customParams.push('acf.link');
-    customParams.push('better_featured_image.source_url');
-    customParams.push('better_featured_image.alt_text');
-    customParams.push('date');
-    customParams.push('id');
-    this.mediaService.getMediaData(customParams, type).subscribe((pressData) => {
-     this.press = this.refineData(pressData);
-     console.log(this.press);
-    });
+  getPressData(type , page){  
+    if(this.press.length < this.total){
+      this.mediaService.getMediaData(this.customParams, type ,page).subscribe((pressData) => {
+      this.press = this.press.concat(this.refineData(pressData.body));
+      this.total = parseInt(pressData.headers.get('X-WP-Total'));
+      });
+   }
   } 
   
   refineData(data) {
@@ -57,8 +61,10 @@ export class PressReleaseComponent implements OnInit {
     console.log(el);
     return true;
   }
-  videoURL(url) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+
+  pageChanged(page: number) {
+    this.getPressData('press', page);
+    this.p = page;
   }
 
 }
