@@ -10,22 +10,30 @@ import * as $ from 'jquery';
 })
 
 export class LibraryComponent implements OnInit {
-  p = 1;
+  p: number = 1;
+  total:number = 1;
   customParams = [];
-  contents = [];
+  contents = '';
   filterText;
   id;
-  total;
   libraryContents = {
-    books: '',
-    surveys: '',
-    reports: '',
-    magazine: '',
-    articles: '',
-    newsletter: '',
-    policies: ''
+    books:[],
+    surveys: [],
+    reports: [],
+    magazine: [],
+    articles: [],
+    newsletter: [],
+    policies: []
   };
-
+  totalPosts = {
+    books:1,
+    surveys: 1,
+    reports: 1,
+    magazine: 1,
+    articles: 1,
+    newsletter: 1,
+    policies: 1
+  };
   constructor(private libraryService: LibraryServicesService) { }
 
   ngOnInit() {
@@ -56,15 +64,21 @@ export class LibraryComponent implements OnInit {
 
   }
 
-  getData(customParams, page) {
-    this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => {
-      this.total = libraryData.headers.get('X-WP-Total');
-      console.log(this.total);
-      this.libraryContents[this.id] = this.refineData(libraryData.body);
+  getData(customParams, page) { 
+    if(Object.keys(this.libraryContents[this.id]).length !== this.totalPosts[this.id]){
+      this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => { 
+        this.totalPosts[this.id] = parseInt(libraryData.headers.get('X-WP-Total'));
+        this.total = this.totalPosts[this.id];
+        this.libraryContents[this.id] = this.libraryContents[this.id].concat(this.refineData(libraryData.body));
+        console.log(this.libraryContents[this.id]);
+        this.contents = this.libraryContents[this.id];
+        }));
+    }else{
       this.contents = this.libraryContents[this.id];
-      console.log('contents: ', this.contents);
-    }));
-  }
+      this.total = this.totalPosts[this.id];
+    }
+             
+  } 
 
   imageError(el) {
     el.onerror = '';
@@ -92,7 +106,6 @@ export class LibraryComponent implements OnInit {
       return true;
     }
   }
-
   pageChanged(page: number) {
     this.getData(this.customParams, page);
     this.p = page;

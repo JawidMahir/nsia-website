@@ -17,3 +17,7 @@
     color: #01a79b;
     text-decoration: underline;
 }
+
+.jobs-pagination /deep/ .ngx-pagination .current {
+    background: #01a79b;
+  }

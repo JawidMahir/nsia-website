@@ -52,7 +52,7 @@
     cursor: pointer;
   }
   
-  .news-pagination /deep/ .ngx-pagination .current {
+  .press-pagination /deep/ .ngx-pagination .current {
     background: #01a79b;
   }
   

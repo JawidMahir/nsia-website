@@ -20,7 +20,7 @@
         </th>
       </thead>
       <tbody *ngIf="tenders">
-        <tr class="tender" *ngFor="let tn of tenders">
+        <tr class="tender" *ngFor="let tn of tenders | paginate: { itemsPerPage: 2 , currentPage: p , totalItems: total }">
           <td class="description">
             <a class="headline" [routerLink]="['/opportunities/tender', tn.id]">
               {{ tn.title.rendered }}
@@ -42,5 +42,10 @@
         </tr>
       </tbody>
     </table>
+    <div class="text-center"> 
+      <pagination-controls class="tenders-pagination" (pageChange)="pageChanged($event)" autoHide="true" responsive="true"
+        maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
+        nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
+    </div>
   </div>
 </div>
