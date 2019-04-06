@@ -24,14 +24,18 @@ export class JobsComponent implements OnInit {
     customParams.push('title.rendered');
     customParams.push('content.rendered');
     customParams.push('acf.closing_date');
-    if(this.jobs.length < this.total){
-      this.oppService.getJobs(customParams,page).subscribe((data) => {
+    if (this.jobs.length < this.total) {
+      this.oppService.getJobs(customParams, page).subscribe((data) => {
         if (data) {
           this.jobs = this.jobs.concat(this.refineData(data.body));
           this.total = parseInt(data.headers.get('X-WP-Total'));
+          console.log('jobs data: ', this.jobs);
+
         }
       });
     }
+    console.log('jobs data out of function: ', this.jobs);
+
   }
   getBrief(ds) {
     if (ds.length > 40) {
@@ -40,7 +44,7 @@ export class JobsComponent implements OnInit {
     return ds;
   }
 
-  refineData(data){
+  refineData(data) {
     for (const jb of data) {
       if (jb.content) {
         jb.content.rendered = this.oppService.htmlToPlaintext(jb.content.rendered);
@@ -55,6 +59,6 @@ export class JobsComponent implements OnInit {
   pageChanged(page: number) {
     this.getJobs(page);
     this.p = page;
-  } 
-  
+  }
+
 }
