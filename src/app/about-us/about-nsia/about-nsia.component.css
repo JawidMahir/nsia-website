@@ -11,6 +11,8 @@
 
 .about-nsia .about-details .featured-video {
     margin: 4% 0px;
+    width: 100%;
+    height: 400px;
 }
 
 .about-nsia .about-details .featured-video iframe,

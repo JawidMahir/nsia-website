@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {formatDate } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MediaServicesService } from '../media-services.service';
 
@@ -15,7 +15,7 @@ export class EventsComponent implements OnInit {
   total = 1;
   events=[];
   constructor(private mediaService: MediaServicesService,
-              private sanitizer: DomSanitizer) { }
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.customParams.push('title.rendered');
@@ -41,7 +41,7 @@ export class EventsComponent implements OnInit {
   refineData(data) {
     for (const el of data) {
       if (!el.hasOwnProperty('date')) {
-        el.date = '00'+'th'+'MNT'+'';
+        el.date = '00' + 'th' + 'MNT' + '';
       } else {
         el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
         el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
@@ -57,9 +57,9 @@ export class EventsComponent implements OnInit {
     return ds;
   }
 
-  imageError(el) { 
+  imageError(el) {
     el.onerror = '';
-    el.src = '../../assets/images/noimage.png';
+    el.src = '../../assets/images/noimage.svg';
     console.log(el);
     return true;
   }

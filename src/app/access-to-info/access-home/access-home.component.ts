@@ -136,7 +136,7 @@ export class AccessHomeComponent implements OnInit {
 
   imageError(el) {
     el.onerror = '';
-    el.src = '../../assets/images/noimage.png';
+    el.src = '../../assets/images/noimage.svg';
     console.log(el);
     return true;
   }

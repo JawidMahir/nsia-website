@@ -23,7 +23,7 @@
                 <div>
                   <h5>{{ pre.title.rendered }}</h5>
                   <p class="content">{{ getBrief(pre.content.rendered) }}</p>
-                  <a [routerLink]="['../media', pre.id]">{{'btn.read-more' | translate}}</a><br>
+                  <a [routerLink]="['/media-room/media', pre.id]">{{'btn.read-more' | translate}}</a><br>
                   <span>{{ pre.date }}</span>
                 </div>
               </div>

@@ -177,7 +177,7 @@
             <p routerLink="opportunities">
               {{ 'menu.opportunities' | translate }}</p>
             <ul>
-              <li routerLink="opportunities/jobs">{{'submenu.administrations' | translate}}</li>
+              <li routerLink="opportunities/jobs">{{'submenu.jobs' | translate}}</li>
               <li routerLink="opportunities/procurements">{{'submenu.procurement' | translate}}</li>
               <!-- <li routerLink="opportunities/tenders">Tenders</li> -->
             </ul>
@@ -292,13 +292,13 @@
           </div>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" routerLink="/opportunities">
+              aria-expanded="false" routerLink="/opportunities/jobs">
               {{ 'menu.opportunities' | translate }}
             </a>
             <i class="fas fa-chevron-down"></i>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a href="" class="dropdown-item"
-                routerLink="/opportunities/jobs">{{'submenu.administrations' | translate}}</a>
+                routerLink="/opportunities/jobs">{{'submenu.jobs' | translate}}</a>
               <!-- <a href="" class="dropdown-item" routerLink="/opportunities/procurements">Procurements</a> -->
               <a href="" class="dropdown-item"
                 routerLink="/opportunities/procurements">{{'submenu.procurement' | translate}}</a>

@@ -23,7 +23,7 @@
                 <div> 
                   <h5>{{ event.title.rendered }}</h5>
                   <p class="content">{{ getBrief(event.content.rendered) }}</p>
-                  <a [routerLink]="['../media', event.id]">{{'btn.read-more' | translate}}</a><br>
+                  <a [routerLink]="['/media-room/media', event.id]">{{'btn.read-more' | translate}}</a><br>
                   <span>{{ event.date }}</span>
                 </div>
               </div>

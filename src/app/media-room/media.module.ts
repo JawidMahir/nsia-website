@@ -7,6 +7,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { MediaRoutingModule } from './media-routing.module';
 
+// Import shared Module here
+import { SharedModule } from '../shared/shared.module';
+
 import { BookletComponent } from './booklet/booklet.component';
 import { BrochuresComponent } from './brochures/brochures.component';
 import { EventsComponent } from './events/events.component';
@@ -42,6 +45,7 @@ export function createTranslateLoader(http: HttpClient) {
     MediaRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    SharedModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

@@ -120,7 +120,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       case 'gis_services':
         this.serviceContents.gis = this.contents;
         break;
-      case 'national_identity_services':
+      case 'nid_services':
         this.serviceContents.nid = this.contents;
         break;
       case 'sdu_services':
@@ -137,7 +137,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       case 'gis_services':
         this.serviceContents.gis['departments'] = this.deputyDepartments;
         break;
-      case 'national_identity_services':
+      case 'nid_services':
         this.serviceContents.nid['departments'] = this.deputyDepartments;
         break;
       case 'sdu_services':
@@ -384,6 +384,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
     const id = $(el).closest('.m-service').attr('id');
     this.serviceType = id;
+
     // The departments in each service has a different key name, so we have to change it
     this.dept = id + '_department';
     console.log('department type: ', this.dept);
@@ -446,7 +447,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
         break;
 
       case 'nid':
-        serviceType = 'national_identity_services';
+        serviceType = 'nid_services';
         this.getDeputyDetails(serviceType, 'service');
         this.getDeputyDepartments(serviceType, 'department');
         this.getDeputyDepartments(serviceType, 'headship');

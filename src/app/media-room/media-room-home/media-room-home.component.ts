@@ -12,16 +12,17 @@ export class MediaRoomHomeComponent implements OnInit {
   posters = [];
   flyers = [];
   booklets = [];
-  newsletters = [] ;
+  newsletters = [];
+  promoMaterialFlag = false;
 
   constructor(private mediaService: MediaServicesService) { }
 
   ngOnInit() {
     this.getPromotingMaterial('Promotional_Materials');
-    this.getNewsMaterial('Newsletter',1);
+    this.getNewsMaterial('Newsletter', 1);
   }
 
-  getNewsMaterial(type,perPage){
+  getNewsMaterial(type, perPage) {
     const customParams = [];
     customParams.push('acf.library_attachment.url');
     this.mediaService.getNewsData(customParams, type, perPage).subscribe((newsData) => {
@@ -30,7 +31,7 @@ export class MediaRoomHomeComponent implements OnInit {
 
   }
 
-  getPromotingMaterial(type){
+  getPromotingMaterial(type) {
     const customParams = [];
     customParams.push('acf.promotional_materials_attachment.url');
     customParams.push('acf.promotional_materials_type');
@@ -63,5 +64,9 @@ export class MediaRoomHomeComponent implements OnInit {
     });
 
   }
-  
+
+  checkPromoMaterials() {
+    return true;
+  }
+
 }

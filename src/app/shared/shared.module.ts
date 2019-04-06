@@ -6,6 +6,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { NewsComponent } from './news/news.component';
+import { PromotionalMaterialsComponent } from './promotional-materials/promotional-materials.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -13,10 +14,12 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    NewsComponent
+    NewsComponent,
+    PromotionalMaterialsComponent
   ],
   exports: [
-    NewsComponent
+    NewsComponent,
+    PromotionalMaterialsComponent
   ],
   imports: [
     CommonModule,

@@ -23,7 +23,7 @@
                 <div>
                   <h5>{{ getBrief(nw.title.rendered) }}</h5>
                   <p class="content" *ngIf="nw.content">{{ getBrief(nw.content.rendered) }}</p>
-                  <a [routerLink]="['../media', nw.id]">{{'btn.read-more' | translate}}</a><br>
+                  <a [routerLink]="['/media-room/media', nw.id]">{{'btn.read-more' | translate}}</a><br>
                   <span>{{ nw.date }}</span>
                 </div>
               </div>

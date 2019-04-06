@@ -49,7 +49,7 @@
 #ai-sections .section-title .info-section {
   flex: auto;
   color: #d2d0d0;
-  margin-bottom: 0px !important;
+  /* margin-bottom: 0px !important; */
 }
 
 #ai-sections .section-title i {
