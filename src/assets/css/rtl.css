@@ -108,6 +108,11 @@
   border-right: 1px solid #282560 !important;
 }
 
+.rtl .attachment-type {
+  right: 0;
+  margin-right: 15px;
+}
+
 
 /*
   * Service page RTL

@@ -8,7 +8,8 @@
 
 
   "label.contact-us": "زموږ سره اړيکه",
-  "label.head-office": "د ادارې مرکزي دفتر",
+  "label.working-hours": "د سهار له ۸ نه د ماسپښین تر ۴",
+  "label.head-office": "د مرکزي ادارې دفتر",
   "label.search-website": "د پلټنې متن دلته ولیکئ",
   "label.nsia-service": "د احصایې او معلوماتو ملي ادارې خدمتونه",
   "label.population": "نفوس",
@@ -60,7 +61,7 @@
 
   "label.newsletter": "خبرپاڼه",
   "label.news-letter-subscribe": "زموږ برېښنايي خبرپاڼې سره یوځای شئ",
-  "label.emai-address": "مهرباني وکړئ دلته مو برېښنالیک ولیکئ",
+  "label.email-address": "مهرباني وکړئ دلته مو برېښنالیک ولیکئ",
   "label.subscribe": "ګډون وکړئ",
   "label.history": "مخيينه",
   "label.authority-functions": "واکونه او صلاحیتونه",

@@ -10,7 +10,7 @@ import { MediaServicesService } from '../media-services.service';
 })
 export class NewsUpdatesComponent implements OnInit {
   customParams = [];
-  p: number = 1;
+  p = 1;
   total = 1;
   news = [];
 
@@ -63,7 +63,7 @@ export class NewsUpdatesComponent implements OnInit {
 
   imageError(el) {
     el.onerror = '';
-    el.src = '../../assets/images/noimage.png';
+    el.src = '../../assets/images/noimage.svg';
     console.log(el);
     return true;
   }

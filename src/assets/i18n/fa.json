@@ -8,6 +8,7 @@
 
 
   "label.contact-us": "تماس باما",
+  "label.working-hours": "از ۸ صبح الی ۴ بعد از ظهر",
   "label.head-office": "دفتر مرکزی اداره",
   "label.search-website": "متن جستجو را اینجا وارد نمایید",
   "label.nsia-service": "خدمات اداره ملی احصائیه و معلومات",
@@ -60,7 +61,7 @@
 
   "label.newsletter": "خبرنامه",
   "label.news-letter-subscribe": "با خبرنامه الکترونیکی ما بپیوندید",
-  "label.emai-address": "لطفآ ایمیل تانرا اینجا وارد نمایید",
+  "label.email-address": "لطفآ ایمیل تانرا اینجا وارد نمایید",
   "label.subscribe": "اشتراک نمایید",
   "label.history": "تاریخچه",
   "label.authority-functions": "اختیار و صلاحیت ها",
@@ -85,7 +86,7 @@
   "label.reference": "شماره داوطلبی",
   "label.closing-date": "تاریخ ختم",
   "label.work-type": "نوع کار",
-  "lable.vacancies-num": "تعداد بست",
+  "label.vacancies-num": "تعداد بست",
   "label.functional-area": "محل وظیفه",
   "label.nationality": "ملیت",
   "label.salary-range": "اندازه معاش",

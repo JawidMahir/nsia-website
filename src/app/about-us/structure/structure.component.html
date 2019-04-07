@@ -1,9 +1,8 @@
-<div class="about-us structure" *ngIf="structure; else nodata">
+<div class="about-us structure content-justify" *ngIf="structure; else nodata">
   <div class="title-wrapper">
     <h4 class="title">{{ structure.title.rendered }}</h4>
   </div>
-  <div class="description">
-    <p>{{ structure.content?.rendered }}</p>
+  <div *ngIf="structure.content.rendered" class="description" [innerHTML]="structure.content.rendered">
     <div class="org-str">
       <div class="download-btn">
         <i class="fas fa-file-pdf"></i>

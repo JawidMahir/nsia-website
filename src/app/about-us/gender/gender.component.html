@@ -1,9 +1,8 @@
-<div class="about-us gender" *ngIf="gender; else nodata">
+<div class="about-us gender content-justify" *ngIf="gender; else nodata">
   <div class="title-wrapper">
     <h4 class="title" >{{ gender.title.rendered }}</h4>
   </div>
-  <div class="description">
-    <p>{{ gender.content.rendered }}</p>
+  <div *ngIf="gender.content" class="description" [innerHTML]="gender.content.rendered">
   </div>
 </div>
 <ng-template #nodata>

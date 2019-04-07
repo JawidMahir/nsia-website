@@ -24,9 +24,9 @@ export class StructureComponent implements OnInit {
       console.log('biodata: ', data);
       if (data) {
         this.structure = data[0];
-        if (this.structure) {
-          this.structure.content.rendered = this.aboutUs.htmlToPlaintext(this.structure.content.rendered);
-        }
+        // if (this.structure) {
+        //   this.structure.content.rendered = this.aboutUs.htmlToPlaintext(this.structure.content.rendered);
+        // }
       }
     });
   }

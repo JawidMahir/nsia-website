@@ -8,6 +8,7 @@
 
     
     "label.contact-us": "Contact Us",
+    "label.working-hours": "8:00 AM - 4:00 PM",
     "label.head-office": "NSIA HEAD OFFICE",
     "label.search-website": "search website",
     "label.nsia-service": "nsia services",
@@ -59,7 +60,7 @@
 
     "label.newsletter": "newsletter",
     "label.news-letter-subscribe": "Subscribe to Newsletter here",
-    "label.emai-address": "Enter your email address",
+    "label.email-address": "Enter your email address",
     "label.subscribe": "Subscribe",
     "label.history": "history",
     "label.authority-functions": "authority and functions",

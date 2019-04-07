@@ -24,9 +24,9 @@ export class GenderComponent implements OnInit {
       console.log('biodata: ', data);
       if (data) {
         this.gender = data[0];
-        if (this.gender) {
-          this.gender.content.rendered = this.aboutUs.htmlToPlaintext(this.gender.content.rendered);
-        }
+        // if (this.gender) {
+        //   this.gender.content.rendered = this.aboutUs.htmlToPlaintext(this.gender.content.rendered);
+        // }
       }
     });
   }

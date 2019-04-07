@@ -25,21 +25,7 @@
     margin-bottom: 20px;
     overflow-wrap: break-word;
   }
-  
-  .attachment-type {
-    bottom: 0;
-    position: absolute;
-    left: 0;
-    margin-left: 15px;
-    background-color: #01a79b;
-    color: #fff;
-    padding: 1% 4%;
-    text-align: center;
-  }
-  
-  .attachment-type p {
-    margin: 0px;
-  }
+
   
   .pmaterial {
     background-color: #01a79b;

@@ -34,9 +34,9 @@ export class AboutNsiaComponent implements OnInit {
       if (data) {
         this.aboutNSIA = data[0];
         console.log('aboutNSIA: ', this.aboutNSIA);
-        if (this.aboutNSIA) {
-          this.aboutNSIA.content.rendered = this.aboutUs.htmlToPlaintext(this.aboutNSIA.content.rendered);
-        }
+        // if (this.aboutNSIA) {
+        //   this.aboutNSIA.content.rendered = this.aboutUs.htmlToPlaintext(this.aboutNSIA.content.rendered);
+        // }
       }
     });
   }

@@ -11,10 +11,11 @@ import { MediaServicesService } from '../media-services.service';
 
 export class EventsComponent implements OnInit {
   customParams = [];
-  p: number = 1;
+  p = 1;
   total = 1;
-  events=[];
-  constructor(private mediaService: MediaServicesService,
+  events = [];
+  constructor(
+    private mediaService: MediaServicesService,
     private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
@@ -22,19 +23,19 @@ export class EventsComponent implements OnInit {
     this.customParams.push('content.rendered');
     this.customParams.push('acf.attachment_type');
     this.customParams.push('acf.link');
-    this.customParams.push('better_featured_image.source_url'); 
+    this.customParams.push('better_featured_image.source_url');
     this.customParams.push('better_featured_image.alt_text');
     this.customParams.push('date');
     this.customParams.push('id');
-    this.getEventsData('events',this.p); 
+    this.getEventsData('events', this.p);
   }
 
-  getEventsData(type,page){
-    if(this.events.length < this.total){
-      this.mediaService.getMediaData(this.customParams, type , page).subscribe((eventsData) => {
+  getEventsData(type, page) {
+    if (this.events.length < this.total) {
+      this.mediaService.getMediaData(this.customParams, type, page).subscribe((eventsData) => {
         this.events = this.events.concat(this.refineData(eventsData.body));
-        this.total = parseInt(eventsData.headers.get('X-WP-Total')); 
-       });
+        this.total = parseInt(eventsData.headers.get('X-WP-Total'));
+      });
     }
   }
 
@@ -50,7 +51,7 @@ export class EventsComponent implements OnInit {
     return data;
   }
 
-  getBrief(ds) { 
+  getBrief(ds) {
     if (ds.length > 40) {
       return ds.substring(0, 260) + '...';
     }
@@ -63,10 +64,10 @@ export class EventsComponent implements OnInit {
     console.log(el);
     return true;
   }
-  
+
   pageChanged(page: number) {
     this.getEventsData('events', page);
     this.p = page;
-  }  
+  }
 
 } 

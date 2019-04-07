@@ -78,7 +78,7 @@
           </div>
           <div class="download-promo">
             <img src="../../../assets/images/pdf.png" alt="pdf">
-            <a href="{{newsletters[0]?.acf?.library_attachment.url}}" download="Newsletter.pdf"
+            <a [href]="newsletters[0].attachment" download="Newsletter.pdf"
               target="_blank"><span>{{'btn.download' | translate}}</span></a>
           </div>
         </div>

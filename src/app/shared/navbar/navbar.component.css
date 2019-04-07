@@ -80,11 +80,11 @@
   position: absolute;
   width: 100%;
   height: 0vh;
-  z-index: 9999;
+  z-index: 90;
   background-color: #282560;
   overflow: scroll;
   color: #fff;
-  transition:  height .3s ease-in-out;
+  transition: height .3s ease-in-out;
 }
 
 .search-result-wrapper.show {
@@ -97,10 +97,36 @@
   display: flex
 }
 
+.search-result-wrapper i.fa-times {
+  position: absolute;
+  padding: 1rem;
+  left: 0;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+
+.pd-top {
+  padding-top: 3rem;
+}
+
 .search-results ul {
   list-style: none;
   padding: 0px;
 }
+
+.search-results li {
+  cursor: pointer;
+}
+
+.search-results li:hover {
+  text-decoration: underline;
+}
+
+.search-results li span {
+  margin: 0px 4px;
+}
+
 
 .search-results .result {
   margin: 0px 2rem;

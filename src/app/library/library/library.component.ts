@@ -11,13 +11,13 @@ import * as $ from 'jquery';
 
 export class LibraryComponent implements OnInit {
   p: number = 1;
-  total:number = 1;
+  total: number = 1;
   customParams = [];
   contents = '';
   filterText;
   id;
   libraryContents = {
-    books:[],
+    books: [],
     surveys: [],
     reports: [],
     magazine: [],
@@ -26,7 +26,7 @@ export class LibraryComponent implements OnInit {
     policies: []
   };
   totalPosts = {
-    books:1,
+    books: 1,
     surveys: 1,
     reports: 1,
     magazine: 1,
@@ -39,7 +39,30 @@ export class LibraryComponent implements OnInit {
   ngOnInit() {
     let element: HTMLElement;
     if (localStorage.getItem('library-type')) {
-      element = document.getElementById('surveys') as HTMLElement;
+      const libType = localStorage.getItem('library-type');
+      switch (libType) {
+        case 'books':
+          element = document.getElementById('books') as HTMLElement;
+          break;
+        case 'surveys':
+          element = document.getElementById('surveys') as HTMLElement;
+          break;
+        case 'reports':
+          element = document.getElementById('reports') as HTMLElement;
+          break;
+        case 'magazines':
+          element = document.getElementById('magazine') as HTMLElement;
+          break;
+        case 'articles':
+          element = document.getElementById('articles') as HTMLElement;
+          break;
+        case 'newsletters':
+          element = document.getElementById('newsletter') as HTMLElement;
+          break;
+        case 'policies':
+          element = document.getElementById('policies') as HTMLElement;
+          break;
+      }
     } else {
       element = document.getElementById('books') as HTMLElement;
     }
@@ -47,7 +70,7 @@ export class LibraryComponent implements OnInit {
     this.customParams.push('date');
     this.customParams.push('better_featured_image.source_url');
     this.customParams.push('better_featured_image.alt_text');
-    this.customParams.push('acf.library_attachment.url');
+    this.customParams.push('content');
     this.customParams.push('acf.library_attachment.filename');
     // const element: HTMLElement = document.getElementById('books') as HTMLElement;
     // element.click();
@@ -64,21 +87,44 @@ export class LibraryComponent implements OnInit {
 
   }
 
-  getData(customParams, page) { 
-    if(Object.keys(this.libraryContents[this.id]).length !== this.totalPosts[this.id]){
-      this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => { 
+  getData(customParams, page) {
+    if (Object.keys(this.libraryContents[this.id]).length !== this.totalPosts[this.id]) {
+      this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => {
         this.totalPosts[this.id] = parseInt(libraryData.headers.get('X-WP-Total'));
         this.total = this.totalPosts[this.id];
-        this.libraryContents[this.id] = this.libraryContents[this.id].concat(this.refineData(libraryData.body));
+        const cb = this.getAttachments(libraryData.body);
+        console.log('library contents: ', cb);
+        this.libraryContents[this.id] = this.libraryContents[this.id].concat(this.refineData(cb));
         console.log(this.libraryContents[this.id]);
         this.contents = this.libraryContents[this.id];
-        }));
-    }else{
+        // console.log('library contents are: ', this.contents);
+      }));
+    } else {
       this.contents = this.libraryContents[this.id];
       this.total = this.totalPosts[this.id];
     }
-             
-  } 
+
+  }
+
+  getAttachments(data) {
+    console.log('It has data', data);
+    let tempLinksArray;
+    // const pattern = /\"[A-Za-z0-9_@./#&\s>"=\-:]*\"/g;
+    const pattern = /\".*\"/g;
+    for (const ps of data) {
+      if (ps.hasOwnProperty('content')) {
+        tempLinksArray = [];
+        tempLinksArray = ps.content.rendered.match(pattern);
+        if (tempLinksArray) {
+          tempLinksArray[0] = tempLinksArray[0].replace(new RegExp('"', 'g'), '');
+          console.log('pattern result: ', tempLinksArray[0]);
+          ps.attachment = tempLinksArray[0];
+        }
+      }
+    }
+
+    return data;
+  }
 
   imageError(el) {
     el.onerror = '';

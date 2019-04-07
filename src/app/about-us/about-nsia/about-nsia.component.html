@@ -1,4 +1,4 @@
-<div class="about-us about-nsia" *ngIf="aboutNSIA; else nodata">
+<div class="about-us about-nsia content-justify" *ngIf="aboutNSIA; else nodata">
   <div class="title-wrapper">
     <h4 class="title">{{ aboutNSIA.title.rendered }}</h4>
   </div>
@@ -24,15 +24,14 @@
   </div>
   <div class="about-details">
     <div class="featured-video">
-        <!-- <iframe src="https://www.youtube.com/embed/EDN6l8wLn5o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-      <iframe *ngIf="aboutNSIA.acf.hasOwnProperty('link'); else novideo" [src]="videoURL(aboutNSIA.acf.link)" frameborder="0" allow="autoplay; encrypted-media"
-        allowfullscreen style="height: 100%; width: 100%;"></iframe>
-        <ng-template #novideo>
-          <img src="../../../assets/images/noimage-h.png" class="fit-cover" alt="">
-        </ng-template>
+      <!-- <iframe src="https://www.youtube.com/embed/EDN6l8wLn5o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      <iframe *ngIf="aboutNSIA.acf.hasOwnProperty('link'); else novideo" [src]="videoURL(aboutNSIA.acf.link)"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="height: 100%; width: 100%;"></iframe>
+      <ng-template #novideo>
+        <img src="../../../assets/images/noimage-h.png" class="fit-cover" alt="">
+      </ng-template>
     </div>
-    <div class="details">
-      <p>{{ aboutNSIA.content?.rendered }}</p>
+    <div *ngIf="aboutNSIA.content" class="details" [innerHTML]="aboutNSIA.content.rendered">
     </div>
   </div>
 </div>

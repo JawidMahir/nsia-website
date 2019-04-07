@@ -15,6 +15,7 @@ export class ChooseLangComponent implements OnInit {
   year;
   ngOnInit() {
     this.year = new Date().getFullYear();
+    localStorage.removeItem('lang');
   }
 
   detectLanguage(lang) {

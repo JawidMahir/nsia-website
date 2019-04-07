@@ -1,4 +1,4 @@
-<div class="navbar-wrapper ">
+<div class="navbar-wrapper">
 
   <div class="header">
     <div class="custom-container">
@@ -6,9 +6,9 @@
       <div class="row">
         <div class="col-lg-6 col-md-12 logos">
           <div class="logo-wrapper">
-            <div class="gov-logo">
+            <!-- <div class="gov-logo">
               <img src="../../../assets/logo/national-emblem.svg" alt="">
-            </div>
+            </div> -->
             <div class="nsia-logo">
               <img src="../../../assets/logo/nsia-logo.svg" alt="">
             </div>
@@ -23,7 +23,7 @@
                 </p>
               </div>
               <div class="c-item">
-                <p> <i class="fas fa-clock"></i> 8:00 A.M. - 5:00 P.M.</p>
+                <p> <i class="fas fa-clock"></i> {{ 'label.working-hours' | translate }}</p>
               </div>
               <div class="c-item" data-toggle="modal" data-target="#mapModal">
                 <p> <i class="fas fa-map-marker-alt"></i> {{'label.head-office' | translate}}</p>
@@ -35,7 +35,8 @@
                 <div class="search-input c-item">
                   <div class="wrapper">
                     <input type="text" placeholder="{{'label.search-website' | translate }}" [(ngModel)]="sText"
-                      class="search-box" #searchText (input)="showSearchResults(searchText.value)">
+                      class="search-box" #searchText (input)="showSearchResults(searchText.value)"
+                      (focus)="showSearchDiv(searchText.value)">
                     <!-- <input type="text" placeholder="{{'label.search-website' | translate }}" 
                     class="search-box" #searchText > -->
                     <i class="fas fa-search"></i>
@@ -43,7 +44,7 @@
                 </div>
                 <div class="change-language c-item">
                   <select name="lang-change" id="lang-change" class="form-control custom-form-control" #languageChange1
-                    (change)='useLanguage(languageChange1.value)'>
+                    (change)='useLanguage(languageChange1)'>
                     <option value="en">{{ 'lang.english' | translate }}</option>
                     <option value="fa">{{ 'lang.dari' | translate }}</option>
                     <option value="ps">{{ 'lang.pashto' | translate }}</option>
@@ -57,48 +58,6 @@
       </div>
     </div>
   </div>
-
-  <div class="search-result-wrapper" id="search-result-wrapper">
-    <div class="search-results">
-      <div class="result-links result">
-        <h4 class="search-item-title">Links</h4>
-        <ul>
-          <li *ngFor="let ln of webLinks | searchFilter:sText">{{ln}}</li>
-        </ul>
-      </div>
-      <div class="result-services result" *ngIf="searchCategories.services.length > 0">
-        <h4 class="search-item-title">Services</h4>
-        <ul>
-          <li *ngFor="let rs of searchCategories.services">{{rs.title.rendered}}</li>
-        </ul>
-      </div>
-
-      <div class="result-attachments result" *ngIf="searchCategories.attachments.length > 0">
-        <h4 class="search-item-title">Attachments</h4>
-        <ul *ngIf="linksArray">
-          <li *ngFor="let at of searchCategories.attachments" [innerHTML]="at">
-          </li>
-        </ul>
-      </div>
-
-      <div class="result-attachments result">
-        <h4 class="search-item-title">Opportunities</h4>
-        <div class="sr-jobs" *ngIf="searchCategories.jobs.length > 0">
-          <h5>Jobs</h5>
-          <ul>
-            <li *ngFor="let jb of searchCategories.jobs">{{jb.title.rendered}}</li>
-          </ul>
-        </div>
-        <div class="sr-procurements" *ngIf="searchCategories.procurements.length > 0">
-          <h5>Procurements</h5>
-          <ul>
-            <li *ngFor="let prc of searchCategories.procurements">{{prc.title.rendered}}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
   <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
     <div class="custom-container">
@@ -118,14 +77,17 @@
 
             <div class="search-input c-item">
               <div class="wrapper">
+                <input type="text" placeholder="{{'label.search-website' | translate }}" [(ngModel)]="sText"
+                  class="search-box" #searchTextRes (input)="showSearchResults(searchTextRes.value)"
+                  (focus)="showSearchDiv(searchText.value)">
 
-                <input type="text" placeholder="{{'label.search-website' | translate }}" class="search-box">
+                <!-- <input type="text" placeholder="{{'label.search-website' | translate }}" class="search-box"> -->
                 <i class="fas fa-search"></i>
               </div>
             </div>
             <div class="change-language c-item">
-              <select name="lang-change" id="lang-change" class="form-control custom-form-control" #languageChange2
-                (change)='useLanguage(languageChange2.value)'>
+              <select name="lang-change" id="lang-change2" class="form-control custom-form-control" #languageChange2
+                (change)='useLanguage(languageChange2)'>
                 <option value="en">{{ 'lang.english' | translate }}</option>
                 <option value="fa">{{ 'lang.dari' | translate }}</option>
                 <option value="ps">{{ 'lang.pashto' | translate }}</option>
@@ -340,6 +302,78 @@
     </div>
   </nav>
 
+  <div class="search-result-wrapper" id="search-result-wrapper">
+    <i class="fas fa-times" (click)="hideSearchResults()"></i>
+    <div class="search-results">
+      <div class="result-links result">
+        <h4 class="search-item-title">Links</h4>
+        <ul>
+          <li *ngFor="let ln of quickLinks | searchFilter:sText" (click)="gotoLink(ln)">
+            <i class="fas fa-chevron-right"></i>
+            {{ln.title}}</li>
+        </ul>
+      </div>
+      <div class="result-services result" *ngIf="searchCategories.services.length > 0">
+        <h4 class="search-item-title">Services</h4>
+        <ul>
+          <li *ngFor="let sr of searchCategories.services" (click)="showServiceDetails(sr.content.rendered)">
+            <i class="fas fa-chevron-right"></i>
+            <span [innerHTML]="sr.title.rendered"></span></li>
+        </ul>
+      </div>
+
+      <div class="result-services result" *ngIf="searchCategories.news.length > 0">
+        <h4 class="search-item-title">News and Updates</h4>
+        <ul>
+          <li *ngFor="let nw of searchCategories.news" (click)="followLink('/media-room/media', nw.id)">
+            <i class="fas fa-chevron-right"></i>
+            <span [innerHTML]="nw.title.rendered"></span></li>
+        </ul>
+      </div>
+
+      <div class="result-services result" *ngIf="searchCategories.biographies.length > 0">
+        <h4 class="search-item-title">Biographies</h4>
+        <ul>
+          <li *ngFor="let bi of searchCategories.biographies">
+            <i class="fas fa-chevron-right"></i>
+            <span [innerHTML]="bi.title.rendered"></span></li>
+        </ul>
+      </div>
+
+      <div class="result-attachments result" *ngIf="searchCategories.attachments.length > 0">
+        <h4 class="search-item-title">Attachments</h4>
+        <ul *ngIf="linksArray">
+          <li *ngFor="let at of searchCategories.attachments">
+            <i class="fas fa-chevron-right"></i>
+            <span [innerHTML]="at"></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="result-attachments result"
+        *ngIf="searchCategories.procurements.length > 0 || searchCategories.jobs.length > 0">
+        <h4 class="search-item-title">Opportunities</h4>
+        <div class="sr-jobs" *ngIf="searchCategories.jobs.length > 0">
+          <h5>Jobs</h5>
+          <ul>
+            <li *ngFor="let jb of searchCategories.jobs" (click)="followLink('/opportunities/job', jb.id)">
+              <i class="fas fa-chevron-right"></i>
+              <span [innerHTML]="jb.title.rendered"></span></li>
+          </ul>
+        </div>
+        <div class="sr-procurements" *ngIf="searchCategories.procurements.length > 0">
+          <h5>Procurements</h5>
+          <ul>
+            <li *ngFor="let prc of searchCategories.procurements" (click)="followLink('/opportunities/tender', prc.id)">
+              <i class="fas fa-chevron-right"></i>
+              <span [innerHTML]="prc.title.rendered"></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 </div>
 
@@ -362,6 +396,28 @@
         <div class="address">
           <h6>7th District, Chahel saton street, beside of bagh babar</h6>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal  -->
+<div class="modal fade " id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="serviceModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="service-details" [innerHTML]="serviceDetails"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

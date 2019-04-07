@@ -7,6 +7,8 @@ import { DataService } from '../../data.service';
 
 import * as $ from 'jquery';
 import { SearchService } from '../search.service';
+import { distinctUntilChanged, debounceTime, switchMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -15,12 +17,17 @@ import { SearchService } from '../search.service';
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
   navbar: any;
+  searchWrapper: any;
   @ViewChild('map') mapElement: ElementRef;
   map: mapboxgl.Map;
   sText;
-  searchPostsResult;
+  searchPostsResult = [];
   linksArray = [];
   categories;
+  searchTerm = new Subject<string>();
+  searchPattern;
+  serviceDetails;
+
 
   searchCategories = {
     services: [],
@@ -55,6 +62,120 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     'opportunities'
   ];
 
+  quickLinks = [
+    {
+      title: 'home',
+      url: ''
+    }, {
+      title: 'services',
+      url: '/services'
+    }, {
+      title: 'library',
+      url: '/library'
+    }, {
+      title: 'about us',
+      url: '/about-us'
+    }, {
+      title: 'access to info',
+      url: '/access-info'
+    }, {
+      title: 'Media room',
+      url: '/media-room'
+    }, {
+      title: 'opportunities',
+      url: '/opportunities'
+    }
+    , {
+      title: 'Geographical Information Systems',
+      slug: 'service gis',
+      url: '/services',
+      data: {
+        flag: 'service',
+        value: 'gis'
+      }
+    }, {
+      title: 'Statistics Services',
+      slug: 'service stat statistic',
+      url: '/services',
+      data: {
+        flag: 'service',
+        value: 'stat'
+      }
+    }, {
+      title: 'Information Systems Development',
+      slug: 'service sdu',
+      url: '/services',
+      data: {
+        flag: 'service',
+        value: 'sdu'
+      }
+    }, {
+      title: 'National Identity',
+      slug: 'service nid tazkira',
+      url: '/services',
+      data: {
+        flag: 'service',
+        value: 'nid'
+      }
+    }, {
+      title: 'Books',
+      slug: 'library kitab',
+      url: '/library',
+      data: {
+        flag: 'library',
+        value: 'books'
+      }
+    }, {
+      title: 'Surveys',
+      slug: 'library',
+      url: '/library',
+      data: {
+        flag: 'library',
+        value: 'surveys'
+      }
+    }, {
+      title: 'Reports',
+      slug: 'library rapor',
+      url: '/library',
+      data: {
+        flag: 'library',
+        value: 'reports'
+      }
+    }, {
+      title: 'magazine',
+      slug: 'library',
+      url: '/library',
+      data: {
+        flag: 'library',
+        value: 'magazines'
+      }
+    }, {
+      title: 'Articles',
+      slug: 'library',
+      url: '/library',
+      data: {
+        flag: 'library',
+        value: 'articles'
+      }
+    }, {
+      title: 'Newsletter',
+      slug: 'library',
+      url: '/library',
+      data: {
+        flag: 'library',
+        value: 'newsletters'
+      }
+    }, {
+      title: 'Policies',
+      slug: 'library',
+      url: '/library',
+      data: {
+        flag: 'library',
+        value: 'policies'
+      }
+    }
+  ];
+
   dummyLinksTwo = [
     'service',
     'tools',
@@ -62,8 +183,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     'some thing',
     'of course'
   ];
-
-
 
 
   ngOnInit() {
@@ -77,10 +196,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     mapboxgl.accessToken = mapToken;
     window.onload = this.showActiveTab;
 
+    this.getSearchResults();
+
     // fetch all categories for search purpose
     this.getCategoriesInfo();
 
     this.navbar = document.getElementById('navbar');
+    this.searchWrapper = document.getElementById('search-result-wrapper');
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -96,6 +218,14 @@ export class NavbarComponent implements OnInit, AfterViewInit {
           $('[routerLink="/' + url + '"]').closest('.nav-item').addClass('active');
         }
       }
+    });
+
+    /**
+     * Collapse the search results on search item clicked
+     */
+    $('.search-results').on('click', 'li', function () {
+      console.log('I am clicked');
+      $('.search-result-wrapper').removeClass('show');
     });
 
     /**
@@ -126,6 +256,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
      * Detecte language change on reload
      */
     $('#lang-change').val(this.dataService.language);
+    $('#lang-change2').val(this.dataService.language);
   }
 
   createMap() {
@@ -212,6 +343,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       } else {
         $('body').removeClass('rtl');
       }
+      $('#lang-change').val(event.lang);
+      $('#lang-change2').val(event.lang);
       console.log('the path is :', location.pathname);
       const pt = location.pathname;
 
@@ -220,8 +353,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     });
   }
 
-  useLanguage(language: string) {
-    this.translate.use(language);
+  useLanguage(language) {
+    console.log(language.id);
+
+    if ($(language).is(':visible')) {
+      this.translate.use(language.value);
+      this.hideSearchResults();
+    }
   }
 
   updateServiceType(sType) {
@@ -255,16 +393,80 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   //   this.sText = '';
   // }
 
+  hideSearchResults() {
+    this.sText = '';
+    $('.search-result-wrapper').removeClass('show');
+
+    // this.searchCategories.attachments = [];
+    // this.searchCategories.biographies = [];
+    // this.searchCategories.jobs = [];
+    // this.searchCategories.news = [];
+    // this.searchCategories.procurements = [];
+    // this.searchCategories.services = [];
+
+    // this.searchPostsResult = [];
+    // this.searchPattern = '';
+
+  }
+
   showSearchResults(val) {
+    if (!$('.search-result-wrapper').hasClass('show')) {
+      $('.search-result-wrapper').addClass('show');
+    }
+    this.searchPattern = val;
+
+    if (val.length > 2) {
+      // this.getSearchResults(val);
+      this.searchTerm.next(val);
+    }
+
+    if (val.length < 1) {
+      $('.search-result-wrapper').removeClass('show');
+    }
+
+  }
+
+  showSearchDiv(val) {
     if (val.length > 2) {
       if (!$('.search-result-wrapper').hasClass('show')) {
         $('.search-result-wrapper').addClass('show');
       }
-      this.getSearchResults(val);
-    } else {
+    }
+  }
+
+  followLink(link, id) {
+    this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
+      this.router.navigate([link, id]));
+  }
+
+  gotoLink(link) {
+    console.log(link);
+
+    if (link.hasOwnProperty('data')) {
+      if (link.data.flag === 'service') {
+        this.dataService.serviceType = link.data.value;
+      }
+
+      if (link.data.flag === 'library') {
+        localStorage.setItem('library-type', link.data.value);
+      }
+    }
+    this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
+      this.router.navigate([link.url]));
+  }
+
+  searchFocusOut() {
+    let el;
+    $(document).click(function (e) {
+      el = e.target;
+      console.log('focused element', $(el).html());
+    });
+
+    console.log('parent: ', $(el).parents('#search-result-wrapper').length);
+
+    if ($(el).parents('#search-result-wrapper').length < 1) {
       $('.search-result-wrapper').removeClass('show');
     }
-
   }
 
   groupSearchResults(data) {
@@ -302,18 +504,32 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         case 'article':
         case 'newsletter':
         case 'policies':
-          if (dt.acf.hasOwnProperty('library_attachment')) {
-            dt.acf.library_attachment.url = `<a href="${dt.acf.library_attachment.url}">${dt.title.rendered}</a>`;
-            this.searchCategories.attachments.push(dt.acf.library_attachment.url);
-          }
+          this.getAttachments(dt);
           break;
       }
     }
 
     console.log('categorized data: ', this.searchCategories);
+    this.boldMatchedText();
   }
 
-  getSearchResults(searchPattern) {
+  boldMatchedText() {
+
+
+    // tslint:disable-next-line: forin
+    for (const item in this.searchCategories) {
+      console.log('Type of Item : ', typeof item);
+      const catArray = this.searchCategories[item];
+      for (const cat of catArray) {
+        if (cat.hasOwnProperty('title')) {
+          const str = cat.title.rendered.replace(new RegExp(this.searchPattern, 'gi'), `<b class="text-green">${this.searchPattern}</b>`);
+          cat.title.rendered = str;
+        }
+      }
+    }
+  }
+
+  getSearchResults() {
     const customParams = [];
     customParams.push('id');
     customParams.push('title');
@@ -321,25 +537,64 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     customParams.push('acf');
     customParams.push('categories');
 
-    this.matchCategoryNames(searchPattern);
+    this.searchTerm.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap(val => {
+        return this.searchService.getSearchResults(val, customParams);
+      }
+      )
+    ).subscribe((data) => {
 
-    this.searchService.getSearchResults(searchPattern, customParams).subscribe((data) => {
+      this.searchCategories.attachments = [];
+      this.searchCategories.biographies = [];
+      this.searchCategories.jobs = [];
+      this.searchCategories.news = [];
+      this.searchCategories.procurements = [];
+      this.searchCategories.services = [];
+
+      this.searchPostsResult = [];
+
       if (data) {
-        console.log('search results: ', data);
+
         this.searchPostsResult = data;
-        //  this.getAttachments(data);
+        console.log('search results first: ', this.searchPostsResult);
 
         /**
-         * Remove the previous data
+         * This is to check if the @searchPattern is matching any category name
          */
-        this.searchCategories.attachments = [];
-        this.searchCategories.biographies = [];
-        this.searchCategories.jobs = [];
-        this.searchCategories.news = [];
-        this.searchCategories.procurements = [];
-        this.searchCategories.services = [];
+        const matchedCategories = this.matchCategoryNames(this.searchPattern);
+        console.log('matched categories: ', matchedCategories);
 
-        this.groupSearchResults(data);
+
+        if (matchedCategories.length > 0) {
+          this.searchService.getCategoriesData(matchedCategories, customParams).subscribe((catData) => {
+            if (catData) {
+
+              console.log('category dataa: ', catData);
+
+              catData.map((d) => {
+                if ((this.searchPostsResult.filter(sr => d.id === sr.id)).length < 1) {
+                  this.searchPostsResult.push(d);
+                } else {
+                  console.log('ID matched');
+                }
+              });
+
+              // this.searchPostsResult.concat(catData);
+              console.log('search results amended: ', this.searchPostsResult);
+              this.groupSearchResults(this.searchPostsResult);
+            }
+          });
+        } else {
+          console.log('search results: ', this.searchPostsResult);
+          this.groupSearchResults(this.searchPostsResult);
+        }
+
+        //  this.getAttachments(data);
+
+
+
       }
     });
   }
@@ -347,8 +602,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   matchCategoryNames(searchPattern) {
     const matchedCatTypes = [];
     for (const ct of this.categories) {
-      if (this.categories.name.includes(searchPattern)) {
-        matchedCatTypes.push(this.categories.name);
+      if (ct.name.toLowerCase().includes(searchPattern)) {
+        matchedCatTypes.push(ct.name);
       }
     }
 
@@ -382,14 +637,25 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
 
+
+  showServiceDetails(service) {
+    console.log('service launched');
+    this.serviceDetails = service;
+    $('#serviceModal').modal('show');
+  }
+
   makeNavbarSticky(sticky: any): void {
 
     if (window.pageYOffset >= sticky) {
 
       this.navbar.classList.add('sticky');
+      this.searchWrapper.classList.add('sticky');
+      this.searchWrapper.classList.add('pd-top');
       this.navbar.classList.add('active-bar');
     } else {
       this.navbar.classList.remove('sticky');
+      this.searchWrapper.classList.remove('sticky');
+      this.searchWrapper.classList.remove('pd-top');
       this.navbar.classList.remove('active-bar');
     }
   }

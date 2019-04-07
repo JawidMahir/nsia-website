@@ -3,7 +3,7 @@
     <div class="section-wrapper">
       <div class="row">
         <div class="col-md-8 col-sm-7 col-xs-11">
-          <div *ngIf="press != ''; else nopress">
+          <div *ngIf="press.length > 0; else nopress">
             <h4>{{'submenu.press-release' | translate}}</h4><br>
             <div class="row news" *ngFor="let pre of press | paginate: { itemsPerPage: 4 , currentPage: p , totalItems: total}">
               <div class="col-md-4 col-sm-7 featured-video">

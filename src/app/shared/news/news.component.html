@@ -7,7 +7,7 @@
         <img src="../../assets/images/newsIcon.png" alt="News">
       </div>
       <div class="col-md-9 col-sm-7 col-xs-4 display newsside">
-        <a [routerLink]="['/media-room/news', nw.id]">
+        <a [routerLink]="['/media-room/media', nw.id]">
           {{ getBrief(nw.title.rendered) }}
         </a>
         <p>{{ nw.date }}</p>

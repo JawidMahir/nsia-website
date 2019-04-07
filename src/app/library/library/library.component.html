@@ -1,4 +1,4 @@
-<div class="margin-top">
+<div class="margin-top content-justify">
   <div class="custom-container">
     <div class="section-wrapper">
       <div class=" lib">
@@ -36,13 +36,16 @@
       <div class="row content" *ngIf="contents.length > 0 ; else nodata">
         <div class="col-lg-3 col-md-3 col-sm-6"
           *ngFor="let content of contents | paginate: { itemsPerPage: 8 , currentPage: p , totalItems: total } | libFilter:filterText">
-          <a href="{{content.acf.library_attachment.url}}" download="{{content.acf.library_attachment.filename}}"
-            target="_blank">
-            <img src="{{ content.better_featured_image?.source_url }}"
-            alt="{{ content.better_featured_image?.alt_text }}" (error)="imageError($event.target);">
+          <!-- <a *ngIf="content.attachment" href="{{content.attachment}}"
+             target="_blank"> -->
+          <a [href]="content.attachment" target="_blank">
+            <img [src]="content.better_featured_image?.source_url" alt="{{ content.better_featured_image?.alt_text }}"
+              (error)="imageError($event.target);">
           </a>
-          <h5><a href="{{content.acf.library_attachment.url}}" download="{{content.acf.library_attachment.filename}}"
-              target="_blank">{{content.title.rendered}}</a></h5>
+          <!-- </a> -->
+          <h5 *ngIf="content.attachment">
+            <a [href]="content.attachment" target="_blank">{{ content.title.rendered }}</a>
+          </h5>
           <p>{{content.date}}</p>
         </div>
       </div>

@@ -137,8 +137,6 @@ export class HomeComponent implements OnInit {
       } else {
         $('.news-read-more').prop('disabled', true);
         that.newsReadMore = redirecUrl;
-        perPage = 3;
-        console.log('it is else bro');
       }
 
       that.getCardsData(categoryType, perPage);
@@ -321,7 +319,7 @@ export class HomeComponent implements OnInit {
       this.router.navigate([this.newsReadMore]);
     } else {
       if (this.eventsReadMore.split('/').includes('library')) {
-        localStorage.setItem('library-type', 'library');
+        localStorage.setItem('library-type', 'surveys');
       }
       console.log('before redirectEvents: ', this.eventsReadMore);
       this.router.navigate([this.eventsReadMore]);

@@ -3,7 +3,7 @@
     <div class="section-wrapper">
       <div class="row">
         <div class="col-md-8 col-sm-7 col-xs-11">
-          <div *ngIf="events != ''; else noevents">
+          <div *ngIf="events.length > 0; else noevents">
             <h4>{{'submenu.events' | translate}}</h4><br>
             <div class="row news" *ngFor="let event of events | paginate: { itemsPerPage: 4 , currentPage: p , totalItems: total }">
               <div class="col-md-4 col-sm-7 featured-video">

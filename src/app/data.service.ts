@@ -20,7 +20,7 @@ export class DataService {
    * The following code establishes a connection between navbar component and service-home component
    * i.e the changes in navbar cmp are detected in service home cmp
    */
-  
+
   callToServiceMethodSource = new Subject<any>();
 
   serviceCmpMethodCalled$ = this.callToServiceMethodSource.asObservable();

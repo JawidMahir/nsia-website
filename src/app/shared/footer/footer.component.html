@@ -7,7 +7,7 @@
         </div>
         <div class="links">
           <p>{{'label.news-letter-subscribe' | translate}}</p>
-          <input type="email" name="email" id="email" placeholder="Enter your email address" #useremail required
+          <input type="email" name="email" id="email" [placeholder]="'label.email-address' | translate" #useremail required
             [(ngModel)]="email" (input)="checkEmail()">
           <button [disabled]="!validEmail" (click)="subscribe(useremail.value)"
             class="subscribe-btn">{{'label.subscribe' | translate}}</button>
@@ -59,8 +59,8 @@
         </div>
         <div class="links">
           <ul>
-            <li>
-              <i class="fas fa-chevron-right" routerLink="/services" (click)="updateServiceType('nid')"></i>
+            <li routerLink="/services" (click)="updateServiceType('nid')">
+              <i class="fas fa-chevron-right"></i>
               <a>{{'label.tazkira-enrollement' | translate}}</a></li>
             <!-- <li>
               <i class="fas fa-chevron-right"></i>

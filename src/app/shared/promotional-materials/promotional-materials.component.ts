@@ -29,11 +29,29 @@ export class PromotionalMaterialsComponent implements OnInit {
     this.dataService.getNewsData(customParams, type, perPage).subscribe((newsData) => {
       console.log('Newsletter data: ', this.newsletters);
       if (newsData[0]) {
+        newsData[0] = this.getAttachments(newsData[0]);
         this.newsletters.push(newsData[0]);
         this.promoMaterialFlag = true;
       }
     });
 
+  }
+
+  getAttachments(ps) {
+    console.log('It has data', ps);
+    let tempLinksArray;
+    const pattern = /\"[A-Za-z0-9_@./#&\s>"=\-:]*\"/g;
+    if (ps.hasOwnProperty('content')) {
+      tempLinksArray = [];
+      tempLinksArray = ps.content.rendered.match(pattern);
+      if (tempLinksArray) {
+        tempLinksArray[0] = tempLinksArray[0].replace(new RegExp('"', 'g'), '');
+        console.log('pattern result: ', tempLinksArray[0]);
+        ps.attachment = tempLinksArray[0];
+      }
+    }
+
+    return ps;
   }
 
 
