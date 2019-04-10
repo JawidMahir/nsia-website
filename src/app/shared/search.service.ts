@@ -28,10 +28,10 @@ export class SearchService {
     });
   }
 
-  testFun(c) {
-    return this.http.get(this.dataService.api + 'posts', {
+  getTags(customParams) {
+    return this.http.get(this.dataService.api + 'tags', {
       params: {
-        'filter[category_name]': 'gis_services',
+        fields: customParams.join(',')
       }
     });
   }
@@ -39,7 +39,22 @@ export class SearchService {
   getCategoriesData(categories, customParams) {
     return this.http.get<Array<any>>(this.dataService.api + 'posts', {
       params: {
+        lang: this.dataService.language,
         'filter[category_name]': categories.join(','),
+        fields: customParams.join(',')
+      }
+    });
+  }
+
+  getRelatedDepartmentId(sType, tag, customParams) {
+    console.log('Data variables');
+    console.log('service type: ', sType);
+    console.log('tag: ', tag);
+
+    return this.http.get<Array<any>>(this.dataService.api + 'posts', {
+      params: {
+        'filter[category_name]': sType,
+        'filter[tag]': tag,
         fields: customParams.join(',')
       }
     });

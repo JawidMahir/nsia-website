@@ -34,6 +34,8 @@ export class EventsComponent implements OnInit {
     if (this.events.length < this.total) {
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((eventsData) => {
         this.events = this.events.concat(this.refineData(eventsData.body));
+        console.log('events data: ', this.events);
+        
         this.total = parseInt(eventsData.headers.get('X-WP-Total'));
       });
     }

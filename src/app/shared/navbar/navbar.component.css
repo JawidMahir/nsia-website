@@ -34,6 +34,7 @@
 
 .header .contact-details .c-item {
   cursor: pointer;
+  float: right; 
 }
 
 .header .c-item {
@@ -58,14 +59,14 @@
 .change-language {
   background-color: #282560;
   position: relative;
-  width: 110px;
+  width: 55px;
 }
 
 .change-language i {
   color: #fff;
   position: absolute;
   right: 15px;
-  top: 12px;
+  top: 15px;
   font-size: 12px !important;
   z-index: 1;
   text-align: center;
@@ -244,7 +245,7 @@
 }
 
 #navbar .dropdown:hover .dropdown-menu {
-  display: block;
+  display: table;
 }
 
 

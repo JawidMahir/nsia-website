@@ -31,11 +31,11 @@ export class NewsUpdatesComponent implements OnInit {
     this.customParams.push('id');
   }
 
-  getNewsData(type , page) {
-    if(this.news.length < this.total){
-      this.mediaService.getMediaData(this.customParams, type ,page).subscribe((newsData) => {
+  getNewsData(type, page) {
+    if (this.news.length < this.total) {
+      this.mediaService.getMediaData(this.customParams, type, page).subscribe((newsData) => {
         this.news = this.news.concat(this.refineData(newsData.body));
-        this.total = parseInt(newsData.headers.get('X-WP-Total')); 
+        this.total = parseInt(newsData.headers.get('X-WP-Total'));
       });
     }
   }

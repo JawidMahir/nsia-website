@@ -138,9 +138,9 @@
         <div class="stat-card card">
           <img src="../../assets/images/gender.png" alt="Population">
           <div class="stats bg-gradient">
-            <h6>{{ 'label.gender' | translate }}</h6>
-            <h3 *ngIf="gender">{{ gender.acf.statistics + ' Male' }}</h3>
-            <h3 *ngIf="gender">{{ gender.acf.female + ' Female' }}</h3>
+            <h6>{{ 'label.eg' | translate }}</h6>
+            <h3 *ngIf="gender">{{ eg.acf.statistics + ' Male' }}</h3>
+            <h3 *ngIf="gender">{{ eg.acf.female + ' Female' }}</h3>
           </div>
         </div>
 
@@ -151,7 +151,7 @@
 
 
 <div class="section-wrapper service-section service-custom-container">
-  <div class="card service-card custom-container">
+  <div class="service-card custom-container">
     <div class="card-body">
       <div class="row">
         <div class="col-lg-4 col-md-12 nsia-main">
@@ -161,6 +161,9 @@
           </div>
           <div class="service-desc" *ngIf="carousel.nsia">
             <p>{{ carousel.nsia.content?.rendered }}</p>
+          </div>
+          <div class="read-more">
+            <button class="c-btn-outline-blue" routerLink="/about-us">{{ 'btn.read-more' | translate }}</button>
           </div>
         </div>
         <div class="col-lg-8 col-md-12">
@@ -175,7 +178,7 @@
                   <p>{{ carousel.stats.content?.rendered }}</p>
                 </div>
                 <div class="read-more">
-                  <button class="c-btn-outline-white" routerLink="/services"
+                  <button class="c-btn-outline-blue" routerLink="/services"
                     (click)="updateServiceType('stats')">{{ 'btn.read-more' | translate }}</button>
                 </div>
               </div>
@@ -191,7 +194,7 @@
                   <p>{{ carousel.gis.content?.rendered }}</p>
                 </div>
                 <div class="read-more">
-                  <button class="c-btn-outline-white" routerLink="/services"
+                  <button class="c-btn-outline-blue" routerLink="/services"
                     (click)="updateServiceType('gis')">{{ 'btn.read-more' | translate }}</button>
                 </div>
               </div>
@@ -207,7 +210,7 @@
                   <p>{{ carousel.isd.content?.rendered }}</p>
                 </div>
                 <div class="read-more">
-                  <button class="c-btn-outline-white" routerLink="/services"
+                  <button class="c-btn-outline-blue" routerLink="/services"
                     (click)="updateServiceType('sdu')">{{ 'btn.read-more' | translate }}</button>
                 </div>
               </div>
@@ -222,7 +225,7 @@
                   <p>{{ carousel.nid.content?.rendered }}</p>
                 </div>
                 <div class="read-more">
-                  <button class="c-btn-outline-white" routerLink="/services"
+                  <button class="c-btn-outline-blue" routerLink="/services"
                     (click)="updateServiceType('nid')">{{ 'btn.read-more' | translate }}</button>
                 </div>
               </div>
@@ -525,7 +528,7 @@
   </div>
 
 
-  <div class="section-wrapper bussiness">
+  <!-- <div class="section-wrapper bussiness">
     <div class=" bussiness-card">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6">
@@ -620,9 +623,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="section-wrapper billboard">
+  <!-- <div class="section-wrapper billboard">
     <div class="card">
       <img src="../../assets/images/billboard.png" alt="">
       <div class="billboard-contents">
@@ -631,9 +634,9 @@
             <h1 id="day">24th</h1>
             <p id="month">December</p>
           </div>
-          <!-- <div class="b-register">
+          <div class="b-register">
             <span>Register</span>
-          </div> -->
+          </div>
         </div>
         <div class="event-desc">
           <h1><b>
@@ -645,7 +648,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
   <div class="section-wrapper latest-section">

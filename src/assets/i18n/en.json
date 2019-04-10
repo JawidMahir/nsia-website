@@ -1,5 +1,5 @@
 {
-    "lang.english": "English",
+    "lang.english": "Eng",
     "lang.dari": "دري",
     "lang.pashto": "پښتو",
 
@@ -15,7 +15,7 @@
     "label.population": "Population",
     "label.gdp": "GDP",
     "label.cpi": "CPI",
-    "label.gender": "Gender",
+    "label.eg": "Economical growth",
     "label.latest-news": "latest news",
     "label.latest-pubs": "latest publications",
     "label.press-release": "press release",

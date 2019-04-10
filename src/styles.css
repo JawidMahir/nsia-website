@@ -27,7 +27,7 @@
 body {
   font-family: 'Raleway', 'Bahij Halvetica', sans-serif;
   color: #282560 !important;
-  background: #f9f9f9;
+  background: #fff;
 
 }
 
@@ -272,7 +272,6 @@ button {
 
   .service-custom-container {
     width: 100vw;
-    background-color: #282560;
   }
 
   .service-custom-container .card {
@@ -310,6 +309,7 @@ button {
   height: 100%;
   padding: 4px;
   overflow-y: scroll;
+  padding-bottom: 3rem;
 }
 
 .sidebar-nav .sidebar-title {
@@ -327,11 +327,22 @@ button {
 }
 
 .active-item .fa-chevron-right {
-  visibility: visible !important;
+  /* visibility: visible !important; */
+  display: inline !important;
+}
+/* 
+.active-item .fa-chevron-right {
+  display: none
 }
 
+.active-item .fa-chevron-left {
+  display: inline-block;
+} */
+
+
 .sidebar-nav .fa-chevron-right {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 
 .sidebar .sidebar-menu ul {
@@ -355,6 +366,13 @@ button {
   padding: 0px 3rem;
   float: right;
   transition: margin .5s;
+}
+
+.active-sub-menu p {
+  border-left: 4px solid #01a79b;
+  padding-left: 8px;
+  font-weight: 600 !important;
+  color: #282560;
 }
 
 
@@ -392,24 +410,24 @@ button {
 
 .sidebar .menu-item .m-item-c .fa-chevron-right {
   font-size: 15px;
+  margin-right: 4px;
 }
 
 
 
 .sidebar .menu-item .m-item-c span {
-  margin-left: 24px;
   font-size: 18px;
   text-transform: capitalize;
 }
 
 .sidebar .menu-item .sub-menu .sub-menu-item {
   padding: 6px;
-  margin-left: 2rem;
+  margin-left: 1rem;
   transition: background .5s;
 }
 
 .sidebar .menu-item .sub-menu .sub-menu-item:hover {
-  background-color: rgb(202, 199, 199);
+  background-color: rgb(236, 236, 236);
 }
 
 .sidebar .menu-item .sub-menu .sub-menu-item p {
@@ -508,6 +526,8 @@ button {
 .services .m-contents {
   display: flex;
   width: 100%;
+  border: 1px solid #282560;
+
 }
 
 .services .sr-icon {
@@ -531,7 +551,6 @@ button {
 .services .sr-name {
   padding: 0px 10px;
   flex: auto;
-  border: 1px solid #282560;
   display: table;
   height: 100%;
 }
@@ -542,6 +561,11 @@ button {
   font-weight: 600;
   vertical-align: middle
 }
+
+.main-wrapper .contents ul {
+  list-style: none;
+}
+
 
 .main-wrapper .contents .deputy-image {
   margin-bottom: 1rem;

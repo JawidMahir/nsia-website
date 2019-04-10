@@ -55,7 +55,7 @@
   <div class="main-wrapper">
 
     <nav class="sidebar-nav">
-      <div class="sidebar-title menu-item active-item" (click)="activeMenu($event.target)" *ngIf="!provincialServices">
+      <div class="sidebar-title menu-item active-item" id="sidebar-title" (click)="activeMenu($event.target)" *ngIf="!provincialServices">
         <span> <i class="fas fa-chevron-right"></i>
           {{'label.about-service' | translate:{'sr':serviceName} }}</span>
       </div>
@@ -64,24 +64,25 @@
       </div>
       <div class="sidebar">
         <div class="sidebar-menu" *ngIf="deputyDepartments.length > 0 && !provincialServices">
-          <div class="accordion menu-item" id="{{ dp.acf[dept] }}" *ngFor="let dp of deputyDepartments"
+          <div class="accordion menu-item" id="{{ 'id' + dp.id }}" *ngFor="let dp of deputyDepartments"
             (click)="activeMenu($event.target)">
-            <div class="m-item-c" data-toggle="collapse" [attr.data-target]="'#sub-' + dp.acf[dept]"
+            <div class="m-item-c" data-toggle="collapse" [attr.data-target]="'#sub-' + 'id' + dp.id"
               aria-expanded="true" aria-controls="collapseOne">
               <i class="fas fa-chevron-right"></i>
               <span>{{ dp.title.rendered }}</span>
               <i class="fas fa-chevron-down" *ngIf="dp.headships"></i>
             </div>
 
-            <div id="{{ 'sub-' + dp.acf[dept] }}" class="collapse sub-menu" [attr.data-parent]="'#' + dp.acf[dept]">
+            <div id="{{ 'sub-' + 'id' + dp.id }}" class="collapse sub-menu" [attr.data-parent]="'#' + 'id' + dp.id">
               <!-- sub menus go here -->
-              <div class="sub-menu-item" (click)="getDepartmentDetails(dp.id, $event.target)">
+              <div class="sub-menu-item" [class.active-sub-menu]="activeSubMenu === dp.id" (click)="getDepartmentDetails(dp.id, $event.target, 'department')"
+                id="{{ dp.id }}">
                 <!-- <p>{{ 'about ' + dp.title.rendered }}</p> -->
                 <p>{{ 'label.about-rs' | translate:{'title': dp.title.rendered} }}</p>
               </div>
               <div *ngIf="dp.headships">
-                <div class="sub-menu-item" *ngFor="let subDp of dp.headships"
-                  (click)="getDepartmentDetails(subDp.id, $event.target)">
+                <div class="sub-menu-item" [class.active-sub-menu]="activeSubMenu === subDp.id" *ngFor="let subDp of dp.headships" id="{{ subDp.id }}"
+                  (click)="getDepartmentDetails(subDp.id, $event.target, 'headship')">
                   <p>{{ subDp.title.rendered }}</p>
                 </div>
               </div>
@@ -90,13 +91,13 @@
         </div>
         <div class="provincial-services" *ngIf="provincialServices && provinces">
           <ul class="provinces">
-            <li class="province active-province" (click)="provinceData($event.target, provinces[0].id)">
+            <!-- <li class="province active-province" (click)="provinceData($event.target, provinces[0].id)">
               <i class="fas fa-chevron-right"></i>
               <span>
                 {{ provinces[0].acf.province }}
               </span>
-            </li>
-            <li class="province" *ngFor="let pr of provinces | slice:1" (click)="provinceData($event.target, pr.id)">
+            </li> -->
+            <li class="province" [class.active-provice]="i===0" *ngFor="let pr of provinces; let i = index" (click)="provinceData($event.target, pr.id)">
               <i class="fas fa-chevron-right"></i>
               <span>
                 {{ pr.acf.province }}
@@ -114,22 +115,22 @@
     <div class="contents" *ngIf="contents;else nodata">
 
       <!-- <router-outlet></router-outlet> -->
-      <div class="row">
-        <div class="col-md-3 col-sm-6">
+      <div >
+        <!-- <div class="col-md-3 col-sm-6">
           <div class="deputy-image">
             <img [src]="contents.better_featured_image?.source_url" alt="image" (error)="imageError($event.target)">
           </div>
           <div class="deputy-info" *ngIf="contents.acf">
             <strong>{{ contents.acf.name }}</strong>
           </div>
+        </div> -->
+        <!-- <div class="col-md-9 col-sm-6"> -->
+        <div class="details-title">
+          <h5> <strong> {{ contents.title.rendered}} </strong></h5>
         </div>
-        <div class="col-md-9 col-sm-6">
-          <div class="details-title">
-            <h5> <strong> {{ contents.title.rendered}} </strong></h5>
-          </div>
-          <div *ngIf="contents.content" class="details" [innerHTML]="contents.content.rendered"></div>
-        </div>
+        <div *ngIf="contents.content" class="details" [innerHTML]="contents.content.rendered"></div>
       </div>
+      <!-- </div> -->
 
     </div>
     <ng-template #nodata>

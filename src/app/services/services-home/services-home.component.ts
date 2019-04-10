@@ -18,6 +18,12 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   srName = 'foo';
   serviceName;
 
+  // necessary flags
+  clearStorage;
+  firstLoad = true;
+  departmentsFetched;
+  headshipsFetched;
+  activeSubMenu;
 
   // A global variable used to determine the type of service
   serviceType = 'stats';
@@ -77,12 +83,12 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
   showServiceDetails() {
     let sType;
-    if (localStorage.getItem('serviceType')) {
-      sType = localStorage.getItem('serviceType');
+    if (sessionStorage.getItem('serviceType')) {
+      sType = sessionStorage.getItem('serviceType');
     } else {
       sType = this.dataService.serviceType;
     }
-    localStorage.setItem('serviceType', sType);
+    sessionStorage.setItem('serviceType', sType);
     console.log('showServiceMethod: sType: ', sType);
     if (sType === 'prs') {
       this.provincialServices = true;
@@ -106,10 +112,31 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
           $('#nid').trigger('click');
           break;
       }
+
+      this.clearStorage = true;
+
+      // this.trackDepartments();
     }
 
 
     // this.dataService.serviceType = 'stats';
+  }
+
+  trackDepartments() {
+    if (sessionStorage.getItem('department')) {
+      console.log('there is department');
+      const depId = sessionStorage.getItem('department');
+      $(`#${depId}`).trigger('click');
+      $(`#sub-${depId}`).collapse('show');
+      if (depId !== 'sidebar-title') {
+      }
+
+      if (sessionStorage.getItem('sub-menu.type')) {
+        console.log('there is headship');
+        const subMenuId = sessionStorage.getItem('sub-menu.id');
+        $(`#${subMenuId}`).trigger('click');
+      }
+    }
   }
 
   keepContentsLocal(deputyType) {
@@ -184,13 +211,13 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       const details = $.parseHTML(contentRendered);
       if ($(details).has('a')) {
         $(details).find('a').attr('target', '_blank');
-        $(details).find('a').closest('p').addClass('attachment');
-        $(details).find('a').closest('p').prepend('<img src="../../../assets/images/pdf.png" alt="pdf">');
+        $(details).find('a').parent().addClass('attachment');
+        $(details).find('a').parent().prepend('<img src="../../../assets/images/pdf.png" alt="pdf">');
       }
 
       data.content.rendered = $(details).html();
     }
-    console.log('details are done');
+    console.log('details are done', data);
 
 
     return data;
@@ -215,17 +242,21 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   getDeputyDepartments(deputyType, tag) {
     const customParams = [];
     customParams.push('id');
+    customParams.push('tags');
     customParams.push('title.rendered');
     customParams.push('acf');
 
     this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
       if (tag === 'department') {
         this.deputyDepartments = data;
+        this.departmentsFetched = true;
         console.log('Departments data: ', this.deputyDepartments);
       } else {
         this.deputyHeadships = data;
+        this.headshipsFetched = true;
         console.log('Headships data: ', this.deputyHeadships);
       }
+
       // this.styleDetailsLink();
 
       this.arrangeDepartments(deputyType);
@@ -239,13 +270,20 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     return true;
   }
 
-  getDepartmentDetails(id, el) {
+  getDepartmentDetails(id, el, depType) {
+    console.log('Department details is called');
 
     this.contents = null;
     console.log('ID is: ', id);
     console.log($(el).closest('.m-item-c').attr('aria-expanded'));
     const customParams = [];
     const flag = false;
+    const depId = $(el).closest('.menu-item').attr('id');
+
+    sessionStorage.setItem('department', depId);
+
+    this.activeSubMenu = id;
+
 
     // for (const dep of this.departmentsFullDetails) {
     //   if (dep.id === id) {
@@ -267,9 +305,17 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       this.nsiaServices.getDepartmentDetails(id, customParams).subscribe((data) => {
         console.log('Department full data: ', data);
         if (data[0]) {
-          this.contents = data[0];
+
+          sessionStorage.setItem('sub-menu.type', depType);
+          if (depType === 'department') {
+            sessionStorage.setItem('sub-menu.id', data[0].id);
+          } else {
+            sessionStorage.setItem('sub-menu.id', data[0].id);
+          }
+          this.contents = this.styleDetailsLink(data[0]);
+          // this.contents = data[0];
           //  this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
-          this.departmentsFullDetails.push(data[0]);
+          this.departmentsFullDetails.push(this.contents);
         }
       });
     }
@@ -284,7 +330,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     console.log('deputy related department: ', this.dept);
 
 
-    if (this.deputyDepartments.length > 0 && this.deputyHeadships.length > 0) {
+    if (this.departmentsFetched && this.headshipsFetched) {
       console.log('I am called ', this.deputyDepartments, this.deputyHeadships);
       for (const dep of this.deputyDepartments) {
         tempHeadships = [];
@@ -298,6 +344,12 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
       this.assignDepartmentsToDeputy(deputyType);
       console.log('after arrangement', this.deputyDepartments);
+      if (this.firstLoad) {
+        setTimeout(() => {
+          this.trackDepartments();
+        });
+        this.firstLoad = false;
+      }
     }
 
   }
@@ -322,7 +374,8 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     customParams.push('better_featured_image.source_url');
 
     this.nsiaServices.getProvinceDetails(id, customParams).subscribe((data) => {
-      this.contents = data[0];
+      // this.contents = data[0];
+      this.contents = this.styleDetailsLink(data[0]);
       // this.styleDetailsLink('province');
       this.contents.title.rendered = this.nsiaServices.htmlToPlaintext(this.contents.title.rendered);
       // this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
@@ -331,12 +384,33 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   }
 
   activeMenu(menuItem) {
+    console.log('Active menu called');
     const that = this;
-    // this.contents = null;
+    const id = $(menuItem).closest('.menu-item').attr('id');
+    console.log(id);
+
+    // sessionStorage.setItem('department', id);
+
+    $('.m-item-c').removeClass('active-item');
     $('.menu-item').removeClass('active-item');
-    $(menuItem).closest('.menu-item').addClass('active-item');
+
+    if (id === 'sidebar-title') {
+      sessionStorage.removeItem('department');
+      sessionStorage.removeItem('sub-menu.type');
+      sessionStorage.removeItem('sub-menu.id');
+      $('.collapse').collapse('hide');
+      $(menuItem).closest('.menu-item').addClass('active-item');
+
+    }
+    // this.contents = null;
+
+    $(menuItem).closest('.menu-item').find('.m-item-c').addClass('active-item');
+
 
     if ($(menuItem).closest('.menu-item').hasClass('sidebar-title')) {
+
+      this.activeSubMenu = 0;
+
       if (this.serviceContents[this.serviceType].title) {
         this.contents = this.serviceContents[this.serviceType];
         console.log('from this click ', this.serviceContents);
@@ -379,8 +453,18 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   toggleServices(el) {
     console.log('ToggleService Called');
 
+    // clear catche for department and headship
+    if (this.clearStorage) {
+      sessionStorage.removeItem('department');
+      sessionStorage.removeItem('sub-menu.type');
+      sessionStorage.removeItem('sub-menu.id');
+      this.activeMenu($('.sidebar-title'));
+    }
+
+    this.departmentsFetched = false;
+    this.headshipsFetched = false;
+
     this.provincialServices = false;
-    console.log('for array type: ', this.deputyDepartments instanceof Array);
 
     const id = $(el).closest('.m-service').attr('id');
     this.serviceType = id;
@@ -389,7 +473,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     this.dept = id + '_department';
     console.log('department type: ', this.dept);
 
-    localStorage.setItem('serviceType', id);
+    sessionStorage.setItem('serviceType', id);
 
     this.serviceName = $(el).closest('.m-service').find('.sr-name p').html();
     console.log('service name: ', this.serviceName);
@@ -399,7 +483,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     $(el).closest('.m-service').addClass('active-service');
 
     // reset the menu highlights
-    this.activeMenu($('.sidebar-title'));
+    // this.activeMenu($('.sidebar-title'));
 
 
     /**
@@ -460,12 +544,12 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   }
 
   canDeactivate() {
-    if (localStorage.getItem('serviceType')) {
-      localStorage.removeItem('serviceType');
-      return true;
-    } else {
-      return true;
-    }
+    // sessionStorage.removeItem('serviceType');
+    // sessionStorage.removeItem('sub-menu.type');
+    // sessionStorage.removeItem('sub-menu.id');
+    // sessionStorage.removeItem('department');
+
+    return true;
   }
 
 }

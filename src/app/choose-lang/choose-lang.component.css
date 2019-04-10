@@ -8,8 +8,8 @@
 
 .content {
     width: 55vw;
-    height: 60vh;
-    background-color: rgba(255, 255, 255, 0.3);
+    height: 50vh;
+    background-color: rgba(255, 255, 255, 0.61);
 
     position:absolute; /*it can be fixed too*/
     left:0; right:0;
@@ -40,8 +40,8 @@
     flex: auto;
     width: fit-content;
     margin: auto;
-    margin-top: 8%
-}
+    display: table;
+}   
 
 /* First Primary: #01a79b green */
 /* Second Primary: #282560 blue */
@@ -49,11 +49,11 @@
 
 .lang-buttons button {
     margin: 0px 12px;
-    width: 90px;
+    width: 112px;
     background-color: transparent;
     border: 1.5px solid #282560;
     color: #282560;
-    padding: 5px;
+    padding: 10px;
 }
 
 .lang-buttons button:hover {

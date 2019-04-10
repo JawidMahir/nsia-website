@@ -15,6 +15,9 @@
   content: "\f054"
 }
 
+.rtl .header .contact-details .c-item {
+  float: left !important;
+}
 
 .rtl .responsive-navbar .tls {
   float: left !important;
@@ -67,7 +70,7 @@
 }
 
 .rtl .change-language i {
-  right: 85px !important;
+  right: 40px !important;
 }
 
 .rtl .navbar-nav {
@@ -133,9 +136,36 @@
   border-left: 1px solid #282560;
 }
 
+.rtl .sidebar .menu-item .m-item-c .fa-chevron-right {
+  margin-right: 0px !important;
+  margin-left: 4px !important;
+}
+
 .rtl .sidebar-nav .sidebar .menu-item span {
   margin-left: 0px;
-  margin-right: 24px;
+}
+
+.rtl .sidebar .menu-item .sub-menu .sub-menu-item {
+  margin-left: 0px !important;
+  margin-right: 1rem !important;
+}
+
+.rtl .active-item .fa-chevron-left {
+  display: none !important;
+}
+
+.rtl .active-item .fa-chevron-down {
+  display: inline-block !important;
+
+}
+
+.rtl .active-sub-menu p {
+  border-left: none !important;
+  border-right: 4px solid #01a79b;
+  padding-left: 0px;
+  padding-right: 8px;
+  font-weight: 600 !important;
+  color: #282560;
 }
 
 

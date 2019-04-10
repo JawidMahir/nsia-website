@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import mapboxgl from 'mapbox-gl';
 
 import { DataService } from '../../data.service';
+import { quickLinks } from '../quickLinks';
 
 import * as $ from 'jquery';
 import { SearchService } from '../search.service';
@@ -24,6 +25,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   searchPostsResult = [];
   linksArray = [];
   categories;
+  tags;
   searchTerm = new Subject<string>();
   searchPattern;
   serviceDetails;
@@ -62,119 +64,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     'opportunities'
   ];
 
-  quickLinks = [
-    {
-      title: 'home',
-      url: ''
-    }, {
-      title: 'services',
-      url: '/services'
-    }, {
-      title: 'library',
-      url: '/library'
-    }, {
-      title: 'about us',
-      url: '/about-us'
-    }, {
-      title: 'access to info',
-      url: '/access-info'
-    }, {
-      title: 'Media room',
-      url: '/media-room'
-    }, {
-      title: 'opportunities',
-      url: '/opportunities'
-    }
-    , {
-      title: 'Geographical Information Systems',
-      slug: 'service gis',
-      url: '/services',
-      data: {
-        flag: 'service',
-        value: 'gis'
-      }
-    }, {
-      title: 'Statistics Services',
-      slug: 'service stat statistic',
-      url: '/services',
-      data: {
-        flag: 'service',
-        value: 'stat'
-      }
-    }, {
-      title: 'Information Systems Development',
-      slug: 'service sdu',
-      url: '/services',
-      data: {
-        flag: 'service',
-        value: 'sdu'
-      }
-    }, {
-      title: 'National Identity',
-      slug: 'service nid tazkira',
-      url: '/services',
-      data: {
-        flag: 'service',
-        value: 'nid'
-      }
-    }, {
-      title: 'Books',
-      slug: 'library kitab',
-      url: '/library',
-      data: {
-        flag: 'library',
-        value: 'books'
-      }
-    }, {
-      title: 'Surveys',
-      slug: 'library',
-      url: '/library',
-      data: {
-        flag: 'library',
-        value: 'surveys'
-      }
-    }, {
-      title: 'Reports',
-      slug: 'library rapor',
-      url: '/library',
-      data: {
-        flag: 'library',
-        value: 'reports'
-      }
-    }, {
-      title: 'magazine',
-      slug: 'library',
-      url: '/library',
-      data: {
-        flag: 'library',
-        value: 'magazines'
-      }
-    }, {
-      title: 'Articles',
-      slug: 'library',
-      url: '/library',
-      data: {
-        flag: 'library',
-        value: 'articles'
-      }
-    }, {
-      title: 'Newsletter',
-      slug: 'library',
-      url: '/library',
-      data: {
-        flag: 'library',
-        value: 'newsletters'
-      }
-    }, {
-      title: 'Policies',
-      slug: 'library',
-      url: '/library',
-      data: {
-        flag: 'library',
-        value: 'policies'
-      }
-    }
-  ];
+  quickLinks = quickLinks;
+  linkTitle = 'engTitle';
 
   dummyLinksTwo = [
     'service',
@@ -193,6 +84,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     });
     const mapToken = 'pk.eyJ1IjoibWlyd2Fpc2FrcmFtaSIsImEiOiJjanR3bGZwaWswcTdrNDRwbHdzZjR4bGMwIn0.kN5s8PNjviEhk50vK3pHuA';
 
+    console.log('QuickLinks : ', this.quickLinks);
+
+
     mapboxgl.accessToken = mapToken;
     window.onload = this.showActiveTab;
 
@@ -200,6 +94,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
     // fetch all categories for search purpose
     this.getCategoriesInfo();
+    this.getTags();
 
     this.navbar = document.getElementById('navbar');
     this.searchWrapper = document.getElementById('search-result-wrapper');
@@ -339,9 +234,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       // Save the language into localstorage for future reference
       localStorage.setItem('lang', event.lang);
       if (event.lang !== 'en') {
+        this.linkTitle = 'engTitle';
         $('body').addClass('rtl');
+        if (event.lang === 'ps') {
+          this.linkTitle = 'psTitle';
+        } else {
+          this.linkTitle = 'faTitle';
+        }
       } else {
         $('body').removeClass('rtl');
+        this.linkTitle = 'engTitle';
       }
       $('#lang-change').val(event.lang);
       $('#lang-change2').val(event.lang);
@@ -364,8 +266,22 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   updateServiceType(sType) {
     this.dataService.serviceType = sType;
-    localStorage.setItem('serviceType', sType);
+    sessionStorage.setItem('serviceType', sType);
+    sessionStorage.removeItem('sub-menu.type');
+    sessionStorage.removeItem('sub-menu.id');
+    sessionStorage.removeItem('department');
     this.dataService.callServiceCmpMethod();
+  }
+
+  getTags() {
+    const customParams = [];
+    customParams.push('id');
+    customParams.push('name');
+
+    this.searchService.getTags(customParams).subscribe((data) => {
+      this.tags = data;
+      console.log('tags: ', this.tags);
+    });
   }
 
   getCategoriesInfo() {
@@ -382,6 +298,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   getCategoryName(catId) {
     const name = this.categories.filter(cat => cat.id === catId);
+    return name[0].name;
+  }
+
+  getTagName(tagId) {
+    const name = this.tags.filter(cat => cat.id === tagId);
     return name[0].name;
   }
 
@@ -409,7 +330,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   }
 
-  showSearchResults(val) {
+  showSearchResults(e, val) {
+
+    console.log(e);
     if (!$('.search-result-wrapper').hasClass('show')) {
       $('.search-result-wrapper').addClass('show');
     }
@@ -420,8 +343,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       this.searchTerm.next(val);
     }
 
-    if (val.length < 1) {
-      $('.search-result-wrapper').removeClass('show');
+    if (val.length < 1 || e.key === 'Escape') {
+      this.hideSearchResults();
     }
 
   }
@@ -482,6 +405,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
           this.searchCategories.biographies.push(dt);
           break;
         case 'services':
+        case 'slider':
           this.searchCategories.services.push(dt);
           this.getAttachments(dt);
           break;
@@ -522,8 +446,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       const catArray = this.searchCategories[item];
       for (const cat of catArray) {
         if (cat.hasOwnProperty('title')) {
-          const str = cat.title.rendered.replace(new RegExp(this.searchPattern, 'gi'), `<b class="text-green">${this.searchPattern}</b>`);
-          cat.title.rendered = str;
+          // first find all the matches
+          const matches = cat.title.rendered.match(new RegExp(this.searchPattern, 'gi'));
+          console.log('Matches are: ', matches);
+          if (matches) {
+            for (const mt of matches) {
+              const str = cat.title.rendered.replace(mt, `<b class="text-green">${mt}</b>`);
+              cat.title.rendered = str;
+            }
+          }
+
         }
       }
     }
@@ -535,6 +467,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     customParams.push('title');
     customParams.push('content.rendered');
     customParams.push('acf');
+    customParams.push('tags');
     customParams.push('categories');
 
     this.searchTerm.pipe(
@@ -639,10 +572,90 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
 
   showServiceDetails(service) {
-    console.log('service launched');
-    this.serviceDetails = service;
-    $('#serviceModal').modal('show');
+    const serviceType = this.getCategoryName(service.categories[0]);
+    let serviceShortName = serviceType.split('_')[0].toLowerCase();
+    if (serviceType.toLowerCase().includes('stat')) {
+      serviceShortName = 'stats';
+    }
+    const depType = `${serviceShortName}_department`;
+
+    console.log('service type: ', serviceType);
+    console.log('service short: ', serviceShortName);
+    if (serviceType.toLowerCase().includes('service')) {
+
+      const tagName = this.getTagName(service.tags[0]).toLowerCase();
+
+      if (tagName !== 'service') {
+        if (tagName === 'headship') {
+          const customParams = [];
+          customParams.push('id');
+          customParams.push('acf');
+          const departmentName = service.acf[depType];
+          let depId;
+          console.log('department: ', departmentName);
+          // first check if department is already fetched as well
+          depId = this.getAvailableDepartmentID(depType, departmentName, service.id, service.tags[0]);
+
+          if (depId) {
+            console.log('available locally', depId);
+            sessionStorage.setItem('serviceType', serviceShortName);
+            sessionStorage.setItem('department', `id${depId}`);
+            sessionStorage.setItem('sub-menu.type', 'headship');
+            sessionStorage.setItem('sub-menu.id', service.id);
+
+            this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
+              this.router.navigate(['/services']));
+
+          } else {
+
+            this.searchService.getRelatedDepartmentId(serviceType, 'department', customParams).subscribe((data) => {
+              console.log('related department: ', data);
+              for (const dp of data) {
+                if (dp.acf[depType] === departmentName) {
+                  depId = `id${dp.id}`;
+                  console.log('Matched');
+                  break;
+                }
+              }
+              sessionStorage.setItem('serviceType', serviceShortName);
+              sessionStorage.setItem('department', depId);
+              sessionStorage.setItem('sub-menu.type', 'headship');
+              sessionStorage.setItem('sub-menu.id', service.id);
+
+              this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
+                this.router.navigate(['/services']));
+            });
+          }
+
+        } else {
+          sessionStorage.setItem('serviceType', serviceShortName);
+          sessionStorage.setItem('department', `id${service.id}`);
+          sessionStorage.setItem('sub-menu.type', 'department');
+          sessionStorage.setItem('sub-menu.id', service.id);
+
+          this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
+            this.router.navigate(['/services']));
+        }
+      }
+    } else {
+      this.serviceDetails = service.content.rendered;
+      $('#serviceModal').modal('show');
+    }
   }
+
+  getAvailableDepartmentID(depType, depName, sID, tag) {
+    for (const sr of this.searchCategories.services) {
+      if (sr.acf[depType] === depName && sr.id !== sID && sr.tags[0] !== tag) {
+        console.log('matched id is : ', sr.acf[depType]);
+        console.log(depName);
+        console.log('id is ', sr.id);
+        return sr.id;
+      }
+    }
+
+    return false;
+  }
+
 
   makeNavbarSticky(sticky: any): void {
 

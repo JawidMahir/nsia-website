@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
   population;
   gdp;
   cpi;
-  gender;
+  eg;
 
   constructor(
     private dataService: DataService,
@@ -442,8 +442,8 @@ export class HomeComponent implements OnInit {
       if (data) {
         for (const st of data) {
           switch (st['acf'].statistics_type) {
-            case 'gender':
-              this.gender = st;
+            case 'eg':
+              this.eg = st;
               break;
             case 'cpi':
               this.cpi = st;
@@ -468,7 +468,11 @@ export class HomeComponent implements OnInit {
   }
 
   updateServiceType(sType) {
-    this.dataService.serviceType = sType;
+    sessionStorage.setItem('serviceType', sType);
+    sessionStorage.removeItem('department');
+    sessionStorage.removeItem('sub-menu.type');
+    sessionStorage.removeItem('sub-menu.id');
+
   }
 
 }

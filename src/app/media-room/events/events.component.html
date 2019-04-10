@@ -12,7 +12,7 @@
                   <!-- <ng-template #showvedio>
                       <iframe [src]="videoURL(event?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
                   </ng-template> -->
-                <div class="attachment-type">
+                <div class="attachment-type" *ngIf="event.acf">
                   <p *ngIf="event.acf.attachment_type == 'image' else vedio;">{{'label.image' | translate}}</p>
                   <ng-template #vedio>
                     <p>{{ 'label.video' | translate }}</p>

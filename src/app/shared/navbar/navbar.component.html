@@ -22,9 +22,9 @@
                 <p routerLink="/contact-us"> <i class="fas fa-phone contact"></i> {{ 'label.contact-us' | translate }}
                 </p>
               </div>
-              <div class="c-item">
+              <!-- <div class="c-item">
                 <p> <i class="fas fa-clock"></i> {{ 'label.working-hours' | translate }}</p>
-              </div>
+              </div> -->
               <div class="c-item" data-toggle="modal" data-target="#mapModal">
                 <p> <i class="fas fa-map-marker-alt"></i> {{'label.head-office' | translate}}</p>
               </div>
@@ -35,7 +35,7 @@
                 <div class="search-input c-item">
                   <div class="wrapper">
                     <input type="text" placeholder="{{'label.search-website' | translate }}" [(ngModel)]="sText"
-                      class="search-box" #searchText (input)="showSearchResults(searchText.value)"
+                      class="search-box" #searchText (keyup)="showSearchResults($event, searchText.value)"
                       (focus)="showSearchDiv(searchText.value)">
                     <!-- <input type="text" placeholder="{{'label.search-website' | translate }}" 
                     class="search-box" #searchText > -->
@@ -78,7 +78,7 @@
             <div class="search-input c-item">
               <div class="wrapper">
                 <input type="text" placeholder="{{'label.search-website' | translate }}" [(ngModel)]="sText"
-                  class="search-box" #searchTextRes (input)="showSearchResults(searchTextRes.value)"
+                  class="search-box" #searchTextRes (keyup)="showSearchResults($event, searchTextRes.value)"
                   (focus)="showSearchDiv(searchText.value)">
 
                 <!-- <input type="text" placeholder="{{'label.search-website' | translate }}" class="search-box"> -->
@@ -101,7 +101,7 @@
       <div class="responsive-nav" id="responsive-nav">
         <div class="r-menu">
           <div class="r-menu-item">
-            <p routerLink="home"><i class="fas fa-home"></i></p>
+            <p routerLink="/home"><i class="fas fa-home"></i></p>
           </div>
           <div class="r-menu-item">
             <p routerLink="/about-us">
@@ -310,13 +310,13 @@
         <ul>
           <li *ngFor="let ln of quickLinks | searchFilter:sText" (click)="gotoLink(ln)">
             <i class="fas fa-chevron-right"></i>
-            {{ln.title}}</li>
+            {{ln[linkTitle]}}</li>
         </ul>
       </div>
       <div class="result-services result" *ngIf="searchCategories.services.length > 0">
         <h4 class="search-item-title">Services</h4>
         <ul>
-          <li *ngFor="let sr of searchCategories.services" (click)="showServiceDetails(sr.content.rendered)">
+          <li *ngFor="let sr of searchCategories.services" (click)="showServiceDetails(sr)">
             <i class="fas fa-chevron-right"></i>
             <span [innerHTML]="sr.title.rendered"></span></li>
         </ul>

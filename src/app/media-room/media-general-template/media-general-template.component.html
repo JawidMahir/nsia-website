@@ -1,6 +1,6 @@
 <div class="margin-top content-justify">
   <div class="section-wrapper" *ngIf="news">
-    <div class="row">
+    <div class="row" *ngIf="news.acf; else noimage">
       <img class="fit-cover" *ngIf="news.acf.attachment_type == 'image' else vedio;"
         [src]="news.better_featured_image?.source_url" [alt]="news.better_featured_image?.source_url.alt_text"
         (error)="imageError($event.target);">
@@ -12,6 +12,10 @@
         </div>
       </ng-template>
     </div>
+    <ng-template #noimage>
+      <img class="fit-cover" [src]="news.better_featured_image?.source_url"
+        [alt]="news.better_featured_image?.source_url.alt_text" (error)="imageError($event.target);">
+    </ng-template>
     <div class="row">
       <div class="content">
         <h2>{{ news.title?.rendered }}</h2>
