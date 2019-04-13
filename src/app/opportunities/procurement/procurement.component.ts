@@ -4,11 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { OppService } from '../opp.service';
 
 @Component({
-  selector: 'app-tender',
-  templateUrl: './tender.component.html',
-  styleUrls: ['./tender.component.css']
+  selector: 'app-procurement',
+  templateUrl: './procurement.component.html',
+  styleUrls: ['./procurement.component.css']
 })
-export class TenderComponent implements OnInit {
+export class ProcurementComponent implements OnInit {
   selectedTender;
   constructor(
     private route: ActivatedRoute,

@@ -10,12 +10,6 @@ import { ScrollSpyDirective } from '../scrollspy.directive';
 
 
 import { AccessHomeComponent } from './access-home/access-home.component';
-import { GuidelinesComponent } from './guidelines/guidelines.component';
-import { NationalIdentityComponent } from './national-identity/national-identity.component';
-import { PoliciesComponent } from './policies/policies.component';
-import { RegulationsComponent } from './regulations/regulations.component';
-import { StatisticsComponent } from './statistics/statistics.component';
-import { AccessToInfoComponent } from './access-to-info/access-to-info.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -24,12 +18,6 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AccessHomeComponent,
-    GuidelinesComponent,
-    NationalIdentityComponent,
-    PoliciesComponent,
-    RegulationsComponent,
-    StatisticsComponent,
-    AccessToInfoComponent,
     ScrollSpyDirective
   ],
   imports: [

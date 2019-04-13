@@ -4,9 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdministrationComponent } from './administration/administration.component';
 import { OpportunitiesHomeComponent } from './opportunities-home/opportunities-home.component';
 import { ProcurementsComponent } from './procurements/procurements.component';
-import { TendersComponent } from './tenders/tenders.component';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
-import { TenderComponent } from './tender/tender.component';
+import { ProcurementComponent } from './procurement/procurement.component';
 import { JobsComponent } from './jobs/jobs.component';
 
 
@@ -18,10 +17,8 @@ const oppRoutes: Routes = [
       {
         path: '',
         children: [
-          { path: 'administration', component: AdministrationComponent },
-          { path: 'tenders', component: ProcurementsComponent },
-          { path: 'procurements', component: TendersComponent },
-          { path: 'tender/:id', component: TenderComponent },
+          { path: 'procurements', component: ProcurementsComponent },
+          { path: 'procurement/:id', component: ProcurementComponent },
           { path: 'job/:id', component: AdministrationComponent },
           { path: 'jobs', component: JobsComponent },
           { path: '', component: OpportunitiesComponent }

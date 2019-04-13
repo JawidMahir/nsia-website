@@ -162,7 +162,7 @@
           <div class="service-desc" *ngIf="carousel.nsia">
             <p>{{ carousel.nsia.content?.rendered }}</p>
           </div>
-          <div class="read-more">
+          <div class="read-more" *ngIf="carousel.nsia.content">
             <button class="c-btn-outline-blue" routerLink="/about-us">{{ 'btn.read-more' | translate }}</button>
           </div>
         </div>

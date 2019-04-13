@@ -1,3 +1,51 @@
-<p>
-  procurements works!
-</p>
+<div class="tenders content-justify">
+  <div class="title">
+    <h1>{{'submenu.procurement' | translate }}</h1>
+  </div>
+  <div class="tender-contents">
+    <table class="table">
+      <thead>
+        <th><span>
+            {{'label.description'| translate}}
+          </span></th>
+        <th>
+          <span>
+            {{'label.p-date' | translate}}
+          </span>
+        </th>
+        <th>
+          <span>
+            {{'label.c-date' | translate}}
+          </span>
+        </th>
+      </thead>
+      <tbody *ngIf="tenders">
+        <tr class="tender" *ngFor="let tn of tenders | paginate: { itemsPerPage: 2 , currentPage: p , totalItems: total }">
+          <td class="description">
+            <a class="headline" [routerLink]="['/opportunities/procurement', tn.id]">
+              {{ tn.title.rendered }}
+            </a>
+            <p class="tender-brief">
+              {{ getBrief(tn.content.rendered) }}
+            </p>
+          </td>
+          <td>
+            <span>
+              {{ tn.date }}
+            </span>
+          </td>
+          <td>
+            <span>
+              {{ tn.acf.closing_date }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center"> 
+      <pagination-controls class="tenders-pagination" (pageChange)="pageChanged($event)" autoHide="true" responsive="true"
+        maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
+        nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
+    </div>
+  </div>
+</div>

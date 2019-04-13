@@ -7,9 +7,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { LibraryRoutingModule } from './library-routing.module';
 
-import { ArticlesComponent } from './articles/articles.component';
-import { LibraryHomeComponent } from './library-home/library-home.component';
-import { ReportsComponent } from './reports/reports.component';
 import { LibraryComponent } from './library/library.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -23,9 +20,6 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    ArticlesComponent,
-    LibraryHomeComponent,
-    ReportsComponent,
     LibraryComponent,
     LibFilterPipe
   ],

@@ -13,9 +13,8 @@ import { SharedModule } from '../shared/shared.module';
 import { AdministrationComponent } from './administration/administration.component';
 import { OpportunitiesHomeComponent } from './opportunities-home/opportunities-home.component';
 import { ProcurementsComponent } from './procurements/procurements.component';
-import { TendersComponent } from './tenders/tenders.component';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
-import { TenderComponent } from './tender/tender.component';
+import { ProcurementComponent } from './procurement/procurement.component';
 import { JobsComponent } from './jobs/jobs.component';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -28,9 +27,8 @@ export function createTranslateLoader(http: HttpClient) {
     AdministrationComponent,
     OpportunitiesHomeComponent,
     ProcurementsComponent,
-    TendersComponent,
     OpportunitiesComponent,
-    TenderComponent,
+    ProcurementComponent,
     JobsComponent
   ],
   imports: [

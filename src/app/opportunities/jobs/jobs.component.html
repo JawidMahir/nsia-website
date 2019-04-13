@@ -25,7 +25,7 @@
             <a class="headline" [routerLink]="['/opportunities/job', jb.id]">
               {{ jb.title.rendered }}
             </a>
-            <p class="job-brief">
+            <p class="job-brief" *ngIf="jb.content">
               {{ getBrief(jb.content.rendered) }}
             </p>
           </td>

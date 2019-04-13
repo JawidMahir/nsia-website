@@ -6,31 +6,31 @@
 
     <div class="p-date">
 
-      <span>Publish date:</span>
+      <span>{{ 'label.date-posted' | translate }}:</span>
       <strong>{{ selectedTender.date }}</strong>
     </div>
 
 
     <div class="c-date">
-      <span>Closing date:</span>
+      <span>{{ 'label.closing-date' | translate }}:</span>
       <strong>{{ selectedTender.acf.closing_date }}</strong>
     </div>
 
 
     <div class="t-number">
-      <span>Tender Number:</span>
+      <span>{{ 'label.tender-number' | translate }}:</span>
       <strong>{{ selectedTender.acf.tender_number }}</strong>
     </div>
 
 
     <div class="t-city">
-      <span>City:</span>
+      <span>{{ 'label.city' | translate }}:</span>
       <strong>{{ selectedTender.acf.city }}</strong>
     </div>
 
   </div>
   <div class="tender-description">
-    <h4>Description:</h4>
+    <h4>{{ 'label.description' | translate }}:</h4>
     <hr>
     <p>{{ selectedTender.content.rendered }}</p>
   </div>

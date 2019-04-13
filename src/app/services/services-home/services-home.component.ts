@@ -27,6 +27,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
   // A global variable used to determine the type of service
   serviceType = 'stats';
+
   provincialServices = false;
   provinces;
 
@@ -159,15 +160,19 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   assignDepartmentsToDeputy(deputyType) {
     switch (deputyType) {
       case 'statistics_services':
+        // tslint:disable-next-line: no-string-literal
         this.serviceContents.stats['departments'] = this.deputyDepartments;
         break;
       case 'gis_services':
+        // tslint:disable-next-line: no-string-literal
         this.serviceContents.gis['departments'] = this.deputyDepartments;
         break;
       case 'nid_services':
+        // tslint:disable-next-line: no-string-literal
         this.serviceContents.nid['departments'] = this.deputyDepartments;
         break;
       case 'sdu_services':
+        // tslint:disable-next-line: no-string-literal
         this.serviceContents.sdu['departments'] = this.deputyDepartments;
         break;
     }
@@ -416,6 +421,8 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
         console.log('from this click ', this.serviceContents);
       } else {
         this.contents = null;
+        const serviceType = sessionStorage.getItem('serviceType');
+        this.getDeputyDetails(serviceType, 'service');
       }
     }
   }
@@ -510,14 +517,18 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     switch (id) {
       case 'sdu':
         serviceType = 'sdu_services';
-        this.getDeputyDetails(serviceType, 'service');
+        if (!sessionStorage.getItem('department')) {
+          this.getDeputyDetails(serviceType, 'service');
+        }
         this.getDeputyDepartments(serviceType, 'department');
         this.getDeputyDepartments(serviceType, 'headship');
         break;
 
       case 'stats':
         serviceType = 'statistics_services';
-        this.getDeputyDetails(serviceType, 'service');
+        if (!sessionStorage.getItem('department')) {
+          this.getDeputyDetails(serviceType, 'service');
+        }
 
         this.getDeputyDepartments(serviceType, 'department');
         this.getDeputyDepartments(serviceType, 'headship');
@@ -525,14 +536,18 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
       case 'gis':
         serviceType = 'gis_services';
-        this.getDeputyDetails(serviceType, 'service');
+        if (!sessionStorage.getItem('department')) {
+          this.getDeputyDetails(serviceType, 'service');
+        }
         this.getDeputyDepartments(serviceType, 'department');
         this.getDeputyDepartments(serviceType, 'headship');
         break;
 
       case 'nid':
         serviceType = 'nid_services';
-        this.getDeputyDetails(serviceType, 'service');
+        if (!sessionStorage.getItem('department')) {
+          this.getDeputyDetails(serviceType, 'service');
+        }
         this.getDeputyDepartments(serviceType, 'department');
         this.getDeputyDepartments(serviceType, 'headship');
         break;
