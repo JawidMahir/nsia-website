@@ -78,17 +78,16 @@ export class LibraryComponent implements OnInit {
   }
 
   showLibraries(el) {
-
     this.p = 1;
     this.id = $(el).closest('.lib-btn').attr('id');
+    localStorage.setItem('library-type',this.id);
     $('.lib-btn').removeClass('active-libraray');
     $(el).closest('.lib-btn').addClass('active-libraray');
     this.getData(this.customParams, this.p);
-
   }
 
   getData(customParams, page) {
-    if (Object.keys(this.libraryContents[this.id]).length !== this.totalPosts[this.id]) {
+    if (Object.keys(this.libraryContents[this.id]).length < page*8) {
       this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => {
         this.totalPosts[this.id] = parseInt(libraryData.headers.get('X-WP-Total'));
         this.total = this.totalPosts[this.id];
@@ -96,18 +95,20 @@ export class LibraryComponent implements OnInit {
         console.log('library contents: ', cb);
         this.libraryContents[this.id] = this.libraryContents[this.id].concat(this.refineData(cb));
         console.log(this.libraryContents[this.id]);
-        this.contents = this.libraryContents[this.id];
-        // console.log('library contents are: ', this.contents);
+        let begin = ((page - 1) * 8)
+        let end = begin + 8;
+        this.contents = this.libraryContents[this.id].slice(begin, end);
       }));
     } else {
-      this.contents = this.libraryContents[this.id];
+      let begin = ((page - 1) * 8)
+      let end = begin + 8;
+      this.contents = this.libraryContents[this.id].slice(begin, end);
       this.total = this.totalPosts[this.id];
     }
 
   }
 
   getAttachments(data) {
-    console.log('It has data', data);
     let tempLinksArray;
     // const pattern = /\"[A-Za-z0-9_@./#&\s>"=\-:]*\"/g;
     const pattern = /\".*\"/g;
