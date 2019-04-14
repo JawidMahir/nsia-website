@@ -35,7 +35,7 @@
       </div>
       <div class="row content" *ngIf="contents.length > 0 ; else nodata">
         <div class="col-lg-3 col-md-3 col-sm-6"
-          *ngFor="let content of contents | paginate: { itemsPerPage: 8 , currentPage: p , totalItems: total } | libFilter:filterText">
+          *ngFor="let content of contents| paginate: { itemsPerPage: 8 , currentPage: p } | libFilter:filterText">
           <!-- <a *ngIf="content.attachment" href="{{content.attachment}}"
              target="_blank"> -->
           <a [href]="content.attachment" target="_blank">

@@ -20,6 +20,11 @@ export class ChooseLangComponent implements OnInit {
 
   detectLanguage(lang) {
     this.dataService.language = lang;
+    if (lang === 'en') {
+      this.dataService.sliderDirection = 'ltr_slider';
+    } else {
+      this.dataService.sliderDirection = 'rtl_slider';
+    }
     this.trs.use(lang);
     localStorage.setItem('lang', lang);
     this.router.navigate([this.dataService.redirectPath]);

@@ -236,6 +236,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       if (event.lang !== 'en') {
         this.linkTitle = 'engTitle';
         $('body').addClass('rtl');
+        this.dataService.sliderDirection = 'rtl_slider';
         if (event.lang === 'ps') {
           this.linkTitle = 'psTitle';
         } else {
@@ -244,6 +245,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       } else {
         $('body').removeClass('rtl');
         this.linkTitle = 'engTitle';
+        this.dataService.sliderDirection = 'ltr_slider';
       }
       $('#lang-change').val(event.lang);
       $('#lang-change2').val(event.lang);

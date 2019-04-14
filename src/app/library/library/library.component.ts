@@ -13,7 +13,7 @@ export class LibraryComponent implements OnInit {
   p = 1;
   total = 1;
   customParams = [];
-  contents = '';
+  contents = [];
   filterText;
   id;
   libraryContents = {
@@ -34,6 +34,10 @@ export class LibraryComponent implements OnInit {
     newsletter: 1,
     policies: 1
   };
+
+  dummy = [
+    1, 2, 3, 4, 5, 6, 7, 87, 5, 6, 7, 5, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
+  ];
   constructor(private libraryService: LibraryServicesService) { }
 
   ngOnInit() {
@@ -88,20 +92,27 @@ export class LibraryComponent implements OnInit {
   }
 
   getData(customParams, page) {
-    if (Object.keys(this.libraryContents[this.id]).length !== this.totalPosts[this.id]) {
+    if (this.libraryContents[this.id].length !== this.totalPosts[this.id]) {
       this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => {
-        this.totalPosts[this.id] = parseInt(libraryData.headers.get('X-WP-Total'));
+        console.log('full response: ', libraryData);
+
+        this.totalPosts[this.id] = Number(libraryData.headers.get('X-WP-Total'));
         this.total = this.totalPosts[this.id];
+        console.log('total posts: ', this.total);
+
         const cb = this.getAttachments(libraryData.body);
         console.log('library contents: ', cb);
         this.libraryContents[this.id] = this.libraryContents[this.id].concat(this.refineData(cb));
         console.log(this.libraryContents[this.id]);
         this.contents = this.libraryContents[this.id];
+        // this.total = this.libraryContents[this.id].length;
         // console.log('library contents are: ', this.contents);
       }));
     } else {
-      this.contents = this.libraryContents[this.id];
       this.total = this.totalPosts[this.id];
+      this.contents = this.libraryContents[this.id];
+      console.log('Library all contents: ', this.libraryContents);
+
     }
 
   }
@@ -153,8 +164,10 @@ export class LibraryComponent implements OnInit {
     }
   }
   pageChanged(page: number) {
-    this.getData(this.customParams, page);
+    this.contents = [];
     this.p = page;
+  //  this.getData(this.customParams, page);
+    console.log('current page: ', this.p);
   }
 
 }

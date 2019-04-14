@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+
 import { DataService } from '../data.service';
 import 'bootstrap';
 import * as $ from 'jquery';
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit {
   };
   nsiaServiceText;
   stakeHolders;
+  sliderDirection;
 
   carousel = {
     nsia: null,
@@ -70,7 +73,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private cdref: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private trs: TranslateService
   ) { }
 
   ngOnInit() {
@@ -80,6 +84,12 @@ export class HomeComponent implements OnInit {
       interval: 4000,
       ride: 'carousel'
     });
+
+    if(this.trs.currentLang === 'en') {
+      this.sliderDirection = 'ltr_slider';
+    } else {
+      this.sliderDirection = 'rtl_slider';
+    }
 
     // const test = 'abscsf3434fjayyyyyfsadaahmads';
     // const pat = /a[a-z]*s/g;
@@ -356,6 +366,14 @@ export class HomeComponent implements OnInit {
     customParams.push('better_featured_image.caption.rendered');
     customParams.push('acf.order');
     customParams.push('acf.icon');
+    if (this.sliderDirection.includes('ltr')) {
+      customParams.push('acf.ltr_slider.url');
+      customParams.push('acf.ltr_slider.alt');
+    } else {
+      customParams.push('acf.rtl_slider.url');
+      customParams.push('acf.rtl_slider.alt');
+    }
+
 
     this.dataService.getCarouselSlides(customParams, 'Slider').subscribe((data) => {
       console.log('Carousel Data(Before): ', data);

@@ -15,6 +15,7 @@ export class DataService {
   language = 'en';
   serviceType = 'stats';
   redirectPath = 'home';
+  sliderDirection;
 
   /**
    * The following code establishes a connection between navbar component and service-home component

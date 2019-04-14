@@ -13,8 +13,8 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active" *ngIf="carousel.nsia">
-        <img class="d-block w-100" src="{{ carousel.nsia.better_featured_image.source_url }}"
-          alt="{{ carousel.nsia.better_featured_image.alt_text }}">
+        <img class="d-block w-100" [src]="carousel.nsia.acf[sliderDirection].url"
+          [alt]="carousel.nsia.acf[sliderDirection].alt">
         <div class="caption w-100 d-block">
           <div class="custom-container">
             <div class="service-details">
@@ -28,8 +28,9 @@
         <div class="c-gradient"></div>
       </div>
       <div class="carousel-item" *ngIf="carousel.stats">
-        <img class="d-block w-100" src="{{ carousel.stats.better_featured_image.source_url }}"
-          alt="{{ carousel.stats.better_featured_image.alt_text }}">
+        <img class="d-block w-100" [src]="carousel.stats.acf[sliderDirection].url"
+          [alt]="carousel.stats.acf[sliderDirection].alt">
+
         <div class="caption w-100 d-block">
           <div class="custom-container">
             <div class="service-details">
@@ -43,8 +44,8 @@
         <div class="c-gradient"></div>
       </div>
       <div class="carousel-item" *ngIf="carousel.gis">
-        <img class="d-block w-100" src="{{ carousel.gis.better_featured_image.source_url }}"
-          alt="{{ carousel.gis.better_featured_image.alt_text }}">
+        <img class="d-block w-100" [src]="carousel.gis.acf[sliderDirection].url"
+          [alt]="carousel.gis.acf[sliderDirection].alt">
         <div class="caption w-100 d-block">
           <div class="custom-container">
             <div class="service-details">
@@ -58,8 +59,8 @@
         <div class="c-gradient"></div>
       </div>
       <div class="carousel-item" *ngIf="carousel.isd">
-        <img class="d-block w-100" src="{{ carousel.isd.better_featured_image.source_url }}"
-          alt="{{ carousel.isd.better_featured_image.alt_text }}">
+        <img class="d-block w-100" [src]="carousel.isd.acf[sliderDirection].url"
+          [alt]="carousel.isd.acf[sliderDirection].alt">
         <div class="caption w-100 d-block">
           <div class="custom-container">
             <div class="service-details">
@@ -74,8 +75,8 @@
       </div>
 
       <div class="carousel-item" *ngIf="carousel.nid">
-        <img class="d-block w-100" src="{{ carousel.nid.better_featured_image.source_url }}"
-          alt="{{ carousel.nid.better_featured_image.alt_text }}">
+        <img class="d-block w-100" [src]="carousel.nid.acf[sliderDirection].url"
+          [alt]="carousel.nid.acf[sliderDirection].alt">
         <div class="caption w-100 d-block">
           <div class="custom-container">
             <div class="service-details">
@@ -139,8 +140,8 @@
           <img src="../../assets/images/gender.png" alt="Population">
           <div class="stats bg-gradient">
             <h6>{{ 'label.eg' | translate }}</h6>
-            <h3 *ngIf="gender">{{ eg.acf.statistics + ' Male' }}</h3>
-            <h3 *ngIf="gender">{{ eg.acf.female + ' Female' }}</h3>
+            <h3 *ngIf="eg">{{ eg.acf.statistics + ' Male' }}</h3>
+            <h3 *ngIf="eg">{{ eg.acf.female + ' Female' }}</h3>
           </div>
         </div>
 
@@ -154,7 +155,7 @@
   <div class="service-card custom-container">
     <div class="card-body">
       <div class="row">
-        <div class="row nsia-main">
+        <div class="nsia-main">
           <div class="service-title">
             <!-- <h1 class="text-green">{{ 'label.nsia' | translate}}</h1> -->
             <h1>{{ 'label.nsia-service' | translate}}</h1>
@@ -166,7 +167,7 @@
             <button class="c-btn-outline-blue" routerLink="/about-us">{{ 'btn.read-more' | translate }}</button>
           </div>
         </div>
-        <div class="row">
+        <div class="">
           <div class="nsia-services row">
             <div class="col-lg-6 col-md-6 col-sm-12" *ngIf="carousel.stats">
               <div class="sr-item ">
@@ -651,7 +652,7 @@
   </div> -->
 
 
-  <div class="section-wrapper latest-section">
+  <!-- <div class="section-wrapper latest-section">
     <div class="nav row" id="nav-tab" role="tablist">
       <div class="col-md-4 col-sm-6 ls ls-btn" id="nav-events-tab" data-toggle="tab" data-target="#nav-events"
         role="tab" aria-controls="nav-events" aria-selected="true" category="events" redirect-url="/media-room/event">
@@ -752,7 +753,7 @@
           id="events-read-more">{{ 'btn.read-more' | translate }}</button>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
