@@ -10,8 +10,8 @@ import * as $ from 'jquery';
 })
 
 export class LibraryComponent implements OnInit {
-  p: number = 1;
-  total: number = 1;
+  p = 1;
+  total = 1;
   customParams = [];
   contents = '';
   filterText;

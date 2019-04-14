@@ -21,6 +21,6 @@
   </ng-template>
   <div class="text-center">
     <button class="btn btn-outline-info" (click)="readMoreRedirect($event.target)"
-      id="news-read-more">{{'btn.view-all-news' | translate}}</button>
+      id="news-read-more" [disabled]="newsBriefs.news === ''">{{'btn.view-all-news' | translate}}</button>
   </div>
 </div>

@@ -11,12 +11,18 @@ export class AboutUsService {
   constructor(private http: HttpClient, private dataService: DataService) { }
 
   fetchData(customParams, category) {
+    const header = {
+      'filter[category_name]': category,
+      lang: this.dataService.language,
+      fields: customParams.join(',')
+    };
+
+    if (category === 'biography') {
+      // tslint:disable-next-line: no-string-literal
+      header['order'] = 'asc';
+    }
     return this.http.get(this.dataService.api + 'posts', {
-      params: {
-        'filter[category_name]': category,
-        lang: this.dataService.language,
-        fields: customParams.join(',')
-      }
+      params: header
     });
   }
 

@@ -24,6 +24,8 @@ export class BiographiesComponent implements OnInit {
       console.log('biodata: ', data);
       if (data) {
         this.bios = data;
+        console.log('BIOS: ', this.bios);
+
 
         for (const bio of this.bios) {
           if (bio.content) {
@@ -32,6 +34,13 @@ export class BiographiesComponent implements OnInit {
         }
       }
     });
+  }
+
+  imageError(el) {
+    el.onerror = '';
+    el.src = '../../../assets/images/noimage.svg';
+    console.log(el);
+    return true;
   }
 
 }
