@@ -82,17 +82,16 @@ export class LibraryComponent implements OnInit {
   }
 
   showLibraries(el) {
-
     this.p = 1;
     this.id = $(el).closest('.lib-btn').attr('id');
+    localStorage.setItem('library-type',this.id);
     $('.lib-btn').removeClass('active-libraray');
     $(el).closest('.lib-btn').addClass('active-libraray');
     this.getData(this.customParams, this.p);
-
   }
 
   getData(customParams, page) {
-    if (this.libraryContents[this.id].length !== this.totalPosts[this.id]) {
+    if (Object.keys(this.libraryContents[this.id]).length < page*8) {
       this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => {
         console.log('full response: ', libraryData);
 
@@ -104,11 +103,14 @@ export class LibraryComponent implements OnInit {
         console.log('library contents: ', cb);
         this.libraryContents[this.id] = this.libraryContents[this.id].concat(this.refineData(cb));
         console.log(this.libraryContents[this.id]);
-        this.contents = this.libraryContents[this.id];
-        // this.total = this.libraryContents[this.id].length;
-        // console.log('library contents are: ', this.contents);
+        const begin = ((page - 1) * 8)
+        const end = begin + 8;
+        this.contents = this.libraryContents[this.id].slice(begin, end);
       }));
     } else {
+      const begin = ((page - 1) * 8)
+      const end = begin + 8;
+      this.contents = this.libraryContents[this.id].slice(begin, end);
       this.total = this.totalPosts[this.id];
       this.contents = this.libraryContents[this.id];
       console.log('Library all contents: ', this.libraryContents);
@@ -118,7 +120,6 @@ export class LibraryComponent implements OnInit {
   }
 
   getAttachments(data) {
-    console.log('It has data', data);
     let tempLinksArray;
     // const pattern = /\"[A-Za-z0-9_@./#&\s>"=\-:]*\"/g;
     const pattern = /\".*\"/g;
