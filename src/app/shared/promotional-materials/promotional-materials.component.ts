@@ -25,12 +25,15 @@ export class PromotionalMaterialsComponent implements OnInit {
 
   getNewsMaterial(type, perPage) {
     const customParams = [];
-    customParams.push('acf.library_attachment.url');
+    customParams.push('id');
+    customParams.push('content');
     this.dataService.getNewsData(customParams, type, perPage).subscribe((newsData) => {
       console.log('Newsletter data: ', this.newsletters);
       if (newsData[0]) {
+
         newsData[0] = this.getAttachments(newsData[0]);
         this.newsletters.push(newsData[0]);
+        console.log('Newsletter data: ', newsData[0]);
         this.promoMaterialFlag = true;
       }
     });

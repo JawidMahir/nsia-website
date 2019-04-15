@@ -58,3 +58,11 @@ a {
   background: #01a79b;
 }
 
+.lb-attachment {
+  margin-bottom: 2rem;
+  min-height: 280px;
+}
+
+.paginator {
+  margin-top: 1rem;
+}

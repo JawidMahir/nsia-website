@@ -14,8 +14,8 @@
   "label.nsia-service": "د احصایې او معلوماتو ملي ادارې خدمتونه",
   "label.population": "نفوس",
   "label.gdp": "کورني ناخالص تولیدات",
-  "label.cpi": "د بیو ځانګړنه",
-  "label.eg": "اقتصادي رشد",
+  "label.cpi": "د پیسو تورم",
+  "label.eg": "اقتصادي وده",
   "label.latest-news": "تازه خبرونه",
   "label.latest-pubs": "تازه خپرونې",
   "label.press-release": "مطبوعاتي اعلامیې",
@@ -24,7 +24,7 @@
   "label.stakeholders": "اړونده شريکان",
   "label.donors": "ملاتړکوونکي",
   "label.customers": "مراجعین",
-  "label.portal": "Portals",
+  "label.portal": "دریڅې",
 
 
   "label.upcoming-events": "راتلونکې پېښې",
@@ -141,7 +141,7 @@
   "btn.read-more": "نور جزیات",
   "btn.download": "ډنلوډ",
   "btn.view-all-news": "د ټولو خبرونو کتنه",
-  "btn.books": "کلنی ګڼي",
+  "btn.books": "کالنۍ",
   "btn.surveys": "سروې",
   "btn.reports": "راپورونه",
   "btn.magazines": "مجلې",

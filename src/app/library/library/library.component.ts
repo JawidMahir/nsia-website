@@ -67,6 +67,7 @@ export class LibraryComponent implements OnInit {
       }
     } else {
       element = document.getElementById('books') as HTMLElement;
+      console.log('not there');
     }
     this.customParams.push('title.rendered');
     this.customParams.push('date');
@@ -89,28 +90,35 @@ export class LibraryComponent implements OnInit {
   }
 
   getData(customParams, page) {
-    if (this.p >= ((this.libraryContents[this.id].length) / this.pageLimit) + 1) {
+    if ((this.libraryContents[this.id].length < 1) || (this.libraryContents[this.id].filter(d => d.page === this.p)).length < 1) {
       this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => {
         console.log('full response: ', libraryData);
-
         this.totalPosts[this.id] = Number(libraryData.headers.get('X-WP-Total'));
         this.total = this.totalPosts[this.id];
         console.log('total posts: ', this.total);
-
         const cb = this.getAttachments(libraryData.body);
         console.log('library contents: ', cb);
-        this.libraryContents[this.id] = this.libraryContents[this.id].concat(this.refineData(cb));
+        // adding new data object
+        const newData = {
+          page: this.p,
+          data: this.refineData(cb)
+        };
+        // this.libraryContents[this.id] = this.libraryContents[this.id].concat(this.refineData(cb));
+        this.libraryContents[this.id].push(newData);
+        console.log('Data : ', (this.libraryContents[this.id].filter(d => d.page === this.p))[0].data);
         console.log('Library all contents: ', this.libraryContents);
-        const begin = ((page - 1) * this.pageLimit);
-        const end = begin + this.pageLimit;
-        this.contents = this.libraryContents[this.id].slice(begin, end);
+        // const begin = ((page - 1) * this.pageLimit);
+        // const end = begin + this.pageLimit;
+        // this.contents = this.libraryContents[this.id].slice(begin, end);
+        this.contents = newData.data;
       }));
     } else {
       console.log('local');
-      const begin = ((page - 1) * this.pageLimit);
-      const end = begin + this.pageLimit;
-      this.contents = this.libraryContents[this.id].slice(begin, end);
+      // const begin = ((page - 1) * this.pageLimit);
+      // const end = begin + this.pageLimit;
+      // this.contents = this.libraryContents[this.id].slice(begin, end);
       this.total = this.totalPosts[this.id];
+      this.contents = (this.libraryContents[this.id].filter(d => d.page === this.p))[0].data;
       console.log('Library all contents: ', this.libraryContents);
       console.log('Current page contents: ', this.contents);
 
@@ -156,13 +164,9 @@ export class LibraryComponent implements OnInit {
   }
 
   canDeactivate() {
-    if (localStorage.getItem('library-type')) {
-      localStorage.removeItem('library-type');
-      return true;
-    } else {
-      return true;
-    }
+    return true;
   }
+
   pageChanged(page: number) {
     this.contents = [];
     this.p = page;
