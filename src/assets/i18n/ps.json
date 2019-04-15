@@ -24,6 +24,7 @@
   "label.stakeholders": "اړونده شريکان",
   "label.donors": "ملاتړکوونکي",
   "label.customers": "مراجعین",
+  "label.portal": "Portals",
 
 
   "label.upcoming-events": "راتلونکې پېښې",
@@ -140,7 +141,7 @@
   "btn.read-more": "نور جزیات",
   "btn.download": "ډنلوډ",
   "btn.view-all-news": "د ټولو خبرونو کتنه",
-  "btn.books": "کتابونه",
+  "btn.books": "کلنی ګڼي",
   "btn.surveys": "سروې",
   "btn.reports": "راپورونه",
   "btn.magazines": "مجلې",

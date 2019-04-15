@@ -16,6 +16,7 @@ export class LibraryComponent implements OnInit {
   contents = [];
   filterText;
   id;
+  pageLimit = 8;
   libraryContents = {
     books: [],
     surveys: [],
@@ -35,9 +36,6 @@ export class LibraryComponent implements OnInit {
     policies: 1
   };
 
-  dummy = [
-    1, 2, 3, 4, 5, 6, 7, 87, 5, 6, 7, 5, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
-  ];
   constructor(private libraryService: LibraryServicesService) { }
 
   ngOnInit() {
@@ -84,14 +82,14 @@ export class LibraryComponent implements OnInit {
   showLibraries(el) {
     this.p = 1;
     this.id = $(el).closest('.lib-btn').attr('id');
-    localStorage.setItem('library-type',this.id);
+    localStorage.setItem('library-type', this.id);
     $('.lib-btn').removeClass('active-libraray');
     $(el).closest('.lib-btn').addClass('active-libraray');
     this.getData(this.customParams, this.p);
   }
 
   getData(customParams, page) {
-    if (Object.keys(this.libraryContents[this.id]).length < page*8) {
+    if (this.p >= ((this.libraryContents[this.id].length) / this.pageLimit) + 1) {
       this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => {
         console.log('full response: ', libraryData);
 
@@ -102,18 +100,19 @@ export class LibraryComponent implements OnInit {
         const cb = this.getAttachments(libraryData.body);
         console.log('library contents: ', cb);
         this.libraryContents[this.id] = this.libraryContents[this.id].concat(this.refineData(cb));
-        console.log(this.libraryContents[this.id]);
-        const begin = ((page - 1) * 8)
-        const end = begin + 8;
+        console.log('Library all contents: ', this.libraryContents);
+        const begin = ((page - 1) * this.pageLimit);
+        const end = begin + this.pageLimit;
         this.contents = this.libraryContents[this.id].slice(begin, end);
       }));
     } else {
-      const begin = ((page - 1) * 8)
-      const end = begin + 8;
+      console.log('local');
+      const begin = ((page - 1) * this.pageLimit);
+      const end = begin + this.pageLimit;
       this.contents = this.libraryContents[this.id].slice(begin, end);
       this.total = this.totalPosts[this.id];
-      this.contents = this.libraryContents[this.id];
       console.log('Library all contents: ', this.libraryContents);
+      console.log('Current page contents: ', this.contents);
 
     }
 
@@ -167,7 +166,7 @@ export class LibraryComponent implements OnInit {
   pageChanged(page: number) {
     this.contents = [];
     this.p = page;
-  //  this.getData(this.customParams, page);
+    this.getData(this.customParams, page);
     console.log('current page: ', this.p);
   }
 

@@ -370,6 +370,20 @@
   cursor: pointer;
 }
 
+.portals {
+  width: 100%;
+}
+
+.portals-body {
+  width: fit-content;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.portal {
+  margin: 0px 12px;
+}
+
 .billboard {
   direction: ltr !important;
   background: linear-gradient(to right, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%);

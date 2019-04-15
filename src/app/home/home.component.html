@@ -529,39 +529,49 @@
   </div>
 
 
-  <!-- <div class="section-wrapper bussiness">
+  <div class="section-wrapper bussiness">
     <div class=" bussiness-card">
       <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="portals text-center">
           <div class="title">
-            <h4>{{ 'label.stakeholders' | translate }}</h4>
-            <div class="t-icon">
-              <div>
-                <i class="fas fa-chevron-left" href="#stakeholder-carousel" role="button" data-slide="prev"></i>
-                <i class="fas fa-chevron-right" href="#stakeholder-carousel" role="button" data-slide="next"></i>
+            <h4>{{ 'label.portal' | translate }}</h4>
+          </div>
+          <div class="portals-body b-category">
+            <div class="portal">
+              <div class="p-image bs-item">
+                <img src="../../assets/logo/favicon.png" alt="portal">
+              </div>
+              <div class="p-name text-center">
+                <h6>Stat</h6>
               </div>
             </div>
-          </div>
-          <div class="stakeholders b-category">
-            <div id="stakeholder-carousel" class="carousel slide bussiness-carousel" data-ride="carousel"
-              *ngIf="businessMainData.stakeholders">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="bs-item" *ngFor="let st of businessMainData.stakeholders[0]">
-                    <img [src]="st.better_featured_image?.source_url" alt="stakeholder">
-                    <h6>{{ st.title.rendered }}</h6>
-                  </div>
-                </div>
-                <div class="carousel-item" *ngFor="let stk of businessMainData.stakeholders | slice:1">
-                  <div class="bs-item" *ngFor="let st of stk">
-                    <img [src]="st.better_featured_image?.source_url" alt="stakeholder">
-                    <h6>{{ st.title.rendered }}</h6>
-                  </div>
-                </div>
+            <div class="portal">
+              <div class="p-image bs-item">
+                <img src="../../assets/logo/favicon.png" alt="portal">
+              </div>
+              <div class="p-name text-center">
+                <h6>Stat</h6>
+              </div>
+            </div>
+            <div class="portal">
+              <div class="p-image bs-item">
+                <img src="../../assets/logo/favicon.png" alt="portal">
+              </div>
+              <div class="p-name text-center">
+                <h6>Stat</h6>
+              </div>
+            </div>
+            <div class="portal">
+              <div class="p-image bs-item">
+                <img src="../../assets/logo/favicon.png" alt="portal">
+              </div>
+              <div class="p-name text-center">
+                <h6>Stat</h6>
               </div>
             </div>
           </div>
         </div>
+        <!-- 
         <div class="col-lg-4 col-md-6  col-sm-6">
           <div class="title donor-title">
             <h4>{{ 'label.donors' | translate }}</h4>
@@ -592,6 +602,7 @@
             </div>
           </div>
         </div>
+        
         <div class="col-lg-4 col-md-6  col-sm-6 customers-wrapper">
           <div class="title">
             <h4>{{ 'label.customers' | translate }}</h4>
@@ -621,10 +632,11 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
+
       </div>
     </div>
-  </div> -->
+  </div>
 
   <!-- <div class="section-wrapper billboard">
     <div class="card">
