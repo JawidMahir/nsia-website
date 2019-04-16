@@ -238,7 +238,7 @@
 
 .latest-section .news-item-wrapper {
   margin-bottom: 10px;
-  max-height: 35vh;
+  height: 250px;
 }
 
 .latest-section .news-item {

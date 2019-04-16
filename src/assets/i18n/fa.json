@@ -20,6 +20,12 @@
   "label.latest-pubs": "آخرین نشریات",
   "label.press-release": "اعلامیه های مطبوعاتی",
   "label.important-announce": "اعلامیه های مهم",
+  "label.cs-number": "شماره خدمات مشتریان",
+  "label.email": "ایمیل",
+  "label.address": "آدرس",
+  "label.feedback-form": "فورم نظریات",
+  "label.nsia-address": "ناحیه هفتم، سرک چهلستون، جوار باغ بابر",
+
 
   "label.stakeholders": "ذینفعان",
   "label.donors": "تمویل کنندگان",
@@ -43,6 +49,7 @@
   "submenu.about-nsia": "درباره اداره ملی احصائیه و معلومات",
   "submenu.biographies": "زندگی نامه",
   "submenu.gender": "جندر",
+  "submenu.achievments": "فعالیت ها ودست اوردها",
   "submenu.structure": "ساختار تشکیلاتی",
   "submenu.statistics": "احصائیه",
   "submenu.nid": "ثبت احوال نفوس",

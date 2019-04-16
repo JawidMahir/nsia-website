@@ -9,13 +9,13 @@
               <tbody>
                 <tr>
                   <td>
-                    <span><strong>Customer Service Phone #:</strong></span>
+                    <span><strong>{{ 'label.cs-number' | translate }}</strong></span>
                   </td>
-                  <td>
-                    <span>+93 (0) 20 22 11 708</span>
+                  <td style="direction: ltr !important">
+                    <span> +93 20 2211 708</span>
                   </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>
                     <span>
                       <strong>Working Hours:</strong>
@@ -24,11 +24,11 @@
                   <td>
                     <span>Saturday - Wednesday from 8:00 a.m. to 5:00 p.m. Kabul Time</span>
                   </td>
-                </tr>
+                </tr> -->
                 <tr>
                   <td>
                     <span>
-                      <strong>E-mail:</strong>
+                      <strong>{{ 'label.email' | translate }}</strong>
                     </span>
                   </td>
                   <td>
@@ -38,11 +38,11 @@
                 <tr>
                   <td>
                     <span>
-                      <strong>Address:</strong>
+                      <strong>{{ 'label.address' | translate }}</strong>
                     </span>
                   </td>
                   <td>
-                    <span>7th District, Chahel saton street, beside of bagh babar</span>
+                    <span>{{ 'label.nsia-address' | translate }}</span>
                   </td>
                 </tr>
               </tbody>
@@ -51,7 +51,7 @@
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="col-md-6"><br>
-                <h4>Feedback Form</h4><br>
+                <h4>{{'label.feedback-form' | translate}}</h4><br>
                 <input type="text" id="name" formControlName='name' placeholder="{{ 'input.name' | translate }}"
                   autofocus>
                 <span *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched" class="help-block">{{

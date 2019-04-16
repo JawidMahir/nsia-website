@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
       ride: 'carousel'
     });
 
-    if(this.trs.currentLang === 'en') {
+    if (this.trs.currentLang === 'en') {
       this.sliderDirection = 'ltr_slider';
     } else {
       this.sliderDirection = 'rtl_slider';
@@ -275,12 +275,12 @@ export class HomeComponent implements OnInit {
         const acf = {
           brief: 'No Briefing'
         };
-
         el.acf = acf;
       } else {
 
         // extract html tags from strings
         el.acf.brief = this.dataService.htmlToPlaintext(el.acf.brief);
+        el.acf.brief = this.getCardsBrief(el.acf.brief);
       }
 
       if (!el.hasOwnProperty('better_featured_image')) {
@@ -338,8 +338,15 @@ export class HomeComponent implements OnInit {
   }
 
   getBrief(ds) {
-    if (ds.length > 250) {
-      return ds.substring(0, 249) + '...';
+    if (ds.length > 200) {
+      return ds.substring(0, 199) + '...';
+    }
+    return ds;
+  }
+
+  getCardsBrief(ds) {
+    if (ds.length > 70) {
+      return ds.substring(0, 69) + '...';
     }
     return ds;
   }

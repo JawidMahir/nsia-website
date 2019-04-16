@@ -18,7 +18,7 @@ const aboutRoutes: Routes = [
         path: '',
         children: [
           { path: 'about-nsia', component: AboutNsiaComponent },
-          { path: 'gender', component: GenderComponent },
+          { path: 'activity-achievments', component: GenderComponent },
           { path: 'structure', component: StructureComponent },
           { path: 'biographies', component: BiographiesComponent },
           { path: 'bio/:id', component: BioComponent },
