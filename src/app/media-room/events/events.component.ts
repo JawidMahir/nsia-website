@@ -14,6 +14,7 @@ export class EventsComponent implements OnInit {
   p = 1;
   total = 1;
   events = [];
+  contents = [];
   constructor(
     private mediaService: MediaServicesService,
     private sanitizer: DomSanitizer) { }
@@ -31,13 +32,23 @@ export class EventsComponent implements OnInit {
   }
 
   getEventsData(type, page) {
-    if (this.events.length < this.total) {
+    if ((this.events.length < 1) || (this.events.filter(d => d.page === this.p)).length < 1) {
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((eventsData) => {
-        this.events = this.events.concat(this.refineData(eventsData.body));
-        console.log('events data: ', this.events);
+
+        this.total = Number(eventsData.headers.get('X-WP-Total'));
+
+        const newData = {
+          page: page,
+          data: this.refineData(eventsData.body)
+        };
+
+        this.events.push(newData);
+        console.log(this.events);
+        this.contents = newData.data;
         
-        this.total = parseInt(eventsData.headers.get('X-WP-Total'));
       });
+    }else{
+      this.contents = (this.events.filter(d => d.page === this.p))[0].data;
     }
   }
 
@@ -68,8 +79,8 @@ export class EventsComponent implements OnInit {
   }
 
   pageChanged(page: number) {
-    this.getEventsData('events', page);
     this.p = page;
+    this.getEventsData('events', page);
   }
 
 } 

@@ -53,7 +53,7 @@ export class NewsComponent implements OnInit {
 
   getBrief(ds) {
     if (ds.length > 60) {
-      return ds.substring(0, 59) + '...';
+      return ds.substring(0, 65) + '...';
     }
     return ds;
   }

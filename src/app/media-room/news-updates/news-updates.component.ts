@@ -13,14 +13,13 @@ export class NewsUpdatesComponent implements OnInit {
   p = 1;
   total = 1;
   news = [];
-
+  contents = [];
   constructor(
     private mediaService: MediaServicesService,
     private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
-    this.getNewsData('news', this.p);
     this.customParams.push('title.rendered');
     this.customParams.push('content.rendered');
     this.customParams.push('acf.attachment_type');
@@ -29,14 +28,27 @@ export class NewsUpdatesComponent implements OnInit {
     this.customParams.push('better_featured_image.alt_text');
     this.customParams.push('date');
     this.customParams.push('id');
+    this.getNewsData('news', this.p);
   }
 
   getNewsData(type, page) {
-    if (this.news.length < this.total) {
+    if ((this.news.length < 1) || (this.news.filter(d => d.page === this.p)).length < 1) {
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((newsData) => {
-        this.news = this.news.concat(this.refineData(newsData.body));
-        this.total = parseInt(newsData.headers.get('X-WP-Total'));
+
+        this.total = Number(newsData.headers.get('X-WP-Total'));
+
+        const newData = {
+          page: page,
+          data: this.refineData(newsData.body)
+        };
+
+        this.news.push(newData);
+        console.log(this.news);
+        this.contents = newData.data;
+        
       });
+    }else{
+      this.contents = (this.news.filter(d => d.page === this.p))[0].data;
     }
   }
 
@@ -69,8 +81,8 @@ export class NewsUpdatesComponent implements OnInit {
   }
 
   pageChanged(page: number) {
-    this.getNewsData('news', page);
     this.p = page;
+    this.getNewsData('news', page);
   }
 
 }

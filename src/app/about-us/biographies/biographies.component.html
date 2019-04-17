@@ -3,7 +3,7 @@
     <h4 class="title">{{ 'submenu.biographies' | translate }}</h4>
   </div>
   <div class="description" *ngIf="bios">
-    <div class="bio" *ngFor="let b of bios">
+    <div class="bio" *ngFor="let b of contents | paginate: { itemsPerPage: 5 , currentPage: p , totalItems: total }">
       <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="uni-logo">
@@ -21,6 +21,11 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="text-center">
+      <pagination-controls class="bios-pagination" (pageChange)="pageChanged($event)" autoHide="true" responsive="true"
+        maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
+        nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
     </div>
   </div>
 </div>

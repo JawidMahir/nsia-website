@@ -13,6 +13,7 @@ export class PressReleaseComponent implements OnInit {
   p = 1;
   total = 1;
   press = [];
+  contents = [];
   constructor(private mediaService: MediaServicesService,
     private sanitizer: DomSanitizer) { }
 
@@ -28,11 +29,23 @@ export class PressReleaseComponent implements OnInit {
     this.getPressData('press', this.p);
   }
   getPressData(type, page) {
-    if (this.press.length < this.total) {
+    if ((this.press.length < 1) || (this.press.filter(d => d.page === this.p)).length < 1) {
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((pressData) => {
-        this.press = this.press.concat(this.refineData(pressData.body));
-        this.total = parseInt(pressData.headers.get('X-WP-Total'));
+
+        this.total = Number(pressData.headers.get('X-WP-Total'));
+
+        const newData = {
+          page: page,
+          data: this.refineData(pressData.body)
+        };
+
+        this.press.push(newData);
+        console.log(this.press);
+        this.contents = newData.data;
+        
       });
+    }else{
+      this.contents = (this.press.filter(d => d.page === this.p))[0].data;
     }
   }
 
@@ -63,8 +76,8 @@ export class PressReleaseComponent implements OnInit {
   }
 
   pageChanged(page: number) {
-    this.getPressData('press', page);
     this.p = page;
+    this.getPressData('press', page);
   }
 
 }

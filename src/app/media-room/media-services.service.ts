@@ -14,7 +14,7 @@ export class MediaServicesService {
       observe: 'response',
       params: {
         'filter[category_name]': catName,
-        per_page: '4',
+        per_page: '5',
         page: page,
         lang: this.dataService.language,
         fields: customP.join(','),

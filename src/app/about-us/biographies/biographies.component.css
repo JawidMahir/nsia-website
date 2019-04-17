@@ -16,3 +16,7 @@
     color: gray;
     text-align: justify;
 }
+
+.bios-pagination /deep/ .ngx-pagination .current {
+  background: #01a79b;
+}
