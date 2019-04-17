@@ -10,11 +10,12 @@ export class ProcurementsComponent implements OnInit {
   p: number = 1;
   total = 1;
   tenders = [];
+  contents = [];
 
   constructor(private oppService: OppService) { }
 
   ngOnInit() {
-    this.getTenders(this.p);
+    this.getTenders(this.p); 
   }
 
   getBrief(ds) {
@@ -32,13 +33,22 @@ export class ProcurementsComponent implements OnInit {
     customParams.push('title.rendered');
     customParams.push('content.rendered');
     customParams.push('acf');
-    if (this.tenders.length < this.total) {
+    if ((this.tenders.length < 1) || (this.tenders.filter(d => d.page === this.p)).length < 1) {
       this.oppService.getTenders(customParams, page).subscribe((data) => {
-        if (data.body.length > 0) {
-          this.tenders = this.tenders.concat(this.refineData(data.body));
-          this.total = parseInt(data.headers.get('X-WP-Total'));
-        }
+        this.total = Number(data.headers.get('X-WP-Total'));
+
+        const newData = {
+          page: page,
+          data: this.refineData(data.body)
+        };
+
+        this.tenders.push(newData);
+        console.log(this.tenders);
+        this.contents = newData.data;
+        
       });
+    }else{
+      this.contents = (this.tenders.filter(d => d.page === this.p))[0].data;
     }
   }
 
@@ -52,7 +62,7 @@ export class ProcurementsComponent implements OnInit {
     return data;
   }
   pageChanged(page: number) {
-    this.getTenders(page);
     this.p = page;
+    this.getTenders(page);
   }
 }

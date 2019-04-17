@@ -6,11 +6,11 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  // api = 'http://172.16.222.114/nsia/wp-json/wp/v2/';
+  api = 'http://172.16.222.114/nsia/wp-json/wp/v2/';
   nodeapi = 'http://172.16.222.81:6001/api/';
 
   // For accessing the real server
- api = 'http://18.221.128.25/index.php/wp-json/wp/v2/';
+// api = 'http://18.221.128.25/index.php/wp-json/wp/v2/';
   // nodeapi = 'http://18.221.128.25:6001/api/';
   language = 'en';
   serviceType = 'stats';

@@ -9,52 +9,46 @@ export class OppService {
 
   constructor(private http: HttpClient, private dataService: DataService) { }
 
-  getTenders(customParams , page) {
-    return this.http.get<Array<any>>(this.dataService.api + 'posts', { 
+  fetchData(customParams, category , page) {
+    const header = {
+      'filter[category_name]': category,
+      per_page: '10',
+      page: page,
+      lang: this.dataService.language,
+      fields: customParams.join(',')
+    };
+    return this.http.get(this.dataService.api + 'posts', {
       observe: 'response',
-      params: {
-        'filter[category_name]': 'tender',
-        per_page: '2',
-        page: page,
+      params: header
+    });
+  }
+
+  fetchDetails(customParams, category , id) {
+    const header = {
+      'filter[category_name]': category,
+      'filter[p]': id,
         lang: this.dataService.language,
         fields: customParams.join(','),
-      }
+    };
+    return this.http.get(this.dataService.api + 'posts', {
+      params: header
     });
+  }
+
+  getTenders(customParams , page) {
+    return this.fetchData(customParams, 'tender',page);
   }
 
   getTenderDetails(customParams, id) {
-    return this.http.get<Array<any>>(this.dataService.api + 'posts', {
-      params: {
-        'filter[category_name]': 'tender',
-        'filter[p]': id,
-        lang: this.dataService.language,
-        fields: customParams.join(','),
-      }
-    });
-  }
+    return this.fetchDetails(customParams, 'tender', id);
+  } 
 
   getJobs(customParams , page) {
-    return this.http.get(this.dataService.api + 'posts', {
-      observe: 'response',
-      params: {
-        'filter[category_name]': 'job',
-        per_page: '2',
-        page: page,
-        lang: this.dataService.language,
-        fields: customParams.join(','),
-      }
-    });
+    return this.fetchData(customParams, 'job',page);
   }
 
   getJobDetails(customParams, id) {
-    return this.http.get(this.dataService.api + 'posts', {
-      params: {
-        'filter[category_name]': 'job',
-        'filter[p]': id,
-        lang: this.dataService.language,
-        fields: customParams.join(','),
-      }
-    });
+    return this.fetchDetails(customParams, 'job', id);
   }
 
   htmlToPlaintext(text) {

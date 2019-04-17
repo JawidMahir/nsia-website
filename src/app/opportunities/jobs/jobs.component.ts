@@ -9,7 +9,8 @@ import { OppService } from '../opp.service';
 export class JobsComponent implements OnInit {
   p: number = 1;
   total = 1;
-  jobs = [];
+  jobs = []; 
+  contents = [];
 
   constructor(private oppService: OppService) { }
 
@@ -24,18 +25,23 @@ export class JobsComponent implements OnInit {
     customParams.push('title.rendered');
     customParams.push('content.rendered');
     customParams.push('acf.closing_date');
-    if (this.jobs.length < this.total) {
+    if ((this.jobs.length < 1) || (this.jobs.filter(d => d.page === this.p)).length < 1) {
       this.oppService.getJobs(customParams, page).subscribe((data) => {
-        if (data) {
-          this.jobs = this.jobs.concat(this.refineData(data.body));
-          this.total = parseInt(data.headers.get('X-WP-Total'));
-          console.log('jobs data: ', this.jobs);
+        this.total = Number(data.headers.get('X-WP-Total'));
 
-        }
+        const newData = {
+          page: page,
+          data: this.refineData(data.body)
+        };
+
+        this.jobs.push(newData);
+        console.log(this.jobs);
+        this.contents = newData.data;
+        
       });
+    }else{
+      this.contents = (this.jobs.filter(d => d.page === this.p))[0].data;
     }
-    console.log('jobs data out of function: ', this.jobs);
-
   }
   getBrief(ds) {
     if (ds.length > 40) {
@@ -57,8 +63,8 @@ export class JobsComponent implements OnInit {
   }
 
   pageChanged(page: number) {
-    this.getJobs(page);
     this.p = page;
+    this.getJobs(page);
   }
 
 }
