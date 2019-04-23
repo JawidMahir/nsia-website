@@ -20,7 +20,7 @@ export class NewsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getNewsData('news', 5);
+    this.getNewsData('news', 4);
   }
 
   getNewsData(type, perPage) {
@@ -44,6 +44,7 @@ export class NewsComponent implements OnInit {
     }
     return data;
   }
+
   readMoreRedirect(el) {
     if (el.id === 'news-read-more') {
       console.log('before redirectNews: ', this.newsReadMore);

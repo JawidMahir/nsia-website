@@ -30,7 +30,7 @@ export class OppService {
         lang: this.dataService.language,
         fields: customParams.join(','),
     };
-    return this.http.get(this.dataService.api + 'posts', {
+    return this.http.get<Array<any>>(this.dataService.api + 'posts', {
       params: header
     });
   }

@@ -428,7 +428,8 @@
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
         <div class="row" *ngIf="newsBriefs.news != ''; else nonews">
-          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let nw of newsBriefs.news">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let nw of newsBriefs.news" data-toggle="tooltip" data-placement="top"
+          [title]="nw.title.rendered">
             <div class="news-item" [routerLink]="['/media-room/media', nw.id]">
               <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
@@ -451,7 +452,8 @@
       </div>
       <div class="tab-pane fade" id="nav-publications" role="tabpanel" aria-labelledby="nav-publications-tab">
         <div class="row" *ngIf="newsBriefs.publications != ''; else nopublications">
-          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pb of newsBriefs.publications">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pb of newsBriefs.publications" data-toggle="tooltip" data-placement="top"
+          [title]="pb.title.rendered">
             <div class="news-item" [routerLink]="['/media-room/media', pb.id]">
               <img src="{{ pb.better_featured_image.source_url }}" alt="{{ pb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
@@ -474,7 +476,8 @@
       </div>
       <div class="tab-pane fade" id="nav-press" role="tabpanel" aria-labelledby="nav-press-tab">
         <div class="row" *ngIf="newsBriefs.press != ''; else nopress">
-          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pr of newsBriefs.press">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pr of newsBriefs.press" data-toggle="tooltip" data-placement="top"
+          [title]="pr.title.rendered">
             <div class="news-item" [routerLink]="['/media-room/media', pr.id]">
               <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">

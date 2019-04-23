@@ -36,30 +36,30 @@ export class MediaRoomHomeComponent implements OnInit {
     customParams.push('acf.promotional_materials_attachment.url');
     customParams.push('acf.promotional_materials_type');
     this.mediaService.getPromotingData(customParams, type).subscribe((promotingMaterialData) => {
-     for (let key in promotingMaterialData) {
-        switch(promotingMaterialData[key].acf.promotional_materials_type) { 
-          case 'booklet': { 
+      for (let key in promotingMaterialData) {
+        switch (promotingMaterialData[key].acf.promotional_materials_type) {
+          case 'booklet': {
             this.booklets.push(promotingMaterialData[key]);
-            break; 
-          } 
-          case 'flyer': { 
-            this.flyers.push(promotingMaterialData[key]) ;
-            break; 
-          } 
-          case 'poster': { 
+            break;
+          }
+          case 'flyer': {
+            this.flyers.push(promotingMaterialData[key]);
+            break;
+          }
+          case 'poster': {
             this.posters.push(promotingMaterialData[key]);
-            break; 
-          } 
-          case 'brochure': { 
+            break;
+          }
+          case 'brochure': {
             this.brochures.push(promotingMaterialData[key]);
-            break; 
-          } 
-          case 'org_proﬁle': { 
+            break;
+          }
+          case 'org_proﬁle': {
             this.orgs.push(promotingMaterialData[key]);
-            break; 
-          }       
-        } 
-     }
+            break;
+          }
+        }
+      }
 
     });
 
