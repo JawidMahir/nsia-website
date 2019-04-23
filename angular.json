@@ -83,9 +83,9 @@
               "src/styles.css"
             ],
             "scripts": [
-              "../node_modules/jquery/dist/jquery.min.js",
-              "../node_modules/popper.js/dist/umd/popper.min.js",
-              "../node_modules/bootstrap/dist/js/bootstrap.js"
+              "~jquery/dist/jquery.min.js",
+              "~popper.js/dist/umd/popper.min.js",
+              "~bootstrap/dist/js/bootstrap.js"
             ],
             "assets": [
               "src/favicon.ico",
