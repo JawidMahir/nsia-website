@@ -10,8 +10,8 @@ export class DataService {
   nodeapi = 'http://172.16.222.81:6001/api/';
 
   // For accessing the real server
-  api = 'http://18.216.9.13:8080/index.php/wp-json/wp/v2/';
-  // nodeapi = 'http://18.221.128.25:6001/api/';
+  api = 'http://nsia.gov.af:8080/index.php/wp-json/wp/v2/';
+  // nodeapi = 'http://www.nsia.gov.af:6001/api/';
   language = 'en';
   serviceType = 'stats';
   redirectPath = 'home';
