@@ -30,7 +30,18 @@
     {
       "name": "nsia-carousel",
       "urls": [
-        "http://nsia.gov.af:8080/index.php/wp-json/wp/v2/**"
+        "https://nsia.gov.af:8080/index.php/wp-json/wp/v2/posts?filter[category_name]=Slider"
+      ],
+      "cacheConfig": {
+        "maxSize": 20,
+        "maxAge": "6h",
+        "timeout": "10s",
+        "strategy": "performance"
+      }
+    }, {
+      "name": "nsia-data",
+      "urls": [
+        "https://nsia.gov.af:8080/index.php/wp-json/wp/v2/**"
       ],
       "cacheConfig": {
         "maxSize": 100,
