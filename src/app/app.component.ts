@@ -71,12 +71,12 @@ export class AppComponent implements OnInit {
       }
     });
 
-    // if (location.pathname === '/') {
-    //   this.router.navigate(['choose-lang']);
-    // } else {
-    //   this.checkDefaultLanguage();
-    // }
-    this.checkDefaultLanguage();
+    if (location.pathname === '/') {
+      this.router.navigate(['choose-lang']);
+    } else {
+      this.checkDefaultLanguage();
+    }
+    // this.checkDefaultLanguage();
   }
 
 
