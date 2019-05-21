@@ -24,6 +24,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ChooseLangComponent } from './choose-lang/choose-lang.component';
 import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -60,7 +62,8 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient],
       }
     }),
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
   ],
   providers: [],

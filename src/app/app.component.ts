@@ -36,19 +36,52 @@ import { DataService } from './data.service';
 })
 export class AppComponent implements OnInit {
 
+  title = 'NSIA';
+  currentPath;
+  chooseLang = true;
   constructor(private router: Router, private dataService: DataService, private translateService: TranslateService) { }
 
   ngOnInit() {
 
-    if (location.pathname === '/') {
-      this.router.navigate(['choose-lang']);
-    } else {
-      this.checkDefaultLanguage();
-    }
+    const that = this;
+    console.log('App Component');
+
+    // tslint:disable-next-line: space-before-function-paren
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 100) {
+        $('#scroll').fadeIn();
+      } else {
+        $('#scroll').fadeOut();
+      }
+    });
+    $('#scroll').click(() => {
+      $('html, body').animate({ scrollTop: 0 }, 600);
+      return false;
+    });
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        that.createNavigationBreadPath();
+        console.log('Navigation ended: ', location.pathname);
+        if (location.pathname === '/choose-lang') {
+          that.chooseLang = true;
+        } else {
+          that.chooseLang = false;
+        }
+      }
+    });
+
+    // if (location.pathname === '/') {
+    //   this.router.navigate(['choose-lang']);
+    // } else {
+    //   this.checkDefaultLanguage();
+    // }
+    this.checkDefaultLanguage();
   }
 
 
   checkDefaultLanguage() {
+    console.log('detect language called');
     const lang = localStorage.getItem('lang');
     if (lang) {
       this.dataService.language = lang;
@@ -56,10 +89,28 @@ export class AppComponent implements OnInit {
       if (lang !== 'en') {
         $('body').toggleClass('rtl');
       }
+      this.chooseLang = false;
+      this.router.navigate([this.dataService.redirectPath]);
     } else {
       this.dataService.redirectPath = location.pathname;
+      this.chooseLang = true;
       this.router.navigate(['choose-lang']);
     }
   }
+
+  createNavigationBreadPath() {
+    this.currentPath = this.router.url.toString().split('/');
+
+    if (this.currentPath.includes('home')) {
+      this.currentPath = [];
+    }
+  }
+
+  getPage(outlet) {
+    // tslint:disable-next-line: no-string-literal
+
+    return outlet.activatedRouteData.state;
+  }
+
 
 }
