@@ -54,7 +54,8 @@ export class AppComponent implements OnInit {
         $('#scroll').fadeOut();
       }
     });
-    $('#scroll').click(() => {
+
+    $(document).on('click', '#scroll', () => {
       $('html, body').animate({ scrollTop: 0 }, 600);
       return false;
     });
@@ -90,7 +91,7 @@ export class AppComponent implements OnInit {
         $('body').toggleClass('rtl');
       }
       this.chooseLang = false;
-      this.router.navigate([this.dataService.redirectPath]);
+      this.router.navigate([location.pathname]);
     } else {
       this.dataService.redirectPath = location.pathname;
       this.chooseLang = true;

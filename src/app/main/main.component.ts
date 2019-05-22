@@ -52,24 +52,24 @@ export class MainComponent implements OnInit {
 
 
     // tslint:disable-next-line: space-before-function-paren
-    $(window).scroll(function () {
-      if ($(this).scrollTop() > 100) {
-        $('#scroll').fadeIn();
-      } else {
-        $('#scroll').fadeOut();
-      }
-    });
-    $('#scroll').click(() => {
-      $('html, body').animate({ scrollTop: 0 }, 600);
-      return false;
-    });
+    // $(window).scroll(function () {
+    //   if ($(this).scrollTop() > 100) {
+    //     $('#scroll').fadeIn();
+    //   } else {
+    //     $('#scroll').fadeOut();
+    //   }
+    // });
+    // $('#scroll').click(() => {
+    //   $('html, body').animate({ scrollTop: 0 }, 600);
+    //   return false;
+    // });
 
 
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        that.createNavigationBreadPath();
-      }
-    });
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     that.createNavigationBreadPath();
+    //   }
+    // });
   }
   createNavigationBreadPath() {
     this.currentPath = this.router.url.toString().split('/');

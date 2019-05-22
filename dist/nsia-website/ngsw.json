@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1558438177876,
+  "timestamp": 1558509498196,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -12,21 +12,22 @@
         "/11.98d7452e69cd16ea5643.js",
         "/12.f94e22997986422cb1b9.js",
         "/2.a39b21687c0d9e5685da.js",
-        "/7.f57cc32b6b7ebefe9bee.js",
+        "/7.9ef122e5939e45505380.js",
         "/8.b7e1a7a5c57e1c525172.js",
         "/9.06921e2a1ce159a01448.js",
         "/common.a96ef36f1613eb03def7.js",
         "/es2015-polyfills.bd6be3eb0201a0eb3cd5.js",
         "/favicon.ico",
         "/index.html",
-        "/main.ad5b73ca9257aa942e03.js",
+        "/main.10856113cda8fde45bbe.js",
         "/polyfills.17553ece6b276269b192.js",
-        "/runtime.c54c316e030924169872.js",
-        "/styles.9a5d348e8007f1806df2.css"
+        "/runtime.93347cfe311a11676b3a.js",
+        "/styles.d17eefb7a7e95a9599bd.css"
       ],
       "patterns": [
         "https:\\/\\/fonts\\.googleapis\\.com\\/css\\?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i",
-        "https:\\/\\/fonts\\.gstatic\\.com\\/.*"
+        "https:\\/\\/fonts\\.gstatic\\.com\\/.*",
+        "https:\\/\\/use\\.fontawesome\\.com\\/releases\\/v5\\.7\\.2\\/css\\/all\\.css"
       ]
     },
     {
@@ -134,7 +135,7 @@
     "/11.98d7452e69cd16ea5643.js": "f5318f2f4a0101d9a55469226840b5ddeda6034d",
     "/12.f94e22997986422cb1b9.js": "26e3db9fb90a697e51892977d20db258525740af",
     "/2.a39b21687c0d9e5685da.js": "d0425c60db47dd03fa6fc1bbd59d2e1352095831",
-    "/7.f57cc32b6b7ebefe9bee.js": "19a0e2eba457adc89568010513b63571ee538a71",
+    "/7.9ef122e5939e45505380.js": "bdb54e8a8e717db21d768c9cfaa7a0880001aecf",
     "/8.b7e1a7a5c57e1c525172.js": "3be53a4b041f898da6e1f4f52d1e51aaa46ad3a4",
     "/9.06921e2a1ce159a01448.js": "dc9a67014f84a94aa712e5e86683d180785826c8",
     "/Bahij_Helvetica_Neue-Light_1.95793cb75f0484cb76e5.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
@@ -206,12 +207,12 @@
     "/common.a96ef36f1613eb03def7.js": "ffb21645dd6fc4471593d7221611db73eb77d5c4",
     "/es2015-polyfills.bd6be3eb0201a0eb3cd5.js": "ae5de745e91085e87c4a8713a94622ffa2d4cfdc",
     "/favicon.ico": "7d6b5711e54dc63710fb7b9d8baf57d6d0f35ca5",
-    "/index.html": "cc0366d034bf82d855ea74c12ac87d1011f2c7ff",
+    "/index.html": "353930b660320ac0d7f222372d3824174c819f4b",
     "/lang.12bea4b8e78669397d5a.jpg": "2bb38ca87cabe4e5532b3f89042e9b8c06bd221f",
-    "/main.ad5b73ca9257aa942e03.js": "05187b6217a18275a53980ea7e61204ec3d53ebb",
+    "/main.10856113cda8fde45bbe.js": "941cda3177d525945ae12f38816bcc624a8c0652",
     "/polyfills.17553ece6b276269b192.js": "b3d0c60c2dce03f9d3a54695f94a85b2e6343d29",
-    "/runtime.c54c316e030924169872.js": "fde62caaa0652233fb54adc8cab454e3129dca45",
-    "/styles.9a5d348e8007f1806df2.css": "5ce2e072dd11792511d2285960c1125286b47fc5"
+    "/runtime.93347cfe311a11676b3a.js": "784109458aa20b609980f62085602e610202213c",
+    "/styles.d17eefb7a7e95a9599bd.css": "08ac3d8a0454d4aa8401bca9bab5dc33c8b94713"
   },
   "navigationUrls": [
     {
