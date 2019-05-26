@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1558865847399,
+  "timestamp": 1558868268476,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -12,16 +12,16 @@
         "/11.e0de8adabed090218130.js",
         "/12.f94e22997986422cb1b9.js",
         "/2.a39b21687c0d9e5685da.js",
-        "/7.3e3b3e1a7569de05d616.js",
+        "/7.4f82064620b7bdba5b71.js",
         "/8.b7e1a7a5c57e1c525172.js",
-        "/9.bdd62f27a55733ee6659.js",
+        "/9.24bd85099e4491a2e473.js",
         "/common.6db71e3595e8c71a13a2.js",
         "/es2015-polyfills.bd6be3eb0201a0eb3cd5.js",
         "/favicon.ico",
         "/index.html",
         "/main.82cd1b2353def04a59ff.js",
         "/polyfills.17553ece6b276269b192.js",
-        "/runtime.4d0f8424be4c25e226c4.js",
+        "/runtime.57962867d3ec4af791ad.js",
         "/styles.d17eefb7a7e95a9599bd.css"
       ],
       "patterns": [
@@ -115,7 +115,7 @@
       "strategy": "performance",
       "maxSize": 20,
       "maxAge": 21600000,
-      "timeoutMs": 10000,
+      "timeoutMs": 5000,
       "version": 1
     },
     {
@@ -126,7 +126,7 @@
       "strategy": "freshness",
       "maxSize": 100,
       "maxAge": 21600000,
-      "timeoutMs": 10000,
+      "timeoutMs": 5000,
       "version": 1
     }
   ],
@@ -135,17 +135,17 @@
     "/11.e0de8adabed090218130.js": "89619e133a1e8170082e8854aeb6462e7c9ab298",
     "/12.f94e22997986422cb1b9.js": "26e3db9fb90a697e51892977d20db258525740af",
     "/2.a39b21687c0d9e5685da.js": "d0425c60db47dd03fa6fc1bbd59d2e1352095831",
-    "/7.3e3b3e1a7569de05d616.js": "ca8983fe0da43d660ba06bfaa85e42dca31dbedb",
+    "/7.4f82064620b7bdba5b71.js": "77e8fd45b1eb88437a7e4d2b5edca24f3c7c7dc7",
     "/8.b7e1a7a5c57e1c525172.js": "3be53a4b041f898da6e1f4f52d1e51aaa46ad3a4",
-    "/9.bdd62f27a55733ee6659.js": "727a81351f4e012d05de62948166aceaae00b88c",
+    "/9.24bd85099e4491a2e473.js": "fa245babc1f235abf58460ec37886c6760cf9ef6",
     "/Bahij_Helvetica_Neue-Light_1.95793cb75f0484cb76e5.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
     "/assets/css/rtl.css": "bac82c1b221517b0ffd07b6d880bb2dadf0393d3",
     "/assets/fonts/Bahij_Helvetica_Neue-Light_1.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
     "/assets/fonts/bahij_helvetica_neue_bold_by_bahijvirtualacademy-dammcmt_0.ttf": "904492cf3930671a0d367348ab178597ebbffa66",
     "/assets/fonts/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.ttf": "9f0e7efd26f73d0db26ea54a2fe87f4b0430f314",
     "/assets/i18n/en.json": "fcbfa227c3208006ef353d4887a22ca6536befd2",
-    "/assets/i18n/fa.json": "eb7b6c539259b506023777a6f6d0bebb2a8820f0",
-    "/assets/i18n/ps.json": "010f1144113af40b3c37ec989f84f87aa9dd417c",
+    "/assets/i18n/fa.json": "b355335d57787dedf86af6d8b1d06888b7d453fa",
+    "/assets/i18n/ps.json": "614e08a08a73a94719643daf0f98805b35de7709",
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -207,11 +207,11 @@
     "/common.6db71e3595e8c71a13a2.js": "f06ac81fb42bddefef825b5c204a1b3b69e9a717",
     "/es2015-polyfills.bd6be3eb0201a0eb3cd5.js": "ae5de745e91085e87c4a8713a94622ffa2d4cfdc",
     "/favicon.ico": "7d6b5711e54dc63710fb7b9d8baf57d6d0f35ca5",
-    "/index.html": "39329610106a2d3841cbcf1bed606096ea2f4345",
+    "/index.html": "33099f011c52d0893a7d51e99b32e4e8c9fb18fb",
     "/lang.12bea4b8e78669397d5a.jpg": "2bb38ca87cabe4e5532b3f89042e9b8c06bd221f",
     "/main.82cd1b2353def04a59ff.js": "7d30abefa0871934963243c36ce9ab18b5e044fb",
     "/polyfills.17553ece6b276269b192.js": "b3d0c60c2dce03f9d3a54695f94a85b2e6343d29",
-    "/runtime.4d0f8424be4c25e226c4.js": "d48d4d10aa05fbe467ecf9fe895652c8b3e7f56c",
+    "/runtime.57962867d3ec4af791ad.js": "53b139ea06913f15d9d7070f76dcbad1f2572faa",
     "/styles.d17eefb7a7e95a9599bd.css": "08ac3d8a0454d4aa8401bca9bab5dc33c8b94713"
   },
   "navigationUrls": [
