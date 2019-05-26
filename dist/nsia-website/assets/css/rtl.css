@@ -1,0 +1,177 @@
+/*
+* RTL CSS 
+*/
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Remake the direction of arrows */
+.rtl .fa-chevron-right::before {
+  content: "\f053"
+}
+
+.rtl .fa-chevron-left::before {
+  content: "\f054"
+}
+
+.rtl .header .contact-details .c-item {
+  float: left !important;
+}
+
+.rtl .responsive-navbar .tls {
+  float: left !important;
+}
+
+
+.rtl .bg-gradient {
+  background: linear-gradient(to left, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%) !important;
+}
+
+.rtl .service-card .service-title {
+  padding-right: 0px !important;
+  padding-left: 20% !important;
+}
+
+/* .rtl .carousel img, */
+.rtl .stat-card img {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.rtl .gov-logo,
+.rtl .nsia-logo {
+  float: right !important;
+}
+
+.rtl .logos .gov-logo {
+  margin-left: 3%;
+}
+
+.rtl .header-details,
+.rtl .tools-wrapper,
+/* This is service' pages content */
+.rtl .main-wrapper .contents,
+.rtl .sidebar-nav .menu-item .fa-chevron-down {
+  float: left !important;
+}
+
+.rtl .contact-details .c-item {
+  direction: ltr;
+}
+
+.rtl #navbar a {
+  float: right !important;
+}
+
+.rtl .c-item {
+  margin-left: 0px !important;
+  margin-right: 30px !important;
+}
+
+.rtl .change-language i {
+  right: 40px !important;
+}
+
+.rtl .navbar-nav {
+  padding-right: 0px;
+}
+
+.rtl .navbar-nav .dropdown-menu {
+  right: 0px;
+  width: fit-content;
+}
+
+.rtl .dropdown-item {
+  text-align: right !important;
+}
+
+.rtl .t-icon>div {
+  float: left !important;
+}
+
+.rtl .quick-links i {
+  margin-right: 0px !important;
+  margin-left: 2% !important;
+}
+
+.rtl .footer .social-media>div {
+  float: left !important;
+}
+
+.rtl .footer .copy-right span {
+  float: right !important;
+}
+
+/*
+* NEWS Related RTL CSS
+*/
+.rtl .globalsidebar {
+  border-left: none !important;
+  border-right: 1px solid #282560 !important;
+}
+
+.rtl .attachment-type {
+  right: 0;
+  margin-right: 15px;
+}
+
+
+/*
+  * Service page RTL
+*/
+
+@media only screen and (max-width: 900px) {
+
+  .rtl .sidebar-toggler {
+    display: block;
+    right: 12px;
+    left: inherit !important;
+  }
+}
+
+
+.rtl .sidebar-nav {
+  border-right: none !important;
+  border-left: 1px solid #282560;
+}
+
+.rtl .sidebar .menu-item .m-item-c .fa-chevron-right {
+  margin-right: 0px !important;
+  margin-left: 4px !important;
+}
+
+.rtl .sidebar-nav .sidebar .menu-item span {
+  margin-left: 0px;
+}
+
+.rtl .sidebar .menu-item .sub-menu .sub-menu-item {
+  margin-left: 0px !important;
+  margin-right: 1rem !important;
+}
+
+.rtl .active-item .fa-chevron-left {
+  display: none !important;
+}
+
+.rtl .active-item .fa-chevron-down {
+  display: inline-block !important;
+
+}
+
+.rtl .active-sub-menu p {
+  border-left: none !important;
+  border-right: 4px solid #01a79b;
+  padding-left: 0px;
+  padding-right: 8px;
+  font-weight: 600 !important;
+  color: #282560;
+}
+
+
+/*
+*   TENDERS related RTL CSS
+*/
+.rtl .tender .tender-details span {
+  float: right;
+}
