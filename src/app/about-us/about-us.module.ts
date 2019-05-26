@@ -17,6 +17,7 @@ import { GenderComponent } from './gender/gender.component';
 import { StructureComponent } from './structure/structure.component';
 import { BiographiesComponent } from './biographies/biographies.component';
 import { BioComponent } from './bio/bio.component';
+import { PoliciesComponent } from './policies/policies.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -30,6 +31,7 @@ export function createTranslateLoader(http: HttpClient) {
     StructureComponent,
     BiographiesComponent,
     BioComponent,
+    PoliciesComponent,
   ],
   imports: [
     CommonModule,

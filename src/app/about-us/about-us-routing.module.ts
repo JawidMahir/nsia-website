@@ -7,6 +7,7 @@ import { GenderComponent } from './gender/gender.component';
 import { StructureComponent } from './structure/structure.component';
 import { BiographiesComponent } from './biographies/biographies.component';
 import { BioComponent } from './bio/bio.component';
+import { PoliciesComponent } from './policies/policies.component';
 
 
 const aboutRoutes: Routes = [
@@ -21,6 +22,7 @@ const aboutRoutes: Routes = [
           { path: 'activity-achievments', component: GenderComponent },
           { path: 'structure', component: StructureComponent },
           { path: 'biographies', component: BiographiesComponent },
+          { path: 'policies', component: PoliciesComponent },
           { path: 'bio/:id', component: BioComponent },
           { path: '', component: AboutNsiaComponent}
         ]

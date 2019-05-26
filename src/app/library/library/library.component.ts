@@ -57,7 +57,7 @@ export class LibraryComponent implements OnInit {
       }
     } else {
       element = document.getElementById('books') as HTMLElement;
-      //console.log('not there');
+      // console.log('not there');
     }
     this.customParams.push('title.rendered');
     this.customParams.push('date');
@@ -82,12 +82,12 @@ export class LibraryComponent implements OnInit {
   getData(customParams, page) {
     if ((this.libraryContents[this.id].length < 1) || (this.libraryContents[this.id].filter(d => d.page === this.p)).length < 1) {
       this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => {
-        //console.log('full response: ', libraryData);
+        // console.log('full response: ', libraryData);
         this.totalPosts[this.id] = Number(libraryData.headers.get('X-WP-Total'));
         this.total = this.totalPosts[this.id];
-        //console.log('total posts: ', this.total);
+        // console.log('total posts: ', this.total);
         const cb = this.getAttachments(libraryData.body);
-        //console.log('library contents: ', cb);
+        // console.log('library contents: ', cb);
         // adding new data object
         const newData = {
           page: this.p,
@@ -95,22 +95,22 @@ export class LibraryComponent implements OnInit {
         };
         // this.libraryContents[this.id] = this.libraryContents[this.id].concat(this.refineData(cb));
         this.libraryContents[this.id].push(newData);
-        //console.log('Data : ', (this.libraryContents[this.id].filter(d => d.page === this.p))[0].data);
-        //console.log('Library all contents: ', this.libraryContents);
+        // console.log('Data : ', (this.libraryContents[this.id].filter(d => d.page === this.p))[0].data);
+        // console.log('Library all contents: ', this.libraryContents);
         // const begin = ((page - 1) * this.pageLimit);
         // const end = begin + this.pageLimit;
         // this.contents = this.libraryContents[this.id].slice(begin, end);
         this.contents = newData.data;
       }));
     } else {
-      //console.log('local');
+      // console.log('local');
       // const begin = ((page - 1) * this.pageLimit);
       // const end = begin + this.pageLimit;
       // this.contents = this.libraryContents[this.id].slice(begin, end);
       this.total = this.totalPosts[this.id];
       this.contents = (this.libraryContents[this.id].filter(d => d.page === this.p))[0].data;
-     // console.log('Library all contents: ', this.libraryContents);
-     // console.log('Current page contents: ', this.contents);
+      // console.log('Library all contents: ', this.libraryContents);
+      // console.log('Current page contents: ', this.contents);
 
     }
 
@@ -126,7 +126,7 @@ export class LibraryComponent implements OnInit {
         tempLinksArray = ps.content.rendered.match(pattern);
         if (tempLinksArray) {
           tempLinksArray[0] = tempLinksArray[0].replace(new RegExp('"', 'g'), '');
-         // console.log('pattern result: ', tempLinksArray[0]);
+          // console.log('pattern result: ', tempLinksArray[0]);
           ps.attachment = tempLinksArray[0];
         }
       }
@@ -138,7 +138,7 @@ export class LibraryComponent implements OnInit {
   imageError(el) {
     el.onerror = '';
     el.src = '../../assets/images/noimage.svg';
-    //console.log(el);
+    // console.log(el);
     return true;
   }
 
@@ -161,7 +161,7 @@ export class LibraryComponent implements OnInit {
     this.contents = [];
     this.p = page;
     this.getData(this.customParams, page);
-    //console.log('current page: ', this.p);
+    // console.log('current page: ', this.p);
   }
 
 }
