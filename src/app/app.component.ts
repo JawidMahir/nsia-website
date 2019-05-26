@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
     const that = this;
-    console.log('App Component');
+    //console.log('App Component');
 
     // tslint:disable-next-line: space-before-function-paren
     $(window).scroll(function () {
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         that.createNavigationBreadPath();
-        console.log('Navigation ended: ', location.pathname);
+       // console.log('Navigation ended: ', location.pathname);
         if (location.pathname === '/choose-lang') {
           that.chooseLang = true;
         } else {
@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
 
 
   checkDefaultLanguage() {
-    console.log('detect language called');
+    //console.log('detect language called');
     const lang = localStorage.getItem('lang');
     if (lang) {
       this.dataService.language = lang;

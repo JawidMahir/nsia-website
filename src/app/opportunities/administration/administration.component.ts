@@ -25,7 +25,7 @@ export class AdministrationComponent implements OnInit {
     customParams.push('acf');
 
     this.oppService.getJobDetails(customParams, id).subscribe((data) => {
-      console.log('Jobs details: ', data);
+     // console.log('Jobs details: ', data);
       if (data) {
         this.job = data[0];
 

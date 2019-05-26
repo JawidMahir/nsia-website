@@ -40,7 +40,7 @@ export class PressReleaseComponent implements OnInit {
         };
 
         this.press.push(newData);
-        console.log(this.press);
+       // console.log(this.press);
         this.contents = newData.data;
         
       });
@@ -71,7 +71,7 @@ export class PressReleaseComponent implements OnInit {
   imageError(el) {
     el.onerror = '';
     el.src = '../../assets/images/noimage.png';
-    console.log(el);
+    //console.log(el);
     return true;
   }
 

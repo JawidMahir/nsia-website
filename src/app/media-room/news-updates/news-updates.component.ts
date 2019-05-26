@@ -43,7 +43,7 @@ export class NewsUpdatesComponent implements OnInit {
         };
 
         this.news.push(newData);
-        console.log(this.news);
+       // console.log(this.news);
         this.contents = newData.data;
         
       });
@@ -76,7 +76,7 @@ export class NewsUpdatesComponent implements OnInit {
   imageError(el) {
     el.onerror = '';
     el.src = '../../assets/images/noimage.svg';
-    console.log(el);
+    //console.log(el);
     return true;
   }
 

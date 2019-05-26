@@ -47,7 +47,7 @@ export class NewsComponent implements OnInit {
 
   readMoreRedirect(el) {
     if (el.id === 'news-read-more') {
-      console.log('before redirectNews: ', this.newsReadMore);
+      //console.log('before redirectNews: ', this.newsReadMore);
       this.router.navigate([this.newsReadMore]);
     }
   }

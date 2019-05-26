@@ -149,9 +149,8 @@
     "btn.books": "books",
     "btn.surveys": "surveys",
     "btn.reports": "reports",
-    "btn.magazines": "magazines",
-    "btn.policies": "policies",
-    "btn.articles": "Articles"
+    "btn.monthly": "monthly",
+    "btn.quarterly": "quarterly"
 
     
 }

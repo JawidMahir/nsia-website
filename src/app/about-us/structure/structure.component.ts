@@ -21,7 +21,7 @@ export class StructureComponent implements OnInit {
     customParams.push('content');
     customParams.push('better_featured_image.source_url');
     this.aboutUs.getNsiaStructure(customParams).subscribe((data) => {
-      console.log('biodata: ', data);
+      //console.log('biodata: ', data);
       if (data) {
         this.structure = data[0];
         // if (this.structure) {

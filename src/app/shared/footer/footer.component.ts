@@ -21,7 +21,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() { }
 
   subscribe(email) {
-    console.log('user email: ', email);
+   // console.log('user email: ', email);
     const user = {
       email,
       username: email,
@@ -37,7 +37,7 @@ export class FooterComponent implements OnInit {
       }
     }, (error) => {
       // tslint:disable-next-line: no-string-literal
-      console.log('Error: ', error['status']);
+     // console.log('Error: ', error['status']);
       // tslint:disable-next-line: no-string-literal
       if (error['status'] === 400) {
         swal('Opps', 'Email address already exist', 'warning');
