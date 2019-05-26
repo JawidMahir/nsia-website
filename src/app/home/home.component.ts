@@ -186,7 +186,7 @@ export class HomeComponent implements OnInit {
     this.businessMainData.stakeholders = arrangeDataOf(this.businessMainData.stakeholders);
     this.businessMainData.customers = arrangeDataOf(this.businessMainData.customers);
 
-    console.log('After refinment the data is: ', this.businessMainData);
+    //console.log('After refinment the data is: ', this.businessMainData);
 
   }
 
@@ -213,7 +213,7 @@ export class HomeComponent implements OnInit {
     if (this.newsBriefs[type] === '') {
 
       this.dataService.getCardsData(customParams, type, perPage).subscribe((cardsData) => {
-        console.log('news data: ', cardsData);
+        //console.log('news data: ', cardsData);
 
         this.generateCards(type, cardsData);
       });
@@ -319,19 +319,19 @@ export class HomeComponent implements OnInit {
   imageError(el) {
     el.onerror = '';
     el.src = '../../assets/images/noimage.png';
-    console.log(el);
+    //console.log(el);
     return true;
   }
 
   readMoreRedirect(el) {
     if ($(el).hasClass('news-read-more')) {
-      console.log('before redirectNews: ', this.newsReadMore);
+      //console.log('before redirectNews: ', this.newsReadMore);
       this.router.navigate([this.newsReadMore]);
     } else {
       if (this.eventsReadMore.split('/').includes('library')) {
         localStorage.setItem('library-type', 'surveys');
       }
-      console.log('before redirectEvents: ', this.eventsReadMore);
+      //console.log('before redirectEvents: ', this.eventsReadMore);
       this.router.navigate([this.eventsReadMore]);
     }
 
@@ -383,7 +383,7 @@ export class HomeComponent implements OnInit {
 
 
     this.dataService.getCarouselSlides(customParams, 'Slider').subscribe((data) => {
-      console.log('Carousel Data(Before): ', data);
+      //console.log('Carousel Data(Before): ', data);
       data.sort(that.orderResultAscending);
       this.prepareCarouselSlides(data);
     });
@@ -430,7 +430,7 @@ export class HomeComponent implements OnInit {
     customParams.push('acf');
     customParams.push('better_featured_image.source_url');
     this.dataService.getBusinessData(customParams).subscribe((data) => {
-      console.log('business data: ', data);
+      //console.log('business data: ', data);
       if (data) {
         this.categorizeBusinessData(data);
       }
@@ -483,11 +483,11 @@ export class HomeComponent implements OnInit {
           }
         }
 
-        console.log('stats data', data);
+        //console.log('stats data', data);
       }
 
     }, (error) => {
-      console.log('Data error: ', error);
+      //console.log('Data error: ', error);
 
     });
   }

@@ -35,7 +35,7 @@ export class JobsComponent implements OnInit {
         };
 
         this.jobs.push(newData);
-        console.log(this.jobs);
+        //console.log(this.jobs);
         this.contents = newData.data;
         
       });

@@ -29,11 +29,11 @@ export class ContactUsComponent implements OnInit {
   onSubmit() {
     this.dataService.addContactData(this.contactForm.value).subscribe((contactData) => {
       swal('Submit', 'You send successfully your feedback', 'success');
-      console.log('data: ', contactData);
+     // console.log('data: ', contactData);
       this.contactForm.reset();
     }, (error) => {
       // tslint:disable-next-line: no-string-literal
-      console.log('Error: ', error['status']);
+     // console.log('Error: ', error['status']);
       // tslint:disable-next-line: no-string-literal
       if (error['status'] === 400) {
         swal('Opps', 'Form data does not completed!', 'warning');

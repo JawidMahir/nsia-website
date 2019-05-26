@@ -34,7 +34,7 @@ export class MediaGeneralTemplateComponent implements OnInit {
     customParams.push('date');
     this.dataService.getPostDetails(id, customParams).subscribe((newsData) => {
       this.news = this.refineData(newsData[0]);
-      console.log(this.news);
+      //console.log(this.news);
     });
   }
 
@@ -53,7 +53,7 @@ export class MediaGeneralTemplateComponent implements OnInit {
   imageError(el) {
     el.onerror = '';
     el.src = '../../assets/images/noimage.png';
-    console.log(el);
+    //console.log(el);
     return true;
   }
   videoURL(url) {

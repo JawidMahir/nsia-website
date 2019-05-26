@@ -24,7 +24,7 @@ export class BiographiesComponent implements OnInit {
     customParams.push('better_featured_image.source_url');
     if ((this.bios.length < 1) || (this.bios.filter(d => d.page === this.p)).length < 1) {
       this.aboutUs.getBios(customParams,page).subscribe((biosData) => {
-        console.log(biosData.body);
+        //console.log(biosData.body);
         
         this.total = Number(biosData.headers.get('X-WP-Total'));
 
@@ -34,7 +34,7 @@ export class BiographiesComponent implements OnInit {
         };
 
         this.bios.push(newData);
-        console.log(this.bios);
+        //console.log(this.bios);
         this.contents = newData.data;
         
       });
@@ -51,7 +51,7 @@ export class BiographiesComponent implements OnInit {
   imageError(el) {
     el.onerror = '';
     el.src = '../../../assets/images/noimage.svg';
-    console.log(el);
+    //console.log(el);
     return true;
   }
   pageChanged(page: number) {

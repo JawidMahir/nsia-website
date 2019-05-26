@@ -21,7 +21,7 @@ export class GenderComponent implements OnInit {
     customParams.push('title');
     customParams.push('content');
     this.aboutUs.getGenderDetails(customParams).subscribe((data) => {
-      console.log('biodata: ', data);
+      //console.log('biodata: ', data);
       if (data) {
         this.gender = data[0];
         // if (this.gender) {

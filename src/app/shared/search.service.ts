@@ -47,9 +47,9 @@ export class SearchService {
   }
 
   getRelatedDepartmentId(sType, tag, customParams) {
-    console.log('Data variables');
-    console.log('service type: ', sType);
-    console.log('tag: ', tag);
+    //console.log('Data variables');
+   // console.log('service type: ', sType);
+   // console.log('tag: ', tag);
 
     return this.http.get<Array<any>>(this.dataService.api + 'posts', {
       params: {

@@ -45,18 +45,18 @@ export class AboutHomeComponent implements OnInit {
   }
 
   toggleNews() {
-    console.log('current route: ', this.currentRoute);
+    //console.log('current route: ', this.currentRoute);
     const url = this.currentRoute.split('/');
-    console.log('url length: ', url.length);
-    console.log('url: ', url);
+   // console.log('url length: ', url.length);
+   // console.log('url: ', url);
     if (url.length === 2 && url.includes('about-us')) {
-      console.log('sure things');
+     // console.log('sure things');
       this.showNews = false;
     } else if (url.length > 2 && url.includes('about-nsia')) {
-      console.log('sure things');
+      //console.log('sure things');
       this.showNews = false;
     } else {
-      console.log('not so sure');
+      //console.log('not so sure');
 
       this.showNews = true;
     }

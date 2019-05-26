@@ -43,7 +43,7 @@ export class EventsComponent implements OnInit {
         };
 
         this.events.push(newData);
-        console.log(this.events);
+        //console.log(this.events);
         this.contents = newData.data;
         
       });
@@ -74,7 +74,7 @@ export class EventsComponent implements OnInit {
   imageError(el) {
     el.onerror = '';
     el.src = '../../assets/images/noimage.svg';
-    console.log(el);
+    //console.log(el);
     return true;
   }
 

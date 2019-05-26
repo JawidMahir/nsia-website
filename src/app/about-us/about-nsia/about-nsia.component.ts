@@ -30,10 +30,10 @@ export class AboutNsiaComponent implements OnInit {
     customParams.push('content');
     customParams.push('acf');
     this.aboutUs.getAboutNsia(customParams).subscribe((data) => {
-      console.log('biodata: ', data);
+      //console.log('biodata: ', data);
       if (data) {
         this.aboutNSIA = data[0];
-        console.log('aboutNSIA: ', this.aboutNSIA);
+       // console.log('aboutNSIA: ', this.aboutNSIA);
         // if (this.aboutNSIA) {
         //   this.aboutNSIA.content.rendered = this.aboutUs.htmlToPlaintext(this.aboutNSIA.content.rendered);
         // }
