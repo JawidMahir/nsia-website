@@ -23,6 +23,8 @@
     </div>
   </div>
   <div class="about-details">
+    <div *ngIf="aboutNSIA.content" class="details" [innerHTML]="aboutNSIA.content.rendered">
+    </div>
     <div class="featured-video">
 
       <!-- <iframe width="1139" height="641" src="https://www.youtube.com/embed/Momo6NaD0t8" frameborder="0"
@@ -38,8 +40,7 @@
         <img src="../../../assets/images/noimage-h.png" class="fit-cover" alt="">
       </ng-template>
     </div>
-    <div *ngIf="aboutNSIA.content" class="details" [innerHTML]="aboutNSIA.content.rendered">
-    </div>
+
   </div>
 </div>
 <ng-template #nodata>

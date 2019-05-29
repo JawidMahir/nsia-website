@@ -36,18 +36,19 @@ export class EventsComponent implements OnInit {
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((eventsData) => {
 
         this.total = Number(eventsData.headers.get('X-WP-Total'));
+        if (eventsData.body.length > 0) {
 
-        const newData = {
-          page: page,
-          data: this.refineData(eventsData.body)
-        };
+          const newData = {
+            page: page,
+            data: this.refineData(eventsData.body)
+          };
 
-        this.events.push(newData);
-        //console.log(this.events);
-        this.contents = newData.data;
-        
+          this.events.push(newData);
+          //console.log(this.events);
+          this.contents = newData.data;
+        }
       });
-    }else{
+    } else {
       this.contents = (this.events.filter(d => d.page === this.p))[0].data;
     }
   }

@@ -4,7 +4,7 @@
       <div class="section-wrapper">
         <div class="row">
           <div class="col-md-8 col-sm-7 col-xs-11">
-            <div *ngIf="news.length > 0; else nonews">
+            <div *ngIf="newsLetter.length > 0; else nonews">
               <h4>{{'label.news' | translate}}</h4><br>
               <div class="row news"
                 *ngFor="let nw of contents | paginate: { itemsPerPage: 4 , currentPage: p , totalItems: total }">

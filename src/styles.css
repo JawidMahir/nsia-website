@@ -335,6 +335,7 @@ button {
   /* visibility: visible !important; */
   display: inline !important;
 }
+
 /* 
 .active-item .fa-chevron-right {
   display: none
@@ -669,4 +670,108 @@ button {
 
 .attachment-type p {
   margin: 0px;
+}
+
+
+/*
+ * Styling Contents attachements
+ */
+
+.details .attachment {
+  width: fit-content;
+  background-color: rgba(225, 225, 225, 0.3);
+  padding: 4px;
+  color: #282560 !important;
+  font-size: 18px;
+  margin: 2px 0px;
+  transition: background .2s ease-in-out;
+}
+
+.details .attachment:hover {
+  background-color: rgba(225, 225, 225, 0.719);
+
+}
+
+.details a {
+  text-decoration: none !important;
+  color: #282560 !important;
+}
+
+.details a:hover {
+  color: #282560 !important;
+}
+
+.details .attachment img {
+  width: 14px;
+  height: 15px;
+  margin: 0px 4px;
+}
+
+/*
+ * News Section CSS
+ */
+
+.news-section .margin-top {
+  margin-top: 15px;
+}
+
+.news-section h4,
+.news-section h5 {
+  font-weight: bold !important;
+}
+
+.news-section img {
+  width: 100%;
+  height: 250px;
+}
+
+.news-section span {
+  color: gray;
+  font-size: small;
+  font-weight: bold;
+}
+
+.news-section a {
+  font-weight: bold;
+  color: #282560
+}
+
+.news-section .news {
+  margin-bottom: 20px;
+  overflow-wrap: break-word;
+}
+
+
+.news-section .pmaterial {
+  background-color: #01a79b;
+  margin: 0px 10px;
+  margin-bottom: 20px;
+}
+
+.news-section a:hover:not(.active) {
+  color: #01a79b;
+  cursor: pointer;
+}
+
+.news-section .news-pagination /deep/ .ngx-pagination .current {
+  background: #01a79b;
+}
+
+.news-section .text-center {
+  text-align: center;
+}
+
+.news-section .icon {
+  height: 80%;
+  width: 50%;
+  margin: auto;
+}
+
+.news-section .content {
+  text-align: justify
+}
+
+.news-section .featured-video iframe {
+  width: 100%;
+  height: 100%;
 }

@@ -316,16 +316,16 @@
         </div>
       </div>
       <div class="ls-res-item">
-        <div class="section-title active-section ls-btn" data-toggle="collapse" data-target="#res-latest-prs"
-          aria-expanded="true" aria-controls="#res-latest-prs" redirect-url="/media-room/press-release"
-          category="press">
-          <h5 class="info-section ">{{ 'label.press-release' | translate}}</h5>
+        <div class="section-title active-section ls-btn" data-toggle="collapse" data-target="#res-newsletter"
+          aria-expanded="true" aria-controls="#res-newsletter" redirect-url="/media-room/newsletter"
+          category="newsletter">
+          <h5 class="info-section ">{{ 'label.newsletter' | translate}}</h5>
           <i class="fas fa-chevron-down"></i>
         </div>
 
-        <div id="res-latest-prs" class="collapse" data-parent="#newsAccordion">
-          <div class="row" *ngIf="newsBriefs.press != ''; else nopress">
-            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let pr of newsBriefs.press | slice:1">
+        <div id="res-newsletter" class="collapse" data-parent="#newsAccordion">
+          <div class="row" *ngIf="newsBriefs.newsletter != ''; else nonewsletter">
+            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let pr of newsBriefs.newsletter | slice:1">
               <div class="news-item" [routerLink]="['/media-room/media', pr.id]">
                 <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
                   (error)="imageError($event.target);">
@@ -346,7 +346,7 @@
                 (click)="readMoreRedirect($event.target)">{{ 'btn.read-more' | translate }}</button>
             </div>
           </div>
-          <ng-template #nopress>
+          <ng-template #nonewsletter>
             <div class="jumbotron text-center no-data">
               <h4>{{ 'label.no-data' | translate }}</h4>
             </div>
@@ -411,9 +411,9 @@
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-press-tab" data-toggle="tab" data-target="#nav-press" role="tab"
-        aria-controls="nav-press" aria-selected="false" redirect-url="/media-room/press-release" category="press">
+        aria-controls="nav-press" aria-selected="false" redirect-url="/media-room/newsletter" category="newsletter">
         <div class="news-category news-cat">
-          <h5>{{ 'label.press-release' | translate}}</h5>
+          <h5>{{ 'label.newsletter' | translate}}</h5>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 ls-btn" id="nav-announcements-tab" data-toggle="tab"
@@ -475,8 +475,8 @@
         </ng-template>
       </div>
       <div class="tab-pane fade" id="nav-press" role="tabpanel" aria-labelledby="nav-press-tab">
-        <div class="row" *ngIf="newsBriefs.press != ''; else nopress">
-          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pr of newsBriefs.press" data-toggle="tooltip" data-placement="top"
+        <div class="row" *ngIf="newsBriefs.newsletter != ''; else nopress">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pr of newsBriefs.newsletter" data-toggle="tooltip" data-placement="top"
           [title]="pr.title.rendered">
             <div class="news-item" [routerLink]="['/media-room/media', pr.id]">
               <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"

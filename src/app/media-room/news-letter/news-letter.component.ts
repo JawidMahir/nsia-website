@@ -3,17 +3,20 @@ import { formatDate } from '@angular/common';
 import { MediaServicesService } from '../media-services.service';
 
 @Component({
-  selector: 'app-press-release',
-  templateUrl: './press-release.component.html',
-  styleUrls: ['./press-release.component.css']
+  selector: 'app-news-letter',
+  templateUrl: './news-letter.component.html',
+  styleUrls: ['./news-letter.component.css']
 })
-export class PressReleaseComponent implements OnInit {
+export class NewsLetterComponent implements OnInit {
+
   customParams = [];
   p = 1;
   total = 1;
-  press = [];
+  newsLetter = [];
   contents = [];
-  constructor(private mediaService: MediaServicesService) { }
+  constructor(
+    private mediaService: MediaServicesService,
+  ) { }
 
   ngOnInit() {
     this.customParams.push('title.rendered');
@@ -24,28 +27,29 @@ export class PressReleaseComponent implements OnInit {
     this.customParams.push('better_featured_image.alt_text');
     this.customParams.push('date');
     this.customParams.push('id');
-    this.getPressData('press', this.p);
+    this.getNewsLetterData('newsletter', this.p);
   }
-  getPressData(type, page) {
-    if ((this.press.length < 1) || (this.press.filter(d => d.page === this.p)).length < 1) {
-      this.mediaService.getMediaData(this.customParams, type, page).subscribe((pressData) => {
 
-        this.total = Number(pressData.headers.get('X-WP-Total'));
-        if (pressData.body.length > 0) {
+  getNewsLetterData(type, page) {
+    if ((this.newsLetter.length < 1) || (this.newsLetter.filter(d => d.page === this.p)).length < 1) {
+      this.mediaService.getMediaData(this.customParams, type, page).subscribe((newsData) => {
+
+        this.total = Number(newsData.headers.get('X-WP-Total'));
+        // console.log(newsData);
+        if (newsData.body.length > 0) {
 
           const newData = {
             page,
-            data: this.refineData(pressData.body)
+            data: this.refineData(newsData.body)
           };
 
-          this.press.push(newData);
-          // console.log(this.press);
+          this.newsLetter.push(newData);
           this.contents = newData.data;
         }
 
       });
     } else {
-      this.contents = (this.press.filter(d => d.page === this.p))[0].data;
+      this.contents = (this.newsLetter.filter(d => d.page === this.p))[0].data;
     }
   }
 
@@ -55,7 +59,9 @@ export class PressReleaseComponent implements OnInit {
         el.date = '00' + 'th' + 'MNT' + '';
       } else {
         el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
-        el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
+        if (el.hasOwnProperty('content')) {
+          el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
+        }
       }
     }
     return data;
@@ -63,21 +69,22 @@ export class PressReleaseComponent implements OnInit {
 
   getBrief(ds) {
     if (ds.length > 40) {
-      return ds.substring(0, 260) + '...';
+      return ds.substring(0, 39) + '...';
     }
     return ds;
   }
 
   imageError(el) {
     el.onerror = '';
-    el.src = '../../assets/images/noimage.png';
-    //console.log(el);
+    el.src = '../../assets/images/noimage.svg';
+    // console.log(el);
     return true;
   }
 
   pageChanged(page: number) {
     this.p = page;
-    this.getPressData('press', page);
+    this.getNewsLetterData('news', page);
   }
+
 
 }

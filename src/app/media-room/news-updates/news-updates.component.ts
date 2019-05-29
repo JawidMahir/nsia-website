@@ -36,18 +36,19 @@ export class NewsUpdatesComponent implements OnInit {
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((newsData) => {
 
         this.total = Number(newsData.headers.get('X-WP-Total'));
+        if (newsData.body.length > 0) {
 
-        const newData = {
-          page: page,
-          data: this.refineData(newsData.body)
-        };
+          const newData = {
+            page: page,
+            data: this.refineData(newsData.body)
+          };
 
-        this.news.push(newData);
-       // console.log(this.news);
-        this.contents = newData.data;
-        
+          this.news.push(newData);
+          // console.log(this.news);
+          this.contents = newData.data;
+        }
       });
-    }else{
+    } else {
       this.contents = (this.news.filter(d => d.page === this.p))[0].data;
     }
   }

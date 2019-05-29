@@ -63,7 +63,7 @@
   "submenu.press-release": "مطبوعاتي اعلاميې",
   "submenu.administrations": "اداري",
   "submenu.procurement": "تدارکات",
-  "submenu.jobs": "ګمارنه",
+  "submenu.jobs": "ګمارنې",
 
 
 
@@ -152,6 +152,6 @@
   "btn.books": "کالنۍ",
   "btn.surveys": "سروې",
   "btn.reports": "راپورونه",
-  "btn.monthly": "میاشتنی",
-  "btn.quarterly": "په ربع کې"
+  "btn.monthly": "میاشتنۍ",
+  "btn.quarterly": "درې میاشتنۍ"
 }

@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class DataService {
   // api = 'http://172.16.222.114/nsia/wp-json/wp/v2/';
-  nodeapi = 'http://172.16.222.81:6001/api/';
+  nodeapi = 'https://nsia.gov.af:6001/api/';
 
   // For accessing the real server
   api = 'https://nsia.gov.af:8080/index.php/wp-json/wp/v2/';
