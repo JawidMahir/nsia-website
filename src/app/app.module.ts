@@ -6,7 +6,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
-import { NgxPaginationModule } from 'ngx-pagination';
+// import { NgxPaginationModule } from 'ngx-pagination';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -17,15 +17,14 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
+// import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ChooseLangComponent } from './choose-lang/choose-lang.component';
-import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { MainComponent } from './main/main.component';
 
 
 
@@ -37,13 +36,10 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
-    ContactUsComponent,
+    MainComponent,
     NotFoundComponent,
     FooterComponent,
-    ContactUsComponent,
     ChooseLangComponent,
-    MainComponent,
   ],
   imports: [
     BrowserModule,

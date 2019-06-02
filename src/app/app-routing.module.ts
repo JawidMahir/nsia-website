@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { MainComponent } from './main/main.component';
+// import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ChooseLangComponent } from './choose-lang/choose-lang.component';
-import { CanDeactivateGuard } from './services/can-deactivate.guard';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -18,10 +15,11 @@ const routes: Routes = [
     component: AppComponent,
   }, {
     path: 'home',
-    component: HomeComponent
+    loadChildren: './home/home.module#HomeModule'
   }, {
     path: 'contact-us',
-    component: ContactUsComponent
+    // component: ContactUsComponent
+    loadChildren: './contact-us/contact.module#ContactModule'
   }, {
     path: 'about-us',
     loadChildren: './about-us/about-us.module#AboutUsModule'
@@ -51,8 +49,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  // imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  // imports: [RouterModule.forRoot(routes)],
 exports: [RouterModule]
 })
 export class AppRoutingModule { }

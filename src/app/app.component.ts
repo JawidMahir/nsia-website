@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         that.createNavigationBreadPath();
-       // console.log('Navigation ended: ', location.pathname);
+        // console.log('Navigation ended: ', location.pathname);
         if (location.pathname === '/choose-lang') {
           that.chooseLang = true;
         } else {

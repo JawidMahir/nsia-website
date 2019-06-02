@@ -22,14 +22,14 @@ export class AboutUsService {
     });
   }
 
-  getBios(customParams,page) {
+  getBios(customParams, page) {
     return this.http.get(this.dataService.api + 'posts', {
       observe: 'response',
       params: {
         'filter[category_name]': 'biography',
         per_page: '5',
         page,
-        lang: this.dataService.language, 
+        lang: this.dataService.language,
         fields: customParams.join(','),
         order: 'asc'
       }
@@ -66,10 +66,28 @@ export class AboutUsService {
       contentRendered = '<div>' + contentRendered + '</div>';
 
       const details = $.parseHTML(contentRendered);
+      console.log('details before', $(details).html());
       if ($(details).has('a')) {
+
         $(details).find('a').attr('target', '_blank');
-        $(details).find('a').parent().addClass('attachment');
-        $(details).find('a').parent().prepend('<img src="../../../assets/images/pdf.png" alt="pdf">');
+        $(details).find('a').wrap('<div class="attachment" ></div>');
+
+        $(details).find('a').each((i, val) => {
+
+          const fileExtArray = $(val).attr('href').split('.');
+          const fileExt = fileExtArray[fileExtArray.length - 1];
+          // console.log('extension is : ', fileExt);
+
+          let fileIcon = '<i class="fas fa-file-alt"></i>';
+          if (fileExt === 'xlsx' || fileExt === 'xls') {
+            fileIcon = '<i class="fas fa-file-excel"></i>';
+          }
+          if (fileExt === 'pdf') {
+            fileIcon = '<i class="fas fa-file-pdf"></i>';
+          }
+          $(val).parent().prepend(fileIcon);
+        });
+
       }
 
       data.content.rendered = $(details).html();
