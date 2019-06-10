@@ -19,7 +19,7 @@ import { Observable, Subject } from 'rxjs';
 export class NavbarComponent implements OnInit, AfterViewInit {
   navbar: any;
   searchWrapper: any;
-  @ViewChild('map') mapElement: ElementRef;
+  @ViewChild('map', { static: false }) mapElement: ElementRef;
   map: mapboxgl.Map;
   sText;
   searchPostsResult = [];
@@ -105,7 +105,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         $('.nav-item').removeClass('active');
 
         currentRoute = this.router.url.toString();
-       // console.log('current route: ', currentRoute);
+        // console.log('current route: ', currentRoute);
         if (currentRoute === '/home') {
           $('#home').addClass('active');
         } else {
@@ -208,7 +208,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   toggleRespNav() {
     $('#responsive-nav').toggleClass('r-show');
-   // console.log('I am clicked');
+    // console.log('I am clicked');
 
   }
 
@@ -249,7 +249,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       }
       $('#lang-change').val(event.lang);
       $('#lang-change2').val(event.lang);
-     // console.log('the path is :', location.pathname);
+      // console.log('the path is :', location.pathname);
       const pt = location.pathname;
 
       this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
@@ -282,7 +282,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
     this.searchService.getTags(customParams).subscribe((data) => {
       this.tags = data;
-     // console.log('tags: ', this.tags);
+      // console.log('tags: ', this.tags);
     });
   }
 
@@ -365,7 +365,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   gotoLink(link) {
-   // console.log(link);
+    // console.log(link);
 
     if (link.hasOwnProperty('data')) {
       if (link.data.flag === 'service') {
@@ -384,7 +384,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     let el;
     $(document).click(function (e) {
       el = e.target;
-     // console.log('focused element', $(el).html());
+      // console.log('focused element', $(el).html());
     });
 
     console.log('parent: ', $(el).parents('#search-result-wrapper').length);
@@ -397,11 +397,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   groupSearchResults(data) {
 
     for (const dt of data) {
-    //  console.log('Post Category', this.getCategoryName(dt.categories[0]));
+      //  console.log('Post Category', this.getCategoryName(dt.categories[0]));
       const catType = this.getCategoryName(dt.categories[0]);
       const ct = catType.split('_');
       const c = ct[ct.length - 1];
-     // console.log('category type: ', c);
+      // console.log('category type: ', c);
       switch (c.toLowerCase()) {
         case 'biography':
           this.searchCategories.biographies.push(dt);
@@ -435,7 +435,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       }
     }
 
-   // console.log('categorized data: ', this.searchCategories);
+    // console.log('categorized data: ', this.searchCategories);
     this.boldMatchedText();
   }
 
@@ -444,13 +444,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
     // tslint:disable-next-line: forin
     for (const item in this.searchCategories) {
-    //  console.log('Type of Item : ', typeof item);
+      //  console.log('Type of Item : ', typeof item);
       const catArray = this.searchCategories[item];
       for (const cat of catArray) {
         if (cat.hasOwnProperty('title')) {
           // first find all the matches
           const matches = cat.title.rendered.match(new RegExp(this.searchPattern, 'gi'));
-      //   console.log('Matches are: ', matches);
+          //   console.log('Matches are: ', matches);
           if (matches) {
             for (const mt of matches) {
               const str = cat.title.rendered.replace(mt, `<b class="text-green">${mt}</b>`);
@@ -493,36 +493,36 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       if (data) {
 
         this.searchPostsResult = data;
-      //  console.log('search results first: ', this.searchPostsResult);
+        //  console.log('search results first: ', this.searchPostsResult);
 
         /**
          * This is to check if the @searchPattern is matching any category name
          */
         const matchedCategories = this.matchCategoryNames(this.searchPattern);
-      //  console.log('matched categories: ', matchedCategories);
+        //  console.log('matched categories: ', matchedCategories);
 
 
         if (matchedCategories.length > 0) {
           this.searchService.getCategoriesData(matchedCategories, customParams).subscribe((catData) => {
             if (catData) {
 
-            //  console.log('category dataa: ', catData);
+              //  console.log('category dataa: ', catData);
 
               catData.map((d) => {
                 if ((this.searchPostsResult.filter(sr => d.id === sr.id)).length < 1) {
                   this.searchPostsResult.push(d);
                 } else {
-             //     console.log('ID matched');
+                  //     console.log('ID matched');
                 }
               });
 
               // this.searchPostsResult.concat(catData);
-            //  console.log('search results amended: ', this.searchPostsResult);
+              //  console.log('search results amended: ', this.searchPostsResult);
               this.groupSearchResults(this.searchPostsResult);
             }
           });
         } else {
-         // console.log('search results: ', this.searchPostsResult);
+          // console.log('search results: ', this.searchPostsResult);
           this.groupSearchResults(this.searchPostsResult);
         }
 
@@ -553,7 +553,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     if (ps.hasOwnProperty('content')) {
       tempLinksArray = [];
       tempLinksArray = ps.content.rendered.match(pattern);
-     // console.log('pattern result: ', tempLinksArray);
+      // console.log('pattern result: ', tempLinksArray);
       if (tempLinksArray) {
         tempLinksArray.map((vl) => {
           vl = vl.replace('">', '" target="_blank">');
@@ -561,13 +561,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
           this.searchCategories.attachments.push(vl);
         });
 
-       // console.log('links result: ', tempLinksArray);
+        // console.log('links result: ', tempLinksArray);
       }
 
     }
 
 
-  //  console.log('the final links array is: ', this.linksArray);
+    //  console.log('the final links array is: ', this.linksArray);
 
   }
 
@@ -581,8 +581,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     }
     const depType = `${serviceShortName}_department`;
 
-   // console.log('service type: ', serviceType);
-   // console.log('service short: ', serviceShortName);
+    // console.log('service type: ', serviceType);
+    // console.log('service short: ', serviceShortName);
     if (serviceType.toLowerCase().includes('service')) {
 
       const tagName = this.getTagName(service.tags[0]).toLowerCase();
@@ -594,12 +594,12 @@ export class NavbarComponent implements OnInit, AfterViewInit {
           customParams.push('acf');
           const departmentName = service.acf[depType];
           let depId;
-       //   console.log('department: ', departmentName);
+          //   console.log('department: ', departmentName);
           // first check if department is already fetched as well
           depId = this.getAvailableDepartmentID(depType, departmentName, service.id, service.tags[0]);
 
           if (depId) {
-           // console.log('available locally', depId);
+            // console.log('available locally', depId);
             sessionStorage.setItem('serviceType', serviceShortName);
             sessionStorage.setItem('department', `id${depId}`);
             sessionStorage.setItem('sub-menu.type', 'headship');
@@ -611,11 +611,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
           } else {
 
             this.searchService.getRelatedDepartmentId(serviceType, 'department', customParams).subscribe((data) => {
-           //   console.log('related department: ', data);
+              //   console.log('related department: ', data);
               for (const dp of data) {
                 if (dp.acf[depType] === departmentName) {
                   depId = `id${dp.id}`;
-               //   console.log('Matched');
+                  //   console.log('Matched');
                   break;
                 }
               }
@@ -648,9 +648,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   getAvailableDepartmentID(depType, depName, sID, tag) {
     for (const sr of this.searchCategories.services) {
       if (sr.acf[depType] === depName && sr.id !== sID && sr.tags[0] !== tag) {
-      //  console.log('matched id is : ', sr.acf[depType]);
-      //  console.log(depName);
-      //  console.log('id is ', sr.id);
+        //  console.log('matched id is : ', sr.acf[depType]);
+        //  console.log(depName);
+        //  console.log('id is ', sr.id);
         return sr.id;
       }
     }

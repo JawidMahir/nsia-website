@@ -36,7 +36,7 @@ export class AboutUsService {
     });
   }
 
-  getGenderDetails(customParams) {
+  getActivityDetails(customParams) {
     return this.fetchData(customParams, 'gender');
 
   }

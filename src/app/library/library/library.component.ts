@@ -10,6 +10,7 @@ import * as $ from 'jquery';
 })
 
 export class LibraryComponent implements OnInit {
+  loading = true;
   p = 1;
   total = 1;
   customParams = [];
@@ -81,7 +82,9 @@ export class LibraryComponent implements OnInit {
 
   getData(customParams, page) {
     if ((this.libraryContents[this.id].length < 1) || (this.libraryContents[this.id].filter(d => d.page === this.p)).length < 1) {
+      this.loading = true;
       this.libraryService.getLibraryData(customParams, this.id, page).subscribe((libraryData => {
+        this.loading = false;
         // console.log('full response: ', libraryData);
         this.totalPosts[this.id] = Number(libraryData.headers.get('X-WP-Total'));
         this.total = this.totalPosts[this.id];

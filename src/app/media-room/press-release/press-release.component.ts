@@ -8,6 +8,7 @@ import { MediaServicesService } from '../media-services.service';
   styleUrls: ['./press-release.component.css']
 })
 export class PressReleaseComponent implements OnInit {
+  loading = true;
   customParams = [];
   p = 1;
   total = 1;
@@ -28,11 +29,12 @@ export class PressReleaseComponent implements OnInit {
   }
   getPressData(type, page) {
     if ((this.press.length < 1) || (this.press.filter(d => d.page === this.p)).length < 1) {
+      this.loading = true;
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((pressData) => {
 
         this.total = Number(pressData.headers.get('X-WP-Total'));
         if (pressData.body.length > 0) {
-
+          this.loading = false;
           const newData = {
             page,
             data: this.refineData(pressData.body)

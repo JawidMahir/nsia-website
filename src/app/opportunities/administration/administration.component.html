@@ -1,4 +1,4 @@
-<div class="opportunities jobs content-justify" *ngIf="job">
+<div class="opportunities jobs content-justify" *ngIf="job; else nodata">
   <div class="title-wrapper">
     <div class="job-title">
       <h4>{{job.title.rendered}}</h4>
@@ -37,7 +37,7 @@
             <span>{{'label.reference' | translate}}</span>
           </td>
           <td>
-            <span *ngIf="job.acf.reference">{{job.acf.reference}}</span>
+            <span *ngIf="job.acf.reference_">{{job.acf.reference_}}</span>
           </td>
         </tr>
         <tr>
@@ -87,7 +87,7 @@
             <span>{{'label.salary-range' | translate}}</span>
           </td>
           <td>
-            <span *ngIf="job.acf.salary_range">{{ salary_range }}</span>
+            <span *ngIf="job.acf.salary_range">{{ job.acf.salary_range }}</span>
           </td>
           <td>
             <span>{{ 'label.experience' | translate }}</span>
@@ -190,3 +190,9 @@
 
   </div>
 </div>
+<ng-template #nodata>
+  <div class="jumbotron no-data">
+    <div [class.dot-falling]="loading"></div>
+    <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
+  </div>
+</ng-template>

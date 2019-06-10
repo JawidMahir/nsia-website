@@ -13,7 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { AboutHomeComponent } from './about-home/about-home.component';
 import { AboutNsiaComponent } from './about-nsia/about-nsia.component';
-import { GenderComponent } from './gender/gender.component';
+import { ActivityComponent } from './activity/activity.component';
 import { StructureComponent } from './structure/structure.component';
 import { BiographiesComponent } from './biographies/biographies.component';
 import { BioComponent } from './bio/bio.component';
@@ -27,7 +27,7 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AboutHomeComponent,
     AboutNsiaComponent,
-    GenderComponent,
+    ActivityComponent,
     StructureComponent,
     BiographiesComponent,
     BioComponent,

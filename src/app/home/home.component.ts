@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
       alt: ''
     }
   };
+  loading = true;
   nsiaServiceText;
   stakeHolders;
   sliderDirection;
@@ -115,7 +116,7 @@ export class HomeComponent implements OnInit {
 
     // instantiate the first news category on page load
     this.getCardsData('news', 4);
-    this.getCardsData('events', 3);
+    // this.getCardsData('events', 3);
 
 
     /** Listeners */
@@ -199,6 +200,7 @@ export class HomeComponent implements OnInit {
   }
 
   getCardsData(type, perPage) {
+    this.loading = true;
     const customParams = [];
     customParams.push('id');
     customParams.push('title.rendered');
@@ -213,8 +215,8 @@ export class HomeComponent implements OnInit {
     if (this.newsBriefs[type] === '') {
 
       this.dataService.getCardsData(customParams, type, perPage).subscribe((cardsData) => {
-        // console.log('news data: ', cardsData);
-
+        console.log('news data: ' + type, cardsData);
+        this.loading = false;
         this.generateCards(type, cardsData);
       });
 
@@ -246,6 +248,8 @@ export class HomeComponent implements OnInit {
       }
 
       this.newsBriefs[sectionId] = this.refineData(data);
+      console.log('total newsbrief: ', this.newsBriefs);
+
 
     }
 

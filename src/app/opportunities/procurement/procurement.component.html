@@ -36,7 +36,8 @@
   </div>
 </div>
 <ng-template class="container" #nodata>
-  <div class="jumbotron text-center no-data">
-    NO DATA
+  <div class="jumbotron no-data">
+    <div [class.dot-falling]="loading"></div>
+    <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
   </div>
 </ng-template>

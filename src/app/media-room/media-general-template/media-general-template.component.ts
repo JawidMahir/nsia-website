@@ -11,6 +11,7 @@ import { DataService } from 'src/app/data.service';
 })
 export class MediaGeneralTemplateComponent implements OnInit {
   news;
+  loading = true;
   id: any;
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +25,7 @@ export class MediaGeneralTemplateComponent implements OnInit {
   }
 
   getNewsDetails(id) {
+    this.loading = true;
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('content.rendered');
@@ -33,8 +35,9 @@ export class MediaGeneralTemplateComponent implements OnInit {
     customParams.push('acf.link');
     customParams.push('date');
     this.dataService.getPostDetails(id, customParams).subscribe((newsData) => {
+      this.loading = false;
       this.news = this.refineData(newsData[0]);
-      //console.log(this.news);
+      // console.log(this.news);
     });
   }
 
@@ -53,7 +56,7 @@ export class MediaGeneralTemplateComponent implements OnInit {
   imageError(el) {
     el.onerror = '';
     el.src = '../../assets/images/noimage.png';
-    //console.log(el);
+    // console.log(el);
     return true;
   }
   videoURL(url) {

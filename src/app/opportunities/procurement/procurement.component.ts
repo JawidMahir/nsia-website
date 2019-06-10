@@ -10,6 +10,7 @@ import { OppService } from '../opp.service';
 })
 export class ProcurementComponent implements OnInit {
   selectedTender;
+  loading = true;
   constructor(
     private route: ActivatedRoute,
     private oppService: OppService
@@ -21,6 +22,7 @@ export class ProcurementComponent implements OnInit {
   }
 
   getTenderDetails(id) {
+    this.loading = true;
     const customParams = [];
     customParams.push('id');
     customParams.push('date');
@@ -31,7 +33,7 @@ export class ProcurementComponent implements OnInit {
 
     this.oppService.getTenderDetails(customParams, id).subscribe((data) => {
       if (data.length > 0) {
-
+        this.loading = false;
         this.selectedTender = data[0];
 
         this.selectedTender.content.rendered = this.oppService.htmlToPlaintext(this.selectedTender.content.rendered);

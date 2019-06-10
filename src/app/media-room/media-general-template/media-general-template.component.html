@@ -22,8 +22,9 @@
         <h6>{{ news.date }}</h6>
         <p *ngIf="news.content; else nocontent">{{ news.content?.rendered }}</p>
         <ng-template #nocontent>
-          <div class="jumbotron text-center no-data">
-            <h4>{{ 'label.no-data' | translate }}</h4>
+          <div class="jumbotron no-data">
+            <div [class.dot-falling]="loading"></div>
+            <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>

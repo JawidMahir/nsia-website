@@ -237,7 +237,6 @@
   </div>
 </div>
 
-
 <div class="custom-container">
 
   <div class="latest-section-res latest-section">
@@ -250,7 +249,7 @@
         </div>
         <div id="res-latest-news" class="collapse show" data-parent="#newsAccordion">
           <div class="row" *ngIf="newsBriefs.news != ''; else nonews">
-            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let nw of newsBriefs.news | slice:0:2">
+            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let nw of newsBriefs.news | slice:0:3">
               <div class="news-item" [routerLink]="['/media-room/media', nw.id]">
                 <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
                   (error)="imageError($event.target);">
@@ -272,8 +271,9 @@
             </div>
           </div>
           <ng-template #nonews>
-            <div class="jumbotron text-center no-data">
-              <h4>{{ 'label.no-data' | translate }}</h4>
+            <div class="jumbotron no-data">
+              <div [class.dot-falling]="loading"></div>
+              <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
             </div>
           </ng-template>
         </div>
@@ -287,7 +287,7 @@
         </div>
         <div id="res-latest-pubs" class="collapse" data-parent="#newsAccordion">
           <div class="row" *ngIf="newsBriefs.publications != ''; else nopublications">
-            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let pb of newsBriefs.publications | slice:1">
+            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let pb of newsBriefs.publications | slice:0:3">
               <div class="news-item" [routerLink]="['/media-room/media', pb.id]">
                 <img src="{{ pb.better_featured_image.source_url }}" alt="{{ pb.better_featured_image.alt_text }}"
                   (error)="imageError($event.target);">
@@ -309,8 +309,9 @@
             </div>
           </div>
           <ng-template #nopublications>
-            <div class="jumbotron text-center no-data">
-              <h4>{{ 'label.no-data' | translate }}</h4>
+            <div class="jumbotron no-data">
+              <div [class.dot-falling]="loading"></div>
+              <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
             </div>
           </ng-template>
         </div>
@@ -325,7 +326,7 @@
 
         <div id="res-newsletter" class="collapse" data-parent="#newsAccordion">
           <div class="row" *ngIf="newsBriefs.newsletter != ''; else nonewsletter">
-            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let pr of newsBriefs.newsletter | slice:1">
+            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let pr of newsBriefs.newsletter | slice:0:3">
               <div class="news-item" [routerLink]="['/media-room/media', pr.id]">
                 <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
                   (error)="imageError($event.target);">
@@ -347,22 +348,23 @@
             </div>
           </div>
           <ng-template #nonewsletter>
-            <div class="jumbotron text-center no-data">
-              <h4>{{ 'label.no-data' | translate }}</h4>
+            <div class="jumbotron no-data">
+              <div [class.dot-falling]="loading"></div>
+              <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
             </div>
           </ng-template>
         </div>
       </div>
       <div class="ls-res-item">
-        <div class="section-title active-section ls-btn" data-toggle="collapse" data-target="#res-important-anc"
-          aria-expanded="true" aria-controls="#res-important-anc" redirect-url="/opportunities/jobs"
+        <div class="section-title active-section ls-btn" data-toggle="collapse" data-target="#res-announcements"
+          aria-expanded="true" aria-controls="#res-announcements" redirect-url="/opportunities/jobs"
           category="announcements">
           <h5 class="info-section ">{{ 'label.important-announce' | translate}}</h5>
           <i class="fas fa-chevron-down"></i>
         </div>
-        <div id="res-important-anc" class="collapse" data-parent="#newsAccordion">
+        <div id="res-announcements" class="collapse" data-parent="#newsAccordion">
           <div class="row" *ngIf="newsBriefs.announcements != ''; else noannouncements">
-            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let an of newsBriefs.announcements | slice:1">
+            <div class="col-md-4 col-sm-4 news-item-wrapper" *ngFor="let an of newsBriefs.announcements | slice:0:3">
               <div class="news-item">
                 <img src="{{ an.better_featured_image.source_url }}" alt="{{ an.better_featured_image.alt_text }}"
                   (error)="imageError($event.target);">
@@ -384,8 +386,9 @@
             </div>
           </div>
           <ng-template #noannouncements>
-            <div class="jumbotron text-center no-data">
-              <h4>{{ 'label.no-data' | translate }}</h4>
+            <div class="jumbotron no-data">
+              <div [class.dot-falling]="loading"></div>
+              <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
             </div>
           </ng-template>
         </div>
@@ -428,8 +431,8 @@
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
         <div class="row" *ngIf="newsBriefs.news != ''; else nonews">
-          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let nw of newsBriefs.news" data-toggle="tooltip" data-placement="top"
-          [title]="nw.title.rendered">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let nw of newsBriefs.news" data-toggle="tooltip"
+            data-placement="top" [title]="nw.title.rendered">
             <div class="news-item" [routerLink]="['/media-room/media', nw.id]">
               <img src="{{ nw.better_featured_image.source_url }}" alt="{{ nw.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
@@ -445,15 +448,16 @@
           </div>
         </div>
         <ng-template #nonews>
-          <div class="jumbotron text-center no-data">
-            <h4>{{ 'label.no-data' | translate }}</h4>
+          <div class="jumbotron no-data">
+            <div [class.dot-falling]="loading"></div>
+            <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>
       <div class="tab-pane fade" id="nav-publications" role="tabpanel" aria-labelledby="nav-publications-tab">
         <div class="row" *ngIf="newsBriefs.publications != ''; else nopublications">
-          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pb of newsBriefs.publications" data-toggle="tooltip" data-placement="top"
-          [title]="pb.title.rendered">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pb of newsBriefs.publications"
+            data-toggle="tooltip" data-placement="top" [title]="pb.title.rendered">
             <div class="news-item" [routerLink]="['/media-room/media', pb.id]">
               <img src="{{ pb.better_featured_image.source_url }}" alt="{{ pb.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
@@ -469,15 +473,16 @@
           </div>
         </div>
         <ng-template #nopublications>
-          <div class="jumbotron text-center no-data">
-            <h4>{{ 'label.no-data' | translate }}</h4>
+          <div class="jumbotron no-data">
+            <div [class.dot-falling]="loading"></div>
+            <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>
       <div class="tab-pane fade" id="nav-press" role="tabpanel" aria-labelledby="nav-press-tab">
         <div class="row" *ngIf="newsBriefs.newsletter != ''; else nopress">
-          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pr of newsBriefs.newsletter" data-toggle="tooltip" data-placement="top"
-          [title]="pr.title.rendered">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let pr of newsBriefs.newsletter"
+            data-toggle="tooltip" data-placement="top" [title]="pr.title.rendered">
             <div class="news-item" [routerLink]="['/media-room/media', pr.id]">
               <img src="{{ pr.better_featured_image?.source_url }}" alt="{{ pr.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
@@ -493,15 +498,16 @@
           </div>
         </div>
         <ng-template #nopress>
-          <div class="jumbotron text-center no-data">
-            <h4>{{ 'label.no-data' | translate }}</h4>
+          <div class="jumbotron no-data">
+            <div [class.dot-falling]="loading"></div>
+            <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>
       <div class="tab-pane fade" id="nav-announcements" role="tabpanel" aria-labelledby="nav-announcements-tab">
         <div class="row" *ngIf="newsBriefs.announcements != ''; else noannouncements">
-          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let an of newsBriefs.announcements" data-toggle="tooltip" data-placement="top"
-          [title]="an.title.rendered">
+          <div class="col-lg-3 col-md-6 news-item-wrapper" *ngFor="let an of newsBriefs.announcements"
+            data-toggle="tooltip" data-placement="top" [title]="an.title.rendered">
             <div class="news-item" [routerLink]="['/media-room/media', an.id]">
               <img src="{{ an.better_featured_image.source_url }}" alt="{{ an.better_featured_image.alt_text }}"
                 (error)="imageError($event.target);">
@@ -517,8 +523,9 @@
           </div>
         </div>
         <ng-template #noannouncements>
-          <div class="jumbotron text-center no-data">
-            <h4>{{ 'label.no-data' | translate }}</h4>
+          <div class="jumbotron no-data">
+            <div [class.dot-falling]="loading"></div>
+            <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
           </div>
         </ng-template>
       </div>

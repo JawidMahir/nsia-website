@@ -1,8 +1,8 @@
-<div class="about-us accessInfo content-justify" *ngIf="accessInfo; else nodata">
+<div class="about-us activity content-justify" *ngIf="activity; else nodata">
   <div class="title-wrapper">
-    <h4 class="title">{{ accessInfo.title.rendered }}</h4>
+    <h4 class="title">{{ activity.title.rendered }}</h4>
   </div>
-  <div *ngIf="accessInfo.content" class="details" [innerHTML]="accessInfo.content.rendered">
+  <div *ngIf="activity.content" class="description" [innerHTML]="activity.content.rendered">
   </div>
 </div>
 <ng-template #nodata>

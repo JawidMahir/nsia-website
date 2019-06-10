@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutHomeComponent } from './about-home/about-home.component';
 import { AboutNsiaComponent } from './about-nsia/about-nsia.component';
-import { GenderComponent } from './gender/gender.component';
+import { ActivityComponent } from './activity/activity.component';
 import { StructureComponent } from './structure/structure.component';
 import { BiographiesComponent } from './biographies/biographies.component';
 import { BioComponent } from './bio/bio.component';
@@ -19,12 +19,12 @@ const aboutRoutes: Routes = [
         path: '',
         children: [
           { path: 'about-nsia', component: AboutNsiaComponent },
-          { path: 'activity-achievments', component: GenderComponent },
+          { path: 'activity-achievments', component: ActivityComponent },
           { path: 'structure', component: StructureComponent },
           { path: 'biographies', component: BiographiesComponent },
           { path: 'policies', component: PoliciesComponent },
           { path: 'bio/:id', component: BioComponent },
-          { path: '', component: AboutNsiaComponent}
+          { path: '', component: AboutNsiaComponent }
         ]
       }
     ]

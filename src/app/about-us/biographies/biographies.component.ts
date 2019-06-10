@@ -11,6 +11,7 @@ export class BiographiesComponent implements OnInit {
   total = 1;
   bios = [];
   contents = [];
+  loading = true;
   constructor(private aboutUs: AboutUsService) { }
 
   ngOnInit() {
@@ -18,40 +19,44 @@ export class BiographiesComponent implements OnInit {
   }
 
   getBios(page) {
+    this.loading = true;
     const customParams = [];
-    customParams.push('title'); 
+    customParams.push('title');
     customParams.push('content');
     customParams.push('better_featured_image.source_url');
     if ((this.bios.length < 1) || (this.bios.filter(d => d.page === this.p)).length < 1) {
-      this.aboutUs.getBios(customParams,page).subscribe((biosData) => {
-        //console.log(biosData.body);
-        
+      this.aboutUs.getBios(customParams, page).subscribe((biosData) => {
+        // console.log(biosData.body);
+        this.loading = false;
         this.total = Number(biosData.headers.get('X-WP-Total'));
 
         const newData = {
-          page: page,
+          page,
           data: this.refineData(biosData.body)
         };
 
-        this.bios.push(newData);
-        //console.log(this.bios);
+        if (newData.data.length > 0) {
+          this.bios.push(newData);
+        }
+        console.log('New data: ',  newData.data);
+        console.log('Bios: ', this.bios.length);
         this.contents = newData.data;
-        
+
       });
-    }else{
+    } else {
       this.contents = (this.bios.filter(d => d.page === this.p))[0].data;
     }
   }
   refineData(data) {
     for (const el of data) {
-        el.content.rendered = this.aboutUs.htmlToPlaintext(el.content.rendered);
+      el.content.rendered = this.aboutUs.htmlToPlaintext(el.content.rendered);
     }
     return data;
   }
   imageError(el) {
     el.onerror = '';
     el.src = '../../../assets/images/noimage.svg';
-    //console.log(el);
+    // console.log(el);
     return true;
   }
   pageChanged(page: number) {

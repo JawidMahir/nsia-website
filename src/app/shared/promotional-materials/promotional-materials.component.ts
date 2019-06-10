@@ -8,6 +8,7 @@ import { DataService } from '../../data.service';
 })
 export class PromotionalMaterialsComponent implements OnInit {
 
+  loading = true;
   orgs = [];
   brochures = [];
   posters = [];
@@ -24,13 +25,14 @@ export class PromotionalMaterialsComponent implements OnInit {
   }
 
   getNewsMaterial(type, perPage) {
+    this.loading = true;
     const customParams = [];
     customParams.push('id');
     customParams.push('content');
     this.dataService.getNewsData(customParams, type, perPage).subscribe((newsData) => {
     //  console.log('Newsletter data: ', this.newsletters);
       if (newsData[0]) {
-
+        this.loading = false;
         newsData[0] = this.getAttachments(newsData[0]);
         this.newsletters.push(newsData[0]);
       //  console.log('Newsletter data: ', newsData[0]);
@@ -59,12 +61,14 @@ export class PromotionalMaterialsComponent implements OnInit {
 
 
   getPromotingMaterial(type) {
+    this.loading = true;
     const customParams = [];
     customParams.push('acf.promotional_materials_attachment.url');
     customParams.push('acf.promotional_materials_type');
     this.dataService.getMediaData(customParams, type).subscribe((promotingMaterialData) => {
      // console.log('Prmotional materials: ', promotingMaterialData);
       if (promotingMaterialData.length > 0) {
+        this.loading = false;
         this.promoMaterialFlag = true;
 
         // tslint:disable-next-line: forin

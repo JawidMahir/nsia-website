@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AdministrationComponent implements OnInit {
 
   job;
+  loading = true;
   constructor(private oppService: OppService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -18,6 +19,7 @@ export class AdministrationComponent implements OnInit {
   }
 
   getJobDetails(id) {
+    this.loading = true;
     const customParams = [];
     customParams.push('id');
     customParams.push('date');
@@ -25,11 +27,12 @@ export class AdministrationComponent implements OnInit {
     customParams.push('acf');
 
     this.oppService.getJobDetails(customParams, id).subscribe((data) => {
-     // console.log('Jobs details: ', data);
-      if (data) {
+      console.log('Jobs details: ', data);
+      this.loading = false;
+      if (data.length > 0 ) {
         this.job = data[0];
 
-        if (this.job.content) {
+        if (this.job.hasOwnProperty('content')) {
           this.job.content.rendered = this.oppService.htmlToPlaintext(this.job.content.rendered);
         }
         const date = new Date(this.job.date);

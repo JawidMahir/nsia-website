@@ -10,6 +10,7 @@ import { DataService } from '../../data.service';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
+  loading = true;
   newsBriefs = {
     news: ''
   };
@@ -24,12 +25,14 @@ export class NewsComponent implements OnInit {
   }
 
   getNewsData(type, perPage) {
+    this.loading = true;
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('date');
     customParams.push('id');
     this.dataService.getCardsData(customParams, type, perPage).subscribe((newsData) => {
-// tslint:disable-next-line: no-string-literal
+      this.loading = false;
+      // tslint:disable-next-line: no-string-literal
       this.newsBriefs['news'] = this.refineData(newsData);
     });
   }
@@ -47,7 +50,7 @@ export class NewsComponent implements OnInit {
 
   readMoreRedirect(el) {
     if (el.id === 'news-read-more') {
-      //console.log('before redirectNews: ', this.newsReadMore);
+      // console.log('before redirectNews: ', this.newsReadMore);
       this.router.navigate([this.newsReadMore]);
     }
   }

@@ -10,6 +10,7 @@ import { MediaServicesService } from '../media-services.service';
 })
 
 export class EventsComponent implements OnInit {
+  loading = true;
   customParams = [];
   p = 1;
   total = 1;
@@ -33,18 +34,19 @@ export class EventsComponent implements OnInit {
 
   getEventsData(type, page) {
     if ((this.events.length < 1) || (this.events.filter(d => d.page === this.p)).length < 1) {
+      this.loading = true;
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((eventsData) => {
 
+        this.loading = false;
         this.total = Number(eventsData.headers.get('X-WP-Total'));
         if (eventsData.body.length > 0) {
-
           const newData = {
-            page: page,
+            page,
             data: this.refineData(eventsData.body)
           };
 
           this.events.push(newData);
-          //console.log(this.events);
+          // console.log(this.events);
           this.contents = newData.data;
         }
       });
@@ -75,7 +77,7 @@ export class EventsComponent implements OnInit {
   imageError(el) {
     el.onerror = '';
     el.src = '../../assets/images/noimage.svg';
-    //console.log(el);
+    // console.log(el);
     return true;
   }
 

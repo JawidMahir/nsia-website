@@ -2,13 +2,13 @@
   <div class="title-wrapper">
     <h4 class="title">{{ 'submenu.biographies' | translate }}</h4>
   </div>
-  <div class="description" *ngIf="bios">
+  <div class="description" *ngIf="bios.length; else nobios">
     <div class="bio" *ngFor="let b of contents | paginate: { itemsPerPage: 5 , currentPage: p , totalItems: total }">
       <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="uni-logo">
-            <img *ngIf="b.better_featured_image; else noimage" [src]="b.better_featured_image.source_url" alt="university"
-            (error)="imageError($event.target);">
+            <img *ngIf="b.better_featured_image; else noimage" [src]="b.better_featured_image.source_url"
+              alt="university" (error)="imageError($event.target);">
             <ng-template #noimage>
               <img src="../../../assets/images/noimage.svg" alt="">
             </ng-template>
@@ -28,4 +28,10 @@
         nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
     </div>
   </div>
+  <ng-template #nobios>
+    <div class="jumbotron no-data">
+      <div [class.dot-falling]="loading"></div>
+      <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
+    </div>
+  </ng-template>
 </div>

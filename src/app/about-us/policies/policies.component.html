@@ -1,12 +1,13 @@
 <div class="about-us policies content-justify" *ngIf="policies; else nodata">
   <div class="title-wrapper">
-    <h4 class="title" >{{ policies.title.rendered }}</h4>
+    <h4 class="title">{{ policies.title.rendered }}</h4>
   </div>
   <div *ngIf="policies.content" class="details" [innerHTML]="policies.content.rendered">
   </div>
 </div>
 <ng-template #nodata>
-  <div class="jumbotron no-data text-center">
-    <h4>{{'label.no-data' | translate }}</h4>
+  <div class="jumbotron no-data">
+    <div [class.dot-falling]="loading"></div>
+    <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
   </div>
 </ng-template>

@@ -17,6 +17,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   menus = [];
   srName = 'foo';
   serviceName;
+  loading = true;
 
   // necessary flags
   clearStorage;
@@ -183,7 +184,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
   getDeputyDetails(deputyType, tag) {
     console.log('getting service data');
-
+    this.loading = true;
     const customParams = [];
     customParams.push('title.rendered');
     customParams.push('content.rendered');
@@ -193,6 +194,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
       if (data[0]) {
         // this.contents = data[0];
+        this.loading = false;
         this.contents = this.styleDetailsLink(data[0]);
         console.log('Service data: ', this.contents);
         this.keepContentsLocal(deputyType);
@@ -247,9 +249,11 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   }
 
   getProvinces() {
+    this.loading = true;
     this.nsiaServices.getProvinces().subscribe((data) => {
       console.log('Provinces: ', data);
       if (data.length > 0) {
+        this.loading = false;
         this.provinces = data;
         this.getProvinceDetails(this.provinces[0].id);
       }
@@ -263,13 +267,16 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
    */
 
   getDeputyDepartments(deputyType, tag) {
+
     const customParams = [];
+    this.loading = true;
     customParams.push('id');
     customParams.push('tags');
     customParams.push('title.rendered');
     customParams.push('acf');
 
     this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
+      this.loading = false;
       if (tag === 'department') {
         this.deputyDepartments = data;
         this.departmentsFetched = true;
@@ -295,7 +302,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
   getDepartmentDetails(id, el, depType) {
     console.log('Department details is called');
-
+    this.loading = true;
     this.contents = null;
     console.log('ID is: ', id);
     console.log($(el).closest('.m-item-c').attr('aria-expanded'));
@@ -328,7 +335,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       this.nsiaServices.getDepartmentDetails(id, customParams).subscribe((data) => {
         console.log('Department full data: ', data);
         if (data[0]) {
-
+          this.loading = false;
           sessionStorage.setItem('sub-menu.type', depType);
           if (depType === 'department') {
             sessionStorage.setItem('sub-menu.id', data[0].id);
@@ -387,7 +394,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   }
 
   getProvinceDetails(id) {
-
+    this.loading = true;
     this.contents = null;
     const customParams = [];
     customParams.push('title.rendered');
@@ -397,6 +404,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     customParams.push('better_featured_image.source_url');
 
     this.nsiaServices.getProvinceDetails(id, customParams).subscribe((data) => {
+      this.loading = false;
       // this.contents = data[0];
       this.contents = this.styleDetailsLink(data[0]);
       // this.styleDetailsLink('province');

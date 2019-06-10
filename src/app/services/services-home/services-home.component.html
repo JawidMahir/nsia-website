@@ -55,7 +55,8 @@
   <div class="main-wrapper">
 
     <nav class="sidebar-nav">
-      <div class="sidebar-title menu-item active-item" id="sidebar-title" (click)="activeMenu($event.target)" *ngIf="!provincialServices">
+      <div class="sidebar-title menu-item active-item" id="sidebar-title" (click)="activeMenu($event.target)"
+        *ngIf="!provincialServices">
         <span> <i class="fas fa-chevron-right"></i>
           {{'label.about-service' | translate:{'sr':serviceName} }}</span>
       </div>
@@ -75,13 +76,14 @@
 
             <div id="{{ 'sub-' + 'id' + dp.id }}" class="collapse sub-menu" [attr.data-parent]="'#' + 'id' + dp.id">
               <!-- sub menus go here -->
-              <div class="sub-menu-item" [class.active-sub-menu]="activeSubMenu === dp.id" (click)="getDepartmentDetails(dp.id, $event.target, 'department')"
-                id="{{ dp.id }}">
+              <div class="sub-menu-item" [class.active-sub-menu]="activeSubMenu === dp.id"
+                (click)="getDepartmentDetails(dp.id, $event.target, 'department')" id="{{ dp.id }}">
                 <!-- <p>{{ 'about ' + dp.title.rendered }}</p> -->
                 <p>{{ 'label.about-rs' | translate:{'title': dp.title.rendered} }}</p>
               </div>
               <div *ngIf="dp.headships">
-                <div class="sub-menu-item" [class.active-sub-menu]="activeSubMenu === subDp.id" *ngFor="let subDp of dp.headships" id="{{ subDp.id }}"
+                <div class="sub-menu-item" [class.active-sub-menu]="activeSubMenu === subDp.id"
+                  *ngFor="let subDp of dp.headships" id="{{ subDp.id }}"
                   (click)="getDepartmentDetails(subDp.id, $event.target, 'headship')">
                   <p>{{ subDp.title.rendered }}</p>
                 </div>
@@ -97,7 +99,8 @@
                 {{ provinces[0].acf.province }}
               </span>
             </li> -->
-            <li class="province" [class.active-provice]="i===0" *ngFor="let pr of provinces; let i = index" (click)="provinceData($event.target, pr.id)">
+            <li class="province" [class.active-provice]="i===0" *ngFor="let pr of provinces; let i = index"
+              (click)="provinceData($event.target, pr.id)">
               <i class="fas fa-chevron-right"></i>
               <span>
                 {{ pr.acf.province }}
@@ -115,7 +118,7 @@
     <div class="contents" *ngIf="contents;else nodata">
 
       <!-- <router-outlet></router-outlet> -->
-      <div >
+      <div>
         <!-- <div class="col-md-3 col-sm-6">
           <div class="deputy-image">
             <img [src]="contents.better_featured_image?.source_url" alt="image" (error)="imageError($event.target)">
@@ -135,8 +138,9 @@
     </div>
     <ng-template #nodata>
       <div class="contents">
-        <div class="jumbotron text-center no-data">
-          <h4>{{'label.no-data' | translate}}</h4>
+        <div class="jumbotron no-data">
+          <div [class.dot-falling]="loading"></div>
+          <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
         </div>
       </div>
     </ng-template>
