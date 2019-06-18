@@ -1,4 +1,4 @@
-<div class="about-us accessInfo content-justify" *ngIf="accessInfo; else nodata">
+<!-- <div class="about-us accessInfo content-justify" *ngIf="accessInfo; else nodata">
   <div class="title-wrapper">
     <h4 class="title">{{ accessInfo.title.rendered }}</h4>
   </div>
@@ -10,4 +10,54 @@
     <div [class.dot-falling]="loading"></div>
     <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
   </div>
-</ng-template>
+</ng-template>   -->
+<div class="news-section">
+  <div class="margin-top">
+    <div class="custom-container">
+      <div class="section-wrapper">
+        <div class="row">
+          <div class="col-md-8 col-sm-7 col-xs-11">
+            <div *ngIf="accessInfo.length > 0; else nonews">
+              <h4>{{'label.access-info' | translate}}</h4><br>
+              <div class="row news"
+                *ngFor="let af of contents | paginate: { itemsPerPage: 4 , currentPage: p , totalItems: total }">
+                <div class="col-md-4 col-sm-7 featured-video">
+                  <img class="fit-cover" [src]="af.better_featured_image?.source_url"
+                    [alt]="af.better_featured_image?.source_url.alt_text" (error)="imageError($event.target);">
+                  <!-- <ng-template #showvedio>
+                      <iframe [src]="videoURL(af?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                  </ng-template>  -->
+                  <div class="attachment-type">
+                    <p *ngIf="af.acf.attachment_type == 'image' else video;">{{'label.image' | translate}}</p>
+                    <ng-template #video> 
+                      <p>{{ 'label.video' | translate }}</p>
+                    </ng-template>
+                  </div>
+                </div>
+                <div class="col-md-7 col-sm-5">
+                  <div>
+                    <h5>{{ getBrief(af.title.rendered) }}</h5>
+                    <p class="content" *ngIf="af.content">{{ getBrief(af.content.rendered) }}</p>
+                    <a [routerLink]="['/media-room/media', af.id]">{{'btn.read-more' | translate}}</a><br>
+                    <span>{{ af.date }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <pagination-controls class="news-pagination" (pageChange)="pageChanged($event)" autoHide="true"
+                  responsive="true" maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
+                  nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
+              </div>
+            </div>
+          </div>
+          <ng-template #nonews>
+            <div class="jumbotron text-center no-data">
+              <h4>{{'label.no-data' | translate}}</h4>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
-import { DomSanitizer } from '@angular/platform-browser';
+
 import { MediaServicesService } from '../media-services.service';
 
 @Component({
@@ -17,8 +17,7 @@ export class EventsComponent implements OnInit {
   events = [];
   contents = [];
   constructor(
-    private mediaService: MediaServicesService,
-    private sanitizer: DomSanitizer) { }
+    private mediaService: MediaServicesService) { }
 
   ngOnInit() {
     this.customParams.push('title.rendered');
@@ -60,7 +59,7 @@ export class EventsComponent implements OnInit {
       if (!el.hasOwnProperty('date')) {
         el.date = '00' + 'th' + 'MNT' + '';
       } else {
-        el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
+        el.date = formatDate(el.date, 'MMM dd, yyyy', 'en-US', '+0530');
         el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
       }
     }

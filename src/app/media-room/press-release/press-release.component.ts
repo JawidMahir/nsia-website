@@ -56,7 +56,7 @@ export class PressReleaseComponent implements OnInit {
       if (!el.hasOwnProperty('date')) {
         el.date = '00' + 'th' + 'MNT' + '';
       } else {
-        el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
+        el.date = formatDate(el.date, 'MMM dd, yyyy', 'en-US', '+0530');
         el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
       }
     }

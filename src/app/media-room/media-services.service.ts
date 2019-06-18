@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { formatDate } from '@angular/common';
 import { DataService } from '../data.service';
 
 import * as $ from 'jquery';
@@ -16,7 +17,7 @@ export class MediaServicesService {
       observe: 'response',
       params: {
         'filter[category_name]': catName,
-        per_page: '5',
+        per_page: '4',
         page,
         lang: this.dataService.language,
         fields: customP.join(','),
@@ -70,18 +71,50 @@ export class MediaServicesService {
       contentRendered = '<div>' + contentRendered + '</div>';
 
       const details = $.parseHTML(contentRendered);
+      //console.log('details before', $(details).html());
       if ($(details).has('a')) {
+
         $(details).find('a').attr('target', '_blank');
-        $(details).find('a').parent().addClass('attachment');
-        $(details).find('a').parent().prepend('<img src="../../../assets/images/pdf.png" alt="pdf">');
+        $(details).find('a').wrap('<div class="attachment" ></div>');
+
+        $(details).find('a').each((i, val) => {
+
+          const fileExtArray = $(val).attr('href').split('.');
+          const fileExt = fileExtArray[fileExtArray.length - 1];
+          // console.log('extension is : ', fileExt);
+
+          let fileIcon = '<i class="fas fa-file-alt"></i>';
+          if (fileExt === 'xlsx' || fileExt === 'xls') {
+            fileIcon = '<i class="fas fa-file-excel"></i>';
+          }
+          if (fileExt === 'pdf') {
+            fileIcon = '<i class="fas fa-file-pdf"></i>';
+          }
+          $(val).parent().prepend(fileIcon);
+        });
+
       }
 
       data.content.rendered = $(details).html();
     }
-    console.log('details are done', data);
+    //console.log('details are done', data);
 
 
     return data;
   }
+  refineData(data) {
+    for (const el of data) {
+      if (!el.hasOwnProperty('date')) {
+        el.date = '00' + 'th' + 'MNT' + '';
+      } else {
+        el.date = formatDate(el.date, 'MMM dd, yyyy', 'en-US', '+0530'); 
+        if (el.hasOwnProperty('content')) {
+          el.content.rendered = this.htmlToPlaintext(el.content.rendered);
+        }
+      }
+    }
+    return data;
+  }
+
 
 }

@@ -16,7 +16,7 @@
                   </ng-template>  -->
                   <div class="attachment-type">
                     <p *ngIf="nw.acf.attachment_type == 'image' else video;">{{'label.image' | translate}}</p>
-                    <ng-template #video>
+                    <ng-template #video> 
                       <p>{{ 'label.video' | translate }}</p>
                     </ng-template>
                   </div>

@@ -5,16 +5,15 @@
         [src]="news.better_featured_image?.source_url" [alt]="news.better_featured_image?.source_url.alt_text"
         (error)="imageError($event.target);">
       <ng-template #vedio>
-        <div class="col-md-12 featured-video">
-          <iframe [src]="videoURL(news?.acf.link)" frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-            style="height:100%;width:100%"></iframe>
+        <div class="col-md-12">
+            <iframe width="850" height="500" [src]="videoLink" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </ng-template>
     </div>
-    <ng-template #noimage>
+    <ng-template #noimage> 
       <img class="fit-cover" [src]="news.better_featured_image?.source_url"
-        [alt]="news.better_featured_image?.source_url.alt_text" (error)="imageError($event.target);">
+        [alt]="news.better_featured_image?.source_url.alt_text" (error)="imageError($event.target);"> 
     </ng-template>
     <div class="row">
       <div class="content">

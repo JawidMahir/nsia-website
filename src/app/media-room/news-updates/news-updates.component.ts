@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
-import { DomSanitizer } from '@angular/platform-browser';
 import { MediaServicesService } from '../media-services.service';
 
 @Component({
@@ -13,10 +12,9 @@ export class NewsUpdatesComponent implements OnInit {
   p = 1;
   total = 1;
   news = [];
-  contents = [];
+  contents = []; 
   constructor(
     private mediaService: MediaServicesService,
-    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -40,7 +38,7 @@ export class NewsUpdatesComponent implements OnInit {
 
           const newData = {
             page: page,
-            data: this.refineData(newsData.body)
+            data: this.mediaService.refineData(newsData.body)
           };
 
           this.news.push(newData);
@@ -52,33 +50,17 @@ export class NewsUpdatesComponent implements OnInit {
       this.contents = (this.news.filter(d => d.page === this.p))[0].data;
     }
   }
-
-  refineData(data) {
-    for (const el of data) {
-      if (!el.hasOwnProperty('date')) {
-        el.date = '00' + 'th' + 'MNT' + '';
-      } else {
-        el.date = formatDate(el.date, 'dd MMM yyyy', 'en-US', '+0530');
-        if (el.hasOwnProperty('content')) {
-          el.content.rendered = this.mediaService.htmlToPlaintext(el.content.rendered);
-        }
-      }
-    }
-    return data;
-  }
-
-  getBrief(ds) {
-    if (ds.length > 40) {
-      return ds.substring(0, 39) + '...';
-    }
-    return ds;
-  }
-
   imageError(el) {
     el.onerror = '';
     el.src = '../../assets/images/noimage.svg';
     //console.log(el);
     return true;
+  }
+  getBrief(ds) {
+    if (ds.length > 60) {
+      return ds.substring(0, 60) + '...';
+    }
+    return ds;
   }
 
   pageChanged(page: number) {

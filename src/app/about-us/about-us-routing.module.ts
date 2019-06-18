@@ -15,14 +15,14 @@ const aboutRoutes: Routes = [
     path: '',
     component: AboutHomeComponent,
     children: [
-      {
+      { 
         path: '',
         children: [
           { path: 'about-nsia', component: AboutNsiaComponent },
           { path: 'activity-achievments', component: ActivityComponent },
           { path: 'structure', component: StructureComponent },
           { path: 'biographies', component: BiographiesComponent },
-          { path: 'policies', component: PoliciesComponent },
+          { path: 'rules-policies', component: PoliciesComponent },
           { path: 'bio/:id', component: BioComponent },
           { path: '', component: AboutNsiaComponent }
         ]

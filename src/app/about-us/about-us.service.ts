@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { DomSanitizer} from '@angular/platform-browser';
 import { DataService } from '../data.service';
 import * as $ from 'jquery';
 
@@ -9,7 +9,9 @@ import * as $ from 'jquery';
 })
 export class AboutUsService {
 
-  constructor(private http: HttpClient, private dataService: DataService) { }
+  constructor(private http: HttpClient, 
+              private dataService: DataService,
+              private sanitizer: DomSanitizer) { }
 
   fetchData(customParams, category) {
     const header = {
@@ -37,7 +39,7 @@ export class AboutUsService {
   }
 
   getActivityDetails(customParams) {
-    return this.fetchData(customParams, 'gender');
+    return this.fetchData(customParams, 'activity_achievments');
 
   }
 
@@ -66,7 +68,7 @@ export class AboutUsService {
       contentRendered = '<div>' + contentRendered + '</div>';
 
       const details = $.parseHTML(contentRendered);
-      console.log('details before', $(details).html());
+      //console.log('details before', $(details).html());
       if ($(details).has('a')) {
 
         $(details).find('a').attr('target', '_blank');
@@ -92,10 +94,18 @@ export class AboutUsService {
 
       data.content.rendered = $(details).html();
     }
-    console.log('details are done', data);
+    //console.log('details are done', data);
 
 
     return data;
+  }
+  videoURL(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    //return this.sanitizer.bypassSecurityTrustHtml(url);
+  }
+   objHasKeys(obj, keys) {
+    var next = keys.shift();
+    return obj[next] && (! keys.length || this.objHasKeys(obj[next], keys));
   }
 
 }

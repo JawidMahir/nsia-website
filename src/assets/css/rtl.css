@@ -159,11 +159,11 @@
 
 }
 
-.rtl .active-sub-menu p {
+.rtl .active-sub-menu p , .rtl .active-province {
   border-left: none !important;
   border-right: 4px solid #01a79b;
   padding-left: 0px;
-  padding-right: 8px;
+  padding-right: 8px !important;
   font-weight: 600 !important;
   color: #282560;
 }

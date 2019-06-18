@@ -24,7 +24,7 @@ export class FooterComponent implements OnInit {
    // console.log('user email: ', email);
     const user = {
       email,
-      username: email,
+      username: email, 
       password: '1234546'
     };
 

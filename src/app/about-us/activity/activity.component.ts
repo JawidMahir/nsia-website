@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutUsService } from '../about-us.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-activity',
@@ -9,6 +10,7 @@ import { AboutUsService } from '../about-us.service';
 export class ActivityComponent implements OnInit {
 
   activity;
+  videoLink;
   loading = true;
   constructor(private aboutUs: AboutUsService) { }
 
@@ -22,12 +24,18 @@ export class ActivityComponent implements OnInit {
     const customParams = [];
     customParams.push('title');
     customParams.push('content');
+    customParams.push('acf.link');
     this.aboutUs.getActivityDetails(customParams).subscribe((data) => {
-      // console.log('biodata: ', data);
       if (data) {
-        this.loading = false;
-        this.activity = data[0];
-        // if (this.activity) {
+        console.log(data[0])
+        this.loading = false; 
+        if(this.aboutUs.objHasKeys(data[0], ['acf', 'link'])){
+          this.videoLink = $.parseHTML(data[0].acf.link);
+          this.videoLink = $(this.videoLink).attr('src');
+          this.videoLink = this.aboutUs.videoURL(this.videoLink); 
+        }
+        this.activity = this.aboutUs.styleDetailsLink(data[0]);
+        // if (this.activity) { 
         //   this.activity.content.rendered = this.aboutUs.htmlToPlaintext(this.activity.content.rendered);
         // }
       }

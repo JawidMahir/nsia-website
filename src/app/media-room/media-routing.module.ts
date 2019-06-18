@@ -18,7 +18,7 @@ const mediaRoutes: Routes = [
       {
         path: '',
         children: [
-          { path: 'event', component: EventsComponent },
+          // { path: 'event', component: EventsComponent },
           { path: 'news-updates', component: NewsUpdatesComponent },
           { path: 'press-release', component: PressReleaseComponent },
           { path: 'media/:id', component: MediaGeneralTemplateComponent},

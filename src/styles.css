@@ -43,10 +43,10 @@ button {
   object-fit: cover;
 }
 
-/* .featured-video {
+ .featured-video {
   max-height: 240px !important;
   overflow: hidden;
-} */
+}
 
 /**
  * ==============================================
@@ -552,8 +552,12 @@ button {
 }
 
 .sidebar .provincial-services ul li.active-province {
+  /* color: #282560;
+  font-weight: 600; */
+  border-left: 4px solid #01a79b;
+  padding-left: 8px;
+  font-weight: 600 !important;
   color: #282560;
-  font-weight: 600;
 }
 
 .sidebar .provincial-services ul li:hover {

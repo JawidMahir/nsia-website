@@ -35,7 +35,7 @@ export class NewsLetterComponent implements OnInit {
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((newsData) => {
 
         this.total = Number(newsData.headers.get('X-WP-Total'));
-        console.log('newletter data', newsData);
+        //console.log('newletter data', newsData);
         if (newsData.body.length > 0) {
 
           const newData = {
