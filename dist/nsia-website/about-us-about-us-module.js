@@ -590,7 +590,8 @@ var ActivityComponent = /** @class */ (function () {
                     _this.videoLink = jquery__WEBPACK_IMPORTED_MODULE_3__(_this.videoLink).attr('src');
                     _this.videoLink = _this.aboutUs.videoURL(_this.videoLink);
                 }
-                _this.activity = _this.aboutUs.styleDetailsLink(data[0]);
+                _this.activity = data[0];
+                //this.activity = this.aboutUs.styleDetailsLink(data[0]);
                 // if (this.activity) { 
                 //   this.activity.content.rendered = this.aboutUs.htmlToPlaintext(this.activity.content.rendered);
                 // }
