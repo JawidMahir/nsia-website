@@ -45,19 +45,19 @@ export class MediaGeneralTemplateComponent implements OnInit {
         this.videoLink = $(this.videoLink).attr('src');
         this.videoLink = this.videoURL(this.videoLink); 
       }
-      this.news = this.refineData(newsData[0]);
       this.news = this.mediaService.styleDetailsLink(newsData[0]);
+      this.news = this.refineData(this.news);
     });
   }
 
   refineData(data) {
-    if (!data.hasOwnProperty('date')) {
+    if (!data.hasOwnProperty('date')) { 
       data.date = '00' + 'th' + 'MNT' + '';
     } else {
       data.date = formatDate(data.date, 'MMM dd, yyyy', 'en-US', '+0530');
-      if (data.hasOwnProperty('content')) {
-        data.content.rendered = this.dataService.htmlToPlaintext(data.content.rendered);
-      }
+      // if (data.hasOwnProperty('content')) {
+      //   data.content.rendered = this.dataService.htmlToPlaintext(data.content.rendered);
+      // }
     }
     return data;
   }
