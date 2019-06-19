@@ -34,7 +34,8 @@ export class ActivityComponent implements OnInit {
           this.videoLink = $(this.videoLink).attr('src');
           this.videoLink = this.aboutUs.videoURL(this.videoLink); 
         }
-        this.activity = this.aboutUs.styleDetailsLink(data[0]);
+        this.activity = data[0];
+        //this.activity = this.aboutUs.styleDetailsLink(data[0]);
         // if (this.activity) { 
         //   this.activity.content.rendered = this.aboutUs.htmlToPlaintext(this.activity.content.rendered);
         // }
