@@ -3,14 +3,14 @@
     <h4 class="title">{{ structure.title.rendered }}</h4>
   </div>
   <div *ngIf="structure.content.rendered" class="description" [innerHTML]="structure.content.rendered">
-    <div class="org-str">
-      <div class="download-btn">
-        <i class="fas fa-file-pdf"></i>
-        <span>{{ 'btn.download' | translate}}</span>
-      </div>
-      <div class="feature-image">
-        <img [src]="structure.better_featured_image.source_url" alt="Structure">
-      </div>
+  </div>
+  <div class="org-str">
+    <div class="download-btn">
+      <i class="fas fa-file-pdf"></i>
+      <a [href]="structure.better_featured_image.source_url" target="_blank"  download>{{ 'btn.download' | translate}}</a>
+    </div>
+    <div class="feature-image">
+      <img [src]="structure.better_featured_image.source_url" alt="Structure">
     </div>
   </div>
 </div>

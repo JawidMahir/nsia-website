@@ -12,8 +12,9 @@
     position: absolute;
 }
 
-.download-btn span {
+.download-btn a {
     margin: 0px 4px;
+    color: #282560;
     text-transform: capitalize;
 }
 
