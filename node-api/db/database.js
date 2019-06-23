@@ -3,9 +3,9 @@ const mysql = require("mysql");
 const pool = mysql.createPool({
             connectionLimit : 10,
             host     : 'localhost',
-            user     : 'root',
-            password : '',
-            database : 'nsia',
+            user     : 'nsiauser',
+            password : '>3[@,*m*C6*7S7Vq',
+            database : 'nsiadb',
             debug    : false 
             });                    
  

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { DataService } from '../../data.service';
+import { TranslateService } from '@ngx-translate/core';
 import * as $ from 'jquery';
 import swal from 'sweetalert';
 
@@ -13,7 +13,8 @@ export class FooterComponent implements OnInit {
   year: number;
   email: string;
   validEmail = false;
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService,
+              private translate: TranslateService) {
     this.year = new Date().getFullYear();
 
   }
@@ -31,7 +32,7 @@ export class FooterComponent implements OnInit {
     this.dataService.registerUserEmail(user).subscribe((data) => {
       // tslint:disable-next-line: no-string-literal
       if (data['code'] === 200) {
-        swal('Subscribed', 'You will receive our publications', 'success');
+        swal(this.translate.instant('subscribed.msg'),this.translate.instant('success.subscribe.msg') , 'success');
         this.email = '';
         this.validEmail = false;
       }
@@ -40,12 +41,12 @@ export class FooterComponent implements OnInit {
      // console.log('Error: ', error['status']);
       // tslint:disable-next-line: no-string-literal
       if (error['status'] === 400) {
-        swal('Opps', 'Email address already exist', 'warning');
+        swal(this.translate.instant('sorry.message'), this.translate.instant('email.error.msg'), 'warning');
       }
 
       // tslint:disable-next-line: no-string-literal
       if (error['status'] === 500) {
-        swal('Opps', 'Cannot make request at this moment', 'warning');
+        swal(this.translate.instant('sorry.message'), this.translate.instant('unsucess.msg'), 'warning');
       }
     });
   }

@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/add", (req, res, next) => {
     //read contact information from request
     const schema = Joi.object().keys({
-        name: Joi.string().alphanum().required(),
+        name: Joi.string().required(),
         email: Joi.string().email({ minDomainAtoms: 2 }).required(),
         message: Joi.string().required(),
         organization : Joi.string().allow(null, ''),

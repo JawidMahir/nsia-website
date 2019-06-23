@@ -75,7 +75,7 @@
   "label.subscribe": "اشتراک نمایید",
   "label.subscribe.title":"اشتراک",
   "label.history": "تاریخچه",
-  "label.authority-functions": "اختیار و صلاحیت ها",
+  "label.authority-functions": "اختیار و صلاحیت ها", 
   "label.vision-mission": "دیدگاه و اهداف",
   "label.tazkira-enrollement": "مراکز توزیع تذکره الکترونیکی",
   "label.organization-structure": "ساختار تشکیلاتی",
@@ -156,6 +156,12 @@
   "btn.surveys": "سروی ها",
   "btn.reports": "گزارش ها",
   "btn.monthly": "ماهوار",
-  "btn.quarterly": "ربعوار"
-
+  "btn.quarterly": "ربعوار",
+  "alert.message": "شما پیام خود را موفقانه ارسال کردید",
+  "sorry.message": "متاسفانه",
+  "not.completed.msg":"اطلاعات فرم تکمیل نشده است!",
+  "unsucess.msg":"در این لحظه نمیتوان درخواست کرد",
+  "email.error.msg": "ایمیل آدرس موجود است",
+  "subscribed.msg":"مشترک شدید",
+  "success.subscribe.msg" : "شما نشریات را دریافت خواهید کرد"
 }

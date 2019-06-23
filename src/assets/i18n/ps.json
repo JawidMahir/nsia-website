@@ -155,5 +155,13 @@
   "btn.surveys": "سروې",
   "btn.reports": "راپورونه",
   "btn.monthly": "میاشتنۍ",
-  "btn.quarterly": "درې میاشتنۍ"
+  "btn.quarterly": "درې میاشتنۍ",
+  "alert.message": "تاسو خپل نظریات په بریالیتوب سره واستول",
+  "sorry.message": "اوبخښه",
+  "not.completed.msg":"اد فورمو ډاټا بشپړ نه دی!",
+  "unsucess.msg":"په دې شیبه کې غوښتنه نشي کولی",
+  "email.error.msg": "برېښلیک لا دمخه لا شتون لري",
+  "subscribed.msg":"ګډون شوی",
+  "success.subscribe.msg" : "تاسو به زموږ خپرونې ترلاسه کړئ"
+  
 }

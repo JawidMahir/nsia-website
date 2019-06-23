@@ -70,7 +70,7 @@
   "label.news-letter-subscribe": "Subscribe to Newsletter here",
   "label.email-address": "Enter your email address",
   "label.subscribe": "Subscribe",
-  "label.subscribe.title":"Newsletter",
+  "label.subscribe.title":"Newsletter", 
   "label.history": "history",
   "label.authority-functions": "authority and functions",
   "label.organization-structure": "organization structure",
@@ -153,7 +153,14 @@
   "btn.surveys": "surveys",
   "btn.reports": "reports",
   "btn.monthly": "monthly",
-  "btn.quarterly": "quarterly"
+  "btn.quarterly": "quarterly",
+  "alert.message": "You successfully sent your feedback!",
+  "sorry.message": "Sorry",
+  "not.completed.msg":"Form data does not completed!",
+  "unsucess.msg": "Cannot make request at this moment",
+  "email.error.msg": "Email address already exist",
+  "subscribed.msg":"Subscribed",
+  "success.subscribe.msg" : "You will receive our publications"
 
 
 }

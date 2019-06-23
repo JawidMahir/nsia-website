@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import swal from 'sweetalert';
 import { DataService } from '../data.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -15,7 +16,9 @@ export class ContactUsComponent implements OnInit {
     news: ''
   };
   newsReadMore = '/media-room/news-updates';
-  constructor(private dataService: DataService, ) { }
+  constructor(private dataService: DataService, 
+  private translate: TranslateService
+    ) { }
 
   ngOnInit() {
     this.contactForm = new FormGroup({
@@ -27,20 +30,20 @@ export class ContactUsComponent implements OnInit {
     });
   }
   onSubmit() {
-    this.dataService.addContactData(this.contactForm.value).subscribe((contactData) => {
-      swal('Submit', 'You send successfully your feedback', 'success');
+    this.dataService.addContactData(this.contactForm.value).subscribe((contactData) => { 
+      swal(this.translate.instant('input.submit'), this.translate.instant('alert.message') , 'success'); 
      // console.log('data: ', contactData);
       this.contactForm.reset();
     }, (error) => {
       // tslint:disable-next-line: no-string-literal
-     // console.log('Error: ', error['status']);
-      // tslint:disable-next-line: no-string-literal
+      // console.log('Error: ', error['status']);
+      // tslint:disable-next-line: no-string-literal 
       if (error['status'] === 400) {
-        swal('Opps', 'Form data does not completed!', 'warning');
+        swal(this.translate.instant('sorry.message'), this.translate.instant('not.completed.msg'), 'warning');
       }
       // tslint:disable-next-line: no-string-literal
       if (error['status'] === 500) {
-        swal('Opps', 'Cannot make request at this moment', 'warning');
+        swal(this.translate.instant('sorry.message'), this.translate.instant('unsucess.msg'), 'warning');
       }
     });
   }
