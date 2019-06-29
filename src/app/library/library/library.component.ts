@@ -23,7 +23,16 @@ export class LibraryComponent implements OnInit {
     surveys: [],
     reports: [],
     quarterly: [],
-    monthly: []
+    monthly: [],
+    sy:[],
+    by:[],
+    gsy:[],
+    py:[],
+    ppe:[],
+    qsi:[],
+    qpbs:[],
+    mppk:[],
+    mppc:[]
   };
   totalPosts = {
     books: 1,
@@ -31,6 +40,15 @@ export class LibraryComponent implements OnInit {
     reports: 1,
     quarterly: 1,
     monthly: 1,
+    sy:1,
+    by:1,
+    gsy:1,
+    py:1,
+    ppe:1,
+    qsi:1,
+    qpbs:1,
+    mppk:1,
+    mppc:1
   };
 
   constructor(private libraryService: LibraryServicesService) { }
@@ -41,23 +59,74 @@ export class LibraryComponent implements OnInit {
       const libType = localStorage.getItem('library-type');
       switch (libType) {
         case 'books':
-          element = document.getElementById('books') as HTMLElement;
+           element = document.getElementById('books') as HTMLElement;
+          this.showFilterLibraries('books',element);
           break;
-        case 'surveys':
-          element = document.getElementById('surveys') as HTMLElement;
+        case 'sy':
+          element = document.getElementById('books') as HTMLElement;
+          $('#books').prop('selectedIndex',1);
+          this.showFilterLibraries('sy',element);
+          break;
+        case 'by':
+           element = document.getElementById('books') as HTMLElement;
+           $('#books').prop('selectedIndex',2);
+          this.showFilterLibraries('by',element);
+          break;
+        case 'gsy':
+           element = document.getElementById('books') as HTMLElement;
+           $('#books').prop('selectedIndex',3);
+          this.showFilterLibraries('gsy',element);
+          break;
+        case 'py':
+           element = document.getElementById('books') as HTMLElement;
+           $('#books').prop('selectedIndex',4);
+          this.showFilterLibraries('py',element);
+          break;
+        case 'ppe':
+           element = document.getElementById('books') as HTMLElement;
+           $('#books').prop('selectedIndex',5);
+           this.showFilterLibraries('ppe',element);
           break;
         case 'reports':
-          element = document.getElementById('reports') as HTMLElement;
+           element = document.getElementById('reports') as HTMLElement;
+          this.showLibraries(element);
+          break;
+        case 'surveys':
+           element = document.getElementById('surveys') as HTMLElement;
+          this.showLibraries(element);
           break;
         case 'quarterly':
-          element = document.getElementById('quarterly') as HTMLElement;
+           element = document.getElementById('quarterly') as HTMLElement;
+          this.showFilterLibraries('quarterly',element);
+          break;
+        case 'qsi':
+           element = document.getElementById('quarterly') as HTMLElement;
+           $('#quarterly').prop('selectedIndex',1);
+           this.showFilterLibraries('qsi',element);
+          break;
+        case 'qpbs':
+           element = document.getElementById('quarterly') as HTMLElement;
+           $('#quarterly').prop('selectedIndex',2);
+           this.showFilterLibraries('qpbs',element);
           break;
         case 'monthly':
-          element = document.getElementById('monthly') as HTMLElement;
+           element = document.getElementById('monthly') as HTMLElement;
+          this.showFilterLibraries('monthly',element);
+          break;
+        case 'mppk':
+           element = document.getElementById('monthly') as HTMLElement;
+           $('#monthly').prop('selectedIndex',1);
+          this.showFilterLibraries('mppk',element);
+          break;
+        case 'mppc':
+           element = document.getElementById('monthly') as HTMLElement;
+           $('#monthly').prop('selectedIndex',2);
+          this.showFilterLibraries('mppc',element);
           break;
       }
     } else {
       element = document.getElementById('books') as HTMLElement;
+      this.showFilterLibraries('books',element);
       // console.log('not there');
     }
     this.customParams.push('title.rendered');
@@ -68,7 +137,6 @@ export class LibraryComponent implements OnInit {
     this.customParams.push('acf.library_attachment.filename');
     // const element: HTMLElement = document.getElementById('books') as HTMLElement;
     // element.click();
-    element.click();
   }
 
   showLibraries(el) {
@@ -77,6 +145,14 @@ export class LibraryComponent implements OnInit {
     localStorage.setItem('library-type', this.id);
     $('.lib-btn').removeClass('active-libraray');
     $(el).closest('.lib-btn').addClass('active-libraray');
+    this.getData(this.customParams, this.p);
+  }
+  showFilterLibraries(value,element){
+    this.p = 1;
+    this.id = value;
+    localStorage.setItem('library-type', this.id);
+    $('.lib-btn').removeClass('active-libraray');
+    $(element).closest('.lib-btn').addClass('active-libraray');
     this.getData(this.customParams, this.p);
   }
 

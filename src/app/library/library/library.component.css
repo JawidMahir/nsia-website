@@ -8,6 +8,7 @@
   cursor: pointer;
   padding: 10px 5px;
   flex: auto;
+  position: relative;
 }
 
 .lib-btn:hover {
@@ -21,8 +22,7 @@
 }
 
 .lib {
-  margin: 3% 8%;
-  display: flex;
+  margin: 3% 5%;
 }
 
 .search-wrapper {
@@ -65,4 +65,17 @@ a {
 
 .paginator {
   margin-top: 1rem;
+}
+select{
+  color: #282560;
+  border: none;
+  font-weight: bold !important;
+}
+select:focus{
+  background-color:#282560;
+  color: #fff; 
+}
+select:hover{
+  background-color:#282560;
+  color: #fff;
 }

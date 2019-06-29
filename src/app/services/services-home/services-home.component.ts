@@ -4,6 +4,7 @@ import { NsiaServicesService } from '../nsia-services.service';
 import { DataService } from '../../data.service';
 import { switchMap } from 'rxjs/operators';
 import * as $ from 'jquery';
+import { error } from 'util';
 
 @Component({
   selector: 'app-services-home',
@@ -197,7 +198,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       if (data[0]) {
         // this.contents = data[0];
       this.loading = false;
-      if(this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])){
+      if(data[0]!==undefined && this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])){
         this.videoLink = $.parseHTML(data[0].acf.link);
         this.videoLink = $(this.videoLink).attr('src');
         this.videoLink = this.nsiaServices.videoURL(this.videoLink); 
@@ -211,6 +212,8 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
       }
 
+    }, err => {
+      this.loading = false;
     });
 
   }

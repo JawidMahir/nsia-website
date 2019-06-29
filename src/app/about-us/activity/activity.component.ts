@@ -27,9 +27,8 @@ export class ActivityComponent implements OnInit {
     customParams.push('acf.link');
     this.aboutUs.getActivityDetails(customParams).subscribe((data) => {
       if (data) {
-        console.log(data[0])
         this.loading = false; 
-        if(this.aboutUs.objHasKeys(data[0], ['acf', 'link'])){
+        if(data[0]!==undefined && this.aboutUs.objHasKeys(data[0], ['acf', 'link']) ){
           this.videoLink = $.parseHTML(data[0].acf.link);
           this.videoLink = $(this.videoLink).attr('src');
           this.videoLink = this.aboutUs.videoURL(this.videoLink); 

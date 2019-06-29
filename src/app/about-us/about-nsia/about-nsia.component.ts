@@ -38,7 +38,7 @@ export class AboutNsiaComponent implements OnInit {
         // console.log('acf.link' in data[0])
         // console.log(this.objHasKeys(data[0], ['acf', 'link']));
         // if(data[0].hasOwnProperty('acf.link')){
-        if(this.aboutUs.objHasKeys(data[0], ['acf', 'link'])){
+        if(data[0]!==undefined && this.aboutUs.objHasKeys(data[0], ['acf', 'link'])){
           this.videoLink = $.parseHTML(data[0].acf.link);
           this.videoLink = $(this.videoLink).attr('src');
           this.videoLink = this.aboutUs.videoURL(this.videoLink); 
@@ -49,6 +49,8 @@ export class AboutNsiaComponent implements OnInit {
         //   this.aboutNSIA.content.rendered = this.aboutUs.htmlToPlaintext(this.aboutNSIA.content.rendered);
         // }
       }
+    }, err=>{
+      this.loading=false;
     });
   }
   

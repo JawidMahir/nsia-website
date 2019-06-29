@@ -1,20 +1,29 @@
 <div class="margin-top content-justify">
   <div class="custom-container">
     <div class="section-wrapper">
-      <div class=" lib">
-        <div class=" lib-btn active-libraray" id="books" (click)="showLibraries($event.target)">
-          <p class="books">{{'btn.books' | translate}}</p>
-        </div>
-        <div class=" lib-btn" id="quarterly" (click)="showLibraries($event.target)">
-          <p>{{'btn.quarterly' | translate}}</p>
-        </div>
-        <div class=" lib-btn" id="monthly" (click)="showLibraries($event.target)">
-          <p>{{'btn.monthly' | translate}}</p>
-        </div>
-        <div class=" lib-btn" id="surveys" (click)="showLibraries($event.target)">
+      <div class="row lib"> 
+              <select id="books" class="col-md-2 lib-btn active-libraray" (click)="showFilterLibraries($event.target.value,$event.target)">
+                  <option value="books">{{'btn.books' | translate}}</option>
+                  <option value="sy">{{'label.sy' | translate}}</option>
+                  <option value="by">{{'label.by' | translate}}</option>
+                  <option value="gsy">{{'label.gsy' | translate}}</option>
+                  <option value="py">{{'label.py' | translate}}</option>
+                  <option value="ppe">{{'label.ppe' | translate}}</option>
+              </select>
+              <select id="quarterly" class="col-md-2 lib-btn" (click)="showFilterLibraries($event.target.value,$event.target)">
+                <option value="quarterly">{{'btn.quarterly' | translate}}</option>
+                <option value="qsi">{{'label.qsi' | translate}}</option>
+                <option value="qpbs">{{'label.qpbs' | translate}}</option>
+              </select>
+            <select id="monthly" class="col-md-2 lib-btn" (click)="showFilterLibraries($event.target.value,$event.target)">
+              <option value="monthly">{{'btn.monthly' | translate}}</option>
+              <option value="mppk">{{'label.mppk' | translate}}</option>
+              <option value="mppc">{{'label.mppc' | translate}}</option>
+            </select>
+        <div class="col-md-2 lib-btn" id="surveys" (click)="showLibraries($event.target)">
           <p>{{'btn.surveys' | translate}}</p>
         </div>
-        <div class=" lib-btn" id="reports" (click)="showLibraries($event.target)">
+        <div class="col-md-2 lib-btn" id="reports" (click)="showLibraries($event.target)">
           <p>{{'btn.reports' | translate}}</p>
         </div>
       </div>
