@@ -18,7 +18,7 @@
   "label.eg": "رشد اقتصادی",
   "label.latest-news": "آخرین اخبار",
   "label.latest-pubs": "آخرین نشریات",
-  "label.press-release": "اعلامیه های مطبوعاتی", 
+  "label.press-release": "اعلامیه های مطبوعاتی",
   "label.important-announce": "اعلامیه های مهم",
   "label.cs-number": "شماره خدمات مشتریان",
   "label.email": "ایمیل",
@@ -40,7 +40,7 @@
 
   "menu.home": "صفحه اصلی",
   "menu.about-us": "درباره ما",
-  "menu.services": "خدمات", 
+  "menu.services": "خدمات",
   "menu.forms" : "فورمه ها",
   "menu.library": "نشریات",
   "menu.access-info": "دسترسی به اطلاعات",
@@ -75,7 +75,7 @@
   "label.subscribe": "اشتراک نمایید",
   "label.subscribe.title":"اشتراک",
   "label.history": "تاریخچه",
-  "label.authority-functions": "اختیار و صلاحیت ها", 
+  "label.authority-functions": "اختیار و صلاحیت ها",
   "label.vision-mission": "دیدگاه و اهداف",
   "label.tazkira-enrollement": "مراکز توزیع تذکره الکترونیکی",
   "label.organization-structure": "ساختار تشکیلاتی",
@@ -173,5 +173,7 @@
   "label.mppc" : "نشریه های ماهوار قیم کشور ",
   "label.qsi": "شاخص های ربعوار احصائیوی",
   "label.qpbs": "نشریه های ربعوار احصائیه تجارت",
-  "label.select" : "نوعیت نشریه های مورد نظر خود را انتخاب کنید" 
+  "label.select" : "نوعیت نشریه های مورد نظر خود را انتخاب کنید" ,
+  "label.public.relation":"ریاست اطلاعات و ارتباط عامه",
+  "label.information.expert":"کارشناس اطلاع رسانی"
 }

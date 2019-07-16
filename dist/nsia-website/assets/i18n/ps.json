@@ -39,7 +39,7 @@
 
   "menu.home": "اصلي پاڼه",
   "menu.about-us": "زموږ په اړه",
-  "menu.services": "خدمتونه", 
+  "menu.services": "خدمتونه",
   "menu.forms" : "فرمونه",
   "menu.library": "خپرونې",
   "menu.access-info": "اطلاعاتو ته لاسرسی",
@@ -68,7 +68,7 @@
 
 
 
-  "label.newsletter": "خبرپاڼه", 
+  "label.newsletter": "خبرپاڼه",
   "label.news-letter-subscribe": "زموږ برېښنايي خبرپاڼې سره یوځای شئ",
   "label.email-address": "مهرباني وکړئ دلته مو برېښنالیک ولیکئ",
   "label.subscribe": "ګډون وکړئ",
@@ -172,6 +172,8 @@
   "label.mppc" : "په هیواد کې د نرخونو میاشتنۍ خپرونې",
   "label.qsi": "د درې میاشتنۍ احصایې شاخصونه",
   "label.qpbs": "د سوداګریز احصایې درې میاشتنۍ خپرونې",
-  "label.select" : "مهرباني وکړئ د هغه ډول ډول غوره کړئ چې تاسو یې غواړئ"   
-  
+  "label.select" : "مهرباني وکړئ د هغه ډول ډول غوره کړئ چې تاسو یې غواړئ",
+  "label.public.relation":"د اطاعاتو او عامه اړیکو ریاست",
+  "label.information.expert":"د اطلاع رسونې کارپوه"
+
 }

@@ -38,7 +38,7 @@
 
   "menu.home": "home",
   "menu.about-us": "about us",
-  "menu.services": "services", 
+  "menu.services": "services",
   "menu.forms" : "forms",
   "menu.library": "Publications",
   "menu.access-info": "access to info",
@@ -70,7 +70,7 @@
   "label.news-letter-subscribe": "Subscribe to Newsletter here",
   "label.email-address": "Enter your email address",
   "label.subscribe": "Subscribe",
-  "label.subscribe.title":"Newsletter", 
+  "label.subscribe.title":"Newsletter",
   "label.history": "history",
   "label.authority-functions": "authority and functions",
   "label.organization-structure": "organization structure",
@@ -170,6 +170,8 @@
   "label.mppc" : "Monthly Publications of Prices in Country",
   "label.qsi": "Quarterly Statistical Indexes",
   "label.qpbs" : "Quarterly Publications of Business Statistics",
-  "label.select" : "Please select the type you want" 
+  "label.select" : "Please select the type you want",
+  "label.public.relation":"Information & Public Relations Directorate ",
+  "label.information.expert":"InFormation Expert"
 
 }
