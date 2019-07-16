@@ -387,7 +387,7 @@ export class HomeComponent implements OnInit {
 
 
     this.dataService.getCarouselSlides(customParams, 'Slider').subscribe((data) => {
-      // console.log('Carousel Data(Before): ', data);
+      console.log('Carousel Data(Before): ', data);
       data.sort(that.orderResultAscending);
       this.prepareCarouselSlides(data);
     });

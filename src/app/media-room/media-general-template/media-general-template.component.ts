@@ -34,24 +34,26 @@ export class MediaGeneralTemplateComponent implements OnInit {
     customParams.push('title.rendered');
     customParams.push('content.rendered');
     customParams.push('better_featured_image.source_url');
-    customParams.push('better_featured_image.alt_text'); 
+    customParams.push('better_featured_image.alt_text');
     customParams.push('acf.attachment_type');
     customParams.push('acf.link');
+    customParams.push('acf');
     customParams.push('date');
     this.dataService.getPostDetails(id, customParams).subscribe((newsData) => {
+      console.log('news data: ', newsData);
       this.loading = false;
-      if(this.objHasKeys(newsData[0], ['acf', 'link'])){
+      if (newsData.length > 0 && newsData[0].hasOwnProperty('acf')) {
         this.videoLink = $.parseHTML(newsData[0].acf.link);
         this.videoLink = $(this.videoLink).attr('src');
-        this.videoLink = this.videoURL(this.videoLink); 
+        this.videoLink = this.videoURL(this.videoLink);
+        this.news = this.mediaService.styleDetailsLink(newsData[0]);
+        this.news = this.refineData(this.news);
       }
-      this.news = this.mediaService.styleDetailsLink(newsData[0]);
-      this.news = this.refineData(this.news);
     });
   }
 
   refineData(data) {
-    if (!data.hasOwnProperty('date')) { 
+    if (!data.hasOwnProperty('date')) {
       data.date = '00' + 'th' + 'MNT' + '';
     } else {
       data.date = formatDate(data.date, 'MMM dd, yyyy', 'en-US', '+0530');
@@ -74,9 +76,9 @@ export class MediaGeneralTemplateComponent implements OnInit {
 
   objHasKeys(obj, keys) {
     var next = keys.shift();
-    return obj[next] && (! keys.length || this.objHasKeys(obj[next], keys));
+    return obj[next] && (!keys.length || this.objHasKeys(obj[next], keys));
   }
-  
+
 }
 
 

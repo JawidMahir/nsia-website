@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class DataService {
   // api = 'http://172.16.222.114/nsia/wp-json/wp/v2/';
-   nodeapi = 'https://www.nsia.gov.af:6001/api/';
+  nodeapi = 'https://www.nsia.gov.af:6001/api/';
 
   // For accessing the real server
   api = 'https://nsia.gov.af:8080/index.php/wp-json/wp/v2/';
@@ -116,7 +116,7 @@ export class DataService {
   }
 
   getPostDetails(id, customP) {
-    return this.http.get(this.api + 'posts', {
+    return this.http.get<Array<any>>(this.api + 'posts', {
       params: {
         lang: this.language,
         'filter[p]': id,

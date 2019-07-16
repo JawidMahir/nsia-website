@@ -30,12 +30,12 @@ export class PromotionalMaterialsComponent implements OnInit {
     customParams.push('id');
     customParams.push('content');
     this.dataService.getNewsData(customParams, type, perPage).subscribe((newsData) => {
-    //  console.log('Newsletter data: ', this.newsletters);
+      //  console.log('Newsletter data: ', this.newsletters);
+      this.loading = false;
       if (newsData[0]) {
-        this.loading = false;
         newsData[0] = this.getAttachments(newsData[0]);
         this.newsletters.push(newsData[0]);
-      //  console.log('Newsletter data: ', newsData[0]);
+        //  console.log('Newsletter data: ', newsData[0]);
         this.promoMaterialFlag = true;
       }
     });
@@ -43,7 +43,7 @@ export class PromotionalMaterialsComponent implements OnInit {
   }
 
   getAttachments(ps) {
-  //  console.log('It has data', ps);
+    //  console.log('It has data', ps);
     let tempLinksArray;
     const pattern = /\"[A-Za-z0-9_@./#&\s>"=\-:]*\"/g;
     if (ps.hasOwnProperty('content')) {
@@ -51,7 +51,7 @@ export class PromotionalMaterialsComponent implements OnInit {
       tempLinksArray = ps.content.rendered.match(pattern);
       if (tempLinksArray) {
         tempLinksArray[0] = tempLinksArray[0].replace(new RegExp('"', 'g'), '');
-      //  console.log('pattern result: ', tempLinksArray[0]);
+        //  console.log('pattern result: ', tempLinksArray[0]);
         ps.attachment = tempLinksArray[0];
       }
     }
@@ -66,7 +66,7 @@ export class PromotionalMaterialsComponent implements OnInit {
     customParams.push('acf.promotional_materials_attachment.url');
     customParams.push('acf.promotional_materials_type');
     this.dataService.getMediaData(customParams, type).subscribe((promotingMaterialData) => {
-     // console.log('Prmotional materials: ', promotingMaterialData);
+      // console.log('Prmotional materials: ', promotingMaterialData);
       if (promotingMaterialData.length > 0) {
         this.loading = false;
         this.promoMaterialFlag = true;
