@@ -9,10 +9,11 @@ import { MediaServicesService } from '../media-services.service';
 })
 export class NewsUpdatesComponent implements OnInit {
   customParams = [];
+  loading = true;
   p = 1;
   total = 1;
   news = [];
-  contents = []; 
+  contents = [];
   constructor(
     private mediaService: MediaServicesService,
   ) { }
@@ -32,10 +33,9 @@ export class NewsUpdatesComponent implements OnInit {
   getNewsData(type, page) {
     if ((this.news.length < 1) || (this.news.filter(d => d.page === this.p)).length < 1) {
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((newsData) => {
-
+        this.loading=false;
         this.total = Number(newsData.headers.get('X-WP-Total'));
         if (newsData.body.length > 0) {
-
           const newData = {
             page: page,
             data: this.mediaService.refineData(newsData.body)

@@ -7,9 +7,9 @@ import { DomSanitizer} from '@angular/platform-browser';
 @Injectable({
   providedIn: 'root'
 })
-export class NsiaServicesService { 
+export class NsiaServicesService {
 
-  constructor(private http: HttpClient, 
+  constructor(private http: HttpClient,
               private dataService: DataService,
               private sanitizer: DomSanitizer) { }
 
@@ -63,7 +63,7 @@ export class NsiaServicesService {
 
   videoURL(url) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    //return this.sanitizer.bypassSecurityTrustHtml(url); 
+    //return this.sanitizer.bypassSecurityTrustHtml(url);
   }
    objHasKeys(obj, keys) {
     var next = keys.shift();

@@ -201,9 +201,9 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       if(data[0]!==undefined && this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])){
         this.videoLink = $.parseHTML(data[0].acf.link);
         this.videoLink = $(this.videoLink).attr('src');
-        this.videoLink = this.nsiaServices.videoURL(this.videoLink); 
+        this.videoLink = this.nsiaServices.videoURL(this.videoLink);
         data[0].acf.link = this.videoLink;
-      } 
+      }
       this.contents = this.styleDetailsLink(data[0]);
      //console.log('Service data: ', this.contents);
         this.keepContentsLocal(deputyType);
@@ -232,7 +232,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
         $(details).find('a').attr('target', '_blank');
         $(details).find('a').wrap('<div class="attachment" ></div>');
-        
+
         $(details).find('a').each((i, val) => {
 
           const fileExtArray = $(val).attr('href').split('.');
@@ -262,7 +262,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   getProvinces() {
     this.loading = true;
     this.nsiaServices.getProvinces().subscribe((data) => {
-    //  console.log('Provinces: ', data);
+    // console.log('Provinces: ', data);
       if (data.length > 0) {
         this.loading = false;
         this.provinces = data;
@@ -357,7 +357,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
           if(this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])){
             this.videoLink = $.parseHTML(data[0].acf.link);
             this.videoLink = $(this.videoLink).attr('src');
-            this.videoLink = this.nsiaServices.videoURL(this.videoLink); 
+            this.videoLink = this.nsiaServices.videoURL(this.videoLink);
             data[0].acf.link = this.videoLink;
           }
           this.contents = this.styleDetailsLink(data[0]);
@@ -427,7 +427,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       if(this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])){
         this.videoLink = $.parseHTML(data[0].acf.link);
         this.videoLink = $(this.videoLink).attr('src');
-        this.videoLink = this.nsiaServices.videoURL(this.videoLink); 
+        this.videoLink = this.nsiaServices.videoURL(this.videoLink);
         data[0].acf.link = this.videoLink;
       }
       this.contents = this.styleDetailsLink(data[0]);
@@ -435,7 +435,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       this.contents.title.rendered = this.nsiaServices.htmlToPlaintext(this.contents.title.rendered);
       // this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
       //console.log(id + ' data:', this.contents);
-      //console.log(this.contents.acf.link) 
+      //console.log(this.contents.acf.link)
     });
   }
 

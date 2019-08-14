@@ -437,10 +437,14 @@
 .billboard-contents .event-desc p {
   max-width: 400px;
   margin-bottom: 0px !important;
-} 
-@media only screen 
-  and (device-width: 1024px) 
-  and (device-height: 1366px) 
+}
+.portal a , a:hover{
+  text-decoration: none;
+  color: #282560;
+}
+@media only screen
+  and (device-width: 1024px)
+  and (device-height: 1366px)
   and (-webkit-min-device-pixel-ratio: 1) {
     .carousel .carousel-item img {
       height: 50vh !important;
@@ -448,12 +452,12 @@
     .stat-card h3{
       font-size:1em;
     }
-  
+
 }
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 720px) 
-  and (max-device-width: 1025px) 
+@media only screen
+  and (min-device-width: 720px)
+  and (max-device-width: 1025px)
   and (-webkit-min-device-pixel-ratio: 1) {
     .carousel-inner h1{
       font-size: 2em !important;
@@ -464,18 +468,18 @@
     .stat-card h3{
       font-size:1.1em;
     }
-    
+
 }
-@media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 480px) 
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 1) {
     .carousel-inner h1{
       font-size: 13px !important;
     }
     .carousel-inner h5{
       font-size: 9px !important;
-      
+
     }
     .carousel-inner button{
       width: fit-content;
@@ -494,11 +498,11 @@
       width: fit-content;
       font-size: 12px;
     }
-    
+
 }
-@media only screen 
-  and (min-device-width: 460px) 
-  and (max-device-width: 850px) 
+@media only screen
+  and (min-device-width: 460px)
+  and (max-device-width: 850px)
   and (-webkit-min-device-pixel-ratio: 1) {
     .carousel-inner h1{
       font-size: 1.2em !important;

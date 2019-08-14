@@ -12,11 +12,11 @@
                   <img class="fit-cover" [src]="nw.better_featured_image?.source_url"
                     [alt]="nw.better_featured_image?.source_url.alt_text" (error)="imageError($event.target);">
                   <!-- <ng-template #showvedio>
-                      <iframe [src]="videoURL(nw?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                      <iframe [src]="videoURL(nw?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </ng-template>  -->
                   <div class="attachment-type">
                     <p *ngIf="nw.acf.attachment_type == 'image' else video;">{{'label.image' | translate}}</p>
-                    <ng-template #video> 
+                    <ng-template #video>
                       <p>{{ 'label.video' | translate }}</p>
                     </ng-template>
                   </div>
@@ -39,7 +39,8 @@
           </div>
           <ng-template #nonews>
             <div class="jumbotron text-center no-data">
-              <h4>{{'label.no-data' | translate}}</h4>
+                <div [class.dot-falling]="loading"></div>
+                <h4 *ngIf="!loading">{{ 'label.no-data' | translate }}</h4>
             </div>
           </ng-template>
         </div>

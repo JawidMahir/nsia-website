@@ -9,12 +9,13 @@ import { MediaServicesService } from '../media-services.service';
 })
 export class AccessInfoComponent implements OnInit {
   customParams = [];
+  loading = true;
   p = 1;
   total = 1;
   accessInfo = [];
-  contents = []; 
+  contents = [];
 
-  constructor(private mediaService: MediaServicesService) { } 
+  constructor(private mediaService: MediaServicesService) { }
 
   // accessInfo;
   // loading = true;
@@ -48,17 +49,16 @@ export class AccessInfoComponent implements OnInit {
   getAceessInfoData(type, page) {
     if ((this.accessInfo.length < 1) || (this.accessInfo.filter(d => d.page === this.p)).length < 1) {
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((accessInfoData) => {
-
+        this.loading=false;
         this.total = Number(accessInfoData.headers.get('X-WP-Total'));
         if (accessInfoData.body.length > 0) {
-
           const newData = {
             page: page,
             data: this.mediaService.refineData(accessInfoData.body)
           };
 
           this.accessInfo.push(newData);
-          this.contents = newData.data; 
+          this.contents = newData.data;
         }
       });
     } else {
@@ -80,6 +80,6 @@ export class AccessInfoComponent implements OnInit {
 
   pageChanged(page: number) {
     this.p = page;
-    this.getAceessInfoData('news', page);
+    this.getAceessInfoData('access_to_info', page);
   }
 }

@@ -115,7 +115,7 @@
         <i class="fas fa-chevron-right"></i>
       </div>
     </div>
-    <div class="contents" *ngIf="contents;else nodata"> 
+    <div class="contents" *ngIf="contents;else nodata">
 
       <!-- <router-outlet></router-outlet> -->
       <div>
@@ -132,7 +132,7 @@
           <h5> <strong> {{ contents.title.rendered}} </strong></h5>
         </div>
         <div *ngIf="contents.content" class="details" [innerHTML]="contents.content.rendered"></div>
-        <div *ngIf="contents.acf?.link" >
+        <div class="embed-responsive embed-responsive-16by9" *ngIf="contents.acf?.link">
             <iframe width="850" height="500" [src]="contents.acf.link" frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -141,7 +141,7 @@
 
     </div>
     <ng-template #nodata>
-      <div class="contents"> 
+      <div class="contents">
         <div class="jumbotron no-data">
           <div [class.dot-falling]="loading"></div>
           <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>

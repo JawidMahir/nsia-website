@@ -23,7 +23,7 @@ const mediaRoutes: Routes = [
           { path: 'press-release', component: PressReleaseComponent },
           { path: 'media/:id', component: MediaGeneralTemplateComponent},
           { path: 'access-info', component: AccessInfoComponent },
-          { path: 'newsletter', component: NewsLetterComponent },
+          { path: 'annual-report', component: NewsLetterComponent },
           { path: '', component: EventsComponent }
         ]
       }

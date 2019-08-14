@@ -7,7 +7,7 @@
   "label.copy-right": "ټول حقونه خوندي دي، د احصایې او معلوماتو ملي اداره  {{ year }} ©",
 
 
-  "label.contact-us": "زموږ سره اړيکه",
+  "label.contact-us": "له زموږ سره اړيکه",
   "label.working-hours": "د سهار له ۸ نه د ماسپښین تر ۴",
   "label.head-office": "د مرکزي ادارې دفتر",
   "label.search-website": "د پلټنې متن دلته ولیکئ",
@@ -65,6 +65,7 @@
   "submenu.administrations": "اداري",
   "submenu.procurement": "تدارکات",
   "submenu.jobs": "ګمارنې",
+  "submenu.annual.report": "کلنۍ راپور",
 
 
 

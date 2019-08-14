@@ -29,12 +29,10 @@ export class PressReleaseComponent implements OnInit {
   }
   getPressData(type, page) {
     if ((this.press.length < 1) || (this.press.filter(d => d.page === this.p)).length < 1) {
-      this.loading = true;
       this.mediaService.getMediaData(this.customParams, type, page).subscribe((pressData) => {
-
+        this.loading = false;
         this.total = Number(pressData.headers.get('X-WP-Total'));
         if (pressData.body.length > 0) {
-          this.loading = false;
           const newData = {
             page,
             data: this.refineData(pressData.body)
@@ -72,7 +70,7 @@ export class PressReleaseComponent implements OnInit {
 
   imageError(el) {
     el.onerror = '';
-    el.src = '../../assets/images/noimage.png';
+    el.src = '../../assets/images/noimage.svg';
     //console.log(el);
     return true;
   }

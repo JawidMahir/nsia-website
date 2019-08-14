@@ -5,14 +5,14 @@
         <div class="row">
           <div class="col-md-8 col-sm-7 col-xs-11">
             <div *ngIf="newsLetter.length > 0; else nonews">
-              <h4>{{'label.news' | translate}}</h4><br>
+              <h4>{{'submenu.annual.report' | translate}}</h4><br>
               <div class="row news"
                 *ngFor="let nw of contents | paginate: { itemsPerPage: 4 , currentPage: p , totalItems: total }">
-                <div class="col-md-4 col-sm-7 featured-video">
+                <div class="col-lg-5 col-md-6 col-sm-6">
                   <img class="fit-cover" [src]="nw.better_featured_image?.source_url"
                     [alt]="nw.better_featured_image?.source_url.alt_text" (error)="imageError($event.target);">
                   <!-- <ng-template #showvedio>
-                      <iframe [src]="videoURL(nw?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                      <iframe [src]="videoURL(nw?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </ng-template>  -->
                   <div class="attachment-type">
                     <p *ngIf="nw.acf.attachment_type == 'image' else video;">{{'label.image' | translate}}</p>
@@ -21,7 +21,7 @@
                     </ng-template>
                   </div>
                 </div>
-                <div class="col-md-7 col-sm-5">
+                <div class="col-lg-7 col-md-6 col-sm-6">
                   <div>
                     <h5>{{ getBrief(nw.title.rendered) }}</h5>
                     <p class="content" *ngIf="nw.content">{{ getBrief(nw.content.rendered) }}</p>
@@ -39,7 +39,8 @@
           </div>
           <ng-template #nonews>
             <div class="jumbotron text-center no-data">
-              <h4>{{'label.no-data' | translate}}</h4>
+                <div [class.dot-falling]="loading"></div>
+                <h4 *ngIf="!loading">{{ 'label.no-data' | translate }}</h4>
             </div>
           </ng-template>
         </div>
