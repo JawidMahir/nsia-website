@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1565779365613,
+  "timestamp": 1566019419586,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -147,9 +147,9 @@
     "/assets/fonts/Bahij_Helvetica_Neue-Light_1.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
     "/assets/fonts/bahij_helvetica_neue_bold_by_bahijvirtualacademy-dammcmt_0.ttf": "904492cf3930671a0d367348ab178597ebbffa66",
     "/assets/fonts/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.ttf": "9f0e7efd26f73d0db26ea54a2fe87f4b0430f314",
-    "/assets/i18n/en.json": "fbd893b8a0a0f3249196b5c6b4ca6b66dd3efb6e",
-    "/assets/i18n/fa.json": "f50504fb1392d971cb53eef72650b66e2f342543",
-    "/assets/i18n/ps.json": "f1dcab3e1887236a48247615bd0e856fcaf4ee92",
+    "/assets/i18n/en.json": "bbfed772d95fe88775975c80dec9b4364844f9e7",
+    "/assets/i18n/fa.json": "6f97424f9bcd9df09bfcbf9a6e372ae470802c51",
+    "/assets/i18n/ps.json": "ead07dc69da58465b7dd5166ccf07cfaac1dd2a9",
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
