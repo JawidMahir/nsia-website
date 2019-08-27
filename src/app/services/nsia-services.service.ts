@@ -18,6 +18,7 @@ export class NsiaServicesService {
       params: {
         lang: this.dataService.language,
         'filter[category_name]': deputyType,
+        'filter[posts_per_page]':'100',
         'filter[tag]': tag,
         fields: customP.join(',')
       }
