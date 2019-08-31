@@ -597,7 +597,7 @@
           </div>
         </div> -->
 
-        <div class="col-lg-12 col-md-12  col-sm-12 customers-wrapper">
+        <div class="col-md-12 customers-wrapper">
           <div class="title">
             <h4>{{ 'label.portal' | translate }}</h4>
             <div class="t-icon">
@@ -613,18 +613,22 @@
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <div class="bs-item" *ngFor="let cs of portals[0]">
-                    <img [src]="cs.better_featured_image?.source_url" [alt]="cs.acf.link">
-                    <h6>{{ cs.title?.rendered }}</h6>
+                    <div class="col-md-12">
+                    <img [src]="cs.better_featured_image?.source_url" [alt]="cs.acf?.link">
+                    <h4>{{ cs.title?.rendered }}</h4>
                     <p>{{ cs.content?.rendered }}</p>
-                    <a [href]="cs.acf.link" class="btn c-btn-outline-blue col-md-5" target="_blank">{{ 'label.btn.carousel' | translate }}</a>
+                    <a [href]="cs.acf?.link" class="btn c-btn-outline-blue col-md-5" target="_blank">{{ 'label.btn.carousel' | translate }}</a>
+                    </div>
                   </div>
                 </div>
                 <div class="carousel-item" *ngFor="let cst of portals | slice:1">
                   <div class="bs-item" *ngFor="let cs of cst">
-                    <img [src]="cs.better_featured_image?.source_url" [alt]="cs.acf.link">
-                    <h6>{{ cs.title?.rendered }}</h6>
-                    <p>{{ cs.content?.rendered }}</p>
-                    <a [href]="cs.acf.link"  class="btn c-btn-outline-blue " target="_blank">{{ 'label.btn.carousel' | translate }}</a>
+                    <div class="col-md-12">
+                        <img [src]="cs.better_featured_image?.source_url" [alt]="cs.acf?.link">
+                        <h4>{{ cs.title?.rendered }}</h4>
+                        <p>{{ cs.content?.rendered }}</p>
+                        <a [href]="cs.acf?.link"  class="btn c-btn-outline-blue col-md-5" target="_blank">{{ 'label.btn.carousel' | translate }}</a>
+                    </div>
                   </div>
                 </div>
               </div>

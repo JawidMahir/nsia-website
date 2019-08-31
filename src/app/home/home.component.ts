@@ -86,10 +86,6 @@ export class HomeComponent implements OnInit {
       interval: 4000,
       ride: 'carousel'
     });
-    $('#customers-carousel').carousel({
-      interval: 4000,
-      ride: 'carousel'
-      });
 
     if (this.trs.currentLang === 'en') {
       this.sliderDirection = 'ltr_slider';
@@ -189,9 +185,10 @@ export class HomeComponent implements OnInit {
 
     };
 
-    this.businessMainData.donors = arrangeDataOf(this.businessMainData.donors);
-    this.businessMainData.stakeholders = arrangeDataOf(this.businessMainData.stakeholders);
-    this.businessMainData.customers = arrangeDataOf(this.businessMainData.customers);
+    // this.businessMainData.donors = arrangeDataOf(this.businessMainData.donors);
+    // this.businessMainData.stakeholders = arrangeDataOf(this.businessMainData.stakeholders);
+    // this.businessMainData.customers = arrangeDataOf(this.businessMainData.customers);
+    this.portals = arrangeDataOf(this.portals);
 
     // console.log('After refinment the data is: ', this.businessMainData);
 
@@ -458,10 +455,13 @@ export class HomeComponent implements OnInit {
       if (data) {
         for (const el of data) {
           if (el.hasOwnProperty('content')) {
-             el.content.rendered = this.dataService.htmlToPlaintext(el.content.rendered);
+            el.content.rendered = this.dataService.htmlToPlaintext(el.content.rendered);
           }
         }
-        this.portals.push(data);
+        this.portals = data;
+        // console.log('portal data', this.portals);
+        this.reArrangeBusinessData();
+        // console.log('portal data after reArrange', this.portals);
       }
     });
   }
