@@ -356,7 +356,7 @@
 .bussiness .bs-item {
   flex: auto;
   text-align: center;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .bussiness .bs-item img {

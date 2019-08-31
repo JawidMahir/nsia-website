@@ -1,5 +1,5 @@
 /*
-* RTL CSS 
+* RTL CSS
 */
 .rtl {
   direction: rtl;
@@ -174,4 +174,8 @@
 */
 .rtl .tender .tender-details span {
   float: right;
+}
+.rtl .r-icon {
+  float: right !important;
+  margin-left:3px !important;
 }

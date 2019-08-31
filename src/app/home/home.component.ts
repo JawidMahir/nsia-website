@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   nsiaServiceText;
   stakeHolders;
   sliderDirection;
+  portals = [];
 
   carousel = {
     nsia: null,
@@ -85,6 +86,10 @@ export class HomeComponent implements OnInit {
       interval: 4000,
       ride: 'carousel'
     });
+    $('#customers-carousel').carousel({
+      interval: 4000,
+      ride: 'carousel'
+      });
 
     if (this.trs.currentLang === 'en') {
       this.sliderDirection = 'ltr_slider';
@@ -109,6 +114,7 @@ export class HomeComponent implements OnInit {
     this.getCarouselSlides();
     this.getInitialStats();
     this.getBusinessData();
+    this.getPortalsData();
 
     // disable the read more buttons in the begining
     $('.news-read-more').prop('disabled', true);
@@ -433,12 +439,30 @@ export class HomeComponent implements OnInit {
     customParams.push('title.rendered');
     customParams.push('acf');
     customParams.push('better_featured_image.source_url');
-    this.dataService.getBusinessData(customParams).subscribe((data) => {
+    this.dataService.getBusinessData(customParams, 'business').subscribe((data) => {
       // console.log('business data: ', data);
       if (data) {
         this.categorizeBusinessData(data);
       }
 
+    });
+  }
+
+  getPortalsData() {
+    const customParams = [];
+    customParams.push('title.rendered');
+    customParams.push('content.rendered');
+    customParams.push('acf.link');
+    customParams.push('better_featured_image.source_url');
+    this.dataService.getBusinessData(customParams, 'portal').subscribe((data) => {
+      if (data) {
+        for (const el of data) {
+          if (el.hasOwnProperty('content')) {
+             el.content.rendered = this.dataService.htmlToPlaintext(el.content.rendered);
+          }
+        }
+        this.portals.push(data);
+      }
     });
   }
 
@@ -503,5 +527,7 @@ export class HomeComponent implements OnInit {
     sessionStorage.removeItem('sub-menu.id');
 
   }
-
+  visitPortal(url) {
+    console.log(url);
+  }
 }

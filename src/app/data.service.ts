@@ -76,10 +76,10 @@ export class DataService {
     });
   }
 
-  getBusinessData(customP) {
-    return this.http.get(this.api + 'posts', {
+  getBusinessData(customP,catName) {
+    return this.http.get<Array<any>>(this.api + 'posts', {
       params: {
-        'filter[category_name]': 'business',
+        'filter[category_name]': catName,
         lang: this.language,
         fields: customP.join(','),
       }

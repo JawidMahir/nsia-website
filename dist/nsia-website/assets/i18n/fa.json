@@ -176,5 +176,6 @@
   "label.qpbs": "نشریه های ربعوار احصائیه تجارت",
   "label.select" : "نوعیت نشریه های مورد نظر خود را انتخاب کنید" ,
   "label.public.relation":"ریاست اطلاعات و ارتباط عامه",
-  "label.information.expert":"کارشناس اطلاع رسانی"
+  "label.information.expert":"کارشناس اطلاع رسانی",
+  "label.btn.carousel":"مشاهده"
 }

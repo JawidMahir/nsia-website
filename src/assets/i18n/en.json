@@ -173,6 +173,7 @@
   "label.qpbs" : "Quarterly Publications of Business Statistics",
   "label.select" : "Please select the type you want",
   "label.public.relation":"Information & Public Relations Directorate ",
-  "label.information.expert":"InFormation Expert"
+  "label.information.expert":"InFormation Expert",
+  "label.btn.carousel":"visit"
 
 }
