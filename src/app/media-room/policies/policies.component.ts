@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AboutUsService } from '../about-us.service';
+import { MediaServicesService } from '../media-services.service';
 
 @Component({
   selector: 'app-policies',
@@ -8,7 +8,7 @@ import { AboutUsService } from '../about-us.service';
 })
 export class PoliciesComponent implements OnInit {
 
-  constructor(private aboutUs: AboutUsService) { }
+  constructor(private mediaService: MediaServicesService,) { }
   policies;
   loading = true;
 
@@ -22,11 +22,11 @@ export class PoliciesComponent implements OnInit {
     const customParams = [];
     customParams.push('title');
     customParams.push('content');
-    this.aboutUs.getNsiaPolicies(customParams).subscribe((data) => {
+    this.mediaService.getNsiaPolicies(customParams).subscribe((data) => {
       // console.log('policies: ', data);
       if (data) {
         this.loading = false;
-        this.policies = this.aboutUs.styleDetailsLink(data[0]);
+        this.policies = this.mediaService.styleDetailsLink(data[0]);
         // if (this.gender) {
         //   this.gender.content.rendered = this.aboutUs.htmlToPlaintext(this.gender.content.rendered);
         // }

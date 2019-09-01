@@ -274,6 +274,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     sessionStorage.removeItem('department');
     this.dataService.callServiceCmpMethod();
   }
+  updateLibraryType(sType) {
+    localStorage.setItem('library-type', sType);
+  }
+
 
   getTags() {
     const customParams = [];

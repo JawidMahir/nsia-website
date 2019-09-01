@@ -30,6 +30,9 @@ body {
   background: #fff;
 
 }
+p{
+  font-weight: 450;
+}
 
 button {
   text-transform: uppercase;
@@ -276,7 +279,7 @@ button {
 }
 
 /* Breadcrumb Navigation CSS */
-/* 
+/*
 .navigation {
   margin-bottom: 14px;
 } */
@@ -428,7 +431,7 @@ button {
   display: inline !important;
 }
 
-/* 
+/*
 .active-item .fa-chevron-right {
   display: none
 }

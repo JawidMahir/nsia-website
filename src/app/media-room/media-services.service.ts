@@ -25,6 +25,19 @@ export class MediaServicesService {
       }
     });
   }
+  getNsiaPolicies(customParams) {
+    return this.fetchData(customParams, 'policies');
+  }
+  fetchData(customParams, category) {
+    const header = {
+      'filter[category_name]': category,
+      lang: this.dataService.language,
+      fields: customParams.join(',')
+    };
+    return this.http.get(this.dataService.api + 'posts', {
+      params: header
+    });
+  }
   getPromotingData(customP, catName) {
     return this.http.get(this.dataService.api + 'posts', {
       params: {
@@ -107,7 +120,7 @@ export class MediaServicesService {
       if (!el.hasOwnProperty('date')) {
         el.date = '00' + 'th' + 'MNT' + '';
       } else {
-        el.date = formatDate(el.date, 'MMM dd, yyyy', 'en-US', '+0530'); 
+        el.date = formatDate(el.date, 'MMM dd, yyyy', 'en-US', '+0530');
         if (el.hasOwnProperty('content')) {
           el.content.rendered = this.htmlToPlaintext(el.content.rendered);
         }

@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
 
   newsBriefs = {
     news: '',
-    newsletter: '',
+    press: '',
     publications: '',
     announcements: '',
     upcoming_publications: '',
@@ -225,7 +225,7 @@ export class HomeComponent implements OnInit {
 
     } else {
 
-      const newsCategories = ['news', 'publications', 'newsletter', 'announcements'];
+      const newsCategories = ['news', 'publications', 'press', 'announcements'];
 
       if (newsCategories.includes(type)) {
         $('.news-read-more').prop('disabled', false);
@@ -238,7 +238,7 @@ export class HomeComponent implements OnInit {
   }
 
   generateCards(sectionId, data) {
-    const newsCategories = ['news', 'publications', 'newsletter', 'announcements'];
+    const newsCategories = ['news', 'publications', 'press', 'announcements'];
 
 
     if (data.length > 0) {

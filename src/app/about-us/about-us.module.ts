@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { NgxPaginationModule } from 'ngx-pagination'; 
+import { NgxPaginationModule } from 'ngx-pagination';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AboutUsRoutingModule } from './about-us-routing.module';
@@ -17,7 +17,6 @@ import { ActivityComponent } from './activity/activity.component';
 import { StructureComponent } from './structure/structure.component';
 import { BiographiesComponent } from './biographies/biographies.component';
 import { BioComponent } from './bio/bio.component';
-import { PoliciesComponent } from './policies/policies.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,7 +30,6 @@ export function createTranslateLoader(http: HttpClient) {
     StructureComponent,
     BiographiesComponent,
     BioComponent,
-    PoliciesComponent,
   ],
   imports: [
     CommonModule,
