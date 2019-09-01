@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { formatDate } from '@angular/common';
 import { MediaServicesService } from '../media-services.service';
 
 @Component({
-  selector: 'app-news-updates',
-  templateUrl: './news-updates.component.html',
-  styleUrls: ['./news-updates.component.css']
+  selector: 'app-annual-report',
+  templateUrl: './annual-report.component.html',
+  styleUrls: ['./annual-report.component.css']
 })
-export class NewsUpdatesComponent implements OnInit {
+export class AnnualReportComponent implements OnInit {
   customParams = [];
   loading = true;
   p = 1;
   total = 1;
-  news = [];
+  annualReports = [];
   contents = [];
+
   constructor(
     private mediaService: MediaServicesService
-  ) { }
+    ) {}
 
   ngOnInit() {
     this.customParams.push('title.rendered');
@@ -27,27 +27,26 @@ export class NewsUpdatesComponent implements OnInit {
     this.customParams.push('better_featured_image.alt_text');
     this.customParams.push('date');
     this.customParams.push('id');
-    this.getNewsData('news', this.p);
+    this.getAnnualReportsData('annual-report', this.p);
   }
-
-  getNewsData(type, page) {
-    if ((this.news.length < 1) || (this.news.filter(d => d.page === this.p)).length < 1) {
-      this.mediaService.getMediaData(this.customParams, type, page).subscribe((newsData) => {
-        this.loading=false;
-        this.total = Number(newsData.headers.get('X-WP-Total'));
-        if (newsData.body.length > 0) {
+  getAnnualReportsData(type, page) {
+    if ((this.annualReports.length < 1) || (this.annualReports.filter(d => d.page === this.p)).length < 1) {
+      this.mediaService.getMediaData(this.customParams, type, page).subscribe((annualReportsData) => {
+        this.loading = false;
+        this.total = Number(annualReportsData.headers.get('X-WP-Total'));
+        if (annualReportsData.body.length > 0) {
           const newData = {
-            page: page,
-            data: this.mediaService.refineData(newsData.body)
+            page : page ,
+            data: this.mediaService.refineData(annualReportsData.body)
           };
 
-          this.news.push(newData);
-          // console.log(this.news);
+          this.annualReports.push(newData);
+          // console.log(this.annualReports);
           this.contents = newData.data;
         }
       });
     } else {
-      this.contents = (this.news.filter(d => d.page === this.p))[0].data;
+      this.contents = (this.annualReports.filter(d => d.page === this.p))[0].data;
     }
   }
   imageError(el) {
@@ -65,7 +64,6 @@ export class NewsUpdatesComponent implements OnInit {
 
   pageChanged(page: number) {
     this.p = page;
-    this.getNewsData('news', page);
+    this.getAnnualReportsData('annual-report', page);
   }
-
 }

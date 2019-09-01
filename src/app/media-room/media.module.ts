@@ -18,6 +18,8 @@ import { MediaGeneralTemplateComponent } from './media-general-template/media-ge
 import { NewsLetterComponent } from './news-letter/news-letter.component';
 import { AccessInfoComponent } from './access-info/access-info.component';
 import { PoliciesComponent } from './policies/policies.component';
+import { AnnualReportComponent } from './annual-report/annual-report.component';
+import { ImportantAnnouncementsComponent } from './important-announcements/important-announcements.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -32,7 +34,9 @@ export function createTranslateLoader(http: HttpClient) {
     MediaGeneralTemplateComponent,
     NewsLetterComponent,
     AccessInfoComponent,
-    PoliciesComponent
+    PoliciesComponent,
+    AnnualReportComponent,
+    ImportantAnnouncementsComponent
   ],
   imports: [
     CommonModule,

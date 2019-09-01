@@ -8,6 +8,8 @@ import { MediaGeneralTemplateComponent } from './media-general-template/media-ge
 import { AccessInfoComponent } from './access-info/access-info.component';
 import { NewsLetterComponent } from './news-letter/news-letter.component';
 import { PoliciesComponent } from './policies/policies.component';
+import { AnnualReportComponent } from './annual-report/annual-report.component';
+import { ImportantAnnouncementsComponent } from './important-announcements/important-announcements.component';
 
 
 const mediaRoutes: Routes = [
@@ -24,6 +26,8 @@ const mediaRoutes: Routes = [
           { path: 'access-info', component: AccessInfoComponent },
           { path: 'rules-policies', component: PoliciesComponent },
           { path: 'newsletter', component: NewsLetterComponent },
+          { path: 'annual-report', component: AnnualReportComponent },
+          { path: 'important-announcements', component: ImportantAnnouncementsComponent },
           { path: '', component: NewsUpdatesComponent }
         ]
       }

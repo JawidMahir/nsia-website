@@ -1,0 +1,50 @@
+<div class="news-section">
+  <div class="margin-top">
+    <div class="custom-container">
+      <div class="section-wrapper">
+        <div class="row">
+          <div class="col-lg-8 col-md-12">
+            <div *ngIf="annualReports.length > 0; else nonews">
+              <h4>{{'submenu.annual.report' | translate}}</h4><br>
+              <div class="row news"
+                *ngFor="let ar of contents | paginate: { itemsPerPage: 4 , currentPage: p , totalItems: total }">
+                <div class="col-lg-5 col-md-6 col-sm-6">
+                  <img class="fit-cover" [src]="ar.better_featured_image?.source_url"
+                    [alt]="ar.better_featured_image?.source_url.alt_text" (error)="imageError($event.target);">
+                  <!-- <ng-template #showvedio>
+                      <iframe [src]="videoURL(ar?.acf.link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </ng-template>  -->
+                  <div class="attachment-type">
+                    <p *ngIf="ar.acf.attachment_type == 'image' else video;">{{'label.image' | translate}}</p>
+                    <ng-template #video>
+                      <p>{{ 'label.video' | translate }}</p>
+                    </ng-template>
+                  </div>
+                </div>
+                <div class="col-lg-7 col-md-6 col-sm-6">
+                  <div>
+                    <h5>{{ getBrief(ar.title.rendered) }}</h5>
+                    <p class="content" *ngIf="ar.content">{{ getBrief(ar.content.rendered) }}</p>
+                    <a [routerLink]="['/media-room/media', ar.id]">{{'btn.read-more' | translate}}</a><br>
+                    <span>{{ ar.date }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <pagination-controls class="news-pagination" (pageChange)="pageChanged($event)" autoHide="true"
+                  responsive="true" maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
+                  nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
+              </div>
+            </div>
+          </div>
+          <ng-template #nonews>
+            <div class="jumbotron text-center no-data">
+                <div [class.dot-falling]="loading"></div>
+                <h4 *ngIf="!loading">{{ 'label.no-data' | translate }}</h4>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { formatDate } from '@angular/common';
 import { MediaServicesService } from '../media-services.service';
 
 @Component({
-  selector: 'app-news-updates',
-  templateUrl: './news-updates.component.html',
-  styleUrls: ['./news-updates.component.css']
+  selector: 'app-important-announcements',
+  templateUrl: './important-announcements.component.html',
+  styleUrls: ['./important-announcements.component.css']
 })
-export class NewsUpdatesComponent implements OnInit {
+export class ImportantAnnouncementsComponent implements OnInit {
   customParams = [];
   loading = true;
   p = 1;
   total = 1;
-  news = [];
+  importantAnnouncements = [];
   contents = [];
   constructor(
     private mediaService: MediaServicesService
@@ -27,27 +26,26 @@ export class NewsUpdatesComponent implements OnInit {
     this.customParams.push('better_featured_image.alt_text');
     this.customParams.push('date');
     this.customParams.push('id');
-    this.getNewsData('news', this.p);
+    this.getImportantAnnouncementsData('announcements', this.p);
   }
-
-  getNewsData(type, page) {
-    if ((this.news.length < 1) || (this.news.filter(d => d.page === this.p)).length < 1) {
-      this.mediaService.getMediaData(this.customParams, type, page).subscribe((newsData) => {
+  getImportantAnnouncementsData(type, page){
+    if ((this.importantAnnouncements.length < 1) || (this.importantAnnouncements.filter(d => d.page === this.p)).length < 1) {
+      this.mediaService.getMediaData(this.customParams, type, page).subscribe((importantAnnouncementsData) => {
         this.loading=false;
-        this.total = Number(newsData.headers.get('X-WP-Total'));
-        if (newsData.body.length > 0) {
+        this.total = Number(importantAnnouncementsData.headers.get('X-WP-Total'));
+        if (importantAnnouncementsData.body.length > 0) {
           const newData = {
             page: page,
-            data: this.mediaService.refineData(newsData.body)
+            data: this.mediaService.refineData(importantAnnouncementsData.body)
           };
 
-          this.news.push(newData);
-          // console.log(this.news);
+          this.importantAnnouncements.push(newData);
+          // console.log(this.importantAnnouncements);
           this.contents = newData.data;
         }
       });
     } else {
-      this.contents = (this.news.filter(d => d.page === this.p))[0].data;
+      this.contents = (this.importantAnnouncements.filter(d => d.page === this.p))[0].data;
     }
   }
   imageError(el) {
@@ -65,7 +63,6 @@ export class NewsUpdatesComponent implements OnInit {
 
   pageChanged(page: number) {
     this.p = page;
-    this.getNewsData('news', page);
+    this.getImportantAnnouncementsData('announcements', page);
   }
-
 }
