@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import * as moment from 'jalali-moment';
 import { OppService } from '../opp.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { OppService } from '../opp.service';
 export class ProcurementComponent implements OnInit {
   selectedTender;
   loading = true;
+  lang;
   constructor(
     private route: ActivatedRoute,
     private oppService: OppService
@@ -19,6 +20,7 @@ export class ProcurementComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.getTenderDetails(id);
+    this.lang = localStorage.getItem('lang');
   }
 
   getTenderDetails(id) {
@@ -40,6 +42,10 @@ export class ProcurementComponent implements OnInit {
         const date = new Date(this.selectedTender.date);
         const tempDate = date.getDate() + '/' + (Number(date.getMonth()) + 1) + '/' + date.getFullYear();
         this.selectedTender.date = tempDate;
+        if (this.lang == 'fa' || this.lang == 'ps' ) {
+          this.selectedTender.date = moment(this.selectedTender.date, 'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
+          this.selectedTender.acf.closing_date = moment(this.selectedTender.acf.closing_date, 'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
+        }
 
       }
 

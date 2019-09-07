@@ -140,3 +140,6 @@
 .footer .social-media a:hover {
   color: #282560;
 }
+li a{
+  font-weight: 400;
+}

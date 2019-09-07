@@ -73,9 +73,12 @@ select{
 }
 select:focus{
   background-color:#282560;
-  color: #fff; 
+  color: #fff;
 }
 select:hover{
   background-color:#282560;
   color: #fff;
+}
+#surveys p , #reports p{
+  font-weight: 650;
 }

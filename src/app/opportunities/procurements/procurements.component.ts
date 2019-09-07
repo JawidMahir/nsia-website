@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OppService } from '../opp.service';
+import * as moment from 'jalali-moment';
 
 @Component({
   selector: 'app-procurements',
@@ -11,11 +12,13 @@ export class ProcurementsComponent implements OnInit {
   total = 1;
   tenders = [];
   contents = [];
+  lang;
 
   constructor(private oppService: OppService) { }
 
   ngOnInit() {
-    this.getTenders(this.p); 
+    this.getTenders(this.p);
+    this.lang = localStorage.getItem('lang');
   }
 
   getBrief(ds) {
@@ -45,7 +48,7 @@ export class ProcurementsComponent implements OnInit {
         this.tenders.push(newData);
         console.log(this.tenders);
         this.contents = newData.data;
-        
+
       });
     }else{
       this.contents = (this.tenders.filter(d => d.page === this.p))[0].data;
@@ -58,6 +61,10 @@ export class ProcurementsComponent implements OnInit {
       const date = new Date(tn.date);
       const tempDate = date.getDate() + '/' + (Number(date.getMonth()) + 1) + '/' + date.getFullYear();
       tn.date = tempDate;
+      if (this.lang == 'fa' || this.lang == 'ps' ) {
+        tn.date = moment(tn.date,'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
+        tn.acf.closing_date = moment(tn.acf.closing_date,'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
+      }
     }
     return data;
   }
