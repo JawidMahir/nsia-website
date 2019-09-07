@@ -33,12 +33,12 @@
           <td>
             <span *ngIf="job.date">{{ job.date }}</span>
           </td>
-          <td>
+          <!-- <td>
             <span>{{'label.reference' | translate}}</span>
           </td>
           <td>
             <span *ngIf="job.acf.reference_">{{job.acf.reference_}}</span>
-          </td>
+          </td> -->
         </tr>
         <tr>
           <td>
@@ -47,12 +47,12 @@
           <td>
             <span *ngIf="job.acf.closing_date">{{ job.acf.closing_date }}</span>
           </td>
-          <td>
+          <!-- <td>
             <span>{{'label.work-type' | translate}}</span>
           </td>
           <td>
             <span *ngIf="job.acf.work_type">{{ job.acf.work_type }}</span>
-          </td>
+          </td> -->
         </tr>
         <tr>
           <td>
@@ -61,12 +61,12 @@
           <td>
             <span *ngIf="job.acf.number_of_vacancies">{{ job.acf.number_of_vacancies }}</span>
           </td>
-          <td>
+          <!-- <td>
             <span>{{'submenu.gender' | translate}}</span>
           </td>
           <td>
             <span *ngIf="job.acf.gender">{{ job.acf.gender}}</span>
-          </td>
+          </td> -->
         </tr>
         <tr>
           <td>
@@ -75,12 +75,12 @@
           <td>
             <span *ngIf="job.acf.functional_area">{{ job.acf.functional_area }}</span>
           </td>
-          <td>
+          <!-- <td>
             <span>{{'label.nationality' | translate}}</span>
           </td>
           <td>
             <span *ngIf="job.acf.nationality">{{ job.acf.nationality }}</span>
-          </td>
+          </td> -->
         </tr>
         <tr>
           <td>
@@ -88,12 +88,6 @@
           </td>
           <td>
             <span *ngIf="job.acf.salary_range">{{ job.acf.salary_range }}</span>
-          </td>
-          <td>
-            <span>{{ 'label.experience' | translate }}</span>
-          </td>
-          <td>
-            <span *ngIf="job.acf.years_of_experience">{{ job.acf.years_of_experience }}</span>
           </td>
         </tr>
         <tr>
@@ -103,12 +97,12 @@
           <td>
             <span *ngIf="job.acf.contract_duration">{{ job.acf.contract_duration }}</span>
           </td>
-          <td>
+          <!-- <td>
             <span>{{ 'label.extension-possibility' | translate }}</span>
           </td>
           <td>
             <span *ngIf="job.acf.extension_possibility">{{ job.acf.extension_possibility }}</span>
-          </td>
+          </td> -->
         </tr>
         <tr>
           <td>
@@ -117,12 +111,12 @@
           <td>
             <span *ngIf="job.acf.contract_type">{{ job.acf.contract_type }}</span>
           </td>
-          <td>
+          <!-- <td>
             <span>{{ 'label.probation-period' | translate }}</span>
           </td>
           <td>
             <span *ngIf="job.acf.probation_period">{{ job.acf.probation_period }}</span>
-          </td>
+          </td> -->
         </tr>
         <tr>
           <td>
@@ -131,10 +125,15 @@
           <td>
             <span *ngIf="job.acf.required_language">{{ job.acf.required_language }}</span>
           </td>
-          <td></td>
-          <td></td>
         </tr>
-
+        <tr>
+            <td>
+              <span>{{ 'label.experience' | translate }}</span>
+            </td>
+            <td>
+              <span *ngIf="job.acf.years_of_experience">{{ job.acf.years_of_experience }}</span>
+            </td>
+        </tr>
       </tbody>
     </table>
 

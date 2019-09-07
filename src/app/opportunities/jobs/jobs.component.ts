@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OppService } from '../opp.service';
+import * as moment from 'jalali-moment';
 
 @Component({
   selector: 'app-jobs',
@@ -9,13 +10,15 @@ import { OppService } from '../opp.service';
 export class JobsComponent implements OnInit {
   p: number = 1;
   total = 1;
-  jobs = []; 
+  jobs = [];
   contents = [];
+  lang;
 
   constructor(private oppService: OppService) { }
 
   ngOnInit() {
     this.getJobs(this.p);
+    this.lang = localStorage.getItem('lang');
   }
 
   getJobs(page) {
@@ -37,7 +40,7 @@ export class JobsComponent implements OnInit {
         this.jobs.push(newData);
         //console.log(this.jobs);
         this.contents = newData.data;
-        
+
       });
     }else{
       this.contents = (this.jobs.filter(d => d.page === this.p))[0].data;
@@ -58,6 +61,10 @@ export class JobsComponent implements OnInit {
       const date = new Date(jb.date);
       const tempDate = date.getDate() + '/' + (Number(date.getMonth()) + 1) + '/' + date.getFullYear();
       jb.date = tempDate;
+      if (this.lang == 'fa' || this.lang == 'ps' ) {
+          jb.date = moment(jb.date,'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
+          jb.acf.closing_date = moment(jb.acf.closing_date,'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
+        }
     }
     return data;
   }
