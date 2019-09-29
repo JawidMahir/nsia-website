@@ -110,7 +110,7 @@
         <div class="stat-card card">
           <img src="../../assets/images/population.png" alt="Population">
           <div class="stats bg-gradient">
-            <h6>{{ 'label.population' | translate }}</h6>
+            <h6>{{ population?.title?.rendered }}</h6>
             <h3 *ngIf="population">{{ population.acf.statistics }} </h3>
           </div>
         </div>
@@ -119,7 +119,7 @@
         <div class="stat-card card">
           <img src="../../assets/images/gdp.png" alt="gdp">
           <div class="stats ">
-            <h6>{{ 'label.gdp' | translate }}</h6>
+            <h6>{{ gdp?.title?.rendered }}</h6>
             <h3 *ngIf="gdp">{{ gdp.acf.statistics }} </h3>
           </div>
         </div>
@@ -129,7 +129,7 @@
         <div class="stat-card card">
           <img src="../../assets/images/cpi.png" alt="cpi">
           <div class="stats bg-gradient">
-            <h6>{{ 'label.cpi' | translate }}</h6>
+            <h6>{{ cpi?.title?.rendered }}</h6>
             <h3 *ngIf="cpi">{{ cpi.acf.statistics }} </h3>
           </div>
         </div>
@@ -139,7 +139,7 @@
         <div class="stat-card card">
           <img src="../../assets/images/gender.png" alt="Population">
           <div class="stats bg-gradient">
-            <h6>{{ 'label.eg' | translate }}</h6>
+            <h6>{{ eg?.title?.rendered }}</h6>
             <h3 *ngIf="eg">{{ eg.acf.statistics}}</h3>
           </div>
         </div>
