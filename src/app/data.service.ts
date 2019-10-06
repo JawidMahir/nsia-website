@@ -155,4 +155,15 @@ export class DataService {
     return text ? String(text).replace(/<[^>]+>/gm, '') : '';
   }
 
+  getForms(customP, catName, perPage) {
+    return this.http.get(this.api + 'posts', {
+      params: {
+        'filter[category_name]': catName,
+        lang: this.language,
+        per_page: perPage,
+        fields: customP.join(','),
+      }
+    });
+  }
+
 }

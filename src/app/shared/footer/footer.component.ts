@@ -12,33 +12,39 @@ import swal from 'sweetalert';
 export class FooterComponent implements OnInit {
   year: number;
   email: string;
+  forms: any;
   validEmail = false;
-  constructor(private dataService: DataService,
-              private translate: TranslateService) {
+  constructor(
+    private dataService: DataService,
+    private translate: TranslateService
+  ) {
     this.year = new Date().getFullYear();
 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.forms = [];
+    this.getForms();
+  }
 
   subscribe(email) {
-   // console.log('user email: ', email);
+    // console.log('user email: ', email);
     const user = {
       email,
-      username: email, 
+      username: email,
       password: '1234546'
     };
 
     this.dataService.registerUserEmail(user).subscribe((data) => {
       // tslint:disable-next-line: no-string-literal
       if (data['code'] === 200) {
-        swal(this.translate.instant('subscribed.msg'),this.translate.instant('success.subscribe.msg') , 'success');
+        swal(this.translate.instant('subscribed.msg'), this.translate.instant('success.subscribe.msg'), 'success');
         this.email = '';
         this.validEmail = false;
       }
     }, (error) => {
       // tslint:disable-next-line: no-string-literal
-     // console.log('Error: ', error['status']);
+      // console.log('Error: ', error['status']);
       // tslint:disable-next-line: no-string-literal
       if (error['status'] === 400) {
         swal(this.translate.instant('sorry.message'), this.translate.instant('email.error.msg'), 'warning');
@@ -66,6 +72,27 @@ export class FooterComponent implements OnInit {
 
   updateServiceType(sType) {
     this.dataService.serviceType = sType;
+  }
+
+  getForms() {
+    const customParams = [];
+    customParams.push('title.rendered');
+    customParams.push('content.rendered');
+
+    this.dataService.getForms(customParams, 'form', 20).subscribe((res: any) => {
+      console.log('res: ', res);
+
+      res.forEach((el: any) => {
+        const t = {
+          title: el.title.rendered,
+          url: el.content.rendered.match(/"(.*)"/)[1]
+        }
+        console.log('form is: ', t);
+        this.forms.push(t);
+      });
+    }, err => {
+      console.log('err: ', err);
+    });
   }
 
 }

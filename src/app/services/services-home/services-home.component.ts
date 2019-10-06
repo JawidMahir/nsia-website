@@ -93,7 +93,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       sType = this.dataService.serviceType;
     }
     sessionStorage.setItem('serviceType', sType);
-    //console.log('showServiceMethod: sType: ', sType);
+    // console.log('showServiceMethod: sType: ', sType);
     if (sType === 'prs') {
       this.provincialServices = true;
       this.contents = null;
@@ -128,7 +128,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
   trackDepartments() {
     if (sessionStorage.getItem('department')) {
-     // console.log('there is department');
+      // console.log('there is department');
       const depId = sessionStorage.getItem('department');
       $(`#${depId}`).trigger('click');
       $(`#sub-${depId}`).collapse('show');
@@ -136,7 +136,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       }
 
       if (sessionStorage.getItem('sub-menu.type')) {
-       // console.log('there is headship');
+        // console.log('there is headship');
         const subMenuId = sessionStorage.getItem('sub-menu.id');
         $(`#${subMenuId}`).trigger('click');
       }
@@ -180,12 +180,12 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
         break;
     }
 
-   // console.log('departments assigned', this.serviceContents);
+    // console.log('departments assigned', this.serviceContents);
 
   }
 
   getDeputyDetails(deputyType, tag) {
-   // console.log('getting service data');
+    // console.log('getting service data');
     this.loading = true;
     const customParams = [];
     customParams.push('title.rendered');
@@ -197,15 +197,15 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
       if (data[0]) {
         // this.contents = data[0];
-      this.loading = false;
-      if(data[0]!==undefined && this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])){
-        this.videoLink = $.parseHTML(data[0].acf.link);
-        this.videoLink = $(this.videoLink).attr('src');
-        this.videoLink = this.nsiaServices.videoURL(this.videoLink);
-        data[0].acf.link = this.videoLink;
-      }
-      this.contents = this.styleDetailsLink(data[0]);
-     //console.log('Service data: ', this.contents);
+        this.loading = false;
+        if (data[0] !== undefined && this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])) {
+          this.videoLink = $.parseHTML(data[0].acf.link);
+          this.videoLink = $(this.videoLink).attr('src');
+          this.videoLink = this.nsiaServices.videoURL(this.videoLink);
+          data[0].acf.link = this.videoLink;
+        }
+        this.contents = this.styleDetailsLink(data[0]);
+        //console.log('Service data: ', this.contents);
         this.keepContentsLocal(deputyType);
         // strip html tags
         // this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
@@ -253,7 +253,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
       data.content.rendered = $(details).html();
     }
-   // console.log('details are done', data);
+    // console.log('details are done', data);
 
 
     return data;
@@ -262,7 +262,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   getProvinces() {
     this.loading = true;
     this.nsiaServices.getProvinces().subscribe((data) => {
-    // console.log('Provinces: ', data);
+      // console.log('Provinces: ', data);
       if (data.length > 0) {
         this.loading = false;
         this.provinces = data;
@@ -295,7 +295,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       } else {
         this.deputyHeadships = data;
         this.headshipsFetched = true;
-      //  console.log('Headships data: ', this.deputyHeadships);
+        //  console.log('Headships data: ', this.deputyHeadships);
       }
 
       // this.styleDetailsLink();
@@ -312,11 +312,11 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   }
 
   getDepartmentDetails(id, el, depType) {
-  //  console.log('Department details is called');
+    //  console.log('Department details is called');
     this.loading = true;
     this.contents = null;
-   // console.log('ID is: ', id);
-  //  console.log($(el).closest('.m-item-c').attr('aria-expanded'));
+    // console.log('ID is: ', id);
+    //  console.log($(el).closest('.m-item-c').attr('aria-expanded'));
     const customParams = [];
     const flag = false;
     const depId = $(el).closest('.menu-item').attr('id');
@@ -354,7 +354,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
           } else {
             sessionStorage.setItem('sub-menu.id', data[0].id);
           }
-          if(this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])){
+          if (this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])) {
             this.videoLink = $.parseHTML(data[0].acf.link);
             this.videoLink = $(this.videoLink).attr('src');
             this.videoLink = this.nsiaServices.videoURL(this.videoLink);
@@ -379,7 +379,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
 
     if (this.departmentsFetched && this.headshipsFetched) {
-     // console.log('I am called ', this.deputyDepartments, this.deputyHeadships);
+      // console.log('I am called ', this.deputyDepartments, this.deputyHeadships);
       for (const dep of this.deputyDepartments) {
         tempHeadships = [];
         for (const hdShip of this.deputyHeadships) {
@@ -424,7 +424,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
     this.nsiaServices.getProvinceDetails(id, customParams).subscribe((data) => {
       this.loading = false;
-      if(this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])){
+      if (this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])) {
         this.videoLink = $.parseHTML(data[0].acf.link);
         this.videoLink = $(this.videoLink).attr('src');
         this.videoLink = this.nsiaServices.videoURL(this.videoLink);
@@ -440,10 +440,10 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   }
 
   activeMenu(menuItem) {
-   // console.log('Active menu called');
+    // console.log('Active menu called');
     const that = this;
     const id = $(menuItem).closest('.menu-item').attr('id');
-   // console.log(id);
+    // console.log(id);
 
     // sessionStorage.setItem('department', id);
 
@@ -480,7 +480,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
   toggleNavbar() {
     const navWidth = (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width;
-   // console.log('navWidth: ', navWidth);
+    // console.log('navWidth: ', navWidth);
     let rtl = false;
 
     if ($('body').hasClass('rtl')) {
@@ -535,7 +535,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
     this.serviceName = $(el).closest('.m-service').find('.sr-name p').html();
     //console.log('service name: ', this.serviceName);
-   // console.log('service id: ', id);
+    // console.log('service id: ', id);
 
     $('.m-service').removeClass('active-service');
     $(el).closest('.m-service').addClass('active-service');

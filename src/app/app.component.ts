@@ -44,7 +44,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
     const that = this;
-    //console.log('App Component');
+    // console.log('App Component');
+    // console.log = function () { };
+
 
     // tslint:disable-next-line: space-before-function-paren
     $(window).scroll(function () {
