@@ -612,25 +612,21 @@
               *ngIf="portals.length > 0; else noportals">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <div class="bs-item" *ngFor="let cs of portals[0]">
-                    <div class="col-md-12">
+                  <div class="bs-item col-md-4" *ngFor="let cs of portals[0]">
                       <img [src]="cs.better_featured_image?.source_url" [alt]="cs.acf?.link">
                       <h4>{{ cs.title?.rendered }}</h4>
                       <p>{{ cs.content?.rendered }}</p>
                       <a [href]="cs.acf?.link" class="btn c-btn-outline-blue col-md-5"
                         target="_blank">{{ 'label.btn.carousel' | translate }}</a>
-                    </div>
                   </div>
                 </div>
                 <div class="carousel-item" *ngFor="let cst of portals | slice:1">
-                  <div class="bs-item" *ngFor="let cs of cst">
-                    <div class="col-md-12">
+                  <div class="bs-item col-md-4" *ngFor="let cs of cst">
                       <img [src]="cs.better_featured_image?.source_url" [alt]="cs.acf?.link">
                       <h4>{{ cs.title?.rendered }}</h4>
                       <p>{{ cs.content?.rendered }}</p>
                       <a [href]="cs.acf?.link" class="btn c-btn-outline-blue col-md-5"
                         target="_blank">{{ 'label.btn.carousel' | translate }}</a>
-                    </div>
                   </div>
                 </div>
               </div>

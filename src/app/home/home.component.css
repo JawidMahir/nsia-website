@@ -313,7 +313,8 @@
 
 .bussiness-carousel .bs-item {
   display: inline-block;
-  width: 33%;
+  /* width: 33%; */
+  margin-bottom:5px;
 }
 
 .bussiness .title {
