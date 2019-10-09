@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1570529604135,
+  "timestamp": 1570599417898,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -8,22 +8,22 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/10.0b458a7aea29fe0a60a1.js",
+        "/10.970dd250c579b88a4b80.js",
         "/11.a0b9e3040703901639a4.js",
         "/12.b3e7d13a45cbb26a72b8.js",
-        "/13.fe04009607277823fc24.js",
-        "/14.40a73b48a072aaf1dd70.js",
+        "/13.d7b21df5ef5c36b7d73a.js",
+        "/14.74298723443a2ae9dc1e.js",
         "/2.aa85f40e427d9c984971.js",
         "/7.b7780aa8003ae3f5f00a.js",
         "/8.993d7250734e9c9ccac7.js",
-        "/9.10d97fdafccfe615deff.js",
+        "/9.d8ba4dfbc8bc53ef0642.js",
         "/common.c87e6490ca8f5e273d93.js",
         "/favicon.ico",
         "/index.html",
-        "/main.5fb2d1cdaeed64b4353a.js",
+        "/main.f8eb81442b09ec4c3a56.js",
         "/polyfills-es5.b51b72a6bccc504722a9.js",
         "/polyfills.bca8589e7ac76d35daaa.js",
-        "/runtime.1f64bfe7120bc1d872e7.js",
+        "/runtime.c3f5ba007e3d12d181c2.js",
         "/styles.48fbe83921032850e270.css"
       ],
       "patterns": [
@@ -132,15 +132,15 @@
     }
   ],
   "hashTable": {
-    "/10.0b458a7aea29fe0a60a1.js": "15716cea410d05149e6377e8b977bc31bc911fee",
+    "/10.970dd250c579b88a4b80.js": "15716cea410d05149e6377e8b977bc31bc911fee",
     "/11.a0b9e3040703901639a4.js": "c419b71c5e065201a95f7c521153009cbcd8cde3",
     "/12.b3e7d13a45cbb26a72b8.js": "7ff020981d93e2b83d09aee32dd6735311c8368b",
-    "/13.fe04009607277823fc24.js": "a4d666c92af7702c59052aa56656d1a8b641a497",
-    "/14.40a73b48a072aaf1dd70.js": "b9c686a3cee90c3d8c964c7f2d0dc3787b28b0bb",
+    "/13.d7b21df5ef5c36b7d73a.js": "a4d666c92af7702c59052aa56656d1a8b641a497",
+    "/14.74298723443a2ae9dc1e.js": "b9c686a3cee90c3d8c964c7f2d0dc3787b28b0bb",
     "/2.aa85f40e427d9c984971.js": "6413710523df8ab301f76c2f58b3544c78754486",
     "/7.b7780aa8003ae3f5f00a.js": "2e249f25deb8b08478ef17d6f28f3556620a422b",
     "/8.993d7250734e9c9ccac7.js": "5e65054e902474565f039149c2d28173b4a93664",
-    "/9.10d97fdafccfe615deff.js": "b06b3cf0215c68893a35600d0633df25c5917639",
+    "/9.d8ba4dfbc8bc53ef0642.js": "b06b3cf0215c68893a35600d0633df25c5917639",
     "/Bahij_Helvetica_Neue-Light_1.95793cb75f0484cb76e5.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
     "/assets/css/rtl.css": "c9b1b46eb32aeba8771134467c917ce5714e446a",
     "/assets/fonts/Bahij_Helvetica_Neue-Light_1.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
@@ -209,11 +209,11 @@
     "/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.c89c9eb963cc00332e6c.ttf": "9f0e7efd26f73d0db26ea54a2fe87f4b0430f314",
     "/common.c87e6490ca8f5e273d93.js": "94e37fa452e1ba00924798dcc09cb7eb05276cc9",
     "/favicon.ico": "7d6b5711e54dc63710fb7b9d8baf57d6d0f35ca5",
-    "/index.html": "a4ca8ddf269f44f86cfdaf1f19935e40b161de63",
-    "/main.5fb2d1cdaeed64b4353a.js": "4fca04b55d6a05d763bb77e1c3a46ff4c8d39f03",
+    "/index.html": "2a2b66056a93b6741627b29795576036ea609a1f",
+    "/main.f8eb81442b09ec4c3a56.js": "4480176ddddde404e60c69a1e02ffd4f98feb0d9",
     "/polyfills-es5.b51b72a6bccc504722a9.js": "38bc80efbed4d2bb29ca5cbc2e30fb5977a416f7",
     "/polyfills.bca8589e7ac76d35daaa.js": "adc867a43d4cbad849c4e440b525190f842a0dd4",
-    "/runtime.1f64bfe7120bc1d872e7.js": "295c7d64d272d7cb426b2e48d6b9cc4fd6c196f0",
+    "/runtime.c3f5ba007e3d12d181c2.js": "b05024ef242e1a13fcd8f00dd41a36c29af95caf",
     "/styles.48fbe83921032850e270.css": "73428c74d8805a540acbc9d4b47f483e3fec99e9"
   },
   "navigationUrls": [

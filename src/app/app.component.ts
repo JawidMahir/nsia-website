@@ -4,6 +4,7 @@ import { trigger, animate, style, group, animateChild, query, stagger, transitio
 import * as $ from 'jquery';
 import { TranslateService } from '@ngx-translate/core';
 import { DataService } from './data.service';
+import { Meta } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-root',
@@ -39,7 +40,19 @@ export class AppComponent implements OnInit {
   title = 'NSIA';
   currentPath;
   chooseLang = true;
-  constructor(private router: Router, private dataService: DataService, private translateService: TranslateService) { }
+  constructor(private router: Router,
+    private dataService: DataService,
+    private translateService: TranslateService,
+    private meta: Meta) {
+    meta.addTags([
+      { name: 'description', content: 'National Statistics and Information Authority, formerly known as the Central Statistics Authority, was established in 1972 as an independent authority within the government of Afghanistan in order to establish a coordination mechanism for managing statistical information within all sectors in the country.' },
+      { name: 'keywords', content: 'National Statistics and Information Authority, NSIA, nsia.gov.af, اداره ملی احصائیه و معلومات ,د احصایې او معلوماتو ملي ادارې' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'robots', content: 'INDEX, FOLLOW' },
+      { httpEquiv: 'Content-Type', content: 'text/html' },
+      { charset: 'UTF-8' }
+    ]);
+  }
 
   ngOnInit() {
 
