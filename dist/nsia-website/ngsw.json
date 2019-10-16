@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1571206487084,
+  "timestamp": 1571213747514,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -14,7 +14,7 @@
         "/13.5327d6ce94964608e078.js",
         "/14.422b31985ae6233159f7.js",
         "/2.a0ea8263bbdef82198d0.js",
-        "/7.930d86fabd49b325b651.js",
+        "/7.a4edce3c7e218f8d1d48.js",
         "/8.a594232fa8cb9d5b77b6.js",
         "/9.bf2352ae584eb19be5de.js",
         "/common.c80e4c5292a297b5944f.js",
@@ -23,7 +23,7 @@
         "/main.9b8a471f1a1e0bc03477.js",
         "/polyfills-es5.b51b72a6bccc504722a9.js",
         "/polyfills.bca8589e7ac76d35daaa.js",
-        "/runtime.364d7bebfa9026cd004f.js",
+        "/runtime.2dde0b6978fff6c2aa73.js",
         "/styles.48fbe83921032850e270.css"
       ],
       "patterns": [
@@ -138,7 +138,7 @@
     "/13.5327d6ce94964608e078.js": "298f5fda2caebf97d48fa6d9b11a383d49ae17f6",
     "/14.422b31985ae6233159f7.js": "1edcea9fdb3485837bc231e2859ca4c7f82291fc",
     "/2.a0ea8263bbdef82198d0.js": "6413710523df8ab301f76c2f58b3544c78754486",
-    "/7.930d86fabd49b325b651.js": "4786a86a02bde0c2e57817d81f34c3c0ec7404df",
+    "/7.a4edce3c7e218f8d1d48.js": "c1ab028aee36693ee264955aa3b952a27ae80faa",
     "/8.a594232fa8cb9d5b77b6.js": "97a4d11b8434ced7af00750c14b550ac7d8b1c1c",
     "/9.bf2352ae584eb19be5de.js": "e26d2a244531951b3a53ccb6a860c37a6b1e1c84",
     "/Bahij_Helvetica_Neue-Light_1.95793cb75f0484cb76e5.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
@@ -146,7 +146,7 @@
     "/assets/fonts/Bahij_Helvetica_Neue-Light_1.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
     "/assets/fonts/bahij_helvetica_neue_bold_by_bahijvirtualacademy-dammcmt_0.ttf": "904492cf3930671a0d367348ab178597ebbffa66",
     "/assets/fonts/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.ttf": "9f0e7efd26f73d0db26ea54a2fe87f4b0430f314",
-    "/assets/i18n/en.json": "3ab1d2337df45bfa44b0e8eda87613fa670ed797",
+    "/assets/i18n/en.json": "e96dc7fb85e1d7f5f316519245079ed2b8a1e266",
     "/assets/i18n/fa.json": "964392f467d103437869f31031c7a851e372679c",
     "/assets/i18n/ps.json": "4c314a58f03185f03d4ab470d435ef288d260a22",
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
@@ -209,11 +209,11 @@
     "/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.c89c9eb963cc00332e6c.ttf": "9f0e7efd26f73d0db26ea54a2fe87f4b0430f314",
     "/common.c80e4c5292a297b5944f.js": "1ef328871cd3ee60d1e651882d1d578ee3fa6ce1",
     "/favicon.ico": "7d6b5711e54dc63710fb7b9d8baf57d6d0f35ca5",
-    "/index.html": "72ef05769e11075a58b14222acf2b6222c50d4a9",
+    "/index.html": "3f42d71bc5386198a18f51f39b74f569d7a989dc",
     "/main.9b8a471f1a1e0bc03477.js": "00e3b5f90b819e96054a3b61048c9c4e3b6026b2",
     "/polyfills-es5.b51b72a6bccc504722a9.js": "38bc80efbed4d2bb29ca5cbc2e30fb5977a416f7",
     "/polyfills.bca8589e7ac76d35daaa.js": "adc867a43d4cbad849c4e440b525190f842a0dd4",
-    "/runtime.364d7bebfa9026cd004f.js": "449910357b49d005e86d10531ba0903c32b10431",
+    "/runtime.2dde0b6978fff6c2aa73.js": "5524bd38734625b1a296ab74c1dcdafc6f612e76",
     "/styles.48fbe83921032850e270.css": "73428c74d8805a540acbc9d4b47f483e3fec99e9"
   },
   "navigationUrls": [
