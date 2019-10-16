@@ -23,10 +23,10 @@
         <tr class="tender" *ngFor="let tn of contents | paginate: { itemsPerPage: 10 , currentPage: p , totalItems: total }">
           <td class="description">
             <a class="headline" [routerLink]="['/opportunities/procurement', tn.id]">
-              {{ tn.title.rendered }}
+              {{ tn.title?.rendered }}
             </a>
             <p class="tender-brief">
-              {{ getBrief(tn.content.rendered) }}
+              {{ getBrief(tn.content?.rendered) }}
             </p>
           </td>
           <td>
@@ -36,13 +36,13 @@
           </td>
           <td>
             <span>
-              {{ tn.acf.closing_date }}
+              {{ tn.acf?.closing_date }}
             </span>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="text-center"> 
+    <div class="text-center">
       <pagination-controls class="tenders-pagination" (pageChange)="pageChanged($event)" autoHide="true" responsive="true"
         maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
         nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>

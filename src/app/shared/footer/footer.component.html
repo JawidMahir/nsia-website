@@ -29,14 +29,14 @@
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="link-title">
-          <h4>{{'menu.about-us' | translate}}</h4>
+          <h4>{{'menu.about-us' | translate }}</h4>
         </div>
 
         <div class="links">
           <ul>
             <li routerLink='/about-us'>
               <i class="fas fa-chevron-right"></i>
-              <a>{{'submenu.about-nsia' | translate}} </a>
+              <a>{{'submenu.about-nsia' | translate  | titlecase}} </a>
             </li>
             <!-- <li>
               <i class="fas fa-chevron-right"></i>
@@ -49,11 +49,11 @@
               <a>{{'label.authority-functions' | translate}}</a></li> -->
             <li routerLink='/about-us/structure'>
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.organization-structure' | translate}}</a>
+              <a>{{'label.organization-structure' | translate  | titlecase}}</a>
             </li>
             <li routerLink='/contact-us'>
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.contact-us' | translate}}</a>
+              <a>{{'label.contact-us' | translate  | titlecase}}</a>
             </li>
           </ul>
         </div>
@@ -66,25 +66,25 @@
           <ul>
             <li routerLink="/services" (click)="updateServiceType('nid')">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.stats' | translate}}</a></li>
+              <a>{{'label.stats' | translate  | titlecase}}</a></li>
             <li routerLink="/services">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'submenu.provincial-s' | translate}}</a></li>
+              <a>{{'submenu.provincial-s' | translate  | titlecase}}</a></li>
             <li routerLink="/services" (click)="updateServiceType('provinces')">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.tazkira-enrollement' | translate}}</a></li>
+              <a>{{'label.tazkira-enrollement' | translate  | titlecase}}</a></li>
             <!-- <li>
               <i class="fas fa-chevron-right"></i>
               <a>{{'label.laws' | translate}}</a></li> -->
             <li routerLink="/opportunities/procurements">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'submenu.procurement' | translate}}</a></li>
+              <a>{{'submenu.procurement' | translate  | titlecase}}</a></li>
             <li routerLink="/opportunities/jobs">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.jobs' | translate}}</a></li>
+              <a>{{'label.jobs' | translate  | titlecase}}</a></li>
             <li routerLink="/media-room/access-info">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.access-info' | translate}}</a></li>
+              <a>{{'label.access-info' | translate  | titlecase}}</a></li>
           </ul>
         </div>
       </div>
@@ -92,13 +92,19 @@
         <div class="link-title">
           <h4>{{'menu.forms' | translate}}</h4>
         </div>
-        <div class="links">
-          <ul *ngIf="forms">
+        <div class="links" *ngIf="forms.length > 0; else noforms">
+          <ul>
             <li *ngFor="let fm of forms">
               <i class="fas fa-chevron-right"></i>
-              <a [href]="fm.url" target="_blank">{{ fm.title }}</a>
+              <a [href]="fm.url" target="_blank">{{ fm.title   | titlecase}}</a>
           </ul>
         </div>
+        <ng-template #noforms>
+          <div class="jumbotron no-data">
+            <div [class.dot-falling]="loading"></div>
+            <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
+          </div>
+        </ng-template>
       </div>
     </div>
 

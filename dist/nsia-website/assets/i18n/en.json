@@ -2,11 +2,8 @@
   "lang.english": "Eng",
   "lang.dari": "دری",
   "lang.pashto": "پښتو",
-
   "label.no-data": "NO DATA",
   "label.copy-right": "© {{ year }}, All rights reserved, National Statistics and Information Authority",
-
-
   "label.contact-us": "Contact Us",
   "label.working-hours": "8:00 AM - 4:00 PM",
   "label.head-office": "NSIA HEAD OFFICE",
@@ -25,26 +22,21 @@
   "label.address": "Address",
   "label.feedback-form": "Feedback Form",
   "label.nsia-address": "7th District, Chehlsetoon Road, Near Bagh Babar",
-
   "label.stakeholders": "stakeholders",
   "label.donors": "donors",
   "label.customers": "customers",
   "label.portal": "NSIA Portals",
-
   "label.upcoming-events": "upcoming events",
   "label.upcoming-pubs": "upcoming publications",
   "label.surveys": "surveys",
-
-
   "menu.home": "home",
   "menu.about-us": "about us",
   "menu.services": "services",
-  "menu.forms" : "forms",
+  "menu.forms": "forms",
   "menu.library": "Publications",
   "menu.access-info": "access to info",
   "menu.media-room": "information hub",
   "menu.opportunities": "opportunities",
-
   "submenu.about-nsia": "about NSIA",
   "submenu.biographies": "Biographies",
   "submenu.gender": "Gender",
@@ -65,13 +57,11 @@
   "submenu.procurement": "procurement",
   "submenu.jobs": "Jobs",
   "submenu.annual.report": "Annual Report",
-
-
   "label.newsletter": "Newsletter",
   "label.news-letter-subscribe": "Subscribe to Newsletter here",
   "label.email-address": "Enter your email address",
   "label.subscribe": "Subscribe",
-  "label.subscribe.title":"Newsletter",
+  "label.subscribe.title": "Newsletter",
   "label.history": "history",
   "label.authority-functions": "authority and functions",
   "label.organization-structure": "organization structure",
@@ -90,7 +80,6 @@
   "label.divorce-registration": "divorce registration",
   "label.foreign-registration": "foreign registration",
   "label.regulations": "regulations",
-
   "label.date-posted": "Date posted",
   "label.reference": "Reference",
   "label.closing-date": "Closing date",
@@ -113,11 +102,8 @@
   "label.qualifications": "Qualifications",
   "label.submission-guidelines": "Submission Guidelines",
   "label.submission-email": "Submission email",
-
   "label.tender-number": "Tender Number",
   "label.city": "City",
-
-
   "label.promoting-material": "Promoting material",
   "label.news": "News",
   "label.vision": "Our Vision",
@@ -127,12 +113,8 @@
   "label.description": "description",
   "label.p-date": "publish date",
   "label.c-date": "closing date",
-
-
-
   "label.about-service": "about {{sr}}",
   "label.about-rs": "about {{title}}",
-
   "sidebar.title": "NEWS",
   "contact.title": "CONTACT US",
   "input.name": "Name*",
@@ -146,7 +128,6 @@
   "error.message": "Please enter the message!",
   "pagination.previous": "Previous",
   "pagination.next": "Next",
-
   "btn.read-more": "read more",
   "btn.download": "download",
   "btn.view-all-news": "View all news",
@@ -157,23 +138,24 @@
   "btn.quarterly": "QUARTERLY",
   "alert.message": "You successfully sent your feedback!",
   "sorry.message": "Sorry",
-  "not.completed.msg":"Form data does not completed!",
+  "not.completed.msg": "Form data does not completed!",
   "unsucess.msg": "Cannot make request at this moment",
   "email.error.msg": "Email address already exist",
-  "subscribed.msg":"Subscribed",
-  "success.subscribe.msg" : "You will receive our publications",
-  "label.sy" : "Statistical Yearbook",
-  "label.by" : "Business Yearbook",
-  "label.gsy" : "Gender Statistics Yearbook",
-  "label.py" : "Prices Yearbook",
-  "label.ppe" : "Publication of Population Estimates",
-  "label.mppk" : "Monthly Publications of Prices in Kabul City",
-  "label.mppc" : "Monthly Publications of Prices in Country",
+  "subscribed.msg": "Subscribed",
+  "success.subscribe.msg": "You will receive our publications",
+  "label.sy": "Statistical Yearbook",
+  "label.by": "Business Yearbook",
+  "label.gsy": "Gender Statistics Yearbook",
+  "label.py": "Prices Yearbook",
+  "label.ppe": "Publication of Population Estimates",
+  "label.mppk": "Monthly Publications of Prices in Kabul City",
+  "label.mppc": "Monthly Publications of Prices in Country",
   "label.qsi": "Quarterly Statistical Indexes",
-  "label.qpbs" : "Quarterly Publications of Business Statistics",
-  "label.select" : "Please select the type you want",
-  "label.public.relation":"Information & Public Relations Directorate ",
-  "label.information.expert":"InFormation Expert",
-  "label.btn.carousel":"visit"
-
+  "label.qpbs": "Quarterly Publications of Business Statistics",
+  "label.select": "Please select the type you want",
+  "label.public.relation": "Information & Public Relations Directorate ",
+  "label.information.expert": "InFormation Expert",
+  "label.btn.carousel": "visit",
+  "meta.description": "National Statistics and Information Authority, formerly known as the Central Statistics Authority, was established in 1972 as an independent authority within the government of Afghanistan in order to establish a coordination mechanism for managing statistical information within all sectors in the country.",
+  "title": "NSIA"
 }

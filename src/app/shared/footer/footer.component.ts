@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import * as $ from 'jquery';
 import swal from 'sweetalert';
 
@@ -12,19 +12,23 @@ import swal from 'sweetalert';
 export class FooterComponent implements OnInit {
   year: number;
   email: string;
-  forms: any;
+  forms: any = [];
   validEmail = false;
+  loading = true;
   constructor(
     private dataService: DataService,
-    private translate: TranslateService
-  ) {
+    private translate: TranslateService) {
     this.year = new Date().getFullYear();
+    translate.onLangChange.subscribe(lang => {
 
+    });
   }
 
   ngOnInit() {
-    this.forms = [];
-    this.getForms();
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.forms = [];
+      this.getForms();
+    });
   }
 
   subscribe(email) {
@@ -80,19 +84,20 @@ export class FooterComponent implements OnInit {
     customParams.push('content.rendered');
 
     this.dataService.getForms(customParams, 'form', 20).subscribe((res: any) => {
-      console.log('res: ', res);
-
+      //console.log('res: ', res);
       res.forEach((el: any) => {
         const t = {
           title: el.title.rendered,
           url: el.content.rendered.match(/"(.*)"/)[1]
         }
-        console.log('form is: ', t);
+        // console.log('form is: ', t);
         this.forms.push(t);
+        this.loading = false;
       });
     }, err => {
-      console.log('err: ', err);
+      // console.log('err: ', err);
     });
   }
+
 
 }

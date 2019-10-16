@@ -41,7 +41,7 @@ export class ProcurementsComponent implements OnInit {
         this.total = Number(data.headers.get('X-WP-Total'));
 
         const newData = {
-          page: page,
+          page : page,
           data: this.refineData(data.body)
         };
 
@@ -50,7 +50,7 @@ export class ProcurementsComponent implements OnInit {
         this.contents = newData.data;
 
       });
-    }else{
+    } else {
       this.contents = (this.tenders.filter(d => d.page === this.p))[0].data;
     }
   }
