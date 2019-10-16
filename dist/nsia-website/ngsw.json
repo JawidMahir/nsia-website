@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1571213747514,
+  "timestamp": 1571219542000,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -20,7 +20,7 @@
         "/common.c80e4c5292a297b5944f.js",
         "/favicon.ico",
         "/index.html",
-        "/main.9b8a471f1a1e0bc03477.js",
+        "/main.dc96efa0734d30c76619.js",
         "/polyfills-es5.b51b72a6bccc504722a9.js",
         "/polyfills.bca8589e7ac76d35daaa.js",
         "/runtime.2dde0b6978fff6c2aa73.js",
@@ -146,7 +146,7 @@
     "/assets/fonts/Bahij_Helvetica_Neue-Light_1.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
     "/assets/fonts/bahij_helvetica_neue_bold_by_bahijvirtualacademy-dammcmt_0.ttf": "904492cf3930671a0d367348ab178597ebbffa66",
     "/assets/fonts/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.ttf": "9f0e7efd26f73d0db26ea54a2fe87f4b0430f314",
-    "/assets/i18n/en.json": "e96dc7fb85e1d7f5f316519245079ed2b8a1e266",
+    "/assets/i18n/en.json": "1e693097b04fd20404f588ac2234fe09d7b5c3a3",
     "/assets/i18n/fa.json": "964392f467d103437869f31031c7a851e372679c",
     "/assets/i18n/ps.json": "4c314a58f03185f03d4ab470d435ef288d260a22",
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
@@ -209,8 +209,8 @@
     "/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.c89c9eb963cc00332e6c.ttf": "9f0e7efd26f73d0db26ea54a2fe87f4b0430f314",
     "/common.c80e4c5292a297b5944f.js": "1ef328871cd3ee60d1e651882d1d578ee3fa6ce1",
     "/favicon.ico": "7d6b5711e54dc63710fb7b9d8baf57d6d0f35ca5",
-    "/index.html": "3f42d71bc5386198a18f51f39b74f569d7a989dc",
-    "/main.9b8a471f1a1e0bc03477.js": "00e3b5f90b819e96054a3b61048c9c4e3b6026b2",
+    "/index.html": "5b66bf2d0022c9e7165a5762c694e36759d69d90",
+    "/main.dc96efa0734d30c76619.js": "54f78c589f9f7a8509cf86f6815b6240c7a842f2",
     "/polyfills-es5.b51b72a6bccc504722a9.js": "38bc80efbed4d2bb29ca5cbc2e30fb5977a416f7",
     "/polyfills.bca8589e7ac76d35daaa.js": "adc867a43d4cbad849c4e440b525190f842a0dd4",
     "/runtime.2dde0b6978fff6c2aa73.js": "5524bd38734625b1a296ab74c1dcdafc6f612e76",

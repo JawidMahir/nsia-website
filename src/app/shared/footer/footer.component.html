@@ -36,7 +36,7 @@
           <ul>
             <li routerLink='/about-us'>
               <i class="fas fa-chevron-right"></i>
-              <a>{{'submenu.about-nsia' | translate  | titlecase}} </a>
+              <a>{{'submenu.about-nsia' | translate}} </a>
             </li>
             <!-- <li>
               <i class="fas fa-chevron-right"></i>
@@ -96,7 +96,7 @@
           <ul>
             <li *ngFor="let fm of forms">
               <i class="fas fa-chevron-right"></i>
-              <a [href]="fm.url" target="_blank">{{ fm.title   | titlecase}}</a>
+              <a [href]="fm.url" target="_blank">{{ fm.title }}</a>
           </ul>
         </div>
         <ng-template #noforms>

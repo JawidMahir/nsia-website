@@ -87,7 +87,7 @@ export class FooterComponent implements OnInit {
       //console.log('res: ', res);
       res.forEach((el: any) => {
         const t = {
-          title: el.title.rendered,
+          title: this.titleCase(el.title.rendered),
           url: el.content.rendered.match(/"(.*)"/)[1]
         }
         // console.log('form is: ', t);
@@ -99,5 +99,18 @@ export class FooterComponent implements OnInit {
     });
   }
 
+  titleCase(str) {
+    let splitStr = str.split(' ');
+    console.log(splitStr)
+    for (let i = 0; i < splitStr.length; i++) {
+      // You do not need to check if i is larger than splitStr length, as your for does that for you
+      // Assign it back to the array
+      if (splitStr[i] !== 'NSIA' && splitStr[i] !== 'NSIA_eNID' ) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+      }
+    }
+    // Directly return the joined string
+    return splitStr.join(' ');
+  }
 
 }
