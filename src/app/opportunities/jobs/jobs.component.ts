@@ -13,6 +13,7 @@ export class JobsComponent implements OnInit {
   jobs = [];
   contents = [];
   lang;
+  loading = true;
 
   constructor(private oppService: OppService) { }
 
@@ -31,7 +32,7 @@ export class JobsComponent implements OnInit {
     if ((this.jobs.length < 1) || (this.jobs.filter(d => d.page === this.p)).length < 1) {
       this.oppService.getJobs(customParams, page).subscribe((data) => {
         this.total = Number(data.headers.get('X-WP-Total'));
-
+        this.loading = false;
         const newData = {
           page: page,
           data: this.refineData(data.body)
@@ -42,7 +43,7 @@ export class JobsComponent implements OnInit {
         this.contents = newData.data;
 
       });
-    }else{
+    } else {
       this.contents = (this.jobs.filter(d => d.page === this.p))[0].data;
     }
   }
@@ -61,10 +62,10 @@ export class JobsComponent implements OnInit {
       const date = new Date(jb.date);
       const tempDate = date.getDate() + '/' + (Number(date.getMonth()) + 1) + '/' + date.getFullYear();
       jb.date = tempDate;
-      if (this.lang == 'fa' || this.lang == 'ps' ) {
-          jb.date = moment(jb.date,'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
-          jb.acf.closing_date = moment(jb.acf.closing_date,'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
-        }
+      if (this.lang == 'fa' || this.lang == 'ps') {
+        jb.date = moment(jb.date, 'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
+        jb.acf.closing_date = moment(jb.acf.closing_date, 'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
+      }
     }
     return data;
   }

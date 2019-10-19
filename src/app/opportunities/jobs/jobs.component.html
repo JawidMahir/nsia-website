@@ -2,7 +2,7 @@
   <div class="title">
     <h1>{{'submenu.jobs' | translate }}</h1>
   </div>
-  <div class="job-contents">
+  <div class="job-contents" *ngIf="jobs.length > 0; else nojobs">
     <table class="table">
       <thead>
         <th><span>
@@ -20,7 +20,8 @@
         </th>
       </thead>
       <tbody *ngIf="jobs">
-        <tr class="job" *ngFor="let jb of contents | paginate: { itemsPerPage: 10 , currentPage: p , totalItems: total }">
+        <tr class="job"
+          *ngFor="let jb of contents | paginate: { itemsPerPage: 10 , currentPage: p , totalItems: total }">
           <td class="description">
             <a class="headline" [routerLink]="['/opportunities/job', jb.id]">
               {{ jb.title.rendered }}
@@ -48,4 +49,10 @@
       </tbody>
     </table>
   </div>
+  <ng-template #nojobs>
+    <div class="jumbotron no-data">
+      <div [class.dot-falling]="loading"></div>
+      <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
+    </div>
+  </ng-template>
 </div>

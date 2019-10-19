@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 import { DataService } from '../data.service';
 import 'bootstrap';
@@ -46,10 +46,6 @@ export class HomeComponent implements OnInit {
     donors: [],
     customers: []
   };
-
-
-
-
   newsReadMore = '/media-room/news-updates';
   eventsReadMore = '/media-room/event';
 
@@ -110,6 +106,7 @@ export class HomeComponent implements OnInit {
     this.getCarouselSlides();
     this.getInitialStats();
     this.getBusinessData();
+
     this.getPortalsData();
 
     // disable the read more buttons in the begining
@@ -129,8 +126,8 @@ export class HomeComponent implements OnInit {
       const redirecUrl = $(this).attr('redirect-url');
       let perPage = 4;
 
-      console.log('categoryType: ', categoryType);
-      console.log('redirect URL: ', redirecUrl);
+     // console.log('categoryType: ', categoryType);
+     // console.log('redirect URL: ', redirecUrl);
 
 
 
@@ -218,7 +215,7 @@ export class HomeComponent implements OnInit {
     if (this.newsBriefs[type] === '') {
 
       this.dataService.getCardsData(customParams, type, perPage).subscribe((cardsData) => {
-        console.log('news data: ' + type, cardsData);
+        //console.log('news data: ' + type, cardsData);
         this.loading = false;
         this.generateCards(type, cardsData);
       });
@@ -251,7 +248,7 @@ export class HomeComponent implements OnInit {
       }
 
       this.newsBriefs[sectionId] = this.refineData(data);
-      console.log('total newsbrief: ', this.newsBriefs);
+     // console.log('total newsbrief: ', this.newsBriefs);
 
 
     }
@@ -390,7 +387,7 @@ export class HomeComponent implements OnInit {
 
 
     this.dataService.getCarouselSlides(customParams, 'Slider').subscribe((data) => {
-      console.log('Carousel Data(Before): ', data);
+      //console.log('Carousel Data(Before): ', data);
       data.sort(that.orderResultAscending);
       this.prepareCarouselSlides(data);
     });
@@ -526,8 +523,5 @@ export class HomeComponent implements OnInit {
     sessionStorage.removeItem('sub-menu.type');
     sessionStorage.removeItem('sub-menu.id');
 
-  }
-  visitPortal(url) {
-    console.log(url);
   }
 }

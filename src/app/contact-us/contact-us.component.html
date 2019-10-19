@@ -12,7 +12,7 @@
                     <span><strong>{{ 'label.cs-number' | translate }}</strong></span>
                   </td>
                   <td style="direction: ltr !important">
-                    <span> +93 20 2211 708</span>
+                    <span> {{ contacts?.acf.customer_service_number}} </span>
                   </td>
                 </tr>
                 <tr>
@@ -20,7 +20,7 @@
                     <span><strong>{{ 'label.public.relation' | translate }}</strong></span>
                   </td>
                   <td style="direction: ltr !important">
-                    <span> +93 20 2104 338</span>
+                    <span> {{ contacts?.acf.information_public_relations_directorate }}</span>
                   </td>
                 </tr>
                 <tr>
@@ -28,7 +28,7 @@
                     <span><strong>{{ 'label.information.expert' | translate }}</strong></span>
                   </td>
                   <td style="direction: ltr !important">
-                    <span> +93 70 0263 467</span>
+                    <span> {{ contacts?.acf.information_expert }}</span>
                   </td>
                 </tr>
                 <!-- <tr>
@@ -48,7 +48,7 @@
                     </span>
                   </td>
                   <td>
-                    <span>info@nsia.gov.af</span>
+                    <span>{{ contacts?.acf.email }}</span>
                   </td>
                 </tr>
                 <tr>
@@ -58,7 +58,7 @@
                     </span>
                   </td>
                   <td>
-                    <span>{{ 'label.nsia-address' | translate }}</span>
+                    <span>{{ contacts?.acf.address }}</span>
                   </td>
                 </tr>
               </tbody>

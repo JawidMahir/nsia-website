@@ -138,6 +138,16 @@ export class DataService {
       }
     });
   }
+  getContactData(customP, catName) {
+    return this.http.get<Array<any>>(this.api + 'posts', {
+      params: {
+        'filter[category_name]': catName,
+        lang: this.language,
+        fields: customP.join(','),
+        orederby: 'date'
+      }
+    });
+  }
 
   getNewsData(customP, catName, perPage) {
     return this.http.get(this.api + 'posts', {
