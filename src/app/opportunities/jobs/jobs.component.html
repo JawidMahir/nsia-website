@@ -1,27 +1,35 @@
 <div class="jobs content-justify">
   <div class="title">
-    <h1>{{'submenu.jobs' | translate }}</h1>
+    <h2>{{ 'submenu.jobs' | translate }}</h2>
   </div>
-  <div class="job-contents" *ngIf="jobs.length > 0; else nojobs">
+  <div class="job-contents" *ngIf="jobs.length > 0; else noJobs">
     <table class="table">
       <thead>
-        <th><span>
-            {{'label.description'| translate}}
-          </span></th>
         <th>
           <span>
-            {{'label.p-date' | translate}}
+            {{ 'label.description' | translate }}
           </span>
         </th>
         <th>
           <span>
-            {{'label.c-date' | translate}}
+            {{ 'label.p-date' | translate }}
+          </span>
+        </th>
+        <th>
+          <span>
+            {{ 'label.c-date' | translate }}
           </span>
         </th>
       </thead>
       <tbody *ngIf="jobs">
-        <tr class="job"
-          *ngFor="let jb of contents | paginate: { itemsPerPage: 10 , currentPage: p , totalItems: total }">
+        <tr
+          class="job"
+          *ngFor="
+            let jb of contents
+              | paginate
+                : { itemsPerPage: 10, currentPage: p, totalItems: total }
+          "
+        >
           <td class="description">
             <a class="headline" [routerLink]="['/opportunities/job', jb.id]">
               {{ jb.title.rendered }}
@@ -42,17 +50,25 @@
           </td>
         </tr>
         <div class="text-center">
-          <pagination-controls class="jobs-pagination" (pageChange)="pageChanged($event)" autoHide="true"
-            responsive="true" maxSize="9" previousLabel="{{ 'pagination.previous' | translate }}"
-            nextLabel="{{ 'pagination.next' | translate }}"></pagination-controls>
+          <pagination-controls
+            class="jobs-pagination"
+            (pageChange)="pageChanged($event)"
+            autoHide="true"
+            responsive="true"
+            maxSize="9"
+            previousLabel="{{ 'pagination.previous' | translate }}"
+            nextLabel="{{ 'pagination.next' | translate }}"
+          ></pagination-controls>
         </div>
       </tbody>
     </table>
   </div>
-  <ng-template #nojobs>
+  <ng-template #noJobs>
     <div class="jumbotron no-data">
       <div [class.dot-falling]="loading"></div>
-      <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
+      <h4 *ngIf="!loading" class="text-center">
+        {{ 'label.no-data' | translate }}
+      </h4>
     </div>
   </ng-template>
 </div>

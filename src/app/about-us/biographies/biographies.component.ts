@@ -12,7 +12,7 @@ export class BiographiesComponent implements OnInit {
   bios = [];
   contents = [];
   loading = true;
-  constructor(private aboutUs: AboutUsService) { }
+  constructor(private aboutUs: AboutUsService) {}
 
   ngOnInit() {
     this.getBios(this.p);
@@ -24,8 +24,11 @@ export class BiographiesComponent implements OnInit {
     customParams.push('title');
     customParams.push('content');
     customParams.push('better_featured_image.source_url');
-    if ((this.bios.length < 1) || (this.bios.filter(d => d.page === this.p)).length < 1) {
-      this.aboutUs.getBios(customParams, page).subscribe((biosData) => {
+    if (
+      this.bios.length < 1 ||
+      this.bios.filter(d => d.page === this.p).length < 1
+    ) {
+      this.aboutUs.getBios(customParams, page).subscribe(biosData => {
         // console.log(biosData.body);
         this.loading = false;
         this.total = Number(biosData.headers.get('X-WP-Total'));
@@ -38,13 +41,12 @@ export class BiographiesComponent implements OnInit {
         if (newData.data.length > 0) {
           this.bios.push(newData);
         }
-        console.log('New data: ',  newData.data);
-        console.log('Bios: ', this.bios.length);
+        // console.log('New data: ',  newData.data);
+        // console.log('Bios: ', this.bios.length);
         this.contents = newData.data;
-
       });
     } else {
-      this.contents = (this.bios.filter(d => d.page === this.p))[0].data;
+      this.contents = this.bios.filter(d => d.page === this.p)[0].data;
     }
   }
   refineData(data) {
@@ -63,5 +65,4 @@ export class BiographiesComponent implements OnInit {
     this.p = page;
     this.getBios(page);
   }
-
 }

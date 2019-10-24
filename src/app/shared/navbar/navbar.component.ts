@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, NavigationEnd } from '@angular/router';
 import mapboxgl from 'mapbox-gl';
@@ -30,7 +36,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   searchPattern;
   serviceDetails;
 
-
   searchCategories = {
     services: [],
     biographies: [],
@@ -46,10 +51,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     private dataService: DataService,
     private searchService: SearchService
   ) {
-
     // translate.setDefaultLang('en');
     // this.langeuageChangeListener();
-
   }
 
   webLinks = [
@@ -67,14 +70,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   quickLinks = quickLinks;
   linkTitle = 'engTitle';
 
-  dummyLinksTwo = [
-    'service',
-    'tools',
-    '.pdf',
-    'some thing',
-    'of course'
-  ];
-
+  dummyLinksTwo = ['service', 'tools', '.pdf', 'some thing', 'of course'];
 
   ngOnInit() {
     const that = this;
@@ -82,10 +78,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     $(window).resize(() => {
       this.map.resize();
     });
-    const mapToken = 'pk.eyJ1IjoibWlyd2Fpc2FrcmFtaSIsImEiOiJjanR3bGZwaWswcTdrNDRwbHdzZjR4bGMwIn0.kN5s8PNjviEhk50vK3pHuA';
+    const mapToken =
+      'pk.eyJ1IjoibWlyd2Fpc2FrcmFtaSIsImEiOiJjanR3bGZwaWswcTdrNDRwbHdzZjR4bGMwIn0.kN5s8PNjviEhk50vK3pHuA';
 
     //console.log('QuickLinks : ', this.quickLinks);
-
 
     mapboxgl.accessToken = mapToken;
     window.onload = this.showActiveTab;
@@ -101,7 +97,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-
         $('.nav-item').removeClass('active');
 
         currentRoute = this.router.url.toString();
@@ -110,7 +105,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
           $('#home').addClass('active');
         } else {
           const url = currentRoute.split('/')[1];
-          $('[routerLink="/' + url + '"]').closest('.nav-item').addClass('active');
+          $('[routerLink="/' + url + '"]')
+            .closest('.nav-item')
+            .addClass('active');
         }
       }
     });
@@ -118,7 +115,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     /**
      * Collapse the search results on search item clicked
      */
-    $('.search-results').on('click', 'li', function () {
+    $('.search-results').on('click', 'li', function() {
       //console.log('I am clicked');
       $('.search-result-wrapper').removeClass('show');
     });
@@ -134,7 +131,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       that.toggleRespNav();
     });
 
-
     this.langeuageChangeListener();
 
     const sticky = this.navbar.offsetTop;
@@ -146,7 +142,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       this.map.resize();
     });
 
-
     /**
      * Detecte language change on reload
      */
@@ -155,24 +150,23 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   createMap() {
-
     this.map = new mapboxgl.Map({
       container: this.mapElement.nativeElement,
       style: 'mapbox://styles/mapbox/streets-v11',
       zoom: 15.27,
       center: [69.1575, 34.4992]
     });
-
   }
 
   ngAfterViewInit() {
-
     this.createMap();
 
     this.map.on('load', () => {
       /* Image: An image is loaded and added to the map. */
       this.map.loadImage('https://i.imgur.com/MK4NUzI.png', (error, image) => {
-        if (error) { throw error; }
+        if (error) {
+          throw error;
+        }
         this.map.addImage('custom-marker', image);
         /* Style layer: A style layer ties together the source and image and specifies how they are displayed on the map. */
         this.map.addLayer({
@@ -196,20 +190,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
             }
           },
           layout: {
-            'icon-image': 'custom-marker',
+            'icon-image': 'custom-marker'
           }
         });
       });
     });
-
-
-
   }
 
   toggleRespNav() {
     $('#responsive-nav').toggleClass('r-show');
     // console.log('I am clicked');
-
   }
 
   showActiveTab() {
@@ -221,15 +211,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       $('#home').addClass('active');
     } else {
       const url = currentRoute.split('/')[1];
-      $('[routerLink="/' + url + '"]').closest('.nav-item').addClass('active');
+      $('[routerLink="/' + url + '"]')
+        .closest('.nav-item')
+        .addClass('active');
     }
   }
 
   langeuageChangeListener() {
-
     // When the language changes, refresh the component to fetch the
     // language specific contents
-    this.translate.onLangChange.subscribe((event) => {
+    this.translate.onLangChange.subscribe(event => {
       this.dataService.language = event.lang;
       // Save the language into localstorage for future reference
       localStorage.setItem('lang', event.lang);
@@ -252,8 +243,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       // console.log('the path is :', location.pathname);
       const pt = location.pathname;
 
-      this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
-        this.router.navigate([pt]));
+      this.router
+        .navigateByUrl('/qw', { skipLocationChange: true })
+        .then(() => this.router.navigate([pt]));
     });
   }
 
@@ -278,13 +270,12 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     localStorage.setItem('library-type', sType);
   }
 
-
   getTags() {
     const customParams = [];
     customParams.push('id');
     customParams.push('name');
 
-    this.searchService.getTags(customParams).subscribe((data) => {
+    this.searchService.getTags(customParams).subscribe(data => {
       this.tags = data;
       // console.log('tags: ', this.tags);
     });
@@ -294,7 +285,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     const customParams = [];
     customParams.push('id');
     customParams.push('name');
-    this.searchService.getCategories(customParams).subscribe((data) => {
+    this.searchService.getCategories(customParams).subscribe(data => {
       if (data) {
         //console.log('categories: ', data);
         this.categories = data;
@@ -333,11 +324,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
     // this.searchPostsResult = [];
     // this.searchPattern = '';
-
   }
 
   showSearchResults(e, val) {
-
     //console.log(e);
     if (!$('.search-result-wrapper').hasClass('show')) {
       $('.search-result-wrapper').addClass('show');
@@ -352,7 +341,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     if (val.length < 1 || e.key === 'Escape') {
       this.hideSearchResults();
     }
-
   }
 
   showSearchDiv(val) {
@@ -364,8 +352,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   followLink(link, id) {
-    this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
-      this.router.navigate([link, id]));
+    this.router
+      .navigateByUrl('/qw', { skipLocationChange: true })
+      .then(() => this.router.navigate([link, id]));
   }
 
   gotoLink(link) {
@@ -380,18 +369,19 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         localStorage.setItem('library-type', link.data.value);
       }
     }
-    this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
-      this.router.navigate([link.url]));
+    this.router
+      .navigateByUrl('/qw', { skipLocationChange: true })
+      .then(() => this.router.navigate([link.url]));
   }
 
   searchFocusOut() {
     let el;
-    $(document).click(function (e) {
+    $(document).click(function(e) {
       el = e.target;
       // console.log('focused element', $(el).html());
     });
 
-    console.log('parent: ', $(el).parents('#search-result-wrapper').length);
+    // console.log('parent: ', $(el).parents('#search-result-wrapper').length);
 
     if ($(el).parents('#search-result-wrapper').length < 1) {
       $('.search-result-wrapper').removeClass('show');
@@ -399,7 +389,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   groupSearchResults(data) {
-
     for (const dt of data) {
       //  console.log('Post Category', this.getCategoryName(dt.categories[0]));
       const catType = this.getCategoryName(dt.categories[0]);
@@ -444,8 +433,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   boldMatchedText() {
-
-
     // tslint:disable-next-line: forin
     for (const item in this.searchCategories) {
       //  console.log('Type of Item : ', typeof item);
@@ -453,15 +440,19 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       for (const cat of catArray) {
         if (cat.hasOwnProperty('title')) {
           // first find all the matches
-          const matches = cat.title.rendered.match(new RegExp(this.searchPattern, 'gi'));
+          const matches = cat.title.rendered.match(
+            new RegExp(this.searchPattern, 'gi')
+          );
           //   console.log('Matches are: ', matches);
           if (matches) {
             for (const mt of matches) {
-              const str = cat.title.rendered.replace(mt, `<b class="text-green">${mt}</b>`);
+              const str = cat.title.rendered.replace(
+                mt,
+                `<b class="text-green">${mt}</b>`
+              );
               cat.title.rendered = str;
             }
           }
-
         }
       }
     }
@@ -476,66 +467,65 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     customParams.push('tags');
     customParams.push('categories');
 
-    this.searchTerm.pipe(
-      debounceTime(500),
-      distinctUntilChanged(),
-      switchMap(val => {
-        return this.searchService.getSearchResults(val, customParams);
-      }
+    this.searchTerm
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        switchMap(val => {
+          return this.searchService.getSearchResults(val, customParams);
+        })
       )
-    ).subscribe((data) => {
+      .subscribe(data => {
+        this.searchCategories.attachments = [];
+        this.searchCategories.biographies = [];
+        this.searchCategories.jobs = [];
+        this.searchCategories.news = [];
+        this.searchCategories.procurements = [];
+        this.searchCategories.services = [];
 
-      this.searchCategories.attachments = [];
-      this.searchCategories.biographies = [];
-      this.searchCategories.jobs = [];
-      this.searchCategories.news = [];
-      this.searchCategories.procurements = [];
-      this.searchCategories.services = [];
+        this.searchPostsResult = [];
 
-      this.searchPostsResult = [];
+        if (data) {
+          this.searchPostsResult = data;
+          //  console.log('search results first: ', this.searchPostsResult);
 
-      if (data) {
+          /**
+           * This is to check if the @searchPattern is matching any category name
+           */
+          const matchedCategories = this.matchCategoryNames(this.searchPattern);
+          //  console.log('matched categories: ', matchedCategories);
 
-        this.searchPostsResult = data;
-        //  console.log('search results first: ', this.searchPostsResult);
+          if (matchedCategories.length > 0) {
+            this.searchService
+              .getCategoriesData(matchedCategories, customParams)
+              .subscribe(catData => {
+                if (catData) {
+                  //  console.log('category dataa: ', catData);
 
-        /**
-         * This is to check if the @searchPattern is matching any category name
-         */
-        const matchedCategories = this.matchCategoryNames(this.searchPattern);
-        //  console.log('matched categories: ', matchedCategories);
+                  catData.map(d => {
+                    if (
+                      this.searchPostsResult.filter(sr => d.id === sr.id)
+                        .length < 1
+                    ) {
+                      this.searchPostsResult.push(d);
+                    } else {
+                      //     console.log('ID matched');
+                    }
+                  });
 
-
-        if (matchedCategories.length > 0) {
-          this.searchService.getCategoriesData(matchedCategories, customParams).subscribe((catData) => {
-            if (catData) {
-
-              //  console.log('category dataa: ', catData);
-
-              catData.map((d) => {
-                if ((this.searchPostsResult.filter(sr => d.id === sr.id)).length < 1) {
-                  this.searchPostsResult.push(d);
-                } else {
-                  //     console.log('ID matched');
+                  // this.searchPostsResult.concat(catData);
+                  //  console.log('search results amended: ', this.searchPostsResult);
+                  this.groupSearchResults(this.searchPostsResult);
                 }
               });
+          } else {
+            // console.log('search results: ', this.searchPostsResult);
+            this.groupSearchResults(this.searchPostsResult);
+          }
 
-              // this.searchPostsResult.concat(catData);
-              //  console.log('search results amended: ', this.searchPostsResult);
-              this.groupSearchResults(this.searchPostsResult);
-            }
-          });
-        } else {
-          // console.log('search results: ', this.searchPostsResult);
-          this.groupSearchResults(this.searchPostsResult);
+          //  this.getAttachments(data);
         }
-
-        //  this.getAttachments(data);
-
-
-
-      }
-    });
+      });
   }
 
   matchCategoryNames(searchPattern) {
@@ -559,7 +549,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       tempLinksArray = ps.content.rendered.match(pattern);
       // console.log('pattern result: ', tempLinksArray);
       if (tempLinksArray) {
-        tempLinksArray.map((vl) => {
+        tempLinksArray.map(vl => {
           vl = vl.replace('">', '" target="_blank">');
           // this.linksArray.push(vl);
           this.searchCategories.attachments.push(vl);
@@ -567,15 +557,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
         // console.log('links result: ', tempLinksArray);
       }
-
     }
 
-
     //  console.log('the final links array is: ', this.linksArray);
-
   }
-
-
 
   showServiceDetails(service) {
     const serviceType = this.getCategoryName(service.categories[0]);
@@ -588,7 +573,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     // console.log('service type: ', serviceType);
     // console.log('service short: ', serviceShortName);
     if (serviceType.toLowerCase().includes('service')) {
-
       const tagName = this.getTagName(service.tags[0]).toLowerCase();
 
       if (tagName !== 'service') {
@@ -600,7 +584,12 @@ export class NavbarComponent implements OnInit, AfterViewInit {
           let depId;
           //   console.log('department: ', departmentName);
           // first check if department is already fetched as well
-          depId = this.getAvailableDepartmentID(depType, departmentName, service.id, service.tags[0]);
+          depId = this.getAvailableDepartmentID(
+            depType,
+            departmentName,
+            service.id,
+            service.tags[0]
+          );
 
           if (depId) {
             // console.log('available locally', depId);
@@ -609,38 +598,40 @@ export class NavbarComponent implements OnInit, AfterViewInit {
             sessionStorage.setItem('sub-menu.type', 'headship');
             sessionStorage.setItem('sub-menu.id', service.id);
 
-            this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
-              this.router.navigate(['/services']));
-
+            this.router
+              .navigateByUrl('/qw', { skipLocationChange: true })
+              .then(() => this.router.navigate(['/services']));
           } else {
-
-            this.searchService.getRelatedDepartmentId(serviceType, 'department', customParams).subscribe((data) => {
-              //   console.log('related department: ', data);
-              for (const dp of data) {
-                if (dp.acf[depType] === departmentName) {
-                  depId = `id${dp.id}`;
-                  //   console.log('Matched');
-                  break;
+            this.searchService
+              .getRelatedDepartmentId(serviceType, 'department', customParams)
+              .subscribe(data => {
+                //   console.log('related department: ', data);
+                for (const dp of data) {
+                  if (dp.acf[depType] === departmentName) {
+                    depId = `id${dp.id}`;
+                    //   console.log('Matched');
+                    break;
+                  }
                 }
-              }
-              sessionStorage.setItem('serviceType', serviceShortName);
-              sessionStorage.setItem('department', depId);
-              sessionStorage.setItem('sub-menu.type', 'headship');
-              sessionStorage.setItem('sub-menu.id', service.id);
+                sessionStorage.setItem('serviceType', serviceShortName);
+                sessionStorage.setItem('department', depId);
+                sessionStorage.setItem('sub-menu.type', 'headship');
+                sessionStorage.setItem('sub-menu.id', service.id);
 
-              this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
-                this.router.navigate(['/services']));
-            });
+                this.router
+                  .navigateByUrl('/qw', { skipLocationChange: true })
+                  .then(() => this.router.navigate(['/services']));
+              });
           }
-
         } else {
           sessionStorage.setItem('serviceType', serviceShortName);
           sessionStorage.setItem('department', `id${service.id}`);
           sessionStorage.setItem('sub-menu.type', 'department');
           sessionStorage.setItem('sub-menu.id', service.id);
 
-          this.router.navigateByUrl('/qw', { skipLocationChange: true }).then(() =>
-            this.router.navigate(['/services']));
+          this.router
+            .navigateByUrl('/qw', { skipLocationChange: true })
+            .then(() => this.router.navigate(['/services']));
         }
       }
     } else {
@@ -662,11 +653,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     return false;
   }
 
-
   makeNavbarSticky(sticky: any): void {
-
     if (window.pageYOffset >= sticky) {
-
       this.navbar.classList.add('sticky');
       this.searchWrapper.classList.add('sticky');
       this.searchWrapper.classList.add('pd-top');
@@ -678,5 +666,4 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       this.navbar.classList.remove('active-bar');
     }
   }
-
 }

@@ -1,43 +1,39 @@
 <div class="tender content-justify" *ngIf="selectedTender; else nodata">
-  <h3 class="title">
+  <h5 class="title mt-4">
     {{ selectedTender.title.rendered }}
-  </h3>
+  </h5>
   <div class="tender-details">
-
     <div class="p-date">
-
       <span>{{ 'label.date-posted' | translate }}:</span>
       <strong>{{ selectedTender.date }}</strong>
     </div>
-
 
     <div class="c-date">
       <span>{{ 'label.closing-date' | translate }}:</span>
       <strong>{{ selectedTender.acf.closing_date }}</strong>
     </div>
 
-
     <div class="t-number">
       <span>{{ 'label.tender-number' | translate }}:</span>
       <strong>{{ selectedTender.acf.tender_number }}</strong>
     </div>
 
-
     <div class="t-city">
       <span>{{ 'label.city' | translate }}:</span>
       <strong>{{ selectedTender.acf.city }}</strong>
     </div>
-
   </div>
   <div class="tender-description">
     <h4>{{ 'label.description' | translate }}:</h4>
-    <hr>
+    <hr />
     <p>{{ selectedTender.content.rendered }}</p>
   </div>
 </div>
 <ng-template class="container" #nodata>
   <div class="jumbotron no-data">
     <div [class.dot-falling]="loading"></div>
-    <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
+    <h4 *ngIf="!loading" class="text-center">
+      {{ 'label.no-data' | translate }}
+    </h4>
   </div>
 </ng-template>

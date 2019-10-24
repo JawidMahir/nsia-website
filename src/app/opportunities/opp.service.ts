@@ -9,10 +9,10 @@ export class OppService {
 
   constructor(private http: HttpClient, private dataService: DataService) { }
 
-  fetchData(customParams, category , page) {
+  fetchData(customParams, category , page , perPage) {
     const header = {
       'filter[category_name]': category,
-      per_page: '10',
+      per_page: perPage,
       page: page,
       lang: this.dataService.language,
       fields: customParams.join(',')
@@ -36,7 +36,7 @@ export class OppService {
   }
 
   getTenders(customParams , page) {
-    return this.fetchData(customParams, 'tender',page);
+    return this.fetchData(customParams, 'tender',page , '5');
   }
 
   getTenderDetails(customParams, id) {
@@ -44,7 +44,7 @@ export class OppService {
   } 
 
   getJobs(customParams , page) {
-    return this.fetchData(customParams, 'job',page);
+    return this.fetchData(customParams, 'job',page , '10');
   }
 
   getJobDetails(customParams, id) {

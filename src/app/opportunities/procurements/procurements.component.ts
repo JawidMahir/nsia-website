@@ -13,7 +13,8 @@ export class ProcurementsComponent implements OnInit {
   tenders = [];
   contents = [];
   lang;
-  constructor(private oppService: OppService) { }
+  loading = true;
+  constructor(private oppService: OppService) {}
 
   ngOnInit() {
     this.getTenders(this.p);
@@ -26,9 +27,13 @@ export class ProcurementsComponent implements OnInit {
     customParams.push('title.rendered');
     customParams.push('content.rendered');
     customParams.push('acf.closing_date');
-    if ((this.tenders.length < 1) || (this.tenders.filter(d => d.page === this.p)).length < 1) {
-      this.oppService.getTenders(customParams, page).subscribe((data) => {
+    if (
+      this.tenders.length < 1 ||
+      this.tenders.filter(d => d.page === this.p).length < 1
+    ) {
+      this.oppService.getTenders(customParams, page).subscribe(data => {
         this.total = Number(data.headers.get('X-WP-Total'));
+        this.loading = false;
 
         const newData = {
           page: page,
@@ -38,10 +43,9 @@ export class ProcurementsComponent implements OnInit {
         this.tenders.push(newData);
         //console.log(this.tenders);
         this.contents = newData.data;
-
       });
     } else {
-      this.contents = (this.tenders.filter(d => d.page === this.p))[0].data;
+      this.contents = this.tenders.filter(d => d.page === this.p)[0].data;
     }
   }
   getBrief(ds) {
@@ -54,14 +58,25 @@ export class ProcurementsComponent implements OnInit {
   refineData(data) {
     for (const tn of data) {
       if (tn.content) {
-        tn.content.rendered = this.oppService.htmlToPlaintext(tn.content.rendered);
+        tn.content.rendered = this.oppService.htmlToPlaintext(
+          tn.content.rendered
+        );
       }
       const date = new Date(tn.date);
-      const tempDate = date.getDate() + '/' + (Number(date.getMonth()) + 1) + '/' + date.getFullYear();
+      const tempDate =
+        date.getDate() +
+        '/' +
+        (Number(date.getMonth()) + 1) +
+        '/' +
+        date.getFullYear();
       tn.date = tempDate;
       if (this.lang == 'fa' || this.lang == 'ps') {
-        tn.date = moment(tn.date, 'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
-        tn.acf.closing_date = moment(tn.acf.closing_date, 'DD/MM/YYYY').locale('fa').format('YYYY/MM/DD');
+        tn.date = moment(tn.date, 'DD/MM/YYYY')
+          .locale('fa')
+          .format('YYYY/MM/DD');
+        tn.acf.closing_date = moment(tn.acf.closing_date, 'DD/MM/YYYY')
+          .locale('fa')
+          .format('YYYY/MM/DD');
       }
     }
     return data;
@@ -71,6 +86,4 @@ export class ProcurementsComponent implements OnInit {
     this.p = page;
     this.getTenders(page);
   }
-
-
 }

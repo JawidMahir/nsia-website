@@ -1,12 +1,12 @@
 <div class="globalsidebar">
   <h4>{{ 'label.news' | translate }}</h4>
-  <hr>
-  <div *ngIf="newsBriefs.news != ''; else nonews">
-    <div class="row" *ngFor="let nw of newsBriefs.news">
-      <div class="col-md-4 col-sm-5 col-xs-3 newsside">
-        <img src="../../assets/images/newsIcon.png" alt="News">
+  <hr />
+  <div *ngIf="newsBriefs.news != ''; else noNews">
+    <div class="row mb-3" *ngFor="let nw of newsBriefs.news">
+      <div class="col-lg-4 col-md-8 news-side">
+        <img src="../../assets/images/newsIcon.png" alt="News" />
       </div>
-      <div class="col-md-8 col-sm-7 col-xs-4 display newsside">
+      <div class="col-lg-8 col-md-12 ">
         <a [routerLink]="['/media-room/media', nw.id]">
           {{ getBrief(nw.title.rendered) }}
         </a>
@@ -14,14 +14,22 @@
       </div>
     </div>
   </div>
-  <ng-template #nonews>
+  <ng-template #noNews>
     <div class="jumbotron no-data">
       <div [class.dot-falling]="loading"></div>
-      <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
+      <h4 *ngIf="!loading" class="text-center">
+        {{ 'label.no-data' | translate }}
+      </h4>
     </div>
   </ng-template>
   <div class="text-center">
-    <button class="btn btn-outline-info" (click)="readMoreRedirect($event.target)" id="news-read-more"
-      [disabled]="newsBriefs.news === ''">{{'btn.view-all-news' | translate}}</button>
+    <button
+      class="btn btn-outline-info"
+      (click)="readMoreRedirect($event.target)"
+      id="news-read-more"
+      [disabled]="newsBriefs.news === ''"
+    >
+      {{ 'btn.view-all-news' | translate }}
+    </button>
   </div>
 </div>
