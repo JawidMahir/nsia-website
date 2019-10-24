@@ -1,40 +1,42 @@
 .globalsidebar {
-    height: 100%;
-    overflow-wrap: break-word;
-    padding:15px; 
-    font-weight: bold !important;
-    border-left : 1px solid #282560; 
-    padding-left:30px 
+  height: 100%;
+  overflow-wrap: break-word;
+  padding: 15px;
+  font-weight: bold !important;
+  border-left: 1px solid #282560;
+  padding-left: 30px;
 }
 .globalsidebar a {
-    display: block;
-    color:#282560;
+  display: block;
+  color: #282560;
 }
 .globalsidebar a:hover:not(.active) {
-    color: #01a79b;
+  color: #01a79b;
 }
-.margin-top{
-    margin-top: 30px;
+.margin-top {
+  margin-top: 30px;
 }
-.globalsidebar p{
-    color: gray;
-    font-size: small;
-    font-weight: normal;
+.globalsidebar p {
+  color: gray;
+  font-size: small;
+  font-weight: normal;
 }
-h4{
-    font-weight: bold !important;
+h4 {
+  font-weight: bold !important;
 }
 img {
-    width: 100%;
-    height: 100% ;
-}
-.newsside{
-    margin-bottom: 10px;
-    margin-left: -13px;
-    height: 40%;
-    width: 40%;
+  width: 100%;
+  height: 100%;
 }
 
 #news-read-more:disabled {
-    cursor: not-allowed;
+  cursor: not-allowed;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 1) {
+  .news-side {
+    margin-bottom: 10px;
+    height: 40%;
+    width: 40%;
+  }
 }

@@ -1,22 +1,18 @@
 <div class="opportunities jobs content-justify" *ngIf="job; else nodata">
   <div class="title-wrapper">
     <div class="job-title">
-      <h4>{{job.title.rendered}}</h4>
+      <h4>{{ job.title.rendered }}</h4>
     </div>
   </div>
-  <div class="job-specs">
-
-    <div class="spec-item">
+  <div class="row job-specs">
+    <div class="col-lg-6  col-md-8 col-sm-6">
       <span><i class="fas fa-graduation-cap"></i>{{ job.acf.degree }}</span>
-
     </div>
-    <div class="spec-item">
+    <div class="col-lg-3 col-md-4 col-sm-6 ">
       <span><i class="fas fa-map-marker-alt"></i> {{ job.acf.location }}</span>
-
     </div>
-    <div class="spec-item">
-      <span><i class="fas fa-clock"></i> {{job.acf.time}}</span>
-
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <span><i class="fas fa-clock"></i> {{ job.acf.time }}</span>
     </div>
     <!-- <div class="spec-item">
       <span><i class="fas fa-eye"></i> 159</span>
@@ -28,7 +24,7 @@
       <tbody>
         <tr>
           <td>
-            <span>{{'label.date-posted' | translate }}</span>
+            <span>{{ 'label.date-posted' | translate }}</span>
           </td>
           <td>
             <span *ngIf="job.date">{{ job.date }}</span>
@@ -42,7 +38,7 @@
         </tr>
         <tr>
           <td>
-            <span>{{'label.closing-date' | translate}}</span>
+            <span>{{ 'label.closing-date' | translate }}</span>
           </td>
           <td>
             <span *ngIf="job.acf.closing_date">{{ job.acf.closing_date }}</span>
@@ -56,10 +52,12 @@
         </tr>
         <tr>
           <td>
-            <span>{{'label.vacancies-num' | translate}}</span>
+            <span>{{ 'label.vacancies-num' | translate }}</span>
           </td>
           <td>
-            <span *ngIf="job.acf.number_of_vacancies">{{ job.acf.number_of_vacancies }}</span>
+            <span *ngIf="job.acf.number_of_vacancies">{{
+              job.acf.number_of_vacancies
+            }}</span>
           </td>
           <!-- <td>
             <span>{{'submenu.gender' | translate}}</span>
@@ -70,10 +68,12 @@
         </tr>
         <tr>
           <td>
-            <span>{{'label.functional-area' | translate}}</span>
+            <span>{{ 'label.functional-area' | translate }}</span>
           </td>
           <td>
-            <span *ngIf="job.acf.functional_area">{{ job.acf.functional_area }}</span>
+            <span *ngIf="job.acf.functional_area">{{
+              job.acf.functional_area
+            }}</span>
           </td>
           <!-- <td>
             <span>{{'label.nationality' | translate}}</span>
@@ -84,7 +84,7 @@
         </tr>
         <tr>
           <td>
-            <span>{{'label.salary-range' | translate}}</span>
+            <span>{{ 'label.salary-range' | translate }}</span>
           </td>
           <td>
             <span *ngIf="job.acf.salary_range">{{ job.acf.salary_range }}</span>
@@ -95,7 +95,9 @@
             <span>{{ 'label.contract-duration' | translate }}</span>
           </td>
           <td>
-            <span *ngIf="job.acf.contract_duration">{{ job.acf.contract_duration }}</span>
+            <span *ngIf="job.acf.contract_duration">{{
+              job.acf.contract_duration
+            }}</span>
           </td>
           <!-- <td>
             <span>{{ 'label.extension-possibility' | translate }}</span>
@@ -109,7 +111,9 @@
             <span>{{ 'label.contract-type' | translate }}</span>
           </td>
           <td>
-            <span *ngIf="job.acf.contract_type">{{ job.acf.contract_type }}</span>
+            <span *ngIf="job.acf.contract_type">{{
+              job.acf.contract_type
+            }}</span>
           </td>
           <!-- <td>
             <span>{{ 'label.probation-period' | translate }}</span>
@@ -123,75 +127,82 @@
             <span>{{ 'label.required-languages' | translate }}</span>
           </td>
           <td>
-            <span *ngIf="job.acf.required_language">{{ job.acf.required_language }}</span>
+            <span *ngIf="job.acf.required_language">{{
+              job.acf.required_language
+            }}</span>
           </td>
         </tr>
         <tr>
-            <td>
-              <span>{{ 'label.experience' | translate }}</span>
-            </td>
-            <td>
-              <span *ngIf="job.acf.years_of_experience">{{ job.acf.years_of_experience }}</span>
-            </td>
+          <td>
+            <span>{{ 'label.experience' | translate }}</span>
+          </td>
+          <td>
+            <span *ngIf="job.acf.years_of_experience">{{
+              job.acf.years_of_experience
+            }}</span>
+          </td>
         </tr>
       </tbody>
     </table>
-
   </div>
   <div class="job-details">
     <div class="about-nsia detail-section" *ngIf="job.acf.about_nsia">
       <h3>{{ 'submenu.about-nsia' | translate }}</h3>
-      <div class="content" [innerHTML]="job.acf.about_nsia">
-      </div>
+      <div class="content" [innerHTML]="job.acf.about_nsia"></div>
     </div>
     <div class="job-summary detail-section" *ngIf="job.acf.job_summary">
       <h3>{{ 'label.job-summary' | translate }}</h3>
-      <div class="content" [innerHTML]="job.acf.job_summary">
-      </div>
+      <div class="content" [innerHTML]="job.acf.job_summary"></div>
     </div>
     <div class="skills-required detail-section" *ngIf="job.acf.skills_required">
       <h3>{{ 'label.skills-required' | translate }}</h3>
-      <div class="content" [innerHTML]="job.acf.skills_required">
-      </div>
+      <div class="content" [innerHTML]="job.acf.skills_required"></div>
     </div>
-    <div class="skills-description detail-section" *ngIf="job.acf.skills_description">
+    <div
+      class="skills-description detail-section"
+      *ngIf="job.acf.skills_description"
+    >
       <h3>{{ 'label.skills-description' | translate }}</h3>
-      <div class="content" [innerHTML]="job.acf.skills_description">
-      </div>
+      <div class="content" [innerHTML]="job.acf.skills_description"></div>
     </div>
-    <div class="duties-responisibilities detail-section" *ngIf="job.acf.responsibilities">
+    <div
+      class="duties-responisibilities detail-section"
+      *ngIf="job.acf.responsibilities"
+    >
       <h3>{{ 'label.responsibilities' | translate }}</h3>
-      <div class="content" [innerHTML]="job.acf.responsibilities">
-      </div>
+      <div class="content" [innerHTML]="job.acf.responsibilities"></div>
     </div>
     <div class="job-location detail-section" *ngIf="job.acf.location">
       <h3>{{ 'label.location' | translate }}</h3>
-      <div class="content" [innerHTML]="job.acf.location">
-      </div>
+      <div class="content" [innerHTML]="job.acf.location"></div>
     </div>
     <div class="qualification detail-section" *ngIf="job.acf.qualifications">
       <h3>{{ 'label.qualifications' | translate }}</h3>
-      <div class="content" [innerHTML]="job.acf.qualifications">
-      </div>
+      <div class="content" [innerHTML]="job.acf.qualifications"></div>
     </div>
 
-    <div class="submission-email detail-section" *ngIf="job.acf.submission_guideline">
+    <div
+      class="submission-email detail-section"
+      *ngIf="job.acf.submission_guideline"
+    >
       <h3>{{ 'label.submission-guidelines' | translate }}</h3>
-      <div class="content" [innerHTML]="job.acf.submission_guideline">
-      </div>
+      <div class="content" [innerHTML]="job.acf.submission_guideline"></div>
     </div>
 
-    <div class="submission-email detail-section" *ngIf="job.acf.submission_email">
+    <div
+      class="submission-email detail-section"
+      *ngIf="job.acf.submission_email"
+    >
       <h3>{{ 'label.submission-email' | translate }}</h3>
-      <div class="content" [innerHTML]="job.acf.submission_email">
-      </div>
+      <div class="content" [innerHTML]="job.acf.submission_email"></div>
     </div>
-
   </div>
 </div>
 <ng-template #nodata>
   <div class="jumbotron no-data">
     <div [class.dot-falling]="loading"></div>
-    <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
+    <h4 *ngIf="!loading" class="text-center">
+      {{ 'label.no-data' | translate }}
+    </h4>
   </div>
 </ng-template>

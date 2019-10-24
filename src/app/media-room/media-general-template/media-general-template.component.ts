@@ -21,7 +21,7 @@ export class MediaGeneralTemplateComponent implements OnInit {
     private dataService: DataService,
     private sanitizer: DomSanitizer,
     private mediaService: MediaServicesService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -39,8 +39,8 @@ export class MediaGeneralTemplateComponent implements OnInit {
     customParams.push('acf.link');
     customParams.push('acf');
     customParams.push('date');
-    this.dataService.getPostDetails(id, customParams).subscribe((newsData) => {
-      console.log('news data: ', newsData);
+    this.dataService.getPostDetails(id, customParams).subscribe(newsData => {
+      // console.log('news data: ', newsData);
       this.loading = false;
       if (newsData.length > 0 && newsData[0].hasOwnProperty('acf')) {
         this.videoLink = $.parseHTML(newsData[0].acf.link);
@@ -78,8 +78,4 @@ export class MediaGeneralTemplateComponent implements OnInit {
     var next = keys.shift();
     return obj[next] && (!keys.length || this.objHasKeys(obj[next], keys));
   }
-
 }
-
-
-
