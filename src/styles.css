@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-@import "~bootstrap/dist/css/bootstrap.css";
-@import "https://use.fontawesome.com/releases/v5.7.2/css/all.css";
+@import '~bootstrap/dist/css/bootstrap.css';
+@import 'https://use.fontawesome.com/releases/v5.7.2/css/all.css';
 
 @font-face {
   font-family: 'Bahij Halvetica';
@@ -28,9 +28,9 @@ body {
   font-family: 'Raleway', 'Bahij Halvetica', sans-serif;
   color: #282560 !important;
   background: #fff;
-
+  overflow-x: hidden !important;
 }
-p{
+p {
   font-weight: 480;
 }
 
@@ -39,14 +39,18 @@ button {
 }
 
 .bg-gradient {
-  background: linear-gradient(to right, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%);
+  background: linear-gradient(
+    to right,
+    rgb(39, 35, 97),
+    rgba(39, 35, 97, 0) 100%
+  );
 }
 
 .fit-cover {
   object-fit: cover;
 }
 
- .featured-video {
+.featured-video {
   max-height: 240px !important;
   overflow: hidden;
 }
@@ -56,7 +60,7 @@ button {
  * Dot Falling
  * ==============================================
  */
- .dot-falling {
+.dot-falling {
   position: relative;
   left: -9999px;
   width: 10px;
@@ -66,12 +70,13 @@ button {
   color: #282560;
   box-shadow: 9999px 0 0 0 #282560;
   animation: dotFalling 1s infinite linear;
-  animation-delay: .1s;
+  animation-delay: 0.1s;
   margin: auto;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
-.dot-falling::before, .dot-falling::after {
+.dot-falling::before,
+.dot-falling::after {
   content: '';
   display: inline-block;
   position: absolute;
@@ -95,7 +100,7 @@ button {
   background-color: #282560;
   color: #282560;
   animation: dotFallingAfter 1s infinite linear;
-  animation-delay: .2s;
+  animation-delay: 0.2s;
 }
 
 @keyframes dotFalling {
@@ -140,10 +145,6 @@ button {
   }
 }
 
-
-
-
-
 #scroll {
   position: fixed;
   right: 30px;
@@ -158,7 +159,7 @@ button {
   padding: 11px 16px;
   -webkit-border-radius: 60px;
   -moz-border-radius: 60px;
-  border-radius: 60px
+  border-radius: 60px;
 }
 
 #scroll i {
@@ -183,7 +184,6 @@ button {
   width: 80vw;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 .c-btn-outline-blue {
@@ -191,7 +191,7 @@ button {
   background-color: #282560;
   color: #fff;
   padding: 6px 16px;
-  transition: background .2s ease-in-out;
+  transition: background 0.2s ease-in-out;
 }
 
 .c-border-blue:hover {
@@ -208,7 +208,7 @@ button {
   background-color: transparent;
   color: #fff;
   padding: 6px 16px;
-  transition: background .2s ease-in-out;
+  transition: background 0.2s ease-in-out;
 }
 
 .c-btn-outline-white:hover {
@@ -223,7 +223,6 @@ button {
 
 .form-control:focus {
   outline: none !important;
-
 }
 
 .form-control:focus {
@@ -238,11 +237,11 @@ button {
   align-items: center;
   color: grey;
   border-bottom: 1px solid grey;
-  transition: border .5s ease-in-out;
+  transition: border 0.5s ease-in-out;
 }
 
 .search-input .wrapper i {
-  transition: color .5s ease-in-out;
+  transition: color 0.5s ease-in-out;
 }
 
 .search-input .wrapper:focus-within {
@@ -250,13 +249,11 @@ button {
   color: #282560;
 }
 
-
 .search-input .wrapper .search-box {
   border: none;
   padding: 4px;
   outline: none !important;
 }
-
 
 .p-16 {
   padding-left: 16px;
@@ -293,7 +290,6 @@ button {
 .navigation .full-path {
   display: inline-block;
   margin: 6px 0px;
-
 }
 
 .navigation .fullpath {
@@ -301,12 +297,10 @@ button {
   color: grey;
 }
 
-
 .navigation .currentpath {
   color: #01a79b;
   font-weight: 600;
   text-transform: uppercase;
-
 }
 
 .content-justify {
@@ -335,7 +329,6 @@ button {
   padding-left: 30px;
 }
 
-
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -360,9 +353,8 @@ button {
 .no-data {
   width: 100%;
   border-radius: 0px;
-  color: #BFC0C0;
+  color: #bfc0c0;
 }
-
 
 @media only screen and (max-width: 1050px) {
   .custom-container {
@@ -387,7 +379,6 @@ button {
   }
 }
 
-
 /**
 * SIDEBAR CSS
 */
@@ -398,9 +389,8 @@ button {
   color: grey;
   overflow: hidden;
   z-index: 6;
-  transition: width .5s;
+  transition: width 0.5s;
   border-right: 1px solid #282560;
-
 }
 
 .sidebar {
@@ -420,7 +410,6 @@ button {
 
 /* ACTIVE MENU ITEM CSS */
 
-
 .active-item {
   color: #282560 !important;
   font-weight: 600 !important;
@@ -439,7 +428,6 @@ button {
 .active-item .fa-chevron-left {
   display: inline-block;
 } */
-
 
 .sidebar-nav .fa-chevron-right {
   /* visibility: hidden; */
@@ -466,7 +454,7 @@ button {
   width: calc(100% - 19vw);
   padding: 0px 3rem;
   float: right;
-  transition: margin .5s;
+  transition: margin 0.5s;
 }
 
 .active-sub-menu p {
@@ -476,19 +464,14 @@ button {
   color: #282560;
 }
 
-
-
-
-
 .sidebar-toggler {
   position: absolute;
   display: none;
   padding: 8px 16px;
   background-color: #01a79b;
   color: #fff;
-  transition: margin .5s;
+  transition: margin 0.5s;
   z-index: 100;
-
 }
 
 /* SIDEBAR MENUS */
@@ -514,8 +497,6 @@ button {
   margin-right: 4px;
 }
 
-
-
 .sidebar .menu-item .m-item-c span {
   font-size: 18px;
   text-transform: capitalize;
@@ -524,7 +505,7 @@ button {
 .sidebar .menu-item .sub-menu .sub-menu-item {
   padding: 6px;
   margin-left: 1rem;
-  transition: background .5s;
+  transition: background 0.5s;
 }
 
 .sidebar .menu-item .sub-menu .sub-menu-item:hover {
@@ -551,7 +532,7 @@ button {
   padding: 4px 0px;
   padding-left: 4px;
   cursor: pointer;
-  transition: background .2s ease-in-out;
+  transition: background 0.2s ease-in-out;
 }
 
 .sidebar .provincial-services ul li.active-province {
@@ -578,8 +559,6 @@ button {
   visibility: visible !important;
 }
 
-
-
 @media only screen and (max-width: 900px) {
   .sidebar-toggler {
     display: block;
@@ -596,14 +575,11 @@ button {
   }
 }
 
-
-
 @media only screen and (min-width: 1000px) {
   .sidebar-nav {
     width: 19vw !important;
   }
 }
-
 
 /**
 * SIDEBAR CONTENT PAN
@@ -632,7 +608,6 @@ button {
   display: flex;
   width: 100%;
   border: 1px solid #282560;
-
 }
 
 .services .sr-icon {
@@ -664,13 +639,12 @@ button {
   display: table-cell !important;
   margin: 0px !important;
   font-weight: 600;
-  vertical-align: middle
+  vertical-align: middle;
 }
 
 .main-wrapper .contents ul {
   list-style: none;
 }
-
 
 .main-wrapper .contents .deputy-image {
   margin-bottom: 1rem;
@@ -683,8 +657,6 @@ button {
 .main-wrapper .contents .details {
   text-align: justify;
 }
-
-
 
 /*
 * PROMOTIONAL MATERIALS CSS
@@ -703,7 +675,6 @@ button {
   }
 }
 
-
 .promote-material {
   padding: 0px 25px;
 }
@@ -712,10 +683,9 @@ button {
   margin-block-end: 2rem;
 }
 
-
 .promote-material .p-material {
   background-color: #01a79b;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   max-width: fit-content;
 }
 
@@ -753,7 +723,6 @@ button {
   margin: 0px 6px;
 }
 
-
 /*
  * MEDIA ROOM
  */
@@ -771,7 +740,6 @@ button {
   margin: 0px;
 }
 
-
 /*
  * Styling Contents attachements
  */
@@ -783,7 +751,7 @@ button {
   color: #282560 !important;
   font-size: 18px;
   margin: 2px 0px;
-  transition: background .2s ease-in-out;
+  transition: background 0.2s ease-in-out;
 }
 
 .details .attachment i {
@@ -792,7 +760,6 @@ button {
 
 .details .attachment:hover {
   background-color: rgba(225, 225, 225, 0.719);
-
 }
 
 .details a {
@@ -836,14 +803,13 @@ button {
 
 .news-section a {
   font-weight: bold;
-  color: #282560
+  color: #282560;
 }
 
 .news-section .news {
   margin-bottom: 20px;
   overflow-wrap: break-word;
 }
-
 
 .news-section .pmaterial {
   background-color: #01a79b;
@@ -871,7 +837,7 @@ button {
 }
 
 .news-section .content {
-  text-align: justify
+  text-align: justify;
 }
 
 .news-section .featured-video iframe {

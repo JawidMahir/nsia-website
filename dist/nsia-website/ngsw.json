@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1571903470069,
+  "timestamp": 1572326463961,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -14,17 +14,17 @@
         "/13.0b0aba921ad1982f9d2d.js",
         "/14.422b31985ae6233159f7.js",
         "/2.a0ea8263bbdef82198d0.js",
-        "/7.f666fe668a3b28e24614.js",
+        "/7.9a0d5a686313548df376.js",
         "/8.709319c3e79f1bb0095f.js",
         "/9.dcff635fae61a077224e.js",
         "/common.e3864cceb0158b80a600.js",
         "/favicon.ico",
         "/index.html",
-        "/main.7471ed936219cbf2f8a0.js",
+        "/main.9ca9d0cd01419c43776e.js",
         "/polyfills-es5.b51b72a6bccc504722a9.js",
         "/polyfills.bca8589e7ac76d35daaa.js",
-        "/runtime.e043c08697982926c096.js",
-        "/styles.48fbe83921032850e270.css"
+        "/runtime.6049ea1ea4578a65e515.js",
+        "/styles.8c496b91c2daa31941a3.css"
       ],
       "patterns": [
         "https:\\/\\/fonts\\.googleapis\\.com\\/css\\?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i",
@@ -138,17 +138,17 @@
     "/13.0b0aba921ad1982f9d2d.js": "13d4cfe29f2a9f8d44e3d0e1c05cde67deca9858",
     "/14.422b31985ae6233159f7.js": "1edcea9fdb3485837bc231e2859ca4c7f82291fc",
     "/2.a0ea8263bbdef82198d0.js": "6413710523df8ab301f76c2f58b3544c78754486",
-    "/7.f666fe668a3b28e24614.js": "e522168a60c81ce43cb186ee374c19892a413998",
+    "/7.9a0d5a686313548df376.js": "352bdea357d8729985c442dbb681313fa2c5ab07",
     "/8.709319c3e79f1bb0095f.js": "ac0f513675ad2eb9e619cf25da8cff62fcd529d1",
     "/9.dcff635fae61a077224e.js": "fbc2541d3ec081ce360baa5c978c82920976845d",
     "/Bahij_Helvetica_Neue-Light_1.95793cb75f0484cb76e5.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
-    "/assets/css/rtl.css": "c9b1b46eb32aeba8771134467c917ce5714e446a",
+    "/assets/css/rtl.css": "690eb2f9caa659bd3fb6f2279a15530d354a0b31",
     "/assets/fonts/Bahij_Helvetica_Neue-Light_1.ttf": "e767e0262a6ec404f7e58e8f5bccf245b925a9be",
     "/assets/fonts/bahij_helvetica_neue_bold_by_bahijvirtualacademy-dammcmt_0.ttf": "904492cf3930671a0d367348ab178597ebbffa66",
     "/assets/fonts/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.ttf": "9f0e7efd26f73d0db26ea54a2fe87f4b0430f314",
-    "/assets/i18n/en.json": "14874c5e4ceb205b0868a54ce9f7dfea4686fbb9",
-    "/assets/i18n/fa.json": "964392f467d103437869f31031c7a851e372679c",
-    "/assets/i18n/ps.json": "4c314a58f03185f03d4ab470d435ef288d260a22",
+    "/assets/i18n/en.json": "a8384b39463c728e3c56ff3566d9f7e869a901e7",
+    "/assets/i18n/fa.json": "da37bcd862cea8be2a2b5ce570a4b652569a408c",
+    "/assets/i18n/ps.json": "3a0fd8e5df58241468814f154a2e0e417cacc1f0",
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -209,12 +209,12 @@
     "/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.c89c9eb963cc00332e6c.ttf": "9f0e7efd26f73d0db26ea54a2fe87f4b0430f314",
     "/common.e3864cceb0158b80a600.js": "4ef2784dbb51a1af347b24dcfdd1638aa41a380e",
     "/favicon.ico": "7d6b5711e54dc63710fb7b9d8baf57d6d0f35ca5",
-    "/index.html": "fb634a0e81492686871593365de38070649f4ad4",
-    "/main.7471ed936219cbf2f8a0.js": "53555ceb615cc343bf1fce8e88dd6f03794e3ed9",
+    "/index.html": "75db781bfa45bfd1b45e6504e07bb5d4e580f668",
+    "/main.9ca9d0cd01419c43776e.js": "f058eeaa500c9e98e6f67f39bde1c7dab2383089",
     "/polyfills-es5.b51b72a6bccc504722a9.js": "38bc80efbed4d2bb29ca5cbc2e30fb5977a416f7",
     "/polyfills.bca8589e7ac76d35daaa.js": "adc867a43d4cbad849c4e440b525190f842a0dd4",
-    "/runtime.e043c08697982926c096.js": "5fc5e350fa2373e805d022b67017649cc091d2a1",
-    "/styles.48fbe83921032850e270.css": "73428c74d8805a540acbc9d4b47f483e3fec99e9"
+    "/runtime.6049ea1ea4578a65e515.js": "8b59783fcc0217c9697f4310741d14a1bdbb9ea5",
+    "/styles.8c496b91c2daa31941a3.css": "e8e8e5f278b7450fab68b6cf64a7f5527886f077"
   },
   "navigationUrls": [
     {

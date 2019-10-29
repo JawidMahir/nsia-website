@@ -6,7 +6,6 @@
   "label.no-data": "معلومات نشته",
   "label.copy-right": "ټول حقونه خوندي دي، د احصایې او معلوماتو ملي اداره  {{ year }} ©",
 
-
   "label.contact-us": "له زموږ سره اړيکه",
   "label.working-hours": "د سهار له ۸ نه د ماسپښین تر ۴",
   "label.head-office": "د مرکزي ادارې دفتر",
@@ -19,7 +18,7 @@
   "label.latest-news": "تازه خبرونه",
   "label.latest-pubs": "تازه خپرونې",
   "label.press-release": "مطبوعاتي اعلامیې",
-  "label.important-announce": "اړینې اعلاميې",
+  "label.important-announce": "خبرتیاوې",
   "label.cs-number": "دمراجعینو د خدمتونو شمېره",
   "label.email": "برېښنالیک",
   "label.address": "پته",
@@ -31,16 +30,14 @@
   "label.customers": "مراجعین",
   "label.portal": "د ادارې اړوند وېبپاڼې",
 
-
   "label.upcoming-events": "راتلونکې پېښې",
   "label.upcoming-pubs": "راتلونکې خپرونې",
   "label.surveys": "سروې",
 
-
   "menu.home": "اصلي پاڼه",
   "menu.about-us": "زموږ په اړه",
   "menu.services": "خدمتونه",
-  "menu.forms" : "فرمونه",
+  "menu.forms": "فرمونه",
   "menu.library": "خپرونې",
   "menu.access-info": "اطلاعاتو ته لاسرسی",
   "menu.media-room": "داطلاعاتو خونه",
@@ -67,13 +64,11 @@
   "submenu.jobs": "ګمارنې",
   "submenu.annual.report": "کلنۍ راپور",
 
-
-
   "label.newsletter": "خبرپاڼه",
   "label.news-letter-subscribe": "زموږ برېښنايي خبرپاڼې سره یوځای شئ",
   "label.email-address": "مهرباني وکړئ دلته مو برېښنالیک ولیکئ",
   "label.subscribe": "ګډون وکړئ",
-  "label.subscribe.title":"ګډون",
+  "label.subscribe.title": "ګډون",
   "label.history": "مخيينه",
   "label.authority-functions": "واکونه او صلاحیتونه",
   "label.vision-mission": "موخې او لیدلوری",
@@ -130,10 +125,8 @@
   "label.p-date": "د خپرېدو نېټه",
   "label.c-date": "د پای نېټه",
 
-
   "label.about-service": "د {{ sr }} په اړه ",
   "label.about-rs": "د {{title}} په اړه",
-
 
   "sidebar.title": "خبرونه",
   "contact.title": "موږ سره اړيکه ونیسئ",
@@ -159,24 +152,24 @@
   "btn.quarterly": "درې میاشتنۍ",
   "alert.message": "تاسو خپل نظریات په بریالیتوب سره واستول",
   "sorry.message": "اوبخښه",
-  "not.completed.msg":"اد فورمو ډاټا بشپړ نه دی!",
-  "unsucess.msg":"په دې شیبه کې غوښتنه نشي کولی",
+  "not.completed.msg": "اد فورمو ډاټا بشپړ نه دی!",
+  "unsucess.msg": "په دې شیبه کې غوښتنه نشي کولی",
   "email.error.msg": "برېښلیک لا دمخه لا شتون لري",
-  "subscribed.msg":"ګډون شوی",
-  "success.subscribe.msg" : "تاسو به زموږ خپرونې ترلاسه کړئ",
-  "label.sy" : "احصائیوی کالنۍ",
-  "label.by" : "د سوداګرۍ احصائیوی کالنۍ",
-  "label.gsy" : "د جندر احصائیوی کالنۍ",
-  "label.py" : "د نرخونه احصائیوی کالنۍ",
-  "label.ppe" : "د هیواد د نفوس اټکل خپرونه",
-  "label.mppk" : "په کابل ښار کی د نرخونو میاشتني خپروني",
-  "label.mppc" : "په هیواد کې د نرخونو میاشتنۍ خپرونې",
+  "subscribed.msg": "ګډون شوی",
+  "success.subscribe.msg": "تاسو به زموږ خپرونې ترلاسه کړئ",
+  "label.sy": "احصائیوی کالنۍ",
+  "label.by": "د سوداګرۍ احصائیوی کالنۍ",
+  "label.gsy": "د جندر احصائیوی کالنۍ",
+  "label.py": "د نرخونه احصائیوی کالنۍ",
+  "label.ppe": "د هیواد د نفوس اټکل خپرونه",
+  "label.mppk": "په کابل ښار کی د نرخونو میاشتني خپروني",
+  "label.mppc": "په هیواد کې د نرخونو میاشتنۍ خپرونې",
   "label.qsi": "د درې میاشتنۍ احصایې شاخصونه",
   "label.qpbs": "د سوداګریز احصایې درې میاشتنۍ خپرونې",
-  "label.select" : "مهرباني وکړئ د هغه ډول ډول غوره کړئ چې تاسو یې غواړئ",
-  "label.public.relation":"د اطاعاتو او عامه اړیکو ریاست",
-  "label.information.expert":"د اطلاع رسونې کارپوه",
-  "label.btn.carousel":"لیدنه",
-  "meta.description":"داحصایې او معلوماتو ملي اداره چې مخکې د احصایې مرکزي ادارې تر نوم لاندې کار کاوه،په۱۳۵۱لمزیز کال کې د افغانستان اسلامي جمهوري دولت په چوکاټ کې د یوې خپلواکې ادارې په توګه جوړه شوه څو د یو ملي احصاییوی سېستم په جوړولو سره، د احصایيوي معلوماتو په ټولو برخو کې د ښه مدیریت په موخه همغږي رامنځته کړي",
-  "title":"د احصایې او معلوماتو ملي اداره"
+  "label.select": "مهرباني وکړئ د هغه ډول ډول غوره کړئ چې تاسو یې غواړئ",
+  "label.public.relation": "د اطاعاتو او عامه اړیکو ریاست",
+  "label.information.expert": "د اطلاع رسونې کارپوه",
+  "label.btn.carousel": "لیدنه",
+  "meta.description": "داحصایې او معلوماتو ملي اداره چې مخکې د احصایې مرکزي ادارې تر نوم لاندې کار کاوه،په۱۳۵۱لمزیز کال کې د افغانستان اسلامي جمهوري دولت په چوکاټ کې د یوې خپلواکې ادارې په توګه جوړه شوه څو د یو ملي احصاییوی سېستم په جوړولو سره، د احصایيوي معلوماتو په ټولو برخو کې د ښه مدیریت په موخه همغږي رامنځته کړي",
+  "title": "د احصایې او معلوماتو ملي اداره"
 }
