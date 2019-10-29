@@ -6,7 +6,6 @@
   "label.no-data": "اطلاعات موجود نیست",
   "label.copy-right": "تمام حقوق محفوظ میباشد، اداره ملی احصائیه و معلومات  {{ year }} ©",
 
-
   "label.contact-us": "تماس باما",
   "label.working-hours": "از ۸ صبح الی ۴ بعد از ظهر",
   "label.head-office": "دفتر مرکزی اداره",
@@ -19,29 +18,26 @@
   "label.latest-news": "آخرین اخبار",
   "label.latest-pubs": "آخرین نشریات",
   "label.press-release": "اعلامیه های مطبوعاتی",
-  "label.important-announce": "اعلامیه های مهم",
+  "label.important-announce": "اطلاعیه ها",
   "label.cs-number": "شماره خدمات مشتریان",
   "label.email": "ایمیل",
   "label.address": "آدرس",
   "label.feedback-form": "فورم نظریات",
   "label.nsia-address": "ناحیه هفتم، سرک چهلستون، جوار باغ بابر",
 
-
   "label.stakeholders": "ذینفعان",
   "label.donors": "تمویل کنندگان",
   "label.customers": "مخاطبین",
   "label.portal": "سایت های مرتبط به اداره",
 
-
   "label.upcoming-events": "رویدادهای آینده",
   "label.upcoming-pubs": "نشریات آینده",
   "label.surveys": "سروی ها",
 
-
   "menu.home": "صفحه اصلی",
   "menu.about-us": "درباره ما",
   "menu.services": "خدمات",
-  "menu.forms" : "فورمه ها",
+  "menu.forms": "فورمه ها",
   "menu.library": "نشریات",
   "menu.access-info": "دسترسی به اطلاعات",
   "menu.media-room": "پایگاه اطلاعات",
@@ -68,13 +64,11 @@
   "submenu.jobs": "استخدام",
   "submenu.annual.report": "گزارش سالانه",
 
-
-
   "label.newsletter": "خبرنامه",
   "label.news-letter-subscribe": "با خبرنامه الکترونیکی ما بپیوندید",
   "label.email-address": "لطفآ ایمیل تانرا اینجا وارد نمایید",
   "label.subscribe": "اشتراک نمایید",
-  "label.subscribe.title":"اشتراک",
+  "label.subscribe.title": "اشتراک",
   "label.history": "تاریخچه",
   "label.authority-functions": "اختیار و صلاحیت ها",
   "label.vision-mission": "دیدگاه و اهداف",
@@ -131,10 +125,8 @@
   "label.p-date": "تاریخ نشر",
   "label.c-date": "تاریخ ختم",
 
-
   "label.about-service": "درباره {{ sr }}",
   "label.about-rs": "درباره {{title}}",
-
 
   "sidebar.title": "اخبار",
   "contact.title": "با ما به تماس شوید",
@@ -160,24 +152,24 @@
   "btn.quarterly": "ربعوار",
   "alert.message": "شما پیام خود را موفقانه ارسال کردید",
   "sorry.message": "متاسفانه",
-  "not.completed.msg":"اطلاعات فرم تکمیل نشده است!",
-  "unsucess.msg":"در این لحظه نمیتوان درخواست کرد",
+  "not.completed.msg": "اطلاعات فرم تکمیل نشده است!",
+  "unsucess.msg": "در این لحظه نمیتوان درخواست کرد",
   "email.error.msg": "ایمیل آدرس موجود است",
-  "subscribed.msg":"مشترک شدید",
-  "success.subscribe.msg" : "شما نشریات را دریافت خواهید کرد",
-  "label.sy" : "سالنامه احصائیوی ",
-  "label.by" : "سالنامه تجارت ",
-  "label.gsy" : "سالنامه احصائیه جندر",
-  "label.py" : "سالنامه قیم",
-  "label.ppe" : "نشریه برآورد نفوس کشور" ,
-  "label.mppk" : "نشریه های ماهوار قیم شهر کابل",
-  "label.mppc" : "نشریه های ماهوار قیم کشور ",
+  "subscribed.msg": "مشترک شدید",
+  "success.subscribe.msg": "شما نشریات را دریافت خواهید کرد",
+  "label.sy": "سالنامه احصائیوی ",
+  "label.by": "سالنامه تجارت ",
+  "label.gsy": "سالنامه احصائیه جندر",
+  "label.py": "سالنامه قیم",
+  "label.ppe": "نشریه برآورد نفوس کشور",
+  "label.mppk": "نشریه های ماهوار قیم شهر کابل",
+  "label.mppc": "نشریه های ماهوار قیم کشور ",
   "label.qsi": "شاخص های ربعوار احصائیوی",
   "label.qpbs": "نشریه های ربعوار احصائیه تجارت",
-  "label.select" : "نوعیت نشریه های مورد نظر خود را انتخاب کنید" ,
-  "label.public.relation":"ریاست اطلاعات و ارتباط عامه",
-  "label.information.expert":"کارشناس اطلاع رسانی",
-  "label.btn.carousel":"مشاهده",
+  "label.select": "نوعیت نشریه های مورد نظر خود را انتخاب کنید",
+  "label.public.relation": "ریاست اطلاعات و ارتباط عامه",
+  "label.information.expert": "کارشناس اطلاع رسانی",
+  "label.btn.carousel": "مشاهده",
   "meta.description": ".در سطح ادارات دولتی این یک ادارۀ اکادمیک و مهم بوده که تمام معلومات و ارقام احصائیوی را در دسترس ادارات، مراجع دولتی، خصوصی، بین المللی و مردم قرار داده است",
   "title": "اداره ملی احصائیه و معلومات"
 }

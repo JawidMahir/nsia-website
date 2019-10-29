@@ -8,11 +8,11 @@
 
 /* Remake the direction of arrows */
 .rtl .fa-chevron-right::before {
-  content: "\f053"
+  content: '\f053';
 }
 
 .rtl .fa-chevron-left::before {
-  content: "\f054"
+  content: '\f054';
 }
 
 .rtl .header .contact-details .c-item {
@@ -23,9 +23,12 @@
   float: left !important;
 }
 
-
 .rtl .bg-gradient {
-  background: linear-gradient(to left, rgb(39, 35, 97), rgba(39, 35, 97, 0) 100%) !important;
+  background: linear-gradient(
+    to left,
+    rgb(39, 35, 97),
+    rgba(39, 35, 97, 0) 100%
+  ) !important;
 }
 
 .rtl .service-card .service-title {
@@ -86,7 +89,7 @@
   text-align: right !important;
 }
 
-.rtl .t-icon>div {
+.rtl .t-icon > div {
   float: left !important;
 }
 
@@ -95,7 +98,7 @@
   margin-left: 2% !important;
 }
 
-.rtl .footer .social-media>div {
+.rtl .footer .social-media > div {
   float: left !important;
 }
 
@@ -116,20 +119,17 @@
   margin-right: 15px;
 }
 
-
 /*
   * Service page RTL
 */
 
 @media only screen and (max-width: 900px) {
-
   .rtl .sidebar-toggler {
     display: block;
     right: 12px;
     left: inherit !important;
   }
 }
-
 
 .rtl .sidebar-nav {
   border-right: none !important;
@@ -156,10 +156,10 @@
 
 .rtl .active-item .fa-chevron-down {
   display: inline-block !important;
-
 }
 
-.rtl .active-sub-menu p , .rtl .active-province {
+.rtl .active-sub-menu p,
+.rtl .active-province {
   border-left: none !important;
   border-right: 4px solid #01a79b;
   padding-left: 0px;
@@ -167,7 +167,6 @@
   font-weight: 600 !important;
   color: #282560;
 }
-
 
 /*
 *   TENDERS related RTL CSS
@@ -177,5 +176,5 @@
 }
 .rtl .r-icon {
   float: right !important;
-  margin-left:3px !important;
+  margin-left: 3px !important;
 }
