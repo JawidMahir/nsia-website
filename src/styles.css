@@ -23,13 +23,15 @@
 
 /* First Primary: #01a79b green */
 /* Second Primary: #282560 blue */
-
+html {
+  overflow-x: hidden !important;
+}
 body {
   font-family: 'Raleway', 'Bahij Halvetica', sans-serif;
   color: #282560 !important;
   background: #fff;
-  overflow-x: hidden !important;
 }
+
 p {
   font-weight: 480;
 }

@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1572326463961,
+  "timestamp": 1572411886173,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -24,7 +24,7 @@
         "/polyfills-es5.b51b72a6bccc504722a9.js",
         "/polyfills.bca8589e7ac76d35daaa.js",
         "/runtime.6049ea1ea4578a65e515.js",
-        "/styles.8c496b91c2daa31941a3.css"
+        "/styles.e2725de40eba45ac6def.css"
       ],
       "patterns": [
         "https:\\/\\/fonts\\.googleapis\\.com\\/css\\?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i",
@@ -209,12 +209,12 @@
     "/bahij_helvetica_neue_roman_by_bahijvirtualacademy-dammd50_0.c89c9eb963cc00332e6c.ttf": "9f0e7efd26f73d0db26ea54a2fe87f4b0430f314",
     "/common.e3864cceb0158b80a600.js": "4ef2784dbb51a1af347b24dcfdd1638aa41a380e",
     "/favicon.ico": "7d6b5711e54dc63710fb7b9d8baf57d6d0f35ca5",
-    "/index.html": "75db781bfa45bfd1b45e6504e07bb5d4e580f668",
+    "/index.html": "7abe271b96d6f52c881aadcb1017f6975a339499",
     "/main.9ca9d0cd01419c43776e.js": "f058eeaa500c9e98e6f67f39bde1c7dab2383089",
     "/polyfills-es5.b51b72a6bccc504722a9.js": "38bc80efbed4d2bb29ca5cbc2e30fb5977a416f7",
     "/polyfills.bca8589e7ac76d35daaa.js": "adc867a43d4cbad849c4e440b525190f842a0dd4",
     "/runtime.6049ea1ea4578a65e515.js": "8b59783fcc0217c9697f4310741d14a1bdbb9ea5",
-    "/styles.8c496b91c2daa31941a3.css": "e8e8e5f278b7450fab68b6cf64a7f5527886f077"
+    "/styles.e2725de40eba45ac6def.css": "e41be1b24e43fa3c53653371313ff8895b0f13a9"
   },
   "navigationUrls": [
     {
