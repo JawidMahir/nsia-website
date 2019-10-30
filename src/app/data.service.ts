@@ -26,8 +26,7 @@ export class DataService {
 
   serviceCmpMethodCalled$ = this.callToServiceMethodSource.asObservable();
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {}
 
   callServiceCmpMethod() {
     this.callToServiceMethodSource.next();
@@ -42,8 +41,6 @@ export class DataService {
       }
     });
   }
-
-
 
   getPosts() {
     return this.http.get(this.api, {
@@ -71,17 +68,17 @@ export class DataService {
       params: {
         'filter[category_name]': catName,
         lang: this.language,
-        fields: customP.join(','),
+        fields: customP.join(',')
       }
     });
   }
 
-  getBusinessData(customP,catName) {
+  getBusinessData(customP, catName) {
     return this.http.get<Array<any>>(this.api + 'posts', {
       params: {
         'filter[category_name]': catName,
         lang: this.language,
-        fields: customP.join(','),
+        fields: customP.join(',')
       }
     });
   }
@@ -112,7 +109,11 @@ export class DataService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post(this.nodeapi + 'contacts/add', contactData, httpOptions);
+    return this.http.post(
+      this.nodeapi + 'contacts/add',
+      contactData,
+      httpOptions
+    );
   }
 
   getPostDetails(id, customP) {
@@ -171,9 +172,8 @@ export class DataService {
         'filter[category_name]': catName,
         lang: this.language,
         per_page: perPage,
-        fields: customP.join(','),
+        fields: customP.join(',')
       }
     });
   }
-
 }

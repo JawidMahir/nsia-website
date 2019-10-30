@@ -3,14 +3,27 @@
     <div class="row">
       <div class="col-md-3 col-sm-6">
         <div class="link-title">
-          <h4>{{'label.subscribe.title' | translate}}</h4>
+          <h4>{{ 'label.subscribe.title' | translate }}</h4>
         </div>
         <div class="links">
-          <p>{{'label.news-letter-subscribe' | translate}}</p>
-          <input type="email" name="email" id="email" [placeholder]="'label.email-address' | translate" #useremail
-            required [(ngModel)]="email" (input)="checkEmail()">
-          <button [disabled]="!validEmail" (click)="subscribe(useremail.value)"
-            class="subscribe-btn">{{'label.subscribe' | translate}}</button>
+          <p>{{ 'label.news-letter-subscribe' | translate }}</p>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            [placeholder]="'label.email-address' | translate"
+            #useremail
+            required
+            [(ngModel)]="email"
+            (input)="checkEmail()"
+          />
+          <button
+            [disabled]="!validEmail"
+            (click)="subscribe(useremail.value)"
+            class="subscribe-btn"
+          >
+            {{ 'label.subscribe' | translate }}
+          </button>
         </div>
         <!-- <div class="alert alert-success alert-dismissible fade show" id="success-subscribe" role="alert">
           <strong>Thank You,</strong> You will receive our regular publications to your inbox.
@@ -25,18 +38,17 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div> -->
-
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="link-title">
-          <h4>{{'menu.about-us' | translate }}</h4>
+          <h4>{{ 'menu.about-us' | translate }}</h4>
         </div>
 
         <div class="links">
           <ul>
-            <li routerLink='/about-us'>
+            <li routerLink="/about-us">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'submenu.about-nsia' | translate}} </a>
+              <a>{{ 'submenu.about-nsia' | translate }} </a>
             </li>
             <!-- <li>
               <i class="fas fa-chevron-right"></i>
@@ -47,83 +59,92 @@
             <!-- <li>
               <i class="fas fa-chevron-right"></i>
               <a>{{'label.authority-functions' | translate}}</a></li> -->
-            <li routerLink='/about-us/structure'>
+            <li routerLink="/about-us/structure">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.organization-structure' | translate  | titlecase}}</a>
+              <a>{{
+                'label.organization-structure' | translate | titlecase
+              }}</a>
             </li>
-            <li routerLink='/contact-us'>
+            <li routerLink="/contact-us">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.contact-us' | translate  | titlecase}}</a>
+              <a>{{ 'label.contact-us' | translate | titlecase }}</a>
             </li>
           </ul>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="link-title">
-          <h4>{{'label.quick-links' | translate}}</h4>
+          <h4>{{ 'label.quick-links' | translate }}</h4>
         </div>
         <div class="links">
           <ul>
-            <li routerLink="/services" (click)="updateServiceType('nid')">
+            <li (click)="updateServiceType('stats')">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.stats' | translate  | titlecase}}</a></li>
-            <li routerLink="/services">
+              <a>{{ 'label.stats' | translate | titlecase }}</a>
+            </li>
+            <li (click)="updateServiceType('prs')">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'submenu.provincial-s' | translate  | titlecase}}</a></li>
-            <li routerLink="/services" (click)="updateServiceType('provinces')">
+              <a>{{ 'submenu.provincial-s' | translate | titlecase }}</a>
+            </li>
+            <li (click)="updateServiceType('nid')">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.tazkira-enrollement' | translate  | titlecase}}</a></li>
+              <a>{{ 'label.tazkira-enrollement' | translate | titlecase }}</a>
+            </li>
             <!-- <li>
               <i class="fas fa-chevron-right"></i>
               <a>{{'label.laws' | translate}}</a></li> -->
             <li routerLink="/opportunities/procurements">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'submenu.procurement' | translate  | titlecase}}</a></li>
+              <a>{{ 'submenu.procurement' | translate | titlecase }}</a>
+            </li>
             <li routerLink="/opportunities/jobs">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.jobs' | translate  | titlecase}}</a></li>
+              <a>{{ 'label.jobs' | translate | titlecase }}</a>
+            </li>
             <li routerLink="/media-room/access-info">
               <i class="fas fa-chevron-right"></i>
-              <a>{{'label.access-info' | translate  | titlecase}}</a></li>
+              <a>{{ 'label.access-info' | translate | titlecase }}</a>
+            </li>
           </ul>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="link-title">
-          <h4>{{'menu.forms' | translate}}</h4>
+          <h4>{{ 'menu.forms' | translate }}</h4>
         </div>
         <div class="links" *ngIf="forms.length > 0; else noforms">
           <ul>
             <li *ngFor="let fm of forms">
               <i class="fas fa-chevron-right"></i>
               <a [href]="fm.url" target="_blank">{{ fm.title }}</a>
+            </li>
           </ul>
         </div>
         <ng-template #noforms>
           <div class="jumbotron no-data">
             <div [class.dot-falling]="loading"></div>
-            <h4 *ngIf="!loading" class="text-center">{{ 'label.no-data' | translate }}</h4>
+            <h4 *ngIf="!loading" class="text-center">
+              {{ 'label.no-data' | translate }}
+            </h4>
           </div>
         </ng-template>
       </div>
     </div>
-
   </div>
 </div>
 
 <div class="footer">
   <div class="custom-container">
     <div class="contents-wrapper">
-
       <div class="contents">
         <div class="footer-logo">
-          <img src="../../../assets/logo/flag-design.png" alt="flat logo">
+          <img src="../../../assets/logo/flag-design.png" alt="flat logo" />
         </div>
 
         <div class="copy-right">
           <span>
             <b>
-              {{ 'label.copy-right' | translate:{'year':year } }}
+              {{ 'label.copy-right' | translate: { year: year } }}
             </b>
           </span>
         </div>
@@ -131,17 +152,26 @@
         <div class="social-media">
           <div>
             <div class="s-media">
-              <a href="https://www.instagram.com/nsia_afghanistan/" target="_blank">
+              <a
+                href="https://www.instagram.com/nsia_afghanistan/"
+                target="_blank"
+              >
                 <i class="fab fa-instagram"></i>
               </a>
             </div>
             <div class="s-media">
-              <a href="https://www.youtube.com/channel/UCO4p9zdLgTJrYHHd-3M3hjQ?view_as=subscriber" target="_blank">
+              <a
+                href="https://www.youtube.com/channel/UCO4p9zdLgTJrYHHd-3M3hjQ?view_as=subscriber"
+                target="_blank"
+              >
                 <i class="fab fa-youtube"></i>
               </a>
             </div>
             <div class="s-media">
-              <a href="https://www.linkedin.com/company/19090359/" target="_blank">
+              <a
+                href="https://www.linkedin.com/company/19090359/"
+                target="_blank"
+              >
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
@@ -159,6 +189,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
