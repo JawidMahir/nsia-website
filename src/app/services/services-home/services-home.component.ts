@@ -1,5 +1,16 @@
-import { Component, OnInit, ChangeDetectorRef, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { Router, ParamMap, ActivatedRoute, NavigationEnd } from '@angular/router';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  AfterViewInit,
+  ViewEncapsulation
+} from '@angular/core';
+import {
+  Router,
+  ParamMap,
+  ActivatedRoute,
+  NavigationEnd
+} from '@angular/router';
 import { NsiaServicesService } from '../nsia-services.service';
 import { DataService } from '../../data.service';
 import { switchMap } from 'rxjs/operators';
@@ -13,7 +24,6 @@ import { error } from 'util';
   encapsulation: ViewEncapsulation.None
 })
 export class ServicesHomeComponent implements OnInit, AfterViewInit {
-
   // dummy data for menus
   menus = [];
   srName = 'foo';
@@ -47,28 +57,25 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   deputyDepartments = [];
   deputyHeadships = [];
 
-
   constructor(
     private router: Router,
     private cdref: ChangeDetectorRef,
     private route: ActivatedRoute,
     private dataService: DataService,
-    private nsiaServices: NsiaServicesService,
-  ) { }
+    private nsiaServices: NsiaServicesService
+  ) {}
 
   ngOnInit() {
     const that = this;
     this.serviceName = 'statistics';
     // window.onresize = this.windowResize;
 
-
-    this.router.events.subscribe((evt) => {
+    this.router.events.subscribe(evt => {
       if (!(evt instanceof NavigationEnd)) {
         return;
       }
       window.scrollTo(0, 0);
     });
-
 
     /**
      * Change service on dropdown click, if the route is pointing to service component itself
@@ -77,6 +84,14 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       //console.log('Service Component is called');
       this.showServiceDetails();
     });
+
+    if (this.nsiaServices.subsVar == undefined) {
+      this.nsiaServices.subsVar = this.nsiaServices.invokeServiceComponentFunction.subscribe(
+        (name: string) => {
+          this.showServiceDetails();
+        }
+      );
+    }
   }
 
   ngAfterViewInit() {
@@ -121,7 +136,6 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
       // this.trackDepartments();
     }
-
 
     // this.dataService.serviceType = 'stats';
   }
@@ -181,7 +195,6 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     }
 
     // console.log('departments assigned', this.serviceContents);
-
   }
 
   getDeputyDetails(deputyType, tag) {
@@ -194,28 +207,31 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     customParams.push('acf.link');
     customParams.push('better_featured_image.source_url');
 
-    this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
-      if (data[0]) {
-        // this.contents = data[0];
-        this.loading = false;
-        if (data[0] !== undefined && this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])) {
-          this.videoLink = $.parseHTML(data[0].acf.link);
-          this.videoLink = $(this.videoLink).attr('src');
-          this.videoLink = this.nsiaServices.videoURL(this.videoLink);
-          data[0].acf.link = this.videoLink;
+    this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe(
+      data => {
+        if (data[0]) {
+          // this.contents = data[0];
+          this.loading = false;
+          if (
+            data[0] !== undefined &&
+            this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])
+          ) {
+            this.videoLink = $.parseHTML(data[0].acf.link);
+            this.videoLink = $(this.videoLink).attr('src');
+            this.videoLink = this.nsiaServices.videoURL(this.videoLink);
+            data[0].acf.link = this.videoLink;
+          }
+          this.contents = this.styleDetailsLink(data[0]);
+          //console.log('Service data: ', this.contents);
+          this.keepContentsLocal(deputyType);
+          // strip html tags
+          // this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
         }
-        this.contents = this.styleDetailsLink(data[0]);
-        //console.log('Service data: ', this.contents);
-        this.keepContentsLocal(deputyType);
-        // strip html tags
-        // this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
-
+      },
+      err => {
+        this.loading = false;
       }
-
-    }, err => {
-      this.loading = false;
-    });
-
+    );
   }
 
   styleDetailsLink(data) {
@@ -229,39 +245,45 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       const details = $.parseHTML(contentRendered);
       //console.log('details before', $(details).html());
       if ($(details).has('a')) {
+        $(details)
+          .find('a')
+          .attr('target', '_blank');
+        $(details)
+          .find('a')
+          .wrap('<div class="attachment" ></div>');
 
-        $(details).find('a').attr('target', '_blank');
-        $(details).find('a').wrap('<div class="attachment" ></div>');
+        $(details)
+          .find('a')
+          .each((i, val) => {
+            const fileExtArray = $(val)
+              .attr('href')
+              .split('.');
+            const fileExt = fileExtArray[fileExtArray.length - 1];
+            // console.log('extension is : ', fileExt);
 
-        $(details).find('a').each((i, val) => {
-
-          const fileExtArray = $(val).attr('href').split('.');
-          const fileExt = fileExtArray[fileExtArray.length - 1];
-          // console.log('extension is : ', fileExt);
-
-          let fileIcon = '<i class="fas fa-file-alt"></i>';
-          if (fileExt === 'xlsx' || fileExt === 'xls') {
-            fileIcon = '<i class="fas fa-file-excel"></i>';
-          }
-          if (fileExt === 'pdf') {
-            fileIcon = '<i class="fas fa-file-pdf"></i>';
-          }
-          $(val).parent().prepend(fileIcon);
-        });
-
+            let fileIcon = '<i class="fas fa-file-alt"></i>';
+            if (fileExt === 'xlsx' || fileExt === 'xls') {
+              fileIcon = '<i class="fas fa-file-excel"></i>';
+            }
+            if (fileExt === 'pdf') {
+              fileIcon = '<i class="fas fa-file-pdf"></i>';
+            }
+            $(val)
+              .parent()
+              .prepend(fileIcon);
+          });
       }
 
       data.content.rendered = $(details).html();
     }
     // console.log('details are done', data);
 
-
     return data;
   }
 
   getProvinces() {
     this.loading = true;
-    this.nsiaServices.getProvinces().subscribe((data) => {
+    this.nsiaServices.getProvinces().subscribe(data => {
       // console.log('Provinces: ', data);
       if (data.length > 0) {
         this.loading = false;
@@ -278,7 +300,6 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
    */
 
   getDeputyDepartments(deputyType, tag) {
-
     const customParams = [];
     this.loading = true;
     customParams.push('id');
@@ -286,22 +307,24 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     customParams.push('title.rendered');
     customParams.push('acf');
 
-    this.nsiaServices.getDuptyDetails(deputyType, tag, customParams).subscribe((data) => {
-      this.loading = false;
-      if (tag === 'department') {
-        this.deputyDepartments = data;
-        this.departmentsFetched = true;
-        //console.log('Departments data: ', this.deputyDepartments);
-      } else {
-        this.deputyHeadships = data;
-        this.headshipsFetched = true;
-        //  console.log('Headships data: ', this.deputyHeadships);
-      }
+    this.nsiaServices
+      .getDuptyDetails(deputyType, tag, customParams)
+      .subscribe(data => {
+        this.loading = false;
+        if (tag === 'department') {
+          this.deputyDepartments = data;
+          this.departmentsFetched = true;
+          //console.log('Departments data: ', this.deputyDepartments);
+        } else {
+          this.deputyHeadships = data;
+          this.headshipsFetched = true;
+          //  console.log('Headships data: ', this.deputyHeadships);
+        }
 
-      // this.styleDetailsLink();
+        // this.styleDetailsLink();
 
-      this.arrangeDepartments(deputyType);
-    });
+        this.arrangeDepartments(deputyType);
+      });
   }
 
   imageError(el) {
@@ -319,12 +342,13 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     //  console.log($(el).closest('.m-item-c').attr('aria-expanded'));
     const customParams = [];
     const flag = false;
-    const depId = $(el).closest('.menu-item').attr('id');
+    const depId = $(el)
+      .closest('.menu-item')
+      .attr('id');
 
     sessionStorage.setItem('department', depId);
 
     this.activeSubMenu = id;
-
 
     // for (const dep of this.departmentsFullDetails) {
     //   if (dep.id === id) {
@@ -344,39 +368,39 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       customParams.push('acf.link');
       customParams.push('better_featured_image.source_url');
 
-      this.nsiaServices.getDepartmentDetails(id, customParams).subscribe((data) => {
-        //console.log('Department full data: ', data);
-        if (data[0]) {
-          this.loading = false;
-          sessionStorage.setItem('sub-menu.type', depType);
-          if (depType === 'department') {
-            sessionStorage.setItem('sub-menu.id', data[0].id);
-          } else {
-            sessionStorage.setItem('sub-menu.id', data[0].id);
+      this.nsiaServices
+        .getDepartmentDetails(id, customParams)
+        .subscribe(data => {
+          //console.log('Department full data: ', data);
+          if (data[0]) {
+            this.loading = false;
+            sessionStorage.setItem('sub-menu.type', depType);
+            if (depType === 'department') {
+              sessionStorage.setItem('sub-menu.id', data[0].id);
+            } else {
+              sessionStorage.setItem('sub-menu.id', data[0].id);
+            }
+            if (this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])) {
+              this.videoLink = $.parseHTML(data[0].acf.link);
+              this.videoLink = $(this.videoLink).attr('src');
+              this.videoLink = this.nsiaServices.videoURL(this.videoLink);
+              data[0].acf.link = this.videoLink;
+            }
+            this.contents = this.styleDetailsLink(data[0]);
+            // this.contents = data[0];
+            //  this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
+            this.departmentsFullDetails.push(this.contents);
           }
-          if (this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])) {
-            this.videoLink = $.parseHTML(data[0].acf.link);
-            this.videoLink = $(this.videoLink).attr('src');
-            this.videoLink = this.nsiaServices.videoURL(this.videoLink);
-            data[0].acf.link = this.videoLink;
-          }
-          this.contents = this.styleDetailsLink(data[0]);
-          // this.contents = data[0];
-          //  this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
-          this.departmentsFullDetails.push(this.contents);
-        }
-      });
+        });
     }
 
     // this.styleDetailsLink('department');
-
   }
 
   arrangeDepartments(deputyType) {
     let tempHeadships = [];
     this.dept = deputyType.split('_')[0] + '_department';
     //console.log('deputy related department: ', this.dept);
-
 
     if (this.departmentsFetched && this.headshipsFetched) {
       // console.log('I am called ', this.deputyDepartments, this.deputyHeadships);
@@ -399,14 +423,14 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
         this.firstLoad = false;
       }
     }
-
   }
 
   provinceData(pItem, province) {
-
     //console.log('Province: ', province);
     $('.province').removeClass('active-province');
-    $(pItem).closest('.province').addClass('active-province');
+    $(pItem)
+      .closest('.province')
+      .addClass('active-province');
 
     this.getProvinceDetails(province);
   }
@@ -422,7 +446,7 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     customParams.push('acf.link');
     customParams.push('better_featured_image.source_url');
 
-    this.nsiaServices.getProvinceDetails(id, customParams).subscribe((data) => {
+    this.nsiaServices.getProvinceDetails(id, customParams).subscribe(data => {
       this.loading = false;
       if (this.nsiaServices.objHasKeys(data[0], ['acf', 'link'])) {
         this.videoLink = $.parseHTML(data[0].acf.link);
@@ -432,7 +456,9 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       }
       this.contents = this.styleDetailsLink(data[0]);
       // this.styleDetailsLink('province');
-      this.contents.title.rendered = this.nsiaServices.htmlToPlaintext(this.contents.title.rendered);
+      this.contents.title.rendered = this.nsiaServices.htmlToPlaintext(
+        this.contents.title.rendered
+      );
       // this.contents.content.rendered = this.nsiaServices.htmlToPlaintext(this.contents.content.rendered);
       //console.log(id + ' data:', this.contents);
       //console.log(this.contents.acf.link)
@@ -442,7 +468,9 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   activeMenu(menuItem) {
     // console.log('Active menu called');
     const that = this;
-    const id = $(menuItem).closest('.menu-item').attr('id');
+    const id = $(menuItem)
+      .closest('.menu-item')
+      .attr('id');
     // console.log(id);
 
     // sessionStorage.setItem('department', id);
@@ -455,16 +483,22 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
       sessionStorage.removeItem('sub-menu.type');
       sessionStorage.removeItem('sub-menu.id');
       $('.collapse').collapse('hide');
-      $(menuItem).closest('.menu-item').addClass('active-item');
-
+      $(menuItem)
+        .closest('.menu-item')
+        .addClass('active-item');
     }
     // this.contents = null;
 
-    $(menuItem).closest('.menu-item').find('.m-item-c').addClass('active-item');
+    $(menuItem)
+      .closest('.menu-item')
+      .find('.m-item-c')
+      .addClass('active-item');
 
-
-    if ($(menuItem).closest('.menu-item').hasClass('sidebar-title')) {
-
+    if (
+      $(menuItem)
+        .closest('.menu-item')
+        .hasClass('sidebar-title')
+    ) {
       this.activeSubMenu = 0;
 
       if (this.serviceContents[this.serviceType].title) {
@@ -479,7 +513,9 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
   }
 
   toggleNavbar() {
-    const navWidth = (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width;
+    const navWidth = (document.getElementsByClassName(
+      'sidebar-nav'
+    )[0] as HTMLElement).style.width;
     // console.log('navWidth: ', navWidth);
     let rtl = false;
 
@@ -488,24 +524,38 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
     }
 
     if (navWidth === '0px') {
-      (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '19vw';
+      (document.getElementsByClassName(
+        'sidebar-nav'
+      )[0] as HTMLElement).style.width = '19vw';
       if (rtl) {
-        (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginRight = '19vw';
+        (document.getElementsByClassName(
+          'sidebar-toggler'
+        )[0] as HTMLElement).style.marginRight = '19vw';
       } else {
-        (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '19vw';
+        (document.getElementsByClassName(
+          'sidebar-toggler'
+        )[0] as HTMLElement).style.marginLeft = '19vw';
       }
-      $('.sidebar-toggler i').removeClass('fa-chevron-right').addClass('fa-chevron-left');
-
+      $('.sidebar-toggler i')
+        .removeClass('fa-chevron-right')
+        .addClass('fa-chevron-left');
     } else {
-      (document.getElementsByClassName('sidebar-nav')[0] as HTMLElement).style.width = '0px';
+      (document.getElementsByClassName(
+        'sidebar-nav'
+      )[0] as HTMLElement).style.width = '0px';
       if (rtl) {
-        (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginRight = '0px';
+        (document.getElementsByClassName(
+          'sidebar-toggler'
+        )[0] as HTMLElement).style.marginRight = '0px';
       } else {
-        (document.getElementsByClassName('sidebar-toggler')[0] as HTMLElement).style.marginLeft = '0px';
+        (document.getElementsByClassName(
+          'sidebar-toggler'
+        )[0] as HTMLElement).style.marginLeft = '0px';
       }
-      $('.sidebar-toggler i').removeClass('fa-chevron-left').addClass('fa-chevron-right');
+      $('.sidebar-toggler i')
+        .removeClass('fa-chevron-left')
+        .addClass('fa-chevron-right');
     }
-
   }
 
   toggleServices(el) {
@@ -524,7 +574,9 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
     this.provincialServices = false;
 
-    const id = $(el).closest('.m-service').attr('id');
+    const id = $(el)
+      .closest('.m-service')
+      .attr('id');
     this.serviceType = id;
 
     // The departments in each service has a different key name, so we have to change it
@@ -533,16 +585,20 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
     sessionStorage.setItem('serviceType', id);
 
-    this.serviceName = $(el).closest('.m-service').find('.sr-name p').html();
+    this.serviceName = $(el)
+      .closest('.m-service')
+      .find('.sr-name p')
+      .html();
     //console.log('service name: ', this.serviceName);
     // console.log('service id: ', id);
 
     $('.m-service').removeClass('active-service');
-    $(el).closest('.m-service').addClass('active-service');
+    $(el)
+      .closest('.m-service')
+      .addClass('active-service');
 
     // reset the menu highlights
     // this.activeMenu($('.sidebar-title'));
-
 
     /**
      * The following commented code is used to fetch data from already fetched data
@@ -550,7 +606,6 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
      * some bugs and errors occure
      * -- I will check this in the next version, for now let it be commented
      */
-
 
     // if (this.serviceContents[id].title) {
     //   console.log('from local ', this.serviceContents[id]);
@@ -604,9 +659,6 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
         break;
     }
     // }
-
-
-
   }
 
   canDeactivate() {
@@ -617,5 +669,4 @@ export class ServicesHomeComponent implements OnInit, AfterViewInit {
 
     return true;
   }
-
 }
